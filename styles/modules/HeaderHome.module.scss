@@ -1,0 +1,19 @@
+
+.c-headerHome {
+    background: var(--secondary);
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>SM') {
+
+        &__row {
+            @include make-row();
+        }
+
+        &__col {
+            @include make-col-ready();
+            @include make-col(6, 12)
+        }
+    }
+}

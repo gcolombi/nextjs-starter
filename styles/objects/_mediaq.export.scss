@@ -6,7 +6,7 @@
  * Generates a JSON string with each breakpoint's value and information about
  * which of the breakpoints are currently active (i.e. viewport width >= breakpoint)
  * Ex.: 900px width returns '{"phone":{"value": "320px", "active": true}, "tablet":{"value": "768px", "active": true}, "desktop":{"value": "1024px", "active": false}}'
- * 
+ *
  * @param {String} $target-name Name of breakpoint to evaluate
  * @return {String} Resulting JSON string
  */
@@ -24,7 +24,7 @@
 
 /**
  * Generates the media queries necessary to export breakpoints
- * 
+ *
  * @param {String} $element Element to append JSON data to
  */
 @mixin mq-export($element) {
