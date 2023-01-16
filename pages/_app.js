@@ -10,7 +10,7 @@ const roboto = Roboto({
     style: ['normal', 'italic'],
     subsets: ['latin'],
     display: 'swap',
-})
+});
 
 const victorMono = localFont({
     fallback: ['sans-serif'],
@@ -27,7 +27,7 @@ const victorMono = localFont({
         }
     ],
     display: 'swap'
-})
+});
 
 /**
  * Global styles
