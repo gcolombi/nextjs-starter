@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import useWindowLocation from '@/hooks/useWindowLocation';
 
 export default function MetaData({ ...customMeta }) {
-    const router = useRouter();
+    const { currentURL } = useWindowLocation();
     const meta = {
         title: 'Lorem ipsum dolor sit',
         description: `Nulla posuere sollicitudin aliquam ultrices sagittis orci a. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque.`,
@@ -17,7 +17,7 @@ export default function MetaData({ ...customMeta }) {
             <meta name="description" content={meta.description} />
             <meta property="og:title" content={meta.title} />
             <meta property="og:description" content={meta.description} />
-            <meta property="og:url" content={`http://localhost:3000${router.asPath}`} />
+            <meta property="og:url" content={currentURL} />
             <meta property="og:site_name" content="Lorem ipsum dolor sit" />
             <meta property="og:type" content={meta.type} />
             <meta property="og:image" content={meta.image} />
@@ -25,7 +25,7 @@ export default function MetaData({ ...customMeta }) {
                 <meta property="article:published_time" content={meta.date} />
             )}
             <meta name="robots" content="follow, index" />
-            <link rel="canonical" href={`http://localhost:3000${router.asPath}`} />
+            <link rel="canonical" href={currentURL} />
         </Head>
     );
 }
