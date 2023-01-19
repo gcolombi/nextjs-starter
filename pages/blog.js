@@ -1,7 +1,7 @@
 import MetaData from '@/components/MetaData';
 import HeaderTextCenter from '@/components/HeaderTextCenter';
 
-export default function blog() {
+export default function Blog() {
     return (
         <>
             <MetaData
