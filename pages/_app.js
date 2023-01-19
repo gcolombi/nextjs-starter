@@ -33,6 +33,7 @@ const victorMono = localFont({
  * Global styles
  */
 import '@/styles/style.scss';
+import Footer from '@/components/Footer';
 
 export default function App({ Component, pageProps }) {
     return (
@@ -44,6 +45,7 @@ export default function App({ Component, pageProps }) {
                 }
             `}</style>
             <Component {...pageProps} />
+            <Footer />
         </>
     )
 }
