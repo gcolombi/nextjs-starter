@@ -8,6 +8,7 @@ export default function Home() {
             <HeaderHome
                 title="Home"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
+                button={{label: 'Click here', link: '/blog'}}
             />
             <section className='u-spacing--responsive'>
                 <div className='o-container'>

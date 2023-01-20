@@ -1,8 +1,10 @@
 import styles from '../styles/modules/HeaderHome.module.scss';
+import Button from './Button';
 
 export default function HeaderHome({
     title,
-    wysiwyg
+    wysiwyg,
+    button
  }) {
     return (
         <section className={`u-spacing--responsive u-blockColor--secondary ${styles['c-headerHome']}`}>
@@ -13,6 +15,7 @@ export default function HeaderHome({
                             <h1>{title}</h1>
                             <p>{wysiwyg}</p>
                         </div>
+                        <Button label={button?.label} link={button?.link} />
                     </div>
                 </div>
             </div>
