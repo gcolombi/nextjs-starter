@@ -15,7 +15,7 @@ export default function HeaderHome({
                             <h1>{title}</h1>
                             <p>{wysiwyg}</p>
                         </div>
-                        <Button label={button?.label} link={button?.link} />
+                        <Button label={button?.label} link={button?.link} cssClass={button?.cssClass} />
                     </div>
                 </div>
             </div>

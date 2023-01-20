@@ -8,13 +8,13 @@ export default function Button({
     externalLink,
     anchor,
     onClick,
-    className
+    cssClass
 }) {
 
     if (label && link) {
         return (
             <Link
-                className={styles[className]}
+                className={styles[cssClass]}
                 href={link}
             >
                 {label}
@@ -25,7 +25,7 @@ export default function Button({
     if (label && isExternal && externalLink) {
         return (
             <a
-                className={styles[className]}
+                className={styles[cssClass]}
                 target='_blank'
                 rel='noopener noreferrer'
                 href={externalLink}
@@ -38,7 +38,7 @@ export default function Button({
     if (label && anchor) {
         return (
             <a
-                className={styles[className]}
+                className={styles[cssClass]}
                 href={`#${anchor}`}
             >
                 {label}
@@ -49,7 +49,7 @@ export default function Button({
     if (label && onClick) {
         return (
             <button
-                className={styles[className]}
+                className={styles[cssClass]}
                 onClick={onClick}
             >
                 {label}
