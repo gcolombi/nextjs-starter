@@ -5,6 +5,7 @@ module.exports = {
         additionalData: `
             @import
             'styles/settings/_config.scss',
+            'styles/settings/_config.typography.scss',
             'styles/settings/_config.eases.scss',
             'styles/tools/mixins/_button.scss',
             'styles/tools/mixins/_container.scss',

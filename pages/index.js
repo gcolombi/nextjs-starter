@@ -8,7 +8,15 @@ export default function Home() {
             <HeaderBasic
                 title="Home"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
-                button={{label: 'Click here', link: '/blog', className: 'c-btn'}}
+                button={{
+                    label: 'Powered by Next.js',
+                    link: '',
+                    isExternal: true,
+                    externalLink: 'https://nextjs.org/',
+                    anchor: '',
+                    onClick: '',
+                    className: 'c-btn'
+                }}
             />
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">

@@ -8,52 +8,54 @@ export default function Button({
     externalLink,
     anchor,
     onClick,
-    className
+    className,
+    wrapperClassName
 }) {
 
     if (label && link) {
         return (
-            <Link
-                className={styles[className]}
-                href={link}
-            >
-                {label}
-            </Link>
+            <>
+                <div className={wrapperClassName}>
+                    <Link
+                        className={styles[className]}
+                        href={link}
+                    >
+                        {label}
+                    </Link>
+                </div>
+            </>
         );
     }
 
-    if (label && isExternal && externalLink) {
+    if (label && (isExternal && externalLink || anchor)) {
         return (
-            <a
-                className={styles[className]}
-                target="_blank"
-                rel="noopener noreferrer"
-                href={externalLink}
-            >
-                {label}
-            </a>
-        );
-    }
-
-    if (label && anchor) {
-        return (
-            <a
-                className={styles[className]}
-                href={`#${anchor}`}
-            >
-                {label}
-            </a>
+            <>
+                <div className={wrapperClassName}>
+                    <a
+                        className={styles[className]}
+                        target={isExternal ? '_blank' : false}
+                        rel={isExternal ? 'noopener noreferrer' : false}
+                        href={externalLink ? externalLink : `#${anchor}`}
+                    >
+                        {label}
+                    </a>
+                </div>
+            </>
         );
     }
 
     if (label && onClick) {
         return (
-            <button
-                className={styles[className]}
-                onClick={onClick}
-            >
-                {label}
-            </button>
+            <>
+                <div className={wrapperClassName}>
+                    <button
+                        className={styles[className]}
+                        onClick={onClick}
+                    >
+                        {label}
+                    </button>
+                </div>
+            </>
         );
     }
 }

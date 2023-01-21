@@ -1,6 +1,12 @@
 .c-headerBasic {
+    position: relative;
+
     &__row {
         max-width: 700px;
         margin: 0 auto;
+    }
+
+    &__btn {
+        margin-top: rem(20px);
     }
 }

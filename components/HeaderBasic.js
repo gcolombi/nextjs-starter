@@ -17,7 +17,18 @@ export default function HeaderBasic({
                                 <h1>{title}</h1>
                                 <p>{wysiwyg}</p>
                             </div>
-                            <Button label={button?.label} link={button?.link} className={button?.className} />
+                            {button &&
+                                <Button
+                                    label={button.label}
+                                    link={button.link}
+                                    isExternal={button.isExternal}
+                                    externalLink={button.externalLink}
+                                    anchor={button.anchor}
+                                    onClick={button.onClick}
+                                    className={button.className}
+                                    wrapperClassName={styles['c-headerBasic__btn']}
+                                />
+                            }
                         </div>
                     </div>
                 </section>
