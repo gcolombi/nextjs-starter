@@ -16,7 +16,7 @@ export default function Article({
                 title="Article"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
             />
-            <section className="u-spacing--responsive">
+            <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div className="o-wysiwyg">
                         <p>Tellus orci ac auctor augue mauris. Turpis tincidunt id aliquet risus feugiat in ante metus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque. Elementum sagittis vitae et leo duis ut. Facilisis leo vel fringilla est. Nunc aliquet bibendum enim facilisis gravida. Scelerisque fermentum dui faucibus in ornare. Vivamus at augue eget arcu. Ornare aenean euismod elementum nisi quis eleifend quam. Est sit amet facilisis magna etiam tempor orci. Arcu non odio euismod lacinia at quis risus. Lectus magna fringilla urna porttitor. Consequat semper viverra nam libero justo laoreet sit amet cursus. Faucibus pulvinar elementum integer enim neque volutpat. Non quam lacus suspendisse faucibus interdum posuere.</p>
