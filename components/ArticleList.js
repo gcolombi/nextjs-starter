@@ -6,9 +6,9 @@ export default function ArticleList({
 
     if (articles.length) {
         return (
-            <section className='u-spacing--responsive'>
-                <div className='o-container'>
-                    <ul>
+            <section className="u-spacing--responsive">
+                <div className="o-container">
+                    <ul className="unstyled u-margin--none">
                         {articles.map((article) => (
                             <li key={article.id}>
                                 <Link
@@ -25,9 +25,9 @@ export default function ArticleList({
     }
 
     return (
-        <section className='u-spacing--responsive'>
-            <div className='o-container'>
-                <div className='o-wysiwyg'>
+        <section className="u-spacing--responsive">
+            <div className="o-container">
+                <div className="o-wysiwyg">
                     <p>No article</p>
                 </div>
             </div>

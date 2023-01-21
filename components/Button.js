@@ -26,8 +26,8 @@ export default function Button({
         return (
             <a
                 className={styles[className]}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
                 href={externalLink}
             >
                 {label}

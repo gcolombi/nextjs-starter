@@ -1,5 +1,5 @@
 import MetaData from '@/components/MetaData';
-import HeaderTextCenter from '@/components/HeaderTextCenter';
+import HeaderBasic from '@/components/HeaderBasic';
 import ArticleList from '@/components/ArticleList';
 
 export default function Blog({
@@ -11,7 +11,7 @@ export default function Blog({
                 title="Blog"
                 description="Lorem ipsum dolor sit blog."
             />
-            <HeaderTextCenter
+            <HeaderBasic
                 title="Blog"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
             />

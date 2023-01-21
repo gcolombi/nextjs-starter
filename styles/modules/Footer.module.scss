@@ -2,6 +2,7 @@
     --footer-padding: 25px;
 
     padding: var(--footer-padding) 0;
+    border-top: 1px solid var(--gray-200);
 
     &__copyright {
         text-align: center;
