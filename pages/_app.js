@@ -34,8 +34,16 @@ const victorMono = localFont({
  */
 import '@/styles/style.scss';
 import Footer from '@/components/Footer';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }) {
+    const router = useRouter()
+
+    useEffect(() => {
+        document.activeElement && document.activeElement.blur();
+    }, [router])
+
     return (
         <>
             <style jsx global>{`
