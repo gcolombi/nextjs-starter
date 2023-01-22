@@ -1,10 +1,12 @@
 import styles from '@/styles/modules/Navigation.module.scss';
 import { useEffect, useRef, useState } from 'react';
+import useScrollbar from '@/hooks/useScrollbar';
 import Button from './Button';
 
 export default function Navigation() {
     const [navigationHeight, setNavigationHeight] = useState(0);
     const navRef = useRef(null);
+    const scrollbar = useScrollbar();
 
     useEffect(() => {
         /**
