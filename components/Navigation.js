@@ -31,7 +31,14 @@ export default function Navigation() {
                     --navigation-height: ${navigationHeight}px;
                 }
             `}</style>
-            <header className={styles['c-navigation']} ref={navRef}>
+            <header
+                className={`${styles['c-navigation']} ${
+                    scrollY > 0
+                        ? styles['is-sticky']
+                        : ''
+                }`}
+                ref={navRef}
+            >
                 <div className="o-container">
                     <nav className={styles['c-navigation__row']}>
                         <Button
