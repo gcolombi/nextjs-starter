@@ -69,23 +69,3 @@ export default function Navigation() {
         </>
     );
 }
-
-/**
- * Reports changes of the navigation element and updates css root variable
- */
-// createResizeObserver() {
-//     new ResizeObserver(this.setCssRootVar.bind(this)).observe(this.nav.element);
-// }
-
-/**
- * Defines a CSS variable for navigation height
- * @returns {boolean} true when variable has been setted
- */
-// setCssRootVar() {
-//     window.Store.app.theHtml.style.setProperty(
-//         this.settings.rootCssVar,
-//         `${this.height}px`
-//     );
-
-//     return true;
-// }
