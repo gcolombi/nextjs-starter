@@ -13,7 +13,6 @@ export default function Navigation() {
          */
         function setNavHeight() {
             setNavigationHeight(navRef.current?.getBoundingClientRect().height);
-            console.log('once');
             return true
         };
 
