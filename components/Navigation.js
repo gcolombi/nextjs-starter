@@ -4,7 +4,7 @@ import Button from './Button';
 export default function Navigation() {
     return (
         <header className={styles['c-navigation']}>
-            <div className={styles['o-container']}>
+            <div className="o-container">
                 <nav className={styles['c-navigation__row']}>
                     <Button
                         label="Home"

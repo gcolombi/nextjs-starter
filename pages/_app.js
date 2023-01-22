@@ -33,6 +33,7 @@ const victorMono = localFont({
  * Global styles
  */
 import '@/styles/style.scss';
+import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -52,6 +53,7 @@ export default function App({ Component, pageProps }) {
                     --font-secondary: ${victorMono.style.fontFamily};
                 }
             `}</style>
+            <Navigation />
             <Component {...pageProps} />
             <Footer />
         </>
