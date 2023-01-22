@@ -20,7 +20,8 @@ export default function Navigation() {
         /**
          * Reports changes of the navigation element and updates navigationHeight
          */
-        new ResizeObserver(setNavHeight.bind(this)).observe(navRef.current);
+        new ResizeObserver(setNavHeight).observe(navRef.current);
+        // const resizeOb = new ResizeObserver(setNavHeight.bind(this)).observe(navRef.current);
     }, [])
 
     return (
