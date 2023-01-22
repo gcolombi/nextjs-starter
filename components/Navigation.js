@@ -6,7 +6,7 @@ import Button from './Button';
 export default function Navigation() {
     const [navigationHeight, setNavigationHeight] = useState(0);
     const navRef = useRef(null);
-    const scrollbar = useScrollbar();
+    const { scrollY, directionY } = useScrollbar();
 
     useEffect(() => {
         /**
