@@ -16,8 +16,8 @@ export default function useScrollbar() {
             return {
                 scrollY: window.scrollY,
                 scrollX: window.scrollX,
-                directionY: prevScrollY < window.scrollY ? 'down' : 'up',
-                directionX: prevScrollX < window.scrollX ? 'right' : 'left',
+                directionY: prevScrollY < window.scrollY ? 1 : -1,
+                directionX: prevScrollX < window.scrollX ? 1 : -1
             }
         })
     }, [])

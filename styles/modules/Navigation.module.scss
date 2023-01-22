@@ -33,12 +33,16 @@
     }
 
     /* states */
+    &.is-hidden {
+        transform: translate3d(0, -100%, 0);
+    }
+
     &.is-sticky {
         --navigation-bg: rgba(var(--white), .5);
         box-shadow: inset 0 -1px 0 0 var(--gray-200);
         backdrop-filter: saturate(180%) blur(5px);
         backface-visibility: hidden;
-        transform: translateZ(0);
+        // transform: translateZ(0);
     }
 
     // **---------------------------------------------------**

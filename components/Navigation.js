@@ -8,6 +8,8 @@ export default function Navigation() {
     const navRef = useRef(null);
     const { scrollY, directionY } = useScrollbar();
 
+    // console.log(directionY);
+
     useEffect(() => {
         /**
          * Defines navigation height
@@ -32,9 +34,13 @@ export default function Navigation() {
                 }
             `}</style>
             <header
-                className={`${styles['c-navigation']} ${
-                    scrollY > 0
+                className={`${styles['c-navigation']}
+                    ${scrollY > 0
                         ? styles['is-sticky']
+                        : ''
+                    }
+                    ${directionY > 0
+                        ? styles['is-hidden']
                         : ''
                 }`}
                 ref={navRef}
