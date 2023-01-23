@@ -1,14 +1,14 @@
 import styles from '@/styles/modules/Navigation.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import useScrollbar from '@/hooks/useScrollbar';
+import useWindowSize from '@/hooks/useWindowSize';
 import Button from './Button';
 
 export default function Navigation() {
     const [navigationHeight, setNavigationHeight] = useState(0);
     const navRef = useRef(null);
     const { scrollY, directionY } = useScrollbar();
-
-    // console.log(directionY);
+    const windowSize = useWindowSize();
 
     useEffect(() => {
         /**
@@ -39,7 +39,7 @@ export default function Navigation() {
                         ? styles['is-sticky']
                         : ''
                     }
-                    ${directionY > 0
+                    ${directionY > 0 && scrollY > windowSize.height
                         ? styles['is-hidden']
                         : ''
                 }`}

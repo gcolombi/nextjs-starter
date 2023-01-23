@@ -34,7 +34,7 @@
 
     /* states */
     &.is-hidden {
-        transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0) translateZ(0);
     }
 
     &.is-sticky {
