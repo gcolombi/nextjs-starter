@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NavItem from "./NavItem";
 
 export default function ArticleList({
     articles
@@ -11,11 +11,7 @@ export default function ArticleList({
                     <ul className="unstyled u-margin--none">
                         {articles.map((article) => (
                             <li key={article.id}>
-                                <Link
-                                    href={`/blog/${article.slug}`}
-                                >
-                                    {article.title}
-                                </Link>
+                                <NavItem href={`/blog/${article.slug}`} title={article.title} />
                             </li>
                         ))}
                     </ul>

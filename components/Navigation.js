@@ -2,6 +2,7 @@ import styles from '@/styles/modules/Navigation.module.scss';
 import useScrollbar from '@/hooks/useScrollbar';
 import useWindowSize from '@/hooks/useWindowSize';
 import useElementSize from '@/hooks/useElementSize';
+import NavItem from './NavItem';
 import Button from './Button';
 
 export default function Navigation() {
@@ -38,25 +39,16 @@ export default function Navigation() {
                         />
                         <ul className={`u-margin--none ${styles['c-navigation__list']}`}>
                             <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
+                                <NavItem href="/" title="Home" />
                             </li>
                             <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
+                                <NavItem href="/" title="Sollicitudin" />
                             </li>
                             <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
+                                <NavItem href="/" title="Tincidunt" />
                             </li>
                             <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
-                            </li>
-                            <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
-                            </li>
-                            <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
-                            </li>
-                            <li className={styles['c-navigation__list--item']}>
-                                <a href="#">Link</a>
+                                <NavItem href="/blog" title="Blog" />
                             </li>
                         </ul>
                     </nav>
