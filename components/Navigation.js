@@ -54,7 +54,6 @@ export default function Navigation() {
                     </nav>
                 </div>
             </header>
-            <div className={styles['c-spacer']}></div>
         </>
     );
 }

@@ -95,6 +95,10 @@ body {
 	padding: 0;
 }
 
+main {
+    position: relative;
+}
+
 ::-moz-selection {
 	background-color: var(--primary);
 	color: var(--white);
@@ -304,4 +308,20 @@ hr {
 			}
 		}
 	}
+}
+
+/* Utilities
+========================================================================== */
+
+.c-spacer {
+    padding-top: var(--navigation-height);
+}
+
+.c-pageBackground {
+    --gradient-from: #eef2ff;
+    --gradient-to: #cdeee8;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom right, var(--gradient-from), var(--white), var(--gradient-to));
 }
