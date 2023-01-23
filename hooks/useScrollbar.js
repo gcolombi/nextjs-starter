@@ -20,7 +20,7 @@ export default function useScrollbar() {
                 directionX: prevScrollX < window.scrollX ? 1 : -1
             }
         })
-    }, [])
+    }, [scrollbar?.scrollY, scrollbar?.scrollX, scrollbar?.directionY, scrollbar?.directionX])
 
     useEffect(() => {
         window.addEventListener('scroll', updateScrollbar);
