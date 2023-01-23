@@ -1,4 +1,4 @@
-import NavItem from "./NavItem";
+import NavItem from './NavItem';
 
 export default function ArticleList({
     articles
