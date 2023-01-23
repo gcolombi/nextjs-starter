@@ -1,20 +1,31 @@
 import MetaData from '@/components/MetaData';
 import HeaderBasic from '@/components/HeaderBasic';
+import useLockedScroll from '@/hooks/useLockedScroll';
 
 export default function Home() {
+    const [locked, setLocked] = useLockedScroll(false);
+
+    const toggleLocked = () => {
+        setLocked(!locked);
+    }
     return (
         <>
             <MetaData />
             <HeaderBasic
                 title="Home"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
+                // button={{
+                //     label: 'Powered by Next.js',
+                //     link: '',
+                //     isExternal: true,
+                //     externalLink: 'https://nextjs.org/',
+                //     anchor: '',
+                //     onClick: '',
+                //     className: 'c-btn'
+                // }}
                 button={{
-                    label: 'Powered by Next.js',
-                    link: '',
-                    isExternal: true,
-                    externalLink: 'https://nextjs.org/',
-                    anchor: '',
-                    onClick: '',
+                    label: locked ? 'Unlock scroll' : 'Lock scroll',
+                    onClick: toggleLocked,
                     className: 'c-btn'
                 }}
             />
