@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function NavItem({ href, text }) {
+export default function NavItem({ href, title }) {
     const router = useRouter();
     const isActive = router.asPath === href;
 
@@ -14,7 +14,7 @@ export default function NavItem({ href, text }) {
                     : ''
             }
         >
-            <span className="capsize">{text}</span>
+            {title}
         </Link>
     );
 }

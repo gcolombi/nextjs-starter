@@ -1,5 +1,6 @@
 import styles from '@/styles/modules/Footer.module.scss';
 import Link from 'next/link';
+import NavItem from './NavItem';
 
 export default function Footer() {
     return (
@@ -8,9 +9,18 @@ export default function Footer() {
                 <div className={styles['c-footer__row']}>
                     <div className={styles['c-footer__list']}>
                         <ul className="unstyled">
-                            <li><Link href="/">Sollicitudin</Link></li>
-                            <li><Link href="/">Tincidunt</Link></li>
-                            <li><Link href="/blog">Blog</Link></li>
+                            <li>
+                                <NavItem href="/" title="Home" />
+                            </li>
+                            <li>
+                                <NavItem href="/" title="Sollicitudin" />
+                            </li>
+                            <li>
+                                <NavItem href="/" title="Tincidunt" />
+                            </li>
+                            <li>
+                                <NavItem href="/blog" title="Blog" />
+                            </li>
                         </ul>
                     </div>
                     <div className={`o-wysiwyg ${styles['c-footer__copyright']}`}>

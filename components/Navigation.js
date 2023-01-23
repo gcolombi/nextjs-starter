@@ -32,7 +32,7 @@ export default function Navigation() {
                     <nav className={styles['c-navigation__row']}>
                         <Button
                             label="Home"
-                            link="/"
+                            href="/"
                             className="c-btn"
                             wrapperClassName={styles['c-navigation__btn']}
                         />
