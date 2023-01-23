@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-export default function useNextSibling() {
+export default function useElementSize() {
     /**
      * Mutable values like 'ref.current' aren't valid dependencies
      * because mutating them doesn't re-render the component.

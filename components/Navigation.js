@@ -1,13 +1,13 @@
 import styles from '@/styles/modules/Navigation.module.scss';
 import useScrollbar from '@/hooks/useScrollbar';
 import useWindowSize from '@/hooks/useWindowSize';
-import useNextSibling from '@/hooks/useElementSize';
+import useElementSize from '@/hooks/useElementSize';
 import Button from './Button';
 
 export default function Navigation() {
     const { scrollY, directionY } = useScrollbar();
     const windowSize = useWindowSize();
-    const [navigationRef, { height }] = useNextSibling();
+    const [navigationRef, { height }] = useElementSize();
 
     return (
         <>
