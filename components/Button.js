@@ -3,21 +3,21 @@ import Link from 'next/link';
 
 export default function Button({
     label,
-    link,
+    href,
     isExternal,
-    externalLink,
+    externalHref,
     anchor,
     onClick,
     className,
     wrapperClassName
 }) {
 
-    if (label && link) {
+    if (label && href) {
         return (
             <div className={wrapperClassName}>
                 <Link
                     className={styles[className]}
-                    href={link}
+                    href={href}
                 >
                     {label}
                 </Link>
@@ -25,14 +25,14 @@ export default function Button({
         );
     }
 
-    if (label && (isExternal && externalLink || anchor)) {
+    if (label && (isExternal && externalHref || anchor)) {
         return (
             <div className={wrapperClassName}>
                 <a
                     className={styles[className]}
                     target={isExternal ? '_blank' : false}
                     rel={isExternal ? 'noopener noreferrer' : false}
-                    href={externalLink ? externalLink : `#${anchor}`}
+                    href={externalHref ? externalHref : `#${anchor}`}
                 >
                     {label}
                 </a>

@@ -17,9 +17,9 @@ export default function Home() {
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
                 button={{
                     label: 'Powered by Next.js',
-                    link: '',
+                    href: '',
                     isExternal: true,
-                    externalLink: 'https://nextjs.org/',
+                    externalHref: 'https://nextjs.org/',
                     anchor: '',
                     onClick: '',
                     className: 'c-btn'

@@ -20,9 +20,9 @@ export default function HeaderBasic({
                             {button &&
                                 <Button
                                     label={button.label}
-                                    link={button.link}
+                                    href={button.href}
                                     isExternal={button.isExternal}
-                                    externalLink={button.externalLink}
+                                    externalHref={button.externalHref}
                                     anchor={button.anchor}
                                     onClick={button.onClick}
                                     className={button.className}
