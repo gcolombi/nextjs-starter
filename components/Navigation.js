@@ -57,16 +57,16 @@ export default function Navigation() {
                                         <div className={styles['c-navigation__nav__primary--list']}>
                                             <ul>
                                                 <li>
-                                                    <NavItem href="/" title="Home" />
+                                                    <NavItem href="/" title="Home" onClick={toggle} />
                                                 </li>
                                                 <li>
-                                                    <NavItem href="/" title="Sollicitudin" />
+                                                    <NavItem href="/" title="Sollicitudin" onClick={toggle} />
                                                 </li>
                                                 <li>
-                                                    <NavItem href="/" title="Tincidunt" />
+                                                    <NavItem href="/" title="Tincidunt" onClick={toggle} />
                                                 </li>
                                                 <li>
-                                                    <NavItem href="/blog" title="Blog" />
+                                                    <NavItem href="/blog" title="Blog" onClick={toggle} />
                                                 </li>
                                             </ul>
                                         </div>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function NavItem({ href, title }) {
+export default function NavItem({ href, title, onClick }) {
     const router = useRouter();
     const isActive = router.asPath === href;
 
@@ -14,6 +14,7 @@ export default function NavItem({ href, title }) {
                         ? 'is-current-page'
                         : ''
                 }
+                onClick={onClick}
             >
                 {title}
             </Link>
