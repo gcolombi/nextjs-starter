@@ -34,7 +34,7 @@ export default function Navigation() {
                 ref={navigationRef}
             >
                 <div className={styles['c-navigation__container']}>
-                    <nav className={styles['c-navigation__row']}>
+                    <div className={styles['c-navigation__row']}>
                         <Button
                             label="Home"
                             href="/"
@@ -74,7 +74,7 @@ export default function Navigation() {
                                 </div>
                             </div>
                         </nav>
-                    </nav>
+                    </div>
                 </div>
             </header>
         </>
@@ -90,9 +90,7 @@ function Hamburger({
 }) {
     return (
         <button
-            className={`${styles['m-hamburger']}
-                ${open ? styles['is-nav-active'] : ''}
-            `}
+            className={`${styles['m-hamburger']} ${open ? styles['is-nav-active'] : ''}`}
             type="button"
             aria-label="Toggle menu"
             onClick={toggle}
