@@ -6,15 +6,17 @@ export default function NavItem({ href, title }) {
     const isActive = router.asPath === href;
 
     return (
-        <Link
-            href={href}
-            className={
-                isActive
-                    ? 'is-current-page'
-                    : ''
-            }
-        >
-            {title}
-        </Link>
+        <span>
+            <Link
+                href={href}
+                className={
+                    isActive
+                        ? 'is-current-page'
+                        : ''
+                }
+            >
+                {title}
+            </Link>
+        </span>
     );
 }
