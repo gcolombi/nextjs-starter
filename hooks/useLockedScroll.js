@@ -10,10 +10,19 @@ export default function useLockedScroll(initialLocked) {
             return;
         }
 
+        /* Save initial body style */
+        const originalOverflow = document.documentElement.style.overflow;
+        const originalHeight = document.documentElement.style.height;
+
+
         /* Lock body scroll */
+        document.documentElement.style.overflow = 'hidden';
+        document.documentElement.style.height = `${100}px`;
         document.documentElement.classList.add('has-scroll-lock');
 
         return () => {
+            document.documentElement.style.overflow = originalOverflow;
+            document.documentElement.style.height = originalHeight;
             document.documentElement.classList.remove('has-scroll-lock');
         }
     }, [locked]);

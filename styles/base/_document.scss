@@ -75,12 +75,6 @@ html {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-
-    /* states */
-    &.has-scroll-lock {
-        height: 100vh;
-        overflow: hidden;
-    }
 }
 
 body {
