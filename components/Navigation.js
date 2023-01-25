@@ -30,7 +30,19 @@ export default function Navigation() {
                 }
             `}</style>
             <header
-                className={`${styles['c-navigation']} ${scrollY > 0 ? styles['is-sticky'] : ''} ${directionY > 0 && scrollY > windowSize.height ? styles['is-hidden'] : ''} ${isNavOpen ? styles['is-open'] : ''}`}
+                className={`${
+                    scrollY > 0
+                        ? styles['is-sticky']
+                        : ''
+                    } ${
+                    directionY > 0 && scrollY > windowSize.height
+                        ? styles['is-hidden']
+                        : ''
+                    } ${
+                    isNavOpen
+                        ? styles['is-open']
+                        : ''
+                    } ${styles['c-navigation']} `}
                 ref={navigationRef}
             >
                 <div className={styles['c-navigation__container']}>
