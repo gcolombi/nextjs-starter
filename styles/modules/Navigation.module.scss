@@ -1,6 +1,7 @@
 /* ==========================================================================
     Navigation
 ========================================================================== */
+
 .c-navigation {
     --navigation-bg: transparent;
 
@@ -54,9 +55,9 @@
             padding-right: var(--grid-gutter-width);
         }
 
-        &__hamburger {
-            line-height: 0;
-        }
+        // &__hamburger {
+        //     line-height: 0;
+        // }
 
         &__row {
             display: flex;
@@ -75,96 +76,96 @@
             }
         }
 
-        &__nav {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - var(--navigation-height));
-            opacity: 0;
-            background-color: transparent;
-            pointer-events: none;
-            transition: all $ease-in .35s;
+        // &__nav {
+        //     position: absolute;
+        //     top: 100%;
+        //     left: 0;
+        //     width: 100%;
+        //     height: calc(100vh - var(--navigation-height));
+        //     opacity: 0;
+        //     background-color: transparent;
+        //     pointer-events: none;
+        //     transition: all $ease-in .35s;
 
-            &__scroll {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-            }
+        //     &__scroll {
+        //         position: absolute;
+        //         top: 0;
+        //         left: 0;
+        //         width: 100%;
+        //         height: 100%;
+        //         overflow: auto;
+        //     }
 
-            &__primary {
-                position: relative;
-                padding: var(--primary-padding) 0 0 0;
-                opacity: 0;
-                transition: opacity .2s $ease-in;
+        //     &__primary {
+        //         position: relative;
+        //         padding: var(--primary-padding) 0 0 0;
+        //         opacity: 0;
+        //         transition: opacity .2s $ease-in;
 
-                &--logo {
-                    display: none;
-                }
+        //         &--logo {
+        //             display: none;
+        //         }
 
-                &--list {
+        //         &--list {
 
-                    > ul {
-                        margin: 0;
-                        padding: 0;
-                        list-style: none;
-                        font-family: var(--font-primary);
+        //             > ul {
+        //                 margin: 0;
+        //                 padding: 0;
+        //                 list-style: none;
+        //                 font-family: var(--font-primary);
 
-                        > li {
-                            position: relative;
-                            padding: 0;
-                            margin: 0;
+        //                 > li {
+        //                     position: relative;
+        //                     padding: 0;
+        //                     margin: 0;
 
-                            &:before {
-                                content: '';
-                                display: block;
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 1px;
-                                background: var(--gray-600);
-                                pointer-events: none;
-                            }
+        //                     &:before {
+        //                         content: '';
+        //                         display: block;
+        //                         position: absolute;
+        //                         top: 0;
+        //                         left: 0;
+        //                         width: 100%;
+        //                         height: 1px;
+        //                         background: var(--gray-600);
+        //                         pointer-events: none;
+        //                     }
 
-                            &:last-child {
-                                &:after {
-                                    content: '';
-                                    display: block;
-                                    position: absolute;
-                                    left: 0;
-                                    bottom: 0;
-                                    width: 100%;
-                                    height: 1px;
-                                    background: var(--gray-600);
-                                    pointer-events: none;
-                                }
-                            }
+        //                     &:last-child {
+        //                         &:after {
+        //                             content: '';
+        //                             display: block;
+        //                             position: absolute;
+        //                             left: 0;
+        //                             bottom: 0;
+        //                             width: 100%;
+        //                             height: 1px;
+        //                             background: var(--gray-600);
+        //                             pointer-events: none;
+        //                         }
+        //                     }
 
-                            > span {
-                                display: block;
-                                padding: 24px var(--grid-gutter-width);
+        //                     > span {
+        //                         display: block;
+        //                         padding: 24px var(--grid-gutter-width);
 
-                                > a {
-                                    display: inline-block;
-                                    @include font-size(18px);
-                                    font-weight: var(--font-regular);
-                                    color: var(--gray-100);
-                                    text-transform: uppercase;
-                                }
-                            }
+        //                         > a {
+        //                             display: inline-block;
+        //                             @include font-size(18px);
+        //                             font-weight: var(--font-regular);
+        //                             color: var(--gray-100);
+        //                             text-transform: uppercase;
+        //                         }
+        //                     }
 
-                            // &.is-current-page {
-                            //
-                            // }
-                        }
-                    }
-                }
-            }
-        }
+        //                     // &.is-current-page {
+        //                     //
+        //                     // }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         /* states */
         &.is-open {
@@ -175,95 +176,95 @@
             }
         }
 
-        &.is-open & {
+        // &.is-open & {
 
-            &__nav {
-                opacity: 1;
-                pointer-events: all;
+        //     &__nav {
+        //         opacity: 1;
+        //         pointer-events: all;
 
-                &__scroll {
-                    padding-bottom: var(--nav-inner-scroll-padding);
-                }
+        //         &__scroll {
+        //             padding-bottom: var(--nav-inner-scroll-padding);
+        //         }
 
-                &__primary {
-                    opacity: 1;
-                    transition: opacity 1s $ease-in;
-                }
-            }
-        }
+        //         &__primary {
+        //             opacity: 1;
+        //             transition: opacity 1s $ease-in;
+        //         }
+        //     }
+        // }
     // }
 }
 
-/* Hamburger
-========================================================================== */
+// /* Hamburger
+// ========================================================================== */
 
-.m-hamburger {
-    position: relative;
-    width: 43px;
-    height: 43px;
+// .m-hamburger {
+//     position: relative;
+//     width: 43px;
+//     height: 43px;
 
-    &__lines {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 33px;
-        height: 33px;
-        transform: translate(-50%, -50%);
-        transition: all .35s $ease-in;
+//     &__lines {
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         width: 33px;
+//         height: 33px;
+//         transform: translate(-50%, -50%);
+//         transition: all .35s $ease-in;
 
-        span {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            width: 100%;
-            height: 2px;
-            background: var(--black);
-            transition-timing-function: $ease-in;
-            transition-duration: .3s;
+//         span {
+//             position: absolute;
+//             top: 50%;
+//             left: 0;
+//             transform: translateY(-50%);
+//             width: 100%;
+//             height: 2px;
+//             background: var(--black);
+//             transition-timing-function: $ease-in;
+//             transition-duration: .3s;
 
-            &:before, &:after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: -10px;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background: var(--black);
-                transition: top .1s $ease-in .25s, opacity .1s $ease-in;
-            }
+//             &:before, &:after {
+//                 content: '';
+//                 display: block;
+//                 position: absolute;
+//                 top: -10px;
+//                 left: 0;
+//                 width: 100%;
+//                 height: 2px;
+//                 background: var(--black);
+//                 transition: top .1s $ease-in .25s, opacity .1s $ease-in;
+//             }
 
-            &:after {
-                top: auto;
-                bottom: -10px;
-                transition: bottom .1s $ease-in .25s, transform .3s $ease-in;
-            }
-        }
-    }
+//             &:after {
+//                 top: auto;
+//                 bottom: -10px;
+//                 transition: bottom .1s $ease-in .25s, transform .3s $ease-in;
+//             }
+//         }
+//     }
 
-    /* states */
-    &.is-nav-active & {
+//     /* states */
+//     &.is-nav-active & {
 
-        &__lines {
+//         &__lines {
 
-            span {
-                transition-delay: .3s;
-                transition-timing-function: $ease-in;
-                transform: rotate(225deg);
+//             span {
+//                 transition-delay: .3s;
+//                 transition-timing-function: $ease-in;
+//                 transform: rotate(225deg);
 
-                &:before {
-                    top: 0;
-                    transition: top .1s $ease-in, opacity .1s $ease-in .12s;
-                    opacity: 0;
-                }
+//                 &:before {
+//                     top: 0;
+//                     transition: top .1s $ease-in, opacity .1s $ease-in .12s;
+//                     opacity: 0;
+//                 }
 
-                &:after {
-                    bottom: 0;
-                    transition: bottom .1s $ease-in, transform .22s $ease-in .15s;
-                    transform: rotate(-90deg);
-                }
-            }
-        }
-    }
-}
+//                 &:after {
+//                     bottom: 0;
+//                     transition: bottom .1s $ease-in, transform .22s $ease-in .15s;
+//                     transform: rotate(-90deg);
+//                 }
+//             }
+//         }
+//     }
+// }

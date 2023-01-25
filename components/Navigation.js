@@ -3,23 +3,36 @@ import { useState } from 'react';
 import useScrollbar from '@/hooks/useScrollbar';
 import useWindowSize from '@/hooks/useWindowSize';
 import useElementSize from '@/hooks/useElementSize';
-import useLockedScroll from '@/hooks/useLockedScroll';
-import NavItem from './NavItem';
+// import useLockedScroll from '@/hooks/useLockedScroll';
+// import NavItem from './NavItem';
+import MobileNavigation from './MobileNavigation';
 import Button from './Button';
+// import useDelayedRender from 'use-delayed-render';
 
 /**
  * Navigation
  */
 export default function Navigation() {
     const [isNavOpen, setIsNavOpen] = useState(false);
+    // const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
+    //     isNavOpen,
+    //     {
+    //       enterDelay: 200,
+    //       exitDelay: 1000
+    //     }
+    // );
     const { scrollY, directionY } = useScrollbar();
     const windowSize = useWindowSize();
     const [navigationRef, { height }] = useElementSize();
-    const [locked, setLocked] = useLockedScroll(false);
+    // const [locked, setLocked] = useLockedScroll(false);
 
-    function toggle() {
-        setIsNavOpen(!isNavOpen);
-        setLocked(!locked);
+    // function toggle() {
+    //     setIsNavOpen(!isNavOpen);
+    //     setLocked(!locked);
+    // }
+
+    function callBack(state) {
+        setIsNavOpen(state)
     }
 
     return (
@@ -53,10 +66,14 @@ export default function Navigation() {
                             className="c-btn"
                             wrapperClassName={styles['c-navigation__logo']}
                         />
-                        <div className={styles['c-navigation__hamburger']}>
+                        {/* <div className={styles['c-navigation__hamburger']}>
                             <Hamburger open={isNavOpen} toggle={toggle} />
-                        </div>
-                        <nav className={styles['c-navigation__nav']}>
+                        </div> */}
+
+                        <MobileNavigation onClick={callBack} />
+
+
+                        {/* <nav className={styles['c-navigation__nav']}>
                             <div className={styles['c-navigation__nav__scroll']}>
                                 <div className={styles['c-navigation__nav__container']}>
                                     <div className={styles['c-navigation__nav__primary']}>
@@ -85,7 +102,7 @@ export default function Navigation() {
                                     </div>
                                 </div>
                             </div>
-                        </nav>
+                        </nav> */}
                     </div>
                 </div>
             </header>
@@ -94,22 +111,43 @@ export default function Navigation() {
 }
 
 /**
- * Hamburger
+ * Mobile navigation
  */
-function Hamburger({
-    open,
-    toggle
-}) {
-    return (
-        <button
-            className={`${styles['m-hamburger']} ${open ? styles['is-nav-active'] : ''}`}
-            type="button"
-            aria-label="Toggle menu"
-            onClick={toggle}
-        >
-            <div className={styles['m-hamburger__lines']}>
-                <span></span>
-            </div>
-        </button>
-    );
-}
+
+// function MobileNavigation({
+//     open,
+//     toggle
+// }) {
+//     return (
+//         <nav className={styles['c-navigation__nav']}>
+//             <div className={styles['c-navigation__nav__scroll']}>
+//                 <div className={styles['c-navigation__nav__container']}>
+//                     <div className={styles['c-navigation__nav__primary']}>
+//                         <Button
+//                             label="Home"
+//                             href="/"
+//                             className="c-btn"
+//                             wrapperClassName={styles['c-navigation__nav__primary--logo']}
+//                         />
+//                         <div className={styles['c-navigation__nav__primary--list']}>
+//                             <ul>
+//                                 <li>
+//                                     <NavItem href="/" title="Home" onClick={toggle} />
+//                                 </li>
+//                                 <li>
+//                                     <NavItem href="/" title="Sollicitudin" onClick={toggle} />
+//                                 </li>
+//                                 <li>
+//                                     <NavItem href="/" title="Tincidunt" onClick={toggle} />
+//                                 </li>
+//                                 <li>
+//                                     <NavItem href="/blog" title="Blog" onClick={toggle} />
+//                                 </li>
+//                             </ul>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </nav>
+//     )
+// }
