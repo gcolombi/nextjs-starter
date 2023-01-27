@@ -2,7 +2,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 
-export default function NavItem({ href, title, onClick }) {
+export default function NavItem({
+     href,
+     title,
+     onClick,
+     className
+}) {
     const router = useRouter();
     const isActive = router.asPath === href;
 
@@ -10,9 +15,9 @@ export default function NavItem({ href, title, onClick }) {
         <span>
             <Link
                 href={href}
-                className={classNames(
-                    {'is-current-page': isActive}
-                )}
+                className={classNames({
+                    [className]: isActive
+                })}
                 onClick={onClick}
             >
                 {title}

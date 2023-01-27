@@ -37,7 +37,6 @@
         box-shadow: inset 0 -1px 0 0 var(--gray-200);
         backdrop-filter: saturate(180%) blur(5px);
         backface-visibility: hidden;
-        // transform: translateZ(0);
     }
 
     // **---------------------------------------------------**
@@ -45,8 +44,6 @@
 
     /* mobile */
     // @include mediaq('<MD') {
-        --primary-padding: 25px;
-        --nav-inner-scroll-padding: 100px;
 
         &__container {
             width: 100%;

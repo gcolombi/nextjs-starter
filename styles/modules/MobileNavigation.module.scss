@@ -3,6 +3,10 @@
 ========================================================================== */
 
 .c-mobileNav {
+    --primary-padding: 25px;
+    --nav-inner-scroll-padding: 100px;
+    --nav-link-color: var(--gray-100);
+
     position: absolute;
     top: 100%;
     left: 0;
@@ -72,14 +76,15 @@
                             display: inline-block;
                             @include font-size(18px);
                             font-weight: var(--font-regular);
-                            color: var(--gray-100);
+                            color: var(--nav-link-color);
                             text-transform: uppercase;
+
+                            &.is-current-page {
+                                --nav-link-color: var(--secondary);
+                            }
                         }
                     }
 
-                    // &.is-current-page {
-
-                    // }
                 }
             }
         }
