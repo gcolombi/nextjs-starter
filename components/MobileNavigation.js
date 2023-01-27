@@ -30,9 +30,7 @@ export default function MobileNavigation({
                 <nav
                    className={classNames(
                         styles['c-mobileNav'],
-                        {
-                            [styles['is-open']]: isMenuRendered
-                        }
+                        {[styles['is-open']]: isMenuRendered}
                    )}
                 >
                     <div className={styles['c-mobileNav__scroll']}>
@@ -72,7 +70,10 @@ function Hamburger({
 }) {
     return (
         <button
-            className={`${styles['m-hamburger']} ${open ? styles['is-nav-active'] : ''}`}
+            className={classNames(
+                styles['m-hamburger'],
+                {[styles['is-nav-active']]: open}
+            )}
             type="button"
             aria-label="Toggle menu"
             onClick={toggle}
