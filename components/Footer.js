@@ -10,13 +10,10 @@ export default function Footer() {
                     <div className={styles['c-footer__list']}>
                         <ul className="unstyled">
                             <li>
-                                <NavItem href="/" title="Home" className={styles['is-current-page']} />
+                                <NavItem href="#" title="Sollicitudin" className={styles['is-current-page']} />
                             </li>
                             <li>
-                                <NavItem href="/" title="Sollicitudin" className={styles['is-current-page']} />
-                            </li>
-                            <li>
-                                <NavItem href="/" title="Tincidunt" className={styles['is-current-page']} />
+                                <NavItem href="#" title="Tincidunt" className={styles['is-current-page']} />
                             </li>
                             <li>
                                 <NavItem href="/blog" title="Blog" className={styles['is-current-page']} />

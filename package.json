@@ -20,5 +20,9 @@
     },
     "devDependencies": {
         "sass": "^1.57.1"
-    }
+    },
+    "browserslist": [
+        "> 5%",
+        "last 2 versions"
+    ]
 }
