@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useLockedScroll from '@/hooks/useLockedScroll';
 import NavItem from './NavItem';
 import useDelayedRender from 'use-delayed-render';
+import classNames from 'classnames';
 
 export default function MobileNavigation({
     onClick
@@ -27,13 +28,12 @@ export default function MobileNavigation({
             <Hamburger open={isNavOpen} toggle={toggle} />
             {isMenuMounted &&
                 <nav
-                    className={`${
-                        styles['c-mobileNav']
-                        } ${
-                        isMenuRendered
-                            ? styles['is-open']
-                            : ''
-                        }`}
+                   className={classNames(
+                        styles['c-mobileNav'],
+                        {
+                            [styles['is-open']]: isMenuRendered
+                        }
+                   )}
                 >
                     <div className={styles['c-mobileNav__scroll']}>
                         <div className={styles['c-mobileNav__container']}>
