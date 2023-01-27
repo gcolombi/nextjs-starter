@@ -10,6 +10,7 @@
 
 # Misc
 *.pem
+prepros.config
 
 # Mac OS X
 .DS_Store
