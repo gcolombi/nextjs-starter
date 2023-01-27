@@ -1,5 +1,6 @@
 import styles from '@/styles/modules/HeaderBasic.module.scss';
 import Button from './Button';
+import classNames from 'classnames';
 
 export default function HeaderBasic({
     title,
@@ -10,9 +11,9 @@ export default function HeaderBasic({
         <>
             {
                 title &&
-                <section className={`u-spacing--responsive ${styles['c-headerBasic']}`}>
+                <section className={classNames('u-spacing--responsive', styles['c-headerBasic'])}>
                     <div className="o-container">
-                        <div className={`u-text--center ${styles['c-headerBasic__row']}`}>
+                        <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
                             <div className="o-wysiwyg">
                                 <h1>{title}</h1>
                                 <p>{wysiwyg}</p>
