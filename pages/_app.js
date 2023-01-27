@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }) {
                 }
             `}</style>
             <Navigation />
-            <div className='c-pageBackground'></div>
+            <div className="c-pageBackground"></div>
             <main>
                 <div className="c-spacer"></div>
                 <Component {...pageProps} />

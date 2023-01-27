@@ -36,7 +36,7 @@ export default function Home() {
                     <Button
                         label={locked ? 'Unlock scroll' : 'Lock scroll'}
                         onClick={toggleLocked}
-                        className= 'c-btn'
+                        className="c-btn"
                     />
                 </div>
             </section>

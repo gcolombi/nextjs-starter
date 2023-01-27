@@ -11,9 +11,9 @@ export default function HeaderBasic({
             {
                 title &&
                 <section className={`u-spacing--responsive ${styles['c-headerBasic']}`}>
-                    <div className='o-container'>
+                    <div className="o-container">
                         <div className={`u-text--center ${styles['c-headerBasic__row']}`}>
-                            <div className='o-wysiwyg'>
+                            <div className="o-wysiwyg">
                                 <h1>{title}</h1>
                                 <p>{wysiwyg}</p>
                             </div>
