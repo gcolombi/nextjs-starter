@@ -5,6 +5,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import useElementSize from '@/hooks/useElementSize';
 import MobileNavigation from './MobileNavigation';
 import Button from './Button';
+import classNames from 'classnames';
 
 export default function Navigation() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -24,19 +25,14 @@ export default function Navigation() {
                 }
             `}</style>
             <header
-                className={`${
-                    scrollY > 0
-                        ? styles['is-sticky']
-                        : ''
-                    } ${
-                    directionY > 0 && scrollY > windowSize.height
-                        ? styles['is-hidden']
-                        : ''
-                    } ${
-                    isNavOpen
-                        ? styles['is-open']
-                        : ''
-                    } ${styles['c-navigation']} `}
+                className={classNames(
+                    styles['c-navigation'],
+                    {
+                        [styles['is-sticky']]: scrollY > 0,
+                        [styles['is-hidden']]: directionY > 0 && scrollY > windowSize.height,
+                        [styles['is-open']]: isNavOpen
+                    }
+                )}
                 ref={navigationRef}
             >
                 <div className={styles['c-navigation__container']}>
