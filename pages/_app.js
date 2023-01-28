@@ -39,11 +39,11 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }) {
-    const router = useRouter()
+    const router = useRouter();
 
     useEffect(() => {
         document.activeElement && document.activeElement.blur();
-    }, [router])
+    }, [router]);
 
     return (
         <>

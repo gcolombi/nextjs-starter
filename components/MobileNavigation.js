@@ -18,14 +18,14 @@ export default function MobileNavigation({
     );
     const [locked, setLocked] = useLockedScroll(false);
 
-    function toggle() {
+    const toggle = () => {
         setIsNavOpen(!isNavOpen);
         setLocked(!locked);
         onClick(!isNavOpen);
     }
 
     useEffect(() => {
-        function close() {
+        const close = () => {
             if (window.innerWidth >= 1200) {
                 setIsNavOpen(false);
                 setLocked(false);

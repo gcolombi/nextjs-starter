@@ -14,7 +14,7 @@ export default function Navigation() {
     const { windowSize } = useWindowSize();
     const [navigationRef, { height }] = useElementSize();
 
-    function callBack(state) {
+    const callBack = (state) => {
         setIsNavOpen(state)
     }
 
