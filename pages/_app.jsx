@@ -33,10 +33,9 @@ const victorMono = localFont({
  * Global styles
  */
 import '@/styles/style.scss';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Layout from '@/components/Layout';
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
@@ -53,13 +52,9 @@ export default function App({ Component, pageProps }) {
                     --font-secondary: ${victorMono.style.fontFamily};
                 }
             `}</style>
-            <Navigation />
-            <div className="c-pageBackground"></div>
-            <main>
-                <div className="c-spacer"></div>
+            <Layout>
                 <Component {...pageProps} />
-                <Footer />
-            </main>
+            </Layout>
         </>
     )
 }
