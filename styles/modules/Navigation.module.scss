@@ -4,12 +4,14 @@
 
 .c-navigation {
     --navigation-bg: transparent;
+    --navigation-padding: 15px;
 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    padding: var(--navigation-padding) 0;
     background: var(--navigation-bg);
     box-shadow: none;
     transition: all .35s $ease-in 0s;
@@ -27,6 +29,22 @@
         pointer-events: none;
     }
 
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        position: relative;
+        // line-height: 0;
+        padding-right: 15px;
+
+        a {
+            display: block;
+        }
+    }
+
     /* states */
     &.is-hidden {
         transform: translate3d(0, -100%, 0) translateZ(0);
@@ -34,7 +52,7 @@
 
     &.is-sticky {
         --navigation-bg: rgba(var(--white), .5);
-        box-shadow: inset 0 -1px 0 0 var(--gray-200);
+        box-shadow: inset 0 -1px 0 0 var(--gray-400);
         backdrop-filter: saturate(180%) blur(5px);
         backface-visibility: hidden;
     }
@@ -43,30 +61,10 @@
     // MEDIA QUERIES
 
     /* mobile */
-    // @include mediaq('<MD') {
+    @include mediaq('<LG') {
 
-        &__container {
-            width: 100%;
-            margin: 0 auto;
-            padding-left: var(--grid-gutter-width);
-            padding-right: var(--grid-gutter-width);
-        }
-
-        &__row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        &__logo {
-            position: relative;
-            // line-height: 0;
-            padding-right: 15px;
-
-            a {
-                display: block;
-            }
+        &__nav {
+            display: none;
         }
 
         /* states */
@@ -77,5 +75,54 @@
                 clip-path: circle(150% at top right);
             }
         }
-    // }
+    }
+
+    /* desktop */
+    @include mediaq('>LG') {
+        --navigation-padding: 25px;
+        --navigation-link-color: var(--black);
+
+        &__nav {
+            &__primary {
+                &--list {
+                    ul {
+                        display: flex;
+                        align-items: center;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        font-family: var(--font-primary);
+
+                        li {
+                            padding: 0;
+                            margin: 0;
+
+                            &:not(:last-child) {
+                                margin-right: 35px;
+                            }
+
+                            span {
+                                display: block;
+                                a {
+                                    display: inline-block;
+                                    @include font-size(18px);
+                                    font-weight: var(--font-regular);
+                                    color: var(--navigation-link-color);
+                                    text-transform: uppercase;
+
+                                    &:hover, &:active, &:focus {
+                                        --navigation-link-color: var(--secondary);
+                                    }
+
+                                    &.is-current-page {
+                                        --navigation-link-color: var(--secondary);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

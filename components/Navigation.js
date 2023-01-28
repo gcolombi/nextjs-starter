@@ -4,6 +4,7 @@ import useScrollbar from '@/hooks/useScrollbar';
 import useWindowSize from '@/hooks/useWindowSize';
 import useElementSize from '@/hooks/useElementSize';
 import MobileNavigation from './MobileNavigation';
+import NavItem from './NavItem';
 import Button from './Button';
 import classNames from 'classnames';
 
@@ -35,7 +36,7 @@ export default function Navigation() {
                 )}
                 ref={navigationRef}
             >
-                <div className={styles['c-navigation__container']}>
+                <div className="o-container">
                     <div className={styles['c-navigation__row']}>
                         <Button
                             label="Home"
@@ -44,38 +45,23 @@ export default function Navigation() {
                             wrapperClassName={styles['c-navigation__logo']}
                         />
                         <MobileNavigation onClick={callBack} />
-
-
-                        {/* <nav className={styles['c-navigation__nav']}>
-                            <div className={styles['c-navigation__nav__scroll']}>
-                                <div className={styles['c-navigation__nav__container']}>
-                                    <div className={styles['c-navigation__nav__primary']}>
-                                        <Button
-                                            label="Home"
-                                            href="/"
-                                            className="c-btn"
-                                            wrapperClassName={styles['c-navigation__nav__primary--logo']}
-                                        />
-                                        <div className={styles['c-navigation__nav__primary--list']}>
-                                            <ul>
-                                                <li>
-                                                    <NavItem href="/" title="Home" onClick={toggle} />
-                                                </li>
-                                                <li>
-                                                    <NavItem href="/" title="Sollicitudin" onClick={toggle} />
-                                                </li>
-                                                <li>
-                                                    <NavItem href="/" title="Tincidunt" onClick={toggle} />
-                                                </li>
-                                                <li>
-                                                    <NavItem href="/blog" title="Blog" onClick={toggle} />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                        <nav className={styles['c-navigation__nav']}>
+                            <div className={styles['c-navigation__nav__primary']}>
+                                <div className={styles['c-navigation__nav__primary--list']}>
+                                    <ul>
+                                        <li>
+                                            <NavItem href="#" title="Sollicitudin" className={styles['is-current-page']} />
+                                        </li>
+                                        <li>
+                                            <NavItem href="#" title="Tincidunt" className={styles['is-current-page']} />
+                                        </li>
+                                        <li>
+                                            <NavItem href="/blog" title="Blog" className={styles['is-current-page']} />
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </nav> */}
+                        </nav>
                     </div>
                 </div>
             </header>

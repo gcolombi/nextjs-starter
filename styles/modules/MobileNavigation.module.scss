@@ -3,9 +3,9 @@
 ========================================================================== */
 
 .c-mobileNav {
-    --primary-padding: 25px;
-    --nav-inner-scroll-padding: 100px;
-    --nav-link-color: var(--gray-100);
+    --navigation-primary-padding: 25px;
+    --navigation-scroll-padding: 100px;
+    --navigation-link-color: var(--gray-100);
 
     position: absolute;
     top: 100%;
@@ -25,7 +25,7 @@
 
     &__primary {
         position: relative;
-        padding: var(--primary-padding) 0 0 0;
+        padding: var(--navigation-primary-padding) 0 0 0;
         opacity: 0;
         transition: opacity .2s $ease-in;
 
@@ -39,7 +39,7 @@
 
                 > li {
                     position: relative;
-                    padding: 0;
+                    padding: 24px var(--half-container);
                     margin: 0;
 
                     &:before {
@@ -70,17 +70,16 @@
 
                     > span {
                         display: block;
-                        padding: 24px var(--grid-gutter-width);
 
                         > a {
                             display: inline-block;
                             @include font-size(18px);
                             font-weight: var(--font-regular);
-                            color: var(--nav-link-color);
+                            color: var(--navigation-link-color);
                             text-transform: uppercase;
 
                             &.is-current-page {
-                                --nav-link-color: var(--secondary);
+                                --navigation-link-color: var(--secondary);
                             }
                         }
                     }
@@ -96,13 +95,20 @@
 
     &.is-open & {
         &__scroll {
-            padding-bottom: var(--nav-inner-scroll-padding);
+            padding-bottom: var(--navigation-scroll-padding);
         }
 
         &__primary {
             opacity: 1;
             transition: opacity .35s $ease-in;
         }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>LG') {
+        display: none;
     }
 }
 
@@ -177,5 +183,12 @@
                 }
             }
         }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>LG') {
+        display: none;
     }
 }
