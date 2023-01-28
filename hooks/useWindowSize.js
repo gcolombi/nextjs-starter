@@ -26,5 +26,9 @@ export default function useWindowSize() {
         return () => window.removeEventListener('resize', handleResize);
     }, []); /* Empty array ensures that effect is only run on mount */
 
-    return windowSize;
+    return {
+        windowSize,
+        isMobile: typeof windowSize?.width === "number" && windowSize?.width < 1200,
+        isDesktop: typeof windowSize?.width === "number" && windowSize?.width >= 1200
+    }
 }

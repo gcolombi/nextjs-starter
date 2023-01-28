@@ -21,11 +21,13 @@ export default function useElementSize() {
     }, [ref?.getBoundingClientRect().height, ref?.getBoundingClientRect().width])
 
     useEffect(() => {
+        /* Add event listener */
         window.addEventListener('resize', handleSize);
 
         /* Call handler right away so state gets updated with initial element size */
         handleSize();
 
+        /* Remove event listener on cleanup */
         return () => window.removeEventListener('resize', handleSize);
     }, [handleSize]);
 

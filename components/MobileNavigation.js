@@ -1,5 +1,5 @@
 import styles from '@/styles/modules/MobileNavigation.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useLockedScroll from '@/hooks/useLockedScroll';
 import NavItem from './NavItem';
 import useDelayedRender from 'use-delayed-render';
@@ -23,6 +23,22 @@ export default function MobileNavigation({
         setLocked(!locked);
         onClick(!isNavOpen);
     }
+
+    useEffect(() => {
+        function close() {
+            if (window.innerWidth >= 1200) {
+                setIsNavOpen(false);
+                setLocked(false);
+                onClick(false);
+            }
+        }
+
+        /* Add event listener */
+        window.addEventListener('resize', close);
+
+        /* Remove event listener on cleanup */
+        return () => window.removeEventListener('resize', close);
+    }, []);
 
     return (
         <>

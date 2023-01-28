@@ -11,7 +11,7 @@ import classNames from 'classnames';
 export default function Navigation() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const { scrollY, directionY } = useScrollbar();
-    const windowSize = useWindowSize();
+    const { windowSize } = useWindowSize();
     const [navigationRef, { height }] = useElementSize();
 
     function callBack(state) {

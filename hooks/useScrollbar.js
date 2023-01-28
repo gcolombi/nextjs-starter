@@ -23,11 +23,11 @@ export default function useScrollbar() {
     }, [scrollbar?.scrollY, scrollbar?.scrollX, scrollbar?.directionY, scrollbar?.directionX])
 
     useEffect(() => {
+        /* Add event listener */
         window.addEventListener('scroll', updateScrollbar);
 
-        return () => {
-            window.removeEventListener('scroll', updateScrollbar);
-        }
+        /* Remove event listener on cleanup */
+        return () => window.removeEventListener('scroll', updateScrollbar);
     }, [updateScrollbar]);
 
     return {
