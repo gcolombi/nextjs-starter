@@ -3,7 +3,6 @@ import { createContext, useContext } from 'react';
 const colorSchemes = ['light', 'dark'];
 const defaultThemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
-const isServer = typeof window === 'undefined';
 const ThemeContext = createContext(undefined);
 const defaultContext = {
     setTheme: () => {},
@@ -29,6 +28,9 @@ const Theme = ({
     attribute = 'data-theme',
     children
 }) => {
+    const [theme, setTheme] = useState(() => getThemeStoredValue(storageKey, defaultTheme));
+    const [resolvedTheme, setResolvedTheme] = useState(() => getThemeStoredValue(storageKey));
+    const attrs = themes;
 
     return (
         <ThemeContext.Provider
@@ -52,4 +54,20 @@ const ThemeScript = () => {
 
 export default function useThemeContext() {
     return useContext(ThemeContext) ?? defaultContext;
+}
+
+/**
+ * Helpers
+ */
+const getThemeStoredValue = (key, fallback = null) => {
+    if (typeof window === 'undefined') {
+        return undefined;
+    }
+
+    try {
+        const theme = localStorage.getItem(key) || undefined;
+        return theme || fallback;
+    } catch (e) {
+
+    }
 }
