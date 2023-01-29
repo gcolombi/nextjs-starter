@@ -1,7 +1,5 @@
 import styles from '@/styles/modules/Navigation.module.scss';
-import { useState } from 'react';
-import useScrollbar from '@/hooks/useScrollbar';
-import useWindowSize from '@/hooks/useWindowSize';
+import useNavigationContext from '@/context/navigationContext';
 import useElementSize from '@/hooks/useElementSize';
 import MobileNavigation from './MobileNavigation';
 import NavItem from './NavItem';
@@ -9,14 +7,8 @@ import Button from './Button';
 import classNames from 'classnames';
 
 export default function Navigation() {
-    const [isNavOpen, setIsNavOpen] = useState(false);
-    const { scrollY, directionY } = useScrollbar();
-    const { windowSize } = useWindowSize();
+    const { open, sticky, hidden } = useNavigationContext();
     const [navigationRef, { height }] = useElementSize();
-
-    const callBack = (state) => {
-        setIsNavOpen(state)
-    }
 
     return (
         <>
@@ -29,9 +21,9 @@ export default function Navigation() {
                 className={classNames(
                     styles['c-navigation'],
                     {
-                        [styles['is-sticky']]: scrollY > 0,
-                        [styles['is-hidden']]: directionY > 0 && scrollY > windowSize.height,
-                        [styles['is-open']]: isNavOpen
+                        [styles['is-sticky']]: sticky,
+                        [styles['is-hidden']]: hidden,
+                        [styles['is-open']]: open
                     }
                 )}
                 ref={navigationRef}
@@ -44,7 +36,7 @@ export default function Navigation() {
                             className="c-btn"
                             wrapperClassName={styles['c-navigation__logo']}
                         />
-                        <MobileNavigation onClick={callBack} />
+                        <MobileNavigation />
                         <nav className={styles['c-navigation__nav']}>
                             <div className={styles['c-navigation__nav__primary']}>
                                 <div className={styles['c-navigation__nav__primary--list']}>

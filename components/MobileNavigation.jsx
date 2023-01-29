@@ -1,48 +1,24 @@
 import styles from '@/styles/modules/MobileNavigation.module.scss';
-import { useEffect, useState } from 'react';
-import useLockedScroll from '@/hooks/useLockedScroll';
 import NavItem from './NavItem';
 import useDelayedRender from 'use-delayed-render';
 import classNames from 'classnames';
+import useNavigationContext from '@/context/navigationContext';
 
 export default function MobileNavigation({
     onClick
 }) {
-    const [isNavOpen, setIsNavOpen] = useState(false);
+    const { open, toggle } = useNavigationContext();
     const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
-        isNavOpen,
+        open,
         {
           enterDelay: 200,
           exitDelay: 350
         }
     );
-    const [locked, setLocked] = useLockedScroll(false);
-
-    const toggle = () => {
-        setIsNavOpen(!isNavOpen);
-        setLocked(!locked);
-        onClick(!isNavOpen);
-    }
-
-    useEffect(() => {
-        const close = () => {
-            if (window.innerWidth >= 1200) {
-                setIsNavOpen(false);
-                setLocked(false);
-                onClick(false);
-            }
-        }
-
-        /* Add event listener */
-        window.addEventListener('resize', close);
-
-        /* Remove event listener on cleanup */
-        return () => window.removeEventListener('resize', close);
-    }, []);
 
     return (
         <>
-            <Hamburger open={isNavOpen} toggle={toggle} />
+            <Hamburger open={open} toggle={toggle} />
             {isMenuMounted &&
                 <nav
                    className={classNames(

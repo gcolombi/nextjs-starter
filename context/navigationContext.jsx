@@ -1,20 +1,52 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import useScrollbar from '@/hooks/useScrollbar';
+import useWindowSize from '@/hooks/useWindowSize';
+import useLockedScroll from '@/hooks/useLockedScroll';
 
 
 const NavigationContext = createContext({
     items: null,
-    isOpen: false,
-    setIsOpen: () => {}
+    open: false,
+    sticky: false,
+    hidden: false,
+    setOpen: () => {},
+    toggle: () => {}
 })
 
 export function NavigationContextProvider({ children }) {
-    const [isNavOpen, setIsNavOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const { scrollY, directionY } = useScrollbar();
+    const { windowSize } = useWindowSize();
+    const [locked, setLocked] = useLockedScroll(false);
+
+    const toggleNavigation = () => {
+        setIsOpen(!isOpen);
+        setLocked(!locked);
+    }
+
+    useEffect(() => {
+        const close = () => {
+            if (window.innerWidth >= 1200) {
+                setIsOpen(false);
+                setLocked(false);
+            }
+        }
+
+        /* Add event listener */
+        window.addEventListener('resize', close);
+
+        /* Remove event listener on cleanup */
+        return () => window.removeEventListener('resize', close);
+    }, []);
 
     return (
         <NavigationContext.Provider
             value={{
-                isOpen: isNavOpen,
-                setIsOpen: setIsNavOpen
+                open: isOpen,
+                sticky: scrollY > 0,
+                hidden: directionY > 0 && scrollY > windowSize.height,
+                setOpen: setIsOpen,
+                toggle: toggleNavigation
             }}
         >
             {children}
@@ -23,6 +55,6 @@ export function NavigationContextProvider({ children }) {
 };
 
 
-export function useNavigationContext() {
+export default function useNavigationContext() {
     return useContext(NavigationContext);
 }
