@@ -29,7 +29,7 @@ export default function useLockedScroll(
         }
     }, [locked]);
 
-    /* Update state if initialValue changes */
+    /* Update state if initialLocked changes */
     useEffect(() => {
         if (locked !== initialLocked) {
             setLocked(initialLocked);

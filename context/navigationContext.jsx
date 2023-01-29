@@ -42,7 +42,7 @@ export function NavigationContextProvider({ children }) {
 
         /* Remove event listener on cleanup */
         return () => window.removeEventListener('resize', close);
-    }, []);
+    }, []);/* Empty array ensures that effect is only run on mount */
 
     /**
      * Closes navigation on route change
@@ -52,7 +52,7 @@ export function NavigationContextProvider({ children }) {
             setIsOpen(false);
             setLocked(false);
         }
-    }, [router.asPath])
+    }, [router.asPath]);
 
 
     return (
