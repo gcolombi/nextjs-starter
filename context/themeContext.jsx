@@ -63,11 +63,11 @@ const getThemeStoredValue = (key, fallback = null) => {
     if (typeof window === 'undefined') {
         return undefined;
     }
-
+    let theme;
     try {
-        const theme = localStorage.getItem(key) || undefined;
-        return theme || fallback;
-    } catch (e) {
-
+        theme = localStorage.getItem(key) || undefined;
+    } catch (error) {
+        console.warn(`Error reading localStorage key "${key}":`, error);
     }
+    return theme || fallback;
 }
