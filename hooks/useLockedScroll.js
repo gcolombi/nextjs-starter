@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export default function useLockedScroll(initialLocked) {
+export default function useLockedScroll(
+    initialLocked
+) {
   const [locked, setLocked] = useState(initialLocked);
 
     /* Do the side effect before render */
