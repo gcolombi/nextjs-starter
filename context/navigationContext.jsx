@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import useScrollbar from '@/hooks/useScrollbar';
 import useWindowSize from '@/hooks/useWindowSize';
 import useLockedScroll from '@/hooks/useLockedScroll';
@@ -18,12 +19,16 @@ export function NavigationContextProvider({ children }) {
     const { scrollY, directionY } = useScrollbar();
     const { windowSize } = useWindowSize();
     const [locked, setLocked] = useLockedScroll(false);
+    const router = useRouter();
 
     const toggleNavigation = () => {
         setIsOpen(!isOpen);
         setLocked(!locked);
     }
 
+    /**
+     * Closes navigation if viewport is larger than 1200px
+     */
     useEffect(() => {
         const close = () => {
             if (window.innerWidth >= 1200) {
@@ -38,6 +43,17 @@ export function NavigationContextProvider({ children }) {
         /* Remove event listener on cleanup */
         return () => window.removeEventListener('resize', close);
     }, []);
+
+    /**
+     * Closes navigation on route change
+     */
+    useEffect(() => {
+        if (isOpen) {
+            setIsOpen(false);
+            setLocked(false);
+        }
+    }, [router.asPath])
+
 
     return (
         <NavigationContext.Provider
