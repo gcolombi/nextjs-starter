@@ -19,7 +19,16 @@ export function ThemeContextProvider(props) {
     return <Theme {...props} />;
 }
 
-const Theme = () => {
+const Theme = ({
+    disableTransitionOnChange = false,
+    enableSystem = true,
+    enableColorScheme = true,
+    storageKey = 'theme',
+    themes = defaultThemes,
+    defaultTheme = enableSystem ? 'system' : 'light',
+    attribute = 'data-theme',
+    children
+}) => {
 
     return (
         <ThemeContext.Provider
