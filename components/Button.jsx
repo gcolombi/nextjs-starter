@@ -18,6 +18,7 @@ export default function Button({
                 <Link
                     className={styles[className]}
                     href={href}
+                    onClick={onClick}
                 >
                     {label}
                 </Link>

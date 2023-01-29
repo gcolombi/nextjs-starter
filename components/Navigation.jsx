@@ -7,7 +7,7 @@ import Button from './Button';
 import classNames from 'classnames';
 
 export default function Navigation() {
-    const { open, sticky, hidden } = useNavigationContext();
+    const { open, sticky, hidden, toggle } = useNavigationContext();
     const [navigationRef, { height }] = useElementSize();
 
     return (
@@ -35,6 +35,7 @@ export default function Navigation() {
                             href="/"
                             className="c-btn"
                             wrapperClassName={styles['c-navigation__logo']}
+                            onClick={open ? toggle : undefined}
                         />
                         <MobileNavigation />
                         <nav className={styles['c-navigation__nav']}>
