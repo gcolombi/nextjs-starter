@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 const colorSchemes = ['light', 'dark'];
 const defaultThemes = ['light', 'dark'];
@@ -124,9 +124,17 @@ const Theme = ({
         applyTheme(theme);
     }, [theme]);
 
+    const providerValue = useMemo(() => ({
+        theme,
+        setTheme,
+        resolvedTheme: theme === 'system' ? resolvedTheme : theme,
+        themes: enableSystem ? [...themes, 'system'] : themes,
+        systemTheme: enableSystem ? resolvedTheme : undefined,
+    }), [theme, setTheme, resolvedTheme, enableSystem, themes]);
+
     return (
         <ThemeContext.Provider
-            value={{}}
+            value={providerValue}
         >
             <ThemeScript
                 {
