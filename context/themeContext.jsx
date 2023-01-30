@@ -32,6 +32,43 @@ const Theme = ({
     const [resolvedTheme, setResolvedTheme] = useState(() => getThemeStoredValue(storageKey));
     const attrs = themes;
 
+    const applyTheme = useCallback((theme) => {
+        let resolved = theme;
+        if (!resolved) {
+            return;
+        }
+
+        /* If theme is system, resolve it before setting theme */
+        if (theme === 'system' && enableSystem) {
+            resolved = getSystemTheme();
+        }
+
+        const name = resolved;
+        const enable = disableTransitionOnChange ? disableTransition() : null;
+
+        if (attribute === 'class') {
+            document.documentElement.classList.remove(...attrs);
+
+            if (name)
+                document.documentElement.classList.add(name);
+        } else {
+            if (name) {
+                document.documentElement.setAttribute(attribute, name);
+            } else {
+                document.documentElement.removeAttribute(attribute);
+            }
+        }
+
+        if (enableColorScheme) {
+            const fallback = colorSchemes.includes(defaultTheme) ? defaultTheme : null;
+            const colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
+            document.documentElement.style.colorScheme = colorScheme;
+        }
+
+        enable?.();
+    }, [])
+
+
     return (
         <ThemeContext.Provider
             value={{}}
@@ -70,4 +107,32 @@ const getThemeStoredValue = (key, fallback = null) => {
         console.warn(`Error reading localStorage key "${key}":`, error);
     }
     return theme || fallback;
+}
+
+const disableTransition = () => {
+    const style = document.createElement('style');
+    style.appendChild(
+        document.createTextNode(
+            `*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`
+        )
+    )
+    document.head.appendChild(style);
+
+    return () => {
+        /* Force restyle */
+        (() => window.getComputedStyle(document.body))();
+
+        /* Wait for next tick before removing */
+        setTimeout(() => {
+            document.head.removeChild(style)
+        }, 1)
+    }
+}
+
+const getSystemTheme = (event) => {
+    if (!event) {
+        event = window.matchMedia(MEDIA);
+    }
+    const isDark = event.matches;
+    return isDark ? 'dark' : 'light';
 }
