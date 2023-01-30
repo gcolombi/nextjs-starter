@@ -100,7 +100,24 @@ const Theme = ({
         handleMediaQuery(media);
 
         return () => media.removeListener(handleMediaQuery);
-    }, [handleMediaQuery])
+    }, [handleMediaQuery]);
+
+    /* Local storage event handling */
+    useEffect(() => {
+        const handleStorage = (event) => {
+            if (event.key !== storageKey) {
+                return;
+            }
+
+            /* If default theme set, use it if localstorage === null (happens on local storage manual deletion) */
+            const theme = event.newValue || defaultTheme;
+            setTheme(theme);
+        }
+
+        window.addEventListener('storage', handleStorage);
+
+        return () => window.removeEventListener('storage', handleStorage);
+    }, [setTheme]);
 
     return (
         <ThemeContext.Provider
