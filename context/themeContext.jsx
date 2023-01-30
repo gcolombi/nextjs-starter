@@ -81,6 +81,15 @@ const Theme = ({
         }
     }, []);
 
+    const handleMediaQuery = useCallback((event) => {
+        const resolved = getSystemTheme(event);
+        setResolvedTheme(resolved);
+
+        if (theme === 'system' && enableSystem) {
+            applyTheme('system');
+        }
+    },[theme]);
+
 
     return (
         <ThemeContext.Provider
