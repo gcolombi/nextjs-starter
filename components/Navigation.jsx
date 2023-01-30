@@ -1,4 +1,5 @@
 import styles from '@/styles/modules/Navigation.module.scss';
+import { useTheme } from 'next-themes';
 import useNavigationContext from '@/context/navigationContext';
 import useElementSize from '@/hooks/useElementSize';
 import MobileNavigation from './MobileNavigation';
@@ -9,6 +10,7 @@ import classNames from 'classnames';
 export default function Navigation() {
     const { open, sticky, hidden } = useNavigationContext();
     const [navigationRef, { height }] = useElementSize();
+    const { resolvedTheme, setTheme } = useTheme();
 
     return (
         <>
@@ -54,6 +56,13 @@ export default function Navigation() {
                                 </div>
                             </div>
                         </nav>
+                        <Button
+                            label="Theme"
+                            className="c-btn"
+                            onClick={() =>
+                                setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+                            }
+                        />
                     </div>
                 </div>
             </header>

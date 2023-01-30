@@ -32,6 +32,7 @@ const victorMono = localFont({
 import '@/styles/style.scss';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { ThemeProvider } from 'next-themes';
 import { NavigationContextProvider } from '@/context/navigationContext';
 import Layout from '@/components/Layout';
 
@@ -44,17 +45,19 @@ export default function App({ Component, pageProps }) {
 
     return (
         <>
-            <NavigationContextProvider>
-                <style jsx global>{`
-                    :root {
-                        --font-primary: ${roboto.style.fontFamily};
-                        --font-secondary: ${victorMono.style.fontFamily};
-                    }
-                `}</style>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </NavigationContextProvider>
+            <ThemeProvider>
+                <NavigationContextProvider>
+                    <style jsx global>{`
+                        :root {
+                            --font-primary: ${roboto.style.fontFamily};
+                            --font-secondary: ${victorMono.style.fontFamily};
+                        }
+                    `}</style>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </NavigationContextProvider>
+            </ThemeProvider>
         </>
     )
 }
