@@ -28,7 +28,7 @@ const Theme = ({
     attribute = 'data-theme',
     children
 }) => {
-    const [theme, setTheme] = useState(() => getThemeStoredValue(storageKey, defaultTheme));
+    const [theme, setThemeState] = useState(() => getThemeStoredValue(storageKey, defaultTheme));
     const [resolvedTheme, setResolvedTheme] = useState(() => getThemeStoredValue(storageKey));
     const attrs = themes;
 
@@ -67,6 +67,19 @@ const Theme = ({
 
         enable?.();
     }, [])
+
+    const setTheme = useCallback((theme) => {
+
+        /* Save state */
+        setThemeState(theme);
+
+        /* Save to local storage */
+        try {
+            localStorage.setItem(storageKey, theme);
+        } catch (error) {
+            console.warn(`Error setting localStorage key "${storageKey}":`, error);
+        }
+    }, []);
 
 
     return (
