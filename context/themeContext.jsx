@@ -119,6 +119,11 @@ const Theme = ({
         return () => window.removeEventListener('storage', handleStorage);
     }, [setTheme]);
 
+    /* Whenever theme changes, apply it */
+    useEffect(() => {
+        applyTheme(theme);
+    }, [theme]);
+
     return (
         <ThemeContext.Provider
             value={{}}
