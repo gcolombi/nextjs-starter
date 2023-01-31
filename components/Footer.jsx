@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 export default function Footer() {
     return (
-        <footer className={classNames('u-blockColor--white', styles['c-footer'])}>
+        <footer className={styles['c-footer']}>
             <div className="o-container">
                 <div className={styles['c-footer__row']}>
                     <div className={styles['c-footer__list']}>

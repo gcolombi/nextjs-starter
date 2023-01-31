@@ -64,7 +64,7 @@ export default function Navigation() {
                                 </div>
                             </div>
                         </nav>
-                        <div className="c-navigation__switch">
+                        <div className={styles['c-navigation__switch']}>
                             {mounted &&
                                 <DarkModeSwitch
                                     checked={resolvedTheme === 'dark' ? true : false}

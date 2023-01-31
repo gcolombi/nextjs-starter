@@ -8,6 +8,7 @@
     position: relative;
     padding: var(--footer-padding) 0;
     border-top: 1px solid var(--gray-400);
+    background: var(--section-bg-color);
 
     &__copyright {
         text-align: center;

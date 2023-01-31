@@ -11,15 +11,16 @@
 		--#{$name}: #{$value};
 	}
 
+    /* Theme */
 	--body-text-color: var(--black);
 	--body-heading-color: var(--primary);
 	--body-link-color: var(--body-text-color);
 	--body-bg-color: var(--white);
+    --section-bg-color: var(--gray-100);
 
 	/* Font Families
 
     css variables are defined in _app
-
     --font-primary: 'Roboto', sans-serif;
     --font-secondary: 'Victor Mono', sans-serif;
 
@@ -54,6 +55,14 @@
 	--info: #{$info};
 	--warning: #{$warning};
 	--error: #{$error};
+}
+
+/* Theme
+========================================================================== */
+[data-theme='dark'] {
+    --body-text-color: var(--white);
+	--body-bg-color: var(--gray-900);
+    --section-bg-color: var(--gray-600);
 }
 
 /* Document
@@ -309,13 +318,4 @@ hr {
 
 .c-spacer {
     padding-top: var(--navigation-height);
-}
-
-.c-pageBackground {
-    --gradient-from: #eef2ff;
-    --gradient-to: #cdeee8;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to bottom right, var(--gradient-from), var(--white), var(--gradient-to));
 }

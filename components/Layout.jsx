@@ -5,7 +5,6 @@ export default function Layout({ children }) {
     return (
         <>
             <Navigation />
-            <div className="c-pageBackground"></div>
             <main>
                 <div className="c-spacer"></div>
                 {children}

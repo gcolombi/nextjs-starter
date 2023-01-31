@@ -63,6 +63,16 @@
     /* mobile */
     @include mediaq('<LG') {
 
+        &__logo {
+            order: 1;
+        }
+
+        &__switch {
+            order: 2;
+            padding-right: 15px;
+            margin-left: auto;
+        }
+
         &__nav {
             display: none;
         }
@@ -80,7 +90,6 @@
     /* desktop */
     @include mediaq('>LG') {
         --navigation-padding: 25px;
-        --navigation-link-color: var(--black);
 
         &__nav {
             &__primary {
@@ -107,7 +116,6 @@
                                     display: inline-block;
                                     @include font-size(18px);
                                     font-weight: var(--font-regular);
-                                    color: var(--navigation-link-color);
                                     text-transform: uppercase;
 
                                     &:hover, &:active, &:focus {
