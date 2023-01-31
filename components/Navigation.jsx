@@ -2,15 +2,23 @@ import styles from '@/styles/modules/Navigation.module.scss';
 import { useTheme } from 'next-themes';
 import useNavigationContext from '@/context/navigationContext';
 import useElementSize from '@/hooks/useElementSize';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import MobileNavigation from './MobileNavigation';
 import NavItem from './NavItem';
 import Button from './Button';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 export default function Navigation() {
     const { open, sticky, hidden } = useNavigationContext();
     const [navigationRef, { height }] = useElementSize();
+    const [mounted, setMounted] = useState(false);
     const { resolvedTheme, setTheme } = useTheme();
+
+    /* After mounting, we have access to the theme */
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     return (
         <>
@@ -56,13 +64,17 @@ export default function Navigation() {
                                 </div>
                             </div>
                         </nav>
-                        <Button
-                            label="Theme"
-                            className="c-btn"
-                            onClick={() =>
-                                setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+                        <div className="c-navigation__switch">
+                            {mounted &&
+                                <DarkModeSwitch
+                                    checked={resolvedTheme === 'dark' ? true : false}
+                                    onChange={() =>
+                                        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+                                    }
+                                    size={35}
+                                />
                             }
-                        />
+                        </div>
                     </div>
                 </div>
             </header>
