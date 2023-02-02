@@ -1,12 +1,12 @@
 @mixin make-button() {
-	--btn-bg-color: var(--primary);
-    --btn-border-color: var(--primary);
-    --btn-color: var(--white);
+	// --btn-bg-color: var(--primary);
+    // --btn-border-color: var(--primary);
+    // --btn-color: var(--white);
     --btn-padding-tb: 8px;
     --btn-padding-lr: 20px;
-	--btn-hover-color: var(--white);
-    --btn-hover-bg-color: var(--primary-light);
-    --btn-hover-border-color: var(--primary-light);
+	// --btn-hover-color: var(--white);
+    // --btn-hover-bg-color: var(--primary-light);
+    // --btn-hover-border-color: var(--primary-light);
 
 	display: inline-block;
 	background: var(--btn-bg-color);

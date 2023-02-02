@@ -17,6 +17,12 @@
 	--body-link-color: var(--body-text-color);
 	--body-bg-color: var(--white);
     --section-bg-color: var(--gray-100);
+    --btn-bg-color: var(--primary);
+    --btn-border-color: var(--primary);
+    --btn-color: var(--white);
+	--btn-hover-color: var(--white);
+    --btn-hover-bg-color: var(--primary-light);
+    --btn-hover-border-color: var(--primary-light);
 
 	/* Font Families
 
@@ -59,10 +65,18 @@
 
 /* Theme
 ========================================================================== */
+
 [data-theme='dark'] {
     --body-text-color: var(--white);
+	--body-heading-color: var(--secondary);
 	--body-bg-color: var(--gray-900);
     --section-bg-color: var(--gray-600);
+    --btn-bg-color: var(--secondary);
+    --btn-border-color: var(--secondary);
+    --btn-color: var(--gray-900);
+    --btn-hover-bg-color: var(--secondary-light);
+	--btn-hover-color: var(--gray-900);
+    --btn-hover-border-color: var(--secondary-light);
 }
 
 /* Document
