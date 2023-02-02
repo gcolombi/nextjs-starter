@@ -45,8 +45,8 @@ export default function App({ Component, pageProps }) {
 
     return (
         <>
-            <ThemeProvider>
-                <NavigationContextProvider disableTransitionOnChange>
+            <ThemeProvider disableTransitionOnChange>
+                <NavigationContextProvider>
                     <style jsx global>{`
                         :root {
                             --font-primary: ${roboto.style.fontFamily};
