@@ -29,6 +29,7 @@ export default function FormInput({
         <div className={wrapperClassName}>
             <div
                 className={classNames(
+                    styles['c-formElement'],
                     styles[className],
                     styles['c-floatingLabel']
                 )}
@@ -45,7 +46,9 @@ export default function FormInput({
                 {type === 'file' &&
                     <FileUpload />
                 }
-                <label htmlFor={htmlFor}>{labelTitle}</label>
+                {label && htmlFor &&
+                    <label htmlFor={htmlFor}>{labelTitle}</label>
+                }
                 <span className={styles['c-formElement--focusLine']} />
             </div>
         </div>

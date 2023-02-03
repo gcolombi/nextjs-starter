@@ -3,17 +3,18 @@ import classNames from 'classnames';
 
 export default function FormTextarea({
     htmlFor,
-    type,
     id,
     name,
     placeholder=" ",
-    value,
     required,
     wrapperClassName
 }) {
     return(
         <div className={wrapperClassName}>
-            Textarea
+            <div className="c-formElement--bordered">
+                <textarea>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuSMod tempor incididunt.</textarea>
+                <span className="c-formElement--focusLine"></span>
+            </div>
         </div>
     );
 }
