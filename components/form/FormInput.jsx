@@ -1,5 +1,4 @@
 import styles from '../../styles/modules/FormInput.module.scss';
-console.log(styles);
 import classNames from 'classnames';
 
 export default function FormInput({
