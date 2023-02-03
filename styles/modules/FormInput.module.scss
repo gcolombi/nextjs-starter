@@ -27,7 +27,7 @@
 		position: relative;
 		background: var(--gray-200);
 		margin-bottom: var(--form-element-margin);
-		@include label-up();
+		@include floating-label();
 
 		input {
 			@include input-reset();
@@ -44,7 +44,7 @@
 		background: transparent;
 		margin-bottom: var(--form-element-margin);
 		outline: 1px solid var(--gray-700);
-		@include label-up();
+		@include floating-label();
 
 		input {
 			@include input-reset();
@@ -54,13 +54,20 @@
 		input:focus ~ .c-formElement--focusLine {
 			border-color: var(--secondary);
 		}
+
+        /* Floating label */
+        input:focus ~ label, :not(:placeholder-shown) ~ label {
+            @include font-size(10px);
+            top: calc((var(--form-element-padding) + 5px) * -1);
+            opacity: 0.8;
+        }
 	}
 
 	&--line {
 		position: relative;
 		background: transparent;
 		margin-bottom: var(--form-element-margin);
-		@include label-up();
+		@include floating-label();
 
 		&.m-label {
 			label {
