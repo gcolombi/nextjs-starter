@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 export default function FormInput({
     htmlFor,
+    label,
     type,
     id,
     name,
@@ -27,7 +28,7 @@ export default function FormInput({
                     value={value}
                     required={required}
                 />
-                <label htmlFor={htmlFor}>Firstname</label>
+                <label htmlFor={htmlFor}>{label}</label>
                 <span className={styles['c-formElement--focusLine']} />
             </div>
         </div>
