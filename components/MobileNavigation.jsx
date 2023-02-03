@@ -35,10 +35,10 @@ export default function MobileNavigation({
                                             <NavItem href="#" title="Sollicitudin" className={styles['is-current-page']} />
                                         </li>
                                         <li>
-                                            <NavItem href="#" title="Tincidunt" className={styles['is-current-page']} />
+                                            <NavItem href="/blog" title="Blog" className={styles['is-current-page']} />
                                         </li>
                                         <li>
-                                            <NavItem href="/blog" title="Blog" className={styles['is-current-page']} />
+                                            <NavItem href="/contact" title="Contact" className={styles['is-current-page']} />
                                         </li>
                                     </ul>
                                 </div>

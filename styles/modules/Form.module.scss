@@ -1,0 +1,21 @@
+.c-form {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>SM') {
+
+        &__row {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__item {
+
+        }
+    }
+
+}
