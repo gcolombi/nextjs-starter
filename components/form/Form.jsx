@@ -11,17 +11,26 @@ export default function Form() {
                     <FormInput
                         htmlFor="firstname"
                         label="Firstname"
-                        type="text"
                         id="firstname"
                         required={true}
+                        className="c-formElement--bordered"
                         wrapperClassName={styles['c-form__item']}
                     />
                     <FormInput
                         htmlFor="lastname"
                         label="Lastname"
-                        type="text"
                         id="lastname"
                         required={true}
+                        className="c-formElement--bordered"
+                        wrapperClassName={styles['c-form__item']}
+                    />
+                    <FormInput
+                        htmlFor="resume"
+                        label="Resume"
+                        type="file"
+                        id="resume"
+                        required={true}
+                        className="c-formElement--upload--bordered"
                         wrapperClassName={styles['c-form__item']}
                     />
                     <FormTextarea

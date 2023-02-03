@@ -25,7 +25,7 @@
 
 	&--boxed {
 		position: relative;
-		background: var(--gray-200);
+		background: var(--section-bg-color);
 		margin-bottom: var(--form-element-margin);
 		@include floating-label();
 
@@ -37,6 +37,13 @@
 		input:focus ~ .c-formElement--focusLine {
 			border-color: var(--secondary);
 		}
+
+        /* Floating label */
+        input:focus ~ label, :not(:placeholder-shown) ~ label {
+            @include font-size(10px);
+            top: calc((var(--form-element-padding) + 5px) * -1);
+            opacity: 0.8;
+        }
 	}
 
 	&--bordered {
@@ -69,7 +76,7 @@
 		margin-bottom: var(--form-element-margin);
 		@include floating-label();
 
-		&.m-label {
+		&.c-floatingLabel {
 			label {
 				left: 0
 			}
@@ -87,7 +94,7 @@
 			width: 100%;
 			margin: 0;
 			height: 1px;
-			background: var(--gray-700);
+			background: var(--gray-400);
 		}
 
 		.c-formElement--focusLine {
@@ -106,6 +113,13 @@
 		input:focus ~ .c-formElement--focusLine {
 			width: 100%;
 		}
+
+        /* Floating label */
+        input:focus ~ label, :not(:placeholder-shown) ~ label {
+            @include font-size(10px);
+            top: calc((var(--form-element-padding) + 5px) * -1);
+            opacity: 0.8;
+        }
 	}
 
 	/* File Upload
