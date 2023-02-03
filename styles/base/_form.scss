@@ -11,104 +11,104 @@
 	@include input-placeholder(inherit, inherit, var(--gray-500));
 	margin-bottom: var(--form-element-margin);
 
-	input {
-		@include input-reset();
-	}
+	// input {
+	// 	@include input-reset();
+	// }
 
-	&--focusLine {
-		display: inline-block;
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		bottom: -1px;
-		left: -1px;
-		z-index: 100;
-		pointer-events: none;
-		border: 1px solid;
-		border-color: transparent;
-		transition: border-color .35s $ease-in;
-	}
+	// &--focusLine {
+	// 	display: inline-block;
+	// 	position: absolute;
+	// 	top: -1px;
+	// 	right: -1px;
+	// 	bottom: -1px;
+	// 	left: -1px;
+	// 	z-index: 100;
+	// 	pointer-events: none;
+	// 	border: 1px solid;
+	// 	border-color: transparent;
+	// 	transition: border-color .35s $ease-in;
+	// }
 
 	/* Input
     ========================================================================== */
 
-	&--boxed {
-		position: relative;
-		background: var(--gray-200);
-		margin-bottom: var(--form-element-margin);
-		@include label-up();
+	// &--boxed {
+	// 	position: relative;
+	// 	background: var(--gray-200);
+	// 	margin-bottom: var(--form-element-margin);
+	// 	@include label-up();
 
-		input {
-			@include input-reset();
-		}
+	// 	input {
+	// 		@include input-reset();
+	// 	}
 
-		/* Colored line on focus */
-		input:focus ~ .c-formElement--focusLine {
-			border-color: var(--secondary);
-		}
-	}
+	// 	/* Colored line on focus */
+	// 	input:focus ~ .c-formElement--focusLine {
+	// 		border-color: var(--secondary);
+	// 	}
+	// }
 
-	&--bordered {
-		position: relative;
-		background: transparent;
-		margin-bottom: var(--form-element-margin);
-		outline: 1px solid var(--gray-700);
-		@include label-up();
+	// &--bordered {
+	// 	position: relative;
+	// 	background: transparent;
+	// 	margin-bottom: var(--form-element-margin);
+	// 	outline: 1px solid var(--gray-700);
+	// 	@include label-up();
 
-		input {
-			@include input-reset();
-		}
+	// 	input {
+	// 		@include input-reset();
+	// 	}
 
-		/* Colored line on focus */
-		input:focus ~ .c-formElement--focusLine {
-			border-color: var(--secondary);
-		}
-	}
+	// 	/* Colored line on focus */
+	// 	input:focus ~ .c-formElement--focusLine {
+	// 		border-color: var(--secondary);
+	// 	}
+	// }
 
-	&--line {
-		position: relative;
-		background: transparent;
-		margin-bottom: var(--form-element-margin);
-		@include label-up();
+	// &--line {
+	// 	position: relative;
+	// 	background: transparent;
+	// 	margin-bottom: var(--form-element-margin);
+	// 	@include label-up();
 
-		&.m-label {
-			label {
-				left: 0
-			}
-		}
+	// 	&.m-label {
+	// 		label {
+	// 			left: 0
+	// 		}
+	// 	}
 
-		input {
-			@include input-reset();
-			padding-left: 0;
-		}
+	// 	input {
+	// 		@include input-reset();
+	// 		padding-left: 0;
+	// 	}
 
-		hr {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			margin: 0;
-			height: 1px;
-			background: var(--gray-700);
-		}
+	// 	hr {
+	// 		position: absolute;
+	// 		bottom: 0;
+	// 		left: 0;
+	// 		width: 100%;
+	// 		margin: 0;
+	// 		height: 1px;
+	// 		background: var(--gray-700);
+	// 	}
 
-		.c-formElement--focusLine {
-			top: calc(100% - 1px);
-			right: auto;
-			bottom: auto;
-			left: 0;
-			border: none;
-			width: 0%;
-			height: 1px;
-			background: var(--secondary);
-			transition: all .35s $ease-in;
-		}
+	// 	.c-formElement--focusLine {
+	// 		top: calc(100% - 1px);
+	// 		right: auto;
+	// 		bottom: auto;
+	// 		left: 0;
+	// 		border: none;
+	// 		width: 0%;
+	// 		height: 1px;
+	// 		background: var(--secondary);
+	// 		transition: all .35s $ease-in;
+	// 	}
 
-		/* Colored line on focus */
-		input:focus ~ .c-formElement--focusLine {
-			width: 100%;
-		}
-	}
+	// 	/* Colored line on focus */
+	// 	input:focus ~ .c-formElement--focusLine {
+	// 		width: 100%;
+	// 	}
+	// }
 
 	/* Select
     ========================================================================== */
@@ -149,7 +149,7 @@
 				border-color: var(--secondary);
 			}
 		}
-		
+
 		&--bordered {
 			position: relative;
 			background: transparent;
@@ -401,7 +401,7 @@
 			width: 100%;
 		}
 	}
-	
+
 	&--boxed, &--bordered {
 		textarea {
 			padding: var(--form-element-padding);
@@ -413,13 +413,13 @@
 			border-color: var(--secondary);
 		}
 	}
-	
+
 	&--line {
 		textarea {
 			padding: var(--form-element-padding) 0 0 0;
 			min-height: 51px;
 		}
-		
+
 		/* Colored line on focus */
 		textarea:focus ~ .c-formElement--focusLine {
 			width: 100%;
@@ -463,7 +463,7 @@
 		input:checked ~ label svg path {
 			stroke-dashoffset: 0;
 		}
-		
+
 		label {
 			position: relative;
 			display: flex;
@@ -471,10 +471,10 @@
 			margin-bottom: 0;
 			cursor: pointer;
 		}
-		
+
 		input ~ label svg {
 			width: 1.1em;
-			height: 1.1em; 
+			height: 1.1em;
 			border: 1px solid var(--primary);
 			margin-right: 10px;
 		}

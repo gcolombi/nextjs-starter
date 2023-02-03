@@ -7,8 +7,14 @@ export default function Form() {
         <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])}>
             <div className="o-container">
                 <div className={styles['c-form__row']}>
-                    <FormInput wrapperClassName={styles['c-form__item']} />
-                    <FormInput wrapperClassName={styles['c-form__item']} />
+                    <FormInput
+                        htmlFor="firstname"
+                        type="text"
+                        id="firstname"
+                        required={true}
+                        wrapperClassName={styles['c-form__item']}
+                    />
+
                 </div>
             </div>
         </form>

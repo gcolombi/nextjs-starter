@@ -1,14 +1,23 @@
 import styles from '../../styles/modules/FormInput.module.scss';
+console.log(styles);
+import classNames from 'classnames';
 
 export default function FormInput({
+    htmlFor,
+    type,
+    id,
+    name,
+    placeholder,
+    value,
+    required,
     wrapperClassName
 }) {
     return(
         <div className={wrapperClassName}>
-            <div className="c-formElement--bordered m-label js-label">
-                <label for="firstname1">Firstname</label>
-                <input type="text" id="firstname1" />
-                <span className="c-formElement--focusLine"></span>
+            <div className={classNames(styles['c-formElement--bordered'], styles['m-label'])}>
+                <label htmlFor={htmlFor}>Firstname</label>
+                <input type={type} id={id} name={name} placeholder={placeholder} value={value} required={required} />
+                <span className={styles['c-formElement--focusLine']}></span>
             </div>
         </div>
     );
