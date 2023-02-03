@@ -90,6 +90,7 @@
     /* desktop */
     @include mediaq('>LG') {
         --navigation-padding: 25px;
+        --navigation-link-color: var(--body-text-color);
 
         &__nav {
             &__primary {
@@ -116,6 +117,7 @@
                                     display: inline-block;
                                     @include font-size(18px);
                                     font-weight: var(--font-regular);
+                                    color: var(--navigation-link-color);
                                     text-transform: uppercase;
 
                                     &:hover, &:active, &:focus {
