@@ -2,6 +2,10 @@
     max-width: 1000px;
     margin: 0 auto;
 
+    &__btn {
+        margin-top: 40px;
+    }
+
     // **---------------------------------------------------**
     // MEDIA QUERIES
 
@@ -12,10 +16,5 @@
             gap: 0 var(--form-element-margin);
             grid-template-columns: repeat(2, 1fr);
         }
-
-        &__item {
-
-        }
     }
-
 }

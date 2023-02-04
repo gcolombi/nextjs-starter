@@ -2,6 +2,7 @@ import styles from '../../styles/modules/Form.module.scss';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import FormTextarea from './FormTextarea';
+import Button from '../Button';
 import classNames from 'classnames';
 
 export default function Form() {
@@ -16,7 +17,6 @@ export default function Form() {
                         name="firstname"
                         required={true}
                         className="c-formElement--bordered"
-                        wrapperClassName={styles['c-form__item']}
                     />
                     <FormInput
                         htmlFor="lastname"
@@ -25,7 +25,6 @@ export default function Form() {
                         name="lastname"
                         required={true}
                         className="c-formElement--bordered"
-                        wrapperClassName={styles['c-form__item']}
                     />
                     <FormInput
                         htmlFor="resume"
@@ -35,7 +34,6 @@ export default function Form() {
                         name="resume"
                         required={true}
                         className="c-formElement--upload--bordered"
-                        wrapperClassName={styles['c-form__item']}
                     />
                     <FormSelect
                         defaultValue="Subject"
@@ -43,7 +41,6 @@ export default function Form() {
                         name="subject"
                         required={true}
                         className="c-formElement--select--bordered"
-                        wrapperClassName={styles['c-form__item']}
                     />
                 </div>
                 <FormTextarea
@@ -53,7 +50,11 @@ export default function Form() {
                     name="message"
                     required={true}
                     className="c-formElement--bordered"
-                    wrapperClassName={styles['c-form__item']}
+                />
+                <Button
+                    label="Send"
+                    className="c-btn"
+                    wrapperClassName={styles['c-form__btn']}
                 />
             </div>
         </form>

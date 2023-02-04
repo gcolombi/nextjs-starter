@@ -41,7 +41,7 @@ export default function Button({
         );
     }
 
-    if (label && onClick) {
+    if (label) {
         return (
             <div className={wrapperClassName}>
                 <button
