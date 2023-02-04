@@ -26,8 +26,10 @@ export default function FormTextarea({
                     placeholder={placeholder}
                     required={required}
                 />
-                <label htmlFor={htmlFor}>{label}</label>
-                <span className="c-formElement--focusLine"></span>
+                {label && htmlFor &&
+                    <label htmlFor={htmlFor}>{label}</label>
+                }
+                <span className={styles['c-formElement--focusLine']} />
             </div>
         </div>
     );

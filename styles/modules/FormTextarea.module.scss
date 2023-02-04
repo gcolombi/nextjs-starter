@@ -1,5 +1,19 @@
 .c-formElement {
 
+    &--focusLine {
+		display: inline-block;
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
+		z-index: 100;
+		pointer-events: none;
+		border: 1px solid;
+		border-color: transparent;
+		transition: border-color .35s $ease-in;
+	}
+
     /* Textarea
     ========================================================================== */
 
