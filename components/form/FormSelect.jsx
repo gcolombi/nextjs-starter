@@ -11,12 +11,13 @@ export default function FormSelect({
     name,
     required,
     className,
-    wrapperClassName
+    wrapperClassName,
+    options = [{label: 'Option 1', value: 'option-1'}, {label: 'Option 2', value: 'option-2'}, {label: 'Option 3', value: 'option-3'}]
 }) {
     const [selected, setSelected] = useState();
 
     const change = (e) => {
-        console.log(e);
+        setSelected(e.target.value);
     }
 
     return(
@@ -36,17 +37,18 @@ export default function FormSelect({
                 >
                     <Chevron />
                     <select
+                        defaultValue={defaultValue}
                         id={id}
                         name={name}
                         required={required}
                         onChange={change}
                     >
                         {defaultValue &&
-                            <option selected disabled value="">{defaultValue}</option>
+                            <option value={defaultValue} disabled>{defaultValue}</option>
                         }
-                        <option value="option 1">option 1</option>
-                        <option value="option 2">option 2</option>
-                        <option value="option 3">option 3</option>
+                        {options.map((option) => (
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
                     </select>
                     <span className={styles['c-formElement--focusLine']} />
                 </div>
