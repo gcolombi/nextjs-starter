@@ -1,7 +1,4 @@
 .c-formElement {
-	@include input-placeholder(inherit, inherit, var(--gray-500));
-	margin-bottom: var(--form-element-margin);
-
 	input {
 		@include input-reset();
 	}

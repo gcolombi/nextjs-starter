@@ -33,10 +33,15 @@ export default function Form() {
                         className="c-formElement--upload--bordered"
                         wrapperClassName={styles['c-form__item']}
                     />
-                    <FormTextarea
-
-                    />
                 </div>
+                <FormTextarea
+                    htmlFor="message"
+                    label="Message"
+                    id="message"
+                    required={true}
+                    className="c-formElement--bordered"
+                    wrapperClassName={styles['c-form__item']}
+                />
             </div>
         </form>
     );

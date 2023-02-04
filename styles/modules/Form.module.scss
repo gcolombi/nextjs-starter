@@ -9,7 +9,7 @@
 
         &__row {
             display: grid;
-            gap: 30px;
+            gap: 0 var(--form-element-margin);
             grid-template-columns: repeat(2, 1fr);
         }
 

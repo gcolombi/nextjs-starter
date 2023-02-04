@@ -3,16 +3,30 @@ import classNames from 'classnames';
 
 export default function FormTextarea({
     htmlFor,
+    label,
     id,
     name,
     placeholder=" ",
     required,
+    className,
     wrapperClassName
 }) {
     return(
         <div className={wrapperClassName}>
-            <div className="c-formElement--bordered">
-                <textarea>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuSMod tempor incididunt.</textarea>
+            <div
+                className={classNames(
+                    'c-formElement',
+                    styles[className],
+                    styles['c-floatingLabel']
+                )}
+            >
+                <textarea
+                    id={id}
+                    name={name}
+                    placeholder={placeholder}
+                    required={required}
+                />
+                <label htmlFor={htmlFor}>{label}</label>
                 <span className="c-formElement--focusLine"></span>
             </div>
         </div>

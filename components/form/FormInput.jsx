@@ -29,7 +29,7 @@ export default function FormInput({
         <div className={wrapperClassName}>
             <div
                 className={classNames(
-                    styles['c-formElement'],
+                    'c-formElement',
                     styles[className],
                     styles['c-floatingLabel']
                 )}
