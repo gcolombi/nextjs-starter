@@ -22,6 +22,9 @@ export default function FormSelect({
 
     return(
         <div className={wrapperClassName}>
+            {label && htmlFor &&
+                <label htmlFor={htmlFor}>{label}</label>
+            }
             <div
                 className={classNames(
                     'c-formElement',
@@ -29,7 +32,7 @@ export default function FormSelect({
                     styles['c-floatingLabel']
                 )}
             >
-                {/* <label htmlFor={htmlFor}>{label}</label> */}
+
                 <div
                     className={classNames(
                         styles[className],
@@ -46,7 +49,7 @@ export default function FormSelect({
                         {defaultValue &&
                             <option value={defaultValue} disabled>{defaultValue}</option>
                         }
-                        {options.map((option) => (
+                        {options?.map((option) => (
                             <option key={option.value} value={option.value}>{option.label}</option>
                         ))}
                     </select>
