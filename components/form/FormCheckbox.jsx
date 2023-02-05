@@ -9,10 +9,8 @@ export default function FormCheckbox({
     name,
     value,
     className,
-    wrapperClassName
 }) {
     return(
-        <div className={wrapperClassName}>
             <div
                 className={classNames(
                     styles['c-formElement'],
@@ -30,6 +28,5 @@ export default function FormCheckbox({
                     {label}
                 </label>
             </div>
-        </div>
     );
 }

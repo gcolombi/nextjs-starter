@@ -5,6 +5,7 @@ import FormTextarea from './FormTextarea';
 import FormCheckbox from './FormCheckbox';
 import Button from '../Button';
 import classNames from 'classnames';
+import FormCheckboxList from './FormCheckboxList';
 
 export default function Form() {
     return(
@@ -44,17 +45,9 @@ export default function Form() {
                         className="c-formElement--select--bordered"
                     />
                 </div>
-                <div>
-                    <FormCheckbox
-                        htmlFor="choice-1"
-                        label="Choice 1"
-                        id="choice-1"
-                        name="choice-1"
-                        value="Choice 1"
-                        required={true}
-                        className="c-formElement--checkboxSvg"
-                    />
-                </div>
+                <FormCheckboxList
+                    title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                />
                 <FormTextarea
                     htmlFor="message"
                     label="Message"

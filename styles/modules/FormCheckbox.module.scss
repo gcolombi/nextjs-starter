@@ -31,6 +31,10 @@
 	&--checkboxSvg {
 		display: inline-block;
 
+        &:first-child ~ & {
+			margin-left: 0.8em;
+		}
+
 		input{
 			display: none!important;
 		}
