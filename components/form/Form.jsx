@@ -38,7 +38,8 @@ export default function Form() {
                         className="c-formElement--upload--bordered"
                     />
                     <FormSelect
-                        defaultValue="Subject"
+                        htmlFor="subject"
+                        label="Subject"
                         id="subject"
                         name="subject"
                         required={true}

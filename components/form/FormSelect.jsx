@@ -12,7 +12,7 @@ export default function FormSelect({
     required,
     className,
     wrapperClassName,
-    options = [{label: 'Option 1', value: 'option-1'}, {label: 'Option 2', value: 'option-2'}, {label: 'Option 3', value: 'option-3'}]
+    options = ['Option 1', 'Option 2', 'Option 3']
 }) {
     const [selected, setSelected] = useState('');
 
@@ -22,38 +22,35 @@ export default function FormSelect({
 
     return(
         <div className={wrapperClassName}>
-            {label && htmlFor &&
-                <label htmlFor={htmlFor}>{label}</label>
-            }
             <div
                 className={classNames(
                     styles['c-formElement'],
                     styles[className],
+                    {[styles['c-floatingLabel']]: label}
                 )}
             >
-
-                <div
-                    className={classNames(
-                        styles[className],
-                    )}
+                <Chevron />
+                <select
+                    defaultValue={defaultValue ?? ''}
+                    id={id}
+                    name={name}
+                    required={required}
+                    onChange={change}
                 >
-                    <Chevron />
-                    <select
-                        defaultValue={defaultValue}
-                        id={id}
-                        name={name}
-                        required={required}
-                        onChange={change}
-                    >
-                        {defaultValue &&
-                            <option value={defaultValue} disabled>{defaultValue}</option>
-                        }
-                        {options?.map((option) => (
-                            <option key={option.value} value={option.value}>{option.label}</option>
-                        ))}
-                    </select>
-                    <span className={styles['c-formElement--focusLine']} />
-                </div>
+                    {defaultValue &&
+                        <option value={defaultValue} disabled>{defaultValue}</option>
+                    }
+                    {!defaultValue &&
+                        <option value="" disabled></option>
+                    }
+                    {options?.map((option, index) => (
+                        <option key={`${option.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`} value={option}>{option}</option>
+                    ))}
+                </select>
+                {label && htmlFor &&
+                    <label htmlFor={htmlFor}>{label}</label>
+                }
+                <span className={styles['c-formElement--focusLine']} />
             </div>
         </div>
     );
