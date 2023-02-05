@@ -1,11 +1,11 @@
 import styles from '../../styles/modules/Form.module.scss';
+import classNames from 'classnames';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
-import FormTextarea from './FormTextarea';
-import FormCheckbox from './FormCheckbox';
-import Button from '../Button';
-import classNames from 'classnames';
 import FormCheckboxList from './FormCheckboxList';
+import FormRadioList from './FormRadioList';
+import FormTextarea from './FormTextarea';
+import Button from '../Button';
 
 export default function Form() {
     return(
@@ -47,6 +47,10 @@ export default function Form() {
                 </div>
                 <FormCheckboxList
                     title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                />
+                <FormRadioList
+                    title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                    inputName="radio_field_name"
                 />
                 <FormTextarea
                     htmlFor="message"

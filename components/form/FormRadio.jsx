@@ -1,7 +1,7 @@
 import styles from '../../styles/modules/FormRadio.module.scss';
 import classNames from 'classnames';
 
-export default function FormCheckbox({
+export default function FormRadio({
     htmlFor,
     label,
     id,
