@@ -31,6 +31,20 @@ export default function FormCheckbox({
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div> */}
+            <div
+                className={classNames(
+                    styles[className]
+                )}
+            >
+                <input type="checkbox" id={id} name={name} />
+                <label htmlFor={htmlFor}>
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 10 10 L 90 90"></path>
+                        <path d="M 90 10 L 10 90"></path>
+                    </svg>
+                    {label}
+                </label>
+            </div>
         </div>
     );
 }
