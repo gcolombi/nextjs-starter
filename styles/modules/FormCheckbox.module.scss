@@ -4,28 +4,8 @@
 	/* Checkbox / Radio
     ========================================================================== */
 
-	&--checkbox,
-	&--radio {
+	&--checkbox {
 		@include input-checkbox-reset();
-
-		&:first-child ~ & {
-			margin-left: 0.8em;
-		}
-
-		:checked + label {
-			&::before {
-				background: var(--primary);
-				border-color: var(--primary);
-			}
-		}
-	}
-
-	&--radio {
-		label {
-			&::before {
-				border-radius: 40px;
-			}
-		}
 	}
 
 	&--checkboxSvg {

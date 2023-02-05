@@ -115,6 +115,17 @@
 			width: 1.1em;
 		}
 	}
+
+    &:first-child ~ & {
+        margin-left: 0.8em;
+    }
+
+    :checked + label {
+        &::before {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+    }
 }
 
 @mixin floating-label() {
