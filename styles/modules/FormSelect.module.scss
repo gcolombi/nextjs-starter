@@ -1,27 +1,12 @@
 .c-formElement {
-
-    &--focusLine {
-		display: inline-block;
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		bottom: -1px;
-		left: -1px;
-		z-index: 100;
-		pointer-events: none;
-		border: 1px solid;
-		border-color: transparent;
-		transition: border-color .35s $ease-in;
-	}
+    @include default-styles();
 
     /* Select
     ========================================================================== */
 
 	&--select {
 		&--boxed {
-			position: relative;
 			background: var(--gray-200);
-			margin-bottom: var(--form-element-margin);
 
 			svg {
 				position: absolute;
@@ -56,10 +41,7 @@
 		}
 
 		&--bordered {
-			position: relative;
-			background: transparent;
-			outline: 1px solid var(--gray-700);
-			margin-bottom: var(--form-element-margin);
+            @include bordered-styles();
 
 			svg {
 				position: absolute;
@@ -94,9 +76,6 @@
 		}
 
 		&--line {
-			position: relative;
-			margin-bottom: var(--form-element-margin);
-
 			svg {
 				position: absolute;
 				top: 50%;

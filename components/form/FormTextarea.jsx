@@ -15,7 +15,7 @@ export default function FormTextarea({
         <div className={wrapperClassName}>
             <div
                 className={classNames(
-                    'c-formElement',
+                    styles['c-formElement'],
                     styles[className],
                     styles['c-floatingLabel']
                 )}

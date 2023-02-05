@@ -1,34 +1,19 @@
 .c-formElement {
-	input {
-		@include input-reset();
-	}
+    @include default-styles();
+	@include input-placeholder(inherit, inherit, var(--gray-500));
+    @include floating-label();
 
-	&--focusLine {
-		display: inline-block;
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		bottom: -1px;
-		left: -1px;
-		z-index: 100;
-		pointer-events: none;
-		border: 1px solid;
-		border-color: transparent;
-		transition: border-color .35s $ease-in;
-	}
+    &:not(.c-formElement--upload--boxed, .c-formElement--upload--bordered, .c-formElement--upload--line) {
+        input {
+            @include input-reset();
+        }
+    }
 
 	/* Input
     ========================================================================== */
 
 	&--boxed {
-		position: relative;
-		background: var(--section-bg-color);
-		margin-bottom: var(--form-element-margin);
-		@include floating-label();
-
-		input {
-			@include input-reset();
-		}
+        background: var(--gray-200);
 
 		/* Colored line on focus */
 		input:focus ~ .c-formElement--focusLine {
@@ -44,15 +29,7 @@
 	}
 
 	&--bordered {
-		position: relative;
-		background: transparent;
-		margin-bottom: var(--form-element-margin);
-		outline: 1px solid var(--gray-700);
-		@include floating-label();
-
-		input {
-			@include input-reset();
-		}
+        @include bordered-styles();
 
 		/* Colored line on focus */
 		input:focus ~ .c-formElement--focusLine {
@@ -68,10 +45,7 @@
 	}
 
 	&--line {
-		position: relative;
 		background: transparent;
-		margin-bottom: var(--form-element-margin);
-		@include floating-label();
 
 		&.c-floatingLabel {
 			label {
@@ -80,7 +54,6 @@
 		}
 
 		input {
-			@include input-reset();
 			padding-left: 0;
 		}
 
@@ -136,9 +109,7 @@
 		}
 
 		&--boxed {
-			position: relative;
 			background: var(--gray-200);
-			margin-bottom: var(--form-element-margin);
 
 			svg {
 				position: absolute;
@@ -170,10 +141,7 @@
 		}
 
 		&--bordered {
-			position: relative;
-			background: transparent;
-			outline: 1px solid var(--gray-700);
-			margin-bottom: var(--form-element-margin);
+            @include bordered-styles();
 
 			svg {
 				position: absolute;
@@ -205,9 +173,7 @@
 		}
 
 		&--line {
-			position: relative;
 			background: transparent;
-			margin-bottom: var(--form-element-margin);
 
 			svg {
 				position: absolute;

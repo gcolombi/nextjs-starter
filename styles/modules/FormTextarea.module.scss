@@ -1,25 +1,12 @@
 .c-formElement {
-
-    &--focusLine {
-		display: inline-block;
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		bottom: -1px;
-		left: -1px;
-		z-index: 100;
-		pointer-events: none;
-		border: 1px solid;
-		border-color: transparent;
-		transition: border-color .35s $ease-in;
-	}
+    @include default-styles();
+	@include input-placeholder(inherit, inherit, var(--gray-500));
+    @include floating-label();
 
     /* Textarea
     ========================================================================== */
 
     &--boxed, &--bordered, &--line {
-		@include floating-label();
-
 		textarea {
 			background: none;
 			border: none;
@@ -51,22 +38,15 @@
 	}
 
     &--boxed {
-        position: relative;
-        background: var(--section-bg-color);
-        margin-bottom: var(--form-element-margin);
+        background: var(--gray-200);
     }
 
     &--bordered {
-        position: relative;
-		background: transparent;
-		margin-bottom: var(--form-element-margin);
-		outline: 1px solid var(--gray-700);
+        @include bordered-styles();
     }
 
 	&--line {
-        position: relative;
 		background: transparent;
-		margin-bottom: var(--form-element-margin);
 
         hr {
             position: absolute;

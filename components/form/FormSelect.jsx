@@ -27,9 +27,8 @@ export default function FormSelect({
             }
             <div
                 className={classNames(
-                    'c-formElement',
+                    styles['c-formElement'],
                     styles[className],
-                    styles['c-floatingLabel']
                 )}
             >
 

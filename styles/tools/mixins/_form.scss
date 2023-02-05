@@ -2,6 +2,33 @@
     Tools / Mixins / Form
 ========================================================================== */
 
+@mixin default-styles() {
+    --form-element-padding: 15px;
+	--form-element-margin: 35px;
+
+    position: relative;
+	margin-bottom: var(--form-element-margin);
+
+    &--focusLine {
+		display: inline-block;
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
+		z-index: 100;
+		pointer-events: none;
+		border: 1px solid;
+		border-color: transparent;
+		transition: border-color .35s $ease-in;
+	}
+
+    label, .c-label {
+        display: block;
+        margin-bottom: var(--margin-thinner);
+    }
+}
+
 @mixin input-placeholder($font-size, $line-height, $color) {
 	::-webkit-input-placeholder {
 		color: $color;
@@ -63,6 +90,11 @@
 	clip-path: inset(50%);
 }
 
+@mixin bordered-styles() {
+    background: transparent;
+    outline: 1px solid var(--gray-700);
+}
+
 @mixin input-checkbox-reset() {
 	display: inline-block;
 
@@ -76,7 +108,7 @@
 		margin-bottom: 0;
 		cursor: pointer;
 
-		&::before{
+		&:before{
 			content: '';
 			position: absolute;
 			top: 0.08em;

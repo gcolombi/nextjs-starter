@@ -29,9 +29,9 @@ export default function FormInput({
         <div className={wrapperClassName}>
             <div
                 className={classNames(
-                    'c-formElement',
+                    styles['c-formElement'],
                     styles[className],
-                    styles['c-floatingLabel']
+                    {[styles['c-floatingLabel']]: type !== 'file'}
                 )}
             >
                 <input
