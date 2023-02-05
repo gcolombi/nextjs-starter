@@ -1,6 +1,5 @@
-import styles from '../../styles/modules/FormCheckbox.module.scss';
+import styles from '../../styles/modules/FormRadio.module.scss';
 import classNames from 'classnames';
-import Cross from '../icons/Cross';
 
 export default function FormCheckbox({
     htmlFor,
@@ -19,14 +18,13 @@ export default function FormCheckbox({
             )}
         >
             <input
-                type="checkbox"
+                type="radio"
                 id={id}
                 name={name}
                 value={value}
                 onChange={onChange}
             />
             <label htmlFor={htmlFor}>
-                <Cross />
                 {label}
             </label>
         </div>
