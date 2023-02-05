@@ -22,11 +22,6 @@
 		border-color: transparent;
 		transition: border-color .35s $ease-in;
 	}
-
-    label, .c-label {
-        display: block;
-        margin-bottom: var(--margin-thinner);
-    }
 }
 
 @mixin input-placeholder($font-size, $line-height, $color) {

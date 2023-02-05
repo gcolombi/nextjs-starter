@@ -1,9 +1,10 @@
 .c-formElement {
     @include default-styles();
-	@include input-placeholder(inherit, inherit, var(--gray-500));
     @include floating-label();
 
     &:not(.c-formElement--upload--boxed, .c-formElement--upload--bordered, .c-formElement--upload--line) {
+        @include input-placeholder(inherit, inherit, var(--gray-500));
+
         input {
             @include input-reset();
         }
