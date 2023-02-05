@@ -2,6 +2,7 @@ import styles from '../../styles/modules/Form.module.scss';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import FormTextarea from './FormTextarea';
+import FormCheckbox from './FormCheckbox';
 import Button from '../Button';
 import classNames from 'classnames';
 
@@ -41,6 +42,17 @@ export default function Form() {
                         name="subject"
                         required={true}
                         className="c-formElement--select--bordered"
+                    />
+                </div>
+                <div>
+                    <FormCheckbox
+                        htmlFor="choice-1"
+                        label="Choice 1"
+                        id="choice-1"
+                        name="choice-1"
+                        value="Choice 1"
+                        required={true}
+                        className="c-formElement--checkboxSvg"
                     />
                 </div>
                 <FormTextarea
