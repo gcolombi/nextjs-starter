@@ -7,7 +7,7 @@ export default function FormRadioList({
     items = ['Temporibus nesciunt', 'Exercitationem', 'Velit eveniet', 'Quaerat'],
     className
 }) {
-    const [selected, setSelected] = useState();
+    const [selected, setSelected] = useState('');
 
     const change = (e) => {
         setSelected(e.target.value);

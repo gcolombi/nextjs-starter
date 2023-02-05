@@ -16,7 +16,7 @@ export default function FormInput({
     wrapperClassName,
 }) {
     const [labelTitle, setLabelTitle] = useState(label);
-    const [file, setFile] = useState();
+    const [file, setFile] = useState(null);
 
     const update = (e) => {
         if (e.target.files) {
