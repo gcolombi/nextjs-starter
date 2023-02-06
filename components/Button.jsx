@@ -8,6 +8,7 @@ export default function Button({
     externalHref,
     anchor,
     onClick,
+    disabled,
     className,
     wrapperClassName
 }) {
@@ -47,8 +48,9 @@ export default function Button({
                 <button
                     className={styles[className]}
                     onClick={onClick}
+                    disabled={disabled}
                 >
-                    {label}
+                    {disabled ? 'Sending...' : label}
                 </button>
             </div>
         );

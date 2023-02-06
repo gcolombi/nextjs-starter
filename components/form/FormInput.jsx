@@ -14,6 +14,7 @@ export default function FormInput({
     required,
     className,
     wrapperClassName,
+    custom
 }) {
     const [labelTitle, setLabelTitle] = useState(label);
     const [file, setFile] = useState(null);
@@ -42,6 +43,7 @@ export default function FormInput({
                     value={value}
                     required={required}
                     onChange={update}
+                    {...custom}
                 />
                 {type === 'file' &&
                     <FileUpload />
