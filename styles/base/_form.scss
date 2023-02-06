@@ -7,13 +7,48 @@
 	/* Submit Button
     ========================================================================== */
 
+    @keyframes spin {
+        100% {
+            rotate: 360deg;
+        }
+    }
+
+    @keyframes dash {
+        0% {
+            stroke-dasharray: 1, 150;
+            stroke-dashoffset: 0;
+        }
+        50% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -35;
+        }
+        100% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -124;
+        }
+    }
+
 	&--submit {
 		[type="submit"] {
-			&.disabled,
-			&.is-disabled {
-				opacity: .45;
-				pointer-events: none;
-			}
+            display: inline-flex;
+            align-items: center;
+            opacity: .5;
+            pointer-events: none;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                animation: spin 1s linear infinite;
+
+                circle {
+                    fill: none;
+                    stroke: var(--black);
+                    stroke-width: 3px;
+                    stroke-linecap: round;
+                    animation: dash 2.5s ease-in-out infinite;
+                }
+            }
 		}
 	}
 }

@@ -1,5 +1,6 @@
 import styles from '@/styles/modules/Button.module.scss';
 import Link from 'next/link';
+import Circle from './icons/Circle';
 
 export default function Button({
     label,
@@ -7,6 +8,7 @@ export default function Button({
     isExternal,
     externalHref,
     anchor,
+    type="button",
     onClick,
     disabled,
     className,
@@ -46,10 +48,12 @@ export default function Button({
         return (
             <div className={wrapperClassName}>
                 <button
+                    type={type}
                     className={styles[className]}
                     onClick={onClick}
                     disabled={disabled}
                 >
+                    {disabled && <Circle />}
                     {disabled ? 'Sending...' : label}
                 </button>
             </div>

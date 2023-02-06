@@ -84,7 +84,8 @@ export default function Form() {
                 <Button
                     label="Send"
                     className="c-btn"
-                    wrapperClassName={styles['c-form__btn']}
+                    wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
+                    type="submit"
                     disabled={isSubmitting}
                 />
             </div>
