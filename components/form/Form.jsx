@@ -1,9 +1,6 @@
 import styles from '../../styles/modules/Form.module.scss';
 import classNames from 'classnames';
 import FormInput from './FormInput';
-import FormSelect from './FormSelect';
-import FormCheckboxList from './FormCheckboxList';
-import FormRadioList from './FormRadioList';
 import FormTextarea from './FormTextarea';
 import Button from '../Button';
 
@@ -28,30 +25,15 @@ export default function Form() {
                         required={true}
                         className="c-formElement--bordered"
                     />
-                    <FormInput
-                        htmlFor="resume"
-                        label="Resume"
-                        type="file"
-                        id="resume"
-                        name="resume"
-                        required={true}
-                        className="c-formElement--upload--bordered"
-                    />
-                    <FormSelect
-                        htmlFor="subject"
-                        label="Subject"
-                        id="subject"
-                        name="subject"
-                        required={true}
-                        className="c-formElement--select--bordered"
-                    />
                 </div>
-                <FormCheckboxList
-                    title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                />
-                <FormRadioList
-                    title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                    inputName="radio_field_name"
+                <FormInput
+                    htmlFor="email"
+                    label="Email"
+                    type="email"
+                    id="email"
+                    name="email"
+                    required={true}
+                    className="c-formElement--bordered"
                 />
                 <FormTextarea
                     htmlFor="message"
