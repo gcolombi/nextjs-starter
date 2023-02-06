@@ -5,8 +5,14 @@ import FormTextarea from './FormTextarea';
 import Button from '../Button';
 
 export default function Form() {
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        // saveFormData()
+    }
+
     return(
-        <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])}>
+        <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={onSubmit}>
             <div className="o-container">
                 <div className={styles['c-form__row']}>
                     <FormInput
