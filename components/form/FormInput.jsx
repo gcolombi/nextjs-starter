@@ -14,7 +14,8 @@ export default function FormInput({
     required,
     className,
     wrapperClassName,
-    custom
+    custom,
+    errors
 }) {
     const [labelTitle, setLabelTitle] = useState(label);
     const [file, setFile] = useState(null);
@@ -27,32 +28,40 @@ export default function FormInput({
     };
 
     return(
-        <div className={wrapperClassName}>
-            <div
-                className={classNames(
-                    styles['c-formElement'],
-                    styles[className],
-                    {[styles['c-floatingLabel']]: type !== 'file'}
-                )}
-            >
-                <input
-                    type={type}
-                    id={id}
-                    name={name}
-                    placeholder={placeholder}
-                    value={value}
-                    required={required}
-                    onChange={update}
-                    {...custom}
-                />
-                {type === 'file' &&
-                    <FileUpload />
+        <>
+            <div className={wrapperClassName}>
+                <div
+                    className={classNames(
+                        styles['c-formElement'],
+                        styles[className],
+                        {[styles['c-floatingLabel']]: type !== 'file'}
+                    )}
+                >
+                    <input
+                        type={type}
+                        id={id}
+                        name={name}
+                        placeholder={placeholder}
+                        value={value}
+                        required={required}
+                        onChange={update}
+                        {...custom}
+                    />
+                    {type === 'file' &&
+                        <FileUpload />
+                    }
+                    {label && htmlFor &&
+                        <label htmlFor={htmlFor}>{labelTitle}</label>
+                    }
+                    <span className={styles['c-formElement--focusLine']} />
+                </div>
+                {required && errors?.[name]?.type === "required" &&
+                    <label htmlFor={htmlFor}>This field is required</label>
                 }
-                {label && htmlFor &&
-                    <label htmlFor={htmlFor}>{labelTitle}</label>
+                {errors?.[name]?.message &&
+                    <label htmlFor={htmlFor}>{errors?.name?.message}</label>
                 }
-                <span className={styles['c-formElement--focusLine']} />
             </div>
-        </div>
+        </>
     );
 }

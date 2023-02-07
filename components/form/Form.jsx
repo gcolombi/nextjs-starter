@@ -7,7 +7,7 @@ import FormTextarea from './FormTextarea';
 import Button from '../Button';
 
 async function saveFormData(data) {
-    console.log(errors);
+    console.log(data);
     return await fetch("/api/form", {
         body: JSON.stringify(data),
         headers: {"Content-Type": "application/json"},
@@ -16,20 +16,30 @@ async function saveFormData(data) {
 }
 
 export default function Form() {
-    const {register, handleSubmit, formState: { isSubmitting, errors }} = useForm();
+    const {register, handleSubmit, setError, formState: { isSubmitting, errors }} = useForm();
 
-    // const onSubmit = (data) => {
-        // console.log(data);
-    // };
-    // console.log(errors);
+    const onSubmit = async (data) => {
+        const response = await saveFormData(data);
 
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
-    //     // saveFormData()
-    // }
+        console.log(response);
+
+        if (response.status === 400) {
+            // Validation error
+            // Expect response to be a JSON response with the structure:
+            // {"fieldName": "error message for that field"}
+            const fieldToErrorMessage = await response.json();
+            for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
+                setError(fieldName, {type: 'custom', message: errorMessage})
+            }
+        } else if (response.ok) {
+            // successful
+        } else {
+            // unknown error
+        }
+    };
 
     return(
-        <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(saveFormData)}>
+        <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(onSubmit)} noValidate>
         {/* // <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(onSubmit)}> */}
             <div className="o-container">
                 <div className={styles['c-form__row']}>
@@ -41,6 +51,7 @@ export default function Form() {
                         required={true}
                         className="c-formElement--bordered"
                         custom={{...register("firstname", {required: true})}}
+                        errors={errors}
                         // custom={{...register("firstname", {required: 'This field is required'})}}
                     />
                     {/* <ErrorMessage
