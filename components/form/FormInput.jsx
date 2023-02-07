@@ -36,7 +36,7 @@ export default function FormInput({
                         styles[className],
                         {
                             [styles['c-floatingLabel']]: type !== 'file',
-                            [styles['has-error']]: required && errors?.[name]?.type === "required"
+                            [styles['has-error']]: required && errors?.[name]?.type === "required" || errors?.[name]?.message
                         }
                     )}
                 >

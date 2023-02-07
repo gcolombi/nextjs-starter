@@ -1,6 +1,6 @@
 import styles from '../../styles/modules/Form.module.scss';
 import { useForm } from 'react-hook-form';
-// import { ErrorMessage } from "@hookform/error-message"
+import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
@@ -16,7 +16,8 @@ async function saveFormData(data) {
 }
 
 export default function Form() {
-    const {register, handleSubmit, setError, formState: { isSubmitting, errors }} = useForm();
+    const {register, handleSubmit, setError, formState: { isSubmitting, errors, isDirty }} = useForm();
+    useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
         const response = await saveFormData(data);
@@ -40,7 +41,6 @@ export default function Form() {
 
     return(
         <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(onSubmit)} noValidate>
-        {/* // <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(onSubmit)}> */}
             <div className="o-container">
                 <div className={styles['c-form__row']}>
                     <FormInput
