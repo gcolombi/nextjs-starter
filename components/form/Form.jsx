@@ -7,7 +7,7 @@ import FormTextarea from './FormTextarea';
 import Button from '../Button';
 
 async function saveFormData(data) {
-    console.log(data);
+    // console.log(data);
     return await fetch("/api/form", {
         body: JSON.stringify(data),
         headers: {"Content-Type": "application/json"},
