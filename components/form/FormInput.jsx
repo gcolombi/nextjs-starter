@@ -34,7 +34,10 @@ export default function FormInput({
                     className={classNames(
                         styles['c-formElement'],
                         styles[className],
-                        {[styles['c-floatingLabel']]: type !== 'file'}
+                        {
+                            [styles['c-floatingLabel']]: type !== 'file',
+                            [styles['has-error']]: required && errors?.[name]?.type === "required"
+                        }
                     )}
                 >
                     <input
