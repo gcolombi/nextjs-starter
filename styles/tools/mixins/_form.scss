@@ -25,12 +25,15 @@
 
     /* states */
     &.has-error, &.has-success, &.has-warning {
+
         margin: 0;
 
-		& + label {
+        & + label {
+            --label-margin: 35px;
+
             background: var(--error);
             color: var(--white);
-			margin-bottom: var(--form-element-margin);
+        	margin-bottom: var(--label-margin);
 		}
 	}
 }
