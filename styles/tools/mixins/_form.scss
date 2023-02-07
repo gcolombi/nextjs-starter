@@ -24,8 +24,7 @@
 	}
 
     /* states */
-    &.has-error, &.has-success, &.has-warning {
-
+    &.has-error {
         margin: 0;
 
         & + label {
@@ -33,9 +32,18 @@
 
             background: var(--error);
             color: var(--white);
+            padding: 3px 5px;
         	margin-bottom: var(--label-margin);
 		}
 	}
+
+    &--bordered {
+        &.has-error {
+            & + label {
+                border: 1px solid var(--error);
+            }
+        }
+    }
 }
 
 @mixin input-placeholder($font-size, $line-height, $color) {
@@ -101,7 +109,7 @@
 
 @mixin bordered-styles() {
     background: transparent;
-    outline: 1px solid var(--gray-700);
+    border: 1px solid var(--gray-700);
 }
 
 @mixin input-checkbox-reset() {

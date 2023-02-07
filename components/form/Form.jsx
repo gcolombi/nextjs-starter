@@ -52,28 +52,17 @@ export default function Form() {
                         className="c-formElement--bordered"
                         custom={{...register("firstname", {required: true})}}
                         errors={errors}
-                        // custom={{...register("firstname", {required: 'This field is required'})}}
                     />
-                    {/* <ErrorMessage
-                        errors={errors}
-                        name="multipleErrorInput"
-                        render={({ messages }) => {
-                        console.log("messages", messages);
-                        return messages
-                            ? Object.entries(messages).map(([type, message]) => (
-                                <p key={type}>{message}</p>
-                            ))
-                            : null;
-                        }}
-                    /> */}
-                    {/* <FormInput
+                    <FormInput
                         htmlFor="lastname"
                         label="Lastname"
                         id="lastname"
                         name="lastname"
                         required={true}
                         className="c-formElement--bordered"
-                    /> */}
+                        custom={{...register("lastname", {required: true})}}
+                        errors={errors}
+                    />
                 </div>
                 {/* <FormInput
                     htmlFor="email"
