@@ -51,7 +51,7 @@ export default function Form() {
                         required={true}
                         className="c-formElement--bordered"
                         custom={{...register("firstname", {required: true})}}
-                        errors={errors}
+                        errors={errors['firstname']}
                     />
                     <FormInput
                         htmlFor="lastname"
@@ -61,7 +61,7 @@ export default function Form() {
                         required={true}
                         className="c-formElement--bordered"
                         custom={{...register("lastname", {required: true})}}
-                        errors={errors}
+                        errors={errors['lastname']}
                     />
                 </div>
                 {/* <FormInput

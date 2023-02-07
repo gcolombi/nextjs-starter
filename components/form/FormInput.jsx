@@ -36,7 +36,7 @@ export default function FormInput({
                         styles[className],
                         {
                             [styles['c-floatingLabel']]: type !== 'file',
-                            [styles['has-error']]: required && errors?.[name]?.type === "required" || errors?.[name]?.message
+                            [styles['has-error']]: required && errors?.type === "required" || errors?.message
                         }
                     )}
                 >
@@ -54,14 +54,14 @@ export default function FormInput({
                         <FileUpload />
                     }
                     {label && htmlFor &&
-                        <label htmlFor={htmlFor}>{labelTitle}</label>
+                        <label htmlFor={htmlFor}>{labelTitle}{required && ' *'}</label>
                     }
                     <span className={styles['c-formElement--focusLine']} />
                 </div>
-                {required && errors?.[name]?.type === "required" &&
+                {required && errors?.type === "required" &&
                     <label htmlFor={htmlFor}>This field is required</label>
                 }
-                {errors?.[name]?.message &&
+                {errors?.message &&
                     <label htmlFor={htmlFor}>{errors?.name?.message}</label>
                 }
             </div>
