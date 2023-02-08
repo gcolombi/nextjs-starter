@@ -3,6 +3,8 @@
 export default function handler(req, res) {
     if (req.method === 'POST') {
 
+        console.log(req.body);
+
         const { firstname, lastname } = req.body;
 
         const message = {

@@ -22,8 +22,6 @@ export default function Form() {
     const onSubmit = async (data) => {
         const response = await saveFormData(data);
 
-        console.log(response);
-
         if (response.status === 400) {
             // Validation error
             // Expect response to be a JSON response with the structure:

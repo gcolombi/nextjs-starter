@@ -12,7 +12,9 @@ export default function FormSelect({
     required,
     className,
     wrapperClassName,
-    options = ['Option 1', 'Option 2', 'Option 3']
+    options = ['Option 1', 'Option 2', 'Option 3'],
+    custom,
+    errors
 }) {
     const [selected, setSelected] = useState('');
 
@@ -26,7 +28,8 @@ export default function FormSelect({
                 className={classNames(
                     styles['c-formElement'],
                     styles[className],
-                    {[styles['c-floatingLabel']]: label}
+                    {[styles['c-floatingLabel']]: label},
+                    {[styles['has-error']]: required && errors?.type === "required" || errors?.message}
                 )}
             >
                 <Chevron />
@@ -36,6 +39,7 @@ export default function FormSelect({
                     name={name}
                     required={required}
                     onChange={change}
+                    {...custom}
                 >
                     {defaultValue &&
                         <option value={defaultValue} disabled>{defaultValue}</option>
@@ -52,6 +56,12 @@ export default function FormSelect({
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div>
+            {required && errors?.type === "required" &&
+                <label htmlFor={htmlFor}>This field is required</label>
+            }
+            {errors?.message &&
+                <label htmlFor={htmlFor}>{errors?.name?.message}</label>
+            }
         </div>
     );
 }
