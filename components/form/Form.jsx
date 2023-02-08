@@ -8,9 +8,9 @@ import Button from '../Button';
 
 import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
+import FormRadioList from './FormRadioList';
 
 async function saveFormData(data) {
-    // console.log(data);
     return await fetch("/api/form", {
         body: JSON.stringify(data),
         headers: {"Content-Type": "application/json"},
@@ -80,6 +80,17 @@ export default function Form() {
                     custom={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
+                <FormInput
+                    htmlFor="resume"
+                    label="Resume"
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    required={true}
+                    className="c-formElement--upload--bordered"
+                    custom={{...register("resume", {required: true})}}
+                    errors={errors['resume']}
+                />
                 <FormSelect
                     htmlFor="subject"
                     label="Subject"
@@ -95,6 +106,12 @@ export default function Form() {
                     name="choices"
                     register={register}
                     errors={errors['choices']}
+                />
+                <FormRadioList
+                    title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                    name="question"
+                    register={register}
+                    errors={errors['question']}
                 />
                 <FormTextarea
                     htmlFor="message"

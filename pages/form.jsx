@@ -48,10 +48,11 @@ export default function FormElements() {
                         />
                         <FormCheckboxList
                             title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                            name="choices"
                         />
                         <FormRadioList
                             title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                            inputName="radio_field_name"
+                            name="question"
                         />
                         <FormTextarea
                             htmlFor="message"

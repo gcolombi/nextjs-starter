@@ -1,6 +1,6 @@
-import { useState } from "react";
-import FormCheckbox from "./FormCheckbox";
-import classNames from "classnames";
+import { useState } from 'react';
+import FormCheckbox from './FormCheckbox';
+import classNames from 'classnames';
 
 export default function FormCheckboxList({
     title,
