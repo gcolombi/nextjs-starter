@@ -52,7 +52,7 @@ export default function FormSelect({
                     ))}
                 </select>
                 {label && htmlFor &&
-                    <label htmlFor={htmlFor}>{label}</label>
+                    <label htmlFor={htmlFor}>{label}{required && ' *'}</label>
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div>

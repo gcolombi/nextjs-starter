@@ -6,6 +6,8 @@ import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
 import Button from '../Button';
 
+import FormCheckboxList from './FormCheckboxList';
+
 async function saveFormData(data) {
     // console.log(data);
     return await fetch("/api/form", {
@@ -16,7 +18,7 @@ async function saveFormData(data) {
 }
 
 export default function Form() {
-    const {register, handleSubmit, setError, formState: { isSubmitting, errors, isDirty }} = useForm();
+    const {register, handleSubmit, setError, reset, formState: { isSubmitting, errors, isDirty }} = useForm();
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
@@ -28,10 +30,11 @@ export default function Form() {
             // {"fieldName": "error message for that field"}
             const fieldToErrorMessage = await response.json();
             for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
-                setError(fieldName, {type: 'custom', message: errorMessage})
+                setError(fieldName, {type: 'custom', message: errorMessage});
             }
         } else if (response.ok) {
             // successful
+            reset();
         } else {
             // unknown error
         }
@@ -73,6 +76,9 @@ export default function Form() {
                     custom={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
+                {/* <FormCheckboxList
+                    title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                /> */}
                 <FormTextarea
                     htmlFor="message"
                     label="Message"
