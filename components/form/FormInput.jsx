@@ -65,7 +65,7 @@ export default function FormInput({
                     <label htmlFor={htmlFor}>Invalid email address</label>
                 }
                 {errors?.message &&
-                    <label htmlFor={htmlFor}>{errors?.name?.message}</label>
+                    <label htmlFor={htmlFor}>{errors?.message}</label>
                 }
             </div>
         </>

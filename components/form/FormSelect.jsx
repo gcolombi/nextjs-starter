@@ -60,7 +60,7 @@ export default function FormSelect({
                 <label htmlFor={htmlFor}>This field is required</label>
             }
             {errors?.message &&
-                <label htmlFor={htmlFor}>{errors?.name?.message}</label>
+                <label htmlFor={htmlFor}>{errors?.message}</label>
             }
         </div>
     );

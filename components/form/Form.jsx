@@ -6,6 +6,7 @@ import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
 import Button from '../Button';
 
+import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
 
 async function saveFormData(data) {
@@ -22,6 +23,7 @@ export default function Form() {
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
+        console.log(data);
         const response = await saveFormData(data);
 
         if (response.status === 400) {
@@ -34,6 +36,8 @@ export default function Form() {
             }
         } else if (response.ok) {
             // successful
+
+            /* reset the form values */
             reset();
         } else {
             // unknown error
@@ -76,9 +80,22 @@ export default function Form() {
                     custom={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
-                {/* <FormCheckboxList
+                <FormSelect
+                    htmlFor="subject"
+                    label="Subject"
+                    id="subject"
+                    name="subject"
+                    required={true}
+                    className="c-formElement--select--bordered"
+                    custom={{...register("subject", {required: true})}}
+                    errors={errors['subject']}
+                />
+                <FormCheckboxList
                     title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                /> */}
+                    name="choices"
+                    register={register}
+                    errors={errors['choices']}
+                />
                 <FormTextarea
                     htmlFor="message"
                     label="Message"
