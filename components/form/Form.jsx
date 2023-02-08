@@ -75,14 +75,16 @@ export default function Form() {
                     custom={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
-                {/* <FormTextarea
+                <FormTextarea
                     htmlFor="message"
                     label="Message"
                     id="message"
                     name="message"
                     required={true}
                     className="c-formElement--bordered"
-                /> */}
+                    custom={{...register("message", {required: true})}}
+                    errors={errors['message']}
+                />
                 <Button
                     label="Send"
                     className="c-btn"

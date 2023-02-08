@@ -9,7 +9,9 @@ export default function FormTextarea({
     placeholder=" ",
     required,
     className,
-    wrapperClassName
+    wrapperClassName,
+    custom,
+    errors
 }) {
     return(
         <div className={wrapperClassName}>
@@ -17,7 +19,8 @@ export default function FormTextarea({
                 className={classNames(
                     styles['c-formElement'],
                     styles[className],
-                    styles['c-floatingLabel']
+                    styles['c-floatingLabel'],
+                    {[styles['has-error']]: required && errors?.type === "required" || errors?.message}
                 )}
             >
                 <textarea
@@ -25,12 +28,19 @@ export default function FormTextarea({
                     name={name}
                     placeholder={placeholder}
                     required={required}
+                    {...custom}
                 />
                 {label && htmlFor &&
                     <label htmlFor={htmlFor}>{label}</label>
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div>
+            {required && errors?.type === "required" &&
+                <label htmlFor={htmlFor}>This field is required</label>
+            }
+            {errors?.message &&
+                <label htmlFor={htmlFor}>{errors?.name?.message}</label>
+            }
         </div>
     );
 }
