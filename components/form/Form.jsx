@@ -19,7 +19,7 @@ async function saveFormData(data) {
 }
 
 export default function Form() {
-    const {register, handleSubmit, setError, reset, formState: { isSubmitting, errors, isDirty }} = useForm();
+    const {register, resetField, handleSubmit, setError, clearErrors, reset, formState: { isSubmitting, isSubmitSuccessful, errors, isDirty }} = useForm();
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
@@ -88,8 +88,20 @@ export default function Form() {
                     name="resume"
                     required={true}
                     className="c-formElement--upload--bordered"
-                    custom={{...register("resume", {required: true})}}
+                    custom={{...register("resume", {required: true,
+                    validate: {
+                        acceptedFormats: files =>
+                          ['image/jpeg', 'image/png', 'image/gif'].includes(
+                            files[0]?.type
+                          ) || 'Only PNG, JPEG e GIF',
+                    }
+                    })}}
+                    // custom={{...register("resume")}}
+                    resetField={resetField}
+                    setError={setError}
+                    clearErrors={clearErrors}
                     errors={errors['resume']}
+                    isSubmitSuccessful={isSubmitSuccessful}
                 />
                 <FormSelect
                     htmlFor="subject"

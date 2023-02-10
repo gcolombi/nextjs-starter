@@ -1,5 +1,5 @@
 import styles from '../../styles/modules/FormInput.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import FileUpload from '../icons/FileUpload';
 
@@ -15,17 +15,46 @@ export default function FormInput({
     className,
     wrapperClassName,
     custom,
-    errors
+    resetField,
+    setError,
+    clearErrors,
+    errors,
+    isSubmitSuccessful
 }) {
     const [labelTitle, setLabelTitle] = useState(label);
     const [file, setFile] = useState(null);
 
     const update = (e) => {
         if (e.target.files) {
-            setFile(e.target.files[0]);
+            setFile(e.target.files[0] || null);
             setLabelTitle(e.target.files[0]?.name || label);
+
+            // const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
+
+            // if (regex.test(e.target.files[0]?.name)) {
+                // console.log('passed');
+                // setFile(e.target.files[0]);
+                // setLabelTitle(e.target.files[0]?.name);
+                // clearErrors?.(custom?.name);
+            // } else {
+                // console.log('not passed');
+                // setFile(null);
+                // setLabelTitle(label);
+                // resetField?.(custom?.name);
+                // setError?.(custom?.name, {
+                //     type: 'filetype',
+                //     message: 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid'
+                // });
+            // }
         }
     };
+
+    /* Reset label after successful submit */
+    useEffect(() => {
+      if (isSubmitSuccessful)
+        setLabelTitle(label);
+    }, [isSubmitSuccessful]);
+
 
     return(
         <>
@@ -47,14 +76,17 @@ export default function FormInput({
                         placeholder={placeholder}
                         value={value}
                         required={required}
-                        onChange={update}
-                        {...custom}
+                        {...custom }
+                        onChange={(e) => {
+                            custom.onChange(e);
+                            update(e);
+                        }}
                     />
                     {type === 'file' &&
                         <FileUpload />
                     }
                     {label && htmlFor &&
-                        <label htmlFor={htmlFor}>{labelTitle}{required && ' *'}</label>
+                        <label htmlFor={htmlFor}>{labelTitle}{required && labelTitle === label && ' *'}</label>
                     }
                     <span className={styles['c-formElement--focusLine']} />
                 </div>
