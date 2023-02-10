@@ -10,7 +10,7 @@ export default function FormCheckbox({
     value,
     className,
     onChange,
-    custom,
+    settings,
 }) {
     return(
         <div
@@ -25,7 +25,7 @@ export default function FormCheckbox({
                 name={name}
                 value={value}
                 onChange={onChange}
-                {...custom}
+                {...settings}
             />
             <label htmlFor={htmlFor}>
                 <Cross />

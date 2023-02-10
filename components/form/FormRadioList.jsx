@@ -36,7 +36,7 @@ export default function FormRadioList({
                         value={item}
                         className="c-formElement--radio"
                         onChange={change}
-                        custom={name && {...register?.(name, {required: true})}}
+                        settings={name && {...register?.(name, {required: true})}}
                     />
                 ))}
             </div>

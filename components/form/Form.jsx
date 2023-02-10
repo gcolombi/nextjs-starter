@@ -19,7 +19,7 @@ async function saveFormData(data) {
 }
 
 export default function Form() {
-    const {register, resetField, handleSubmit, setError, clearErrors, reset, formState: { isSubmitting, isSubmitSuccessful, errors, isDirty }} = useForm();
+    const {register, handleSubmit, setError, reset, formState: { isSubmitting, isSubmitSuccessful, errors, isDirty }} = useForm();
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
@@ -55,7 +55,7 @@ export default function Form() {
                         name="firstname"
                         required={true}
                         className="c-formElement--bordered"
-                        custom={{...register("firstname", {required: true})}}
+                        settings={{...register("firstname", {required: true})}}
                         errors={errors['firstname']}
                     />
                     <FormInput
@@ -65,7 +65,7 @@ export default function Form() {
                         name="lastname"
                         required={true}
                         className="c-formElement--bordered"
-                        custom={{...register("lastname", {required: true})}}
+                        settings={{...register("lastname", {required: true})}}
                         errors={errors['lastname']}
                     />
                 </div>
@@ -77,7 +77,7 @@ export default function Form() {
                     name="email"
                     required={true}
                     className="c-formElement--bordered"
-                    custom={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
+                    settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
                 <FormInput
@@ -88,18 +88,11 @@ export default function Form() {
                     name="resume"
                     required={true}
                     className="c-formElement--upload--bordered"
-                    custom={{...register("resume", {required: true,
-                    validate: {
-                        acceptedFormats: files =>
-                          ['image/jpeg', 'image/png', 'image/gif'].includes(
-                            files[0]?.type
-                          ) || 'Only PNG, JPEG e GIF',
-                    }
-                    })}}
-                    // custom={{...register("resume")}}
-                    resetField={resetField}
-                    setError={setError}
-                    clearErrors={clearErrors}
+                    settings={{...register("resume", {required: true,
+                    validate: (files) => {
+                        const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
+                        return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
+                    }})}}
                     errors={errors['resume']}
                     isSubmitSuccessful={isSubmitSuccessful}
                 />
@@ -110,7 +103,7 @@ export default function Form() {
                     name="subject"
                     required={true}
                     className="c-formElement--select--bordered"
-                    custom={{...register("subject", {required: true})}}
+                    settings={{...register("subject", {required: true})}}
                     errors={errors['subject']}
                 />
                 <FormCheckboxList
@@ -132,7 +125,7 @@ export default function Form() {
                     name="message"
                     required={true}
                     className="c-formElement--bordered"
-                    custom={{...register("message", {required: true})}}
+                    settings={{...register("message", {required: true})}}
                     errors={errors['message']}
                 />
                 <Button

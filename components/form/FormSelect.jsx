@@ -13,7 +13,7 @@ export default function FormSelect({
     className,
     wrapperClassName,
     options = ['Option 1', 'Option 2', 'Option 3'],
-    custom,
+    settings,
     errors
 }) {
     const [selected, setSelected] = useState('');
@@ -39,7 +39,7 @@ export default function FormSelect({
                     name={name}
                     required={required}
                     onChange={change}
-                    {...custom}
+                    {...settings}
                 >
                     {defaultValue &&
                         <option value={defaultValue} disabled>{defaultValue}</option>

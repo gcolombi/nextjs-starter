@@ -10,7 +10,7 @@ export default function FormTextarea({
     required,
     className,
     wrapperClassName,
-    custom,
+    settings,
     errors
 }) {
     return(
@@ -28,7 +28,7 @@ export default function FormTextarea({
                     name={name}
                     placeholder={placeholder}
                     required={required}
-                    {...custom}
+                    {...settings}
                 />
                 {label && htmlFor &&
                     <label htmlFor={htmlFor}>{label}{required && ' *'}</label>

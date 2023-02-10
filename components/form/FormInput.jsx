@@ -14,10 +14,7 @@ export default function FormInput({
     required,
     className,
     wrapperClassName,
-    custom,
-    resetField,
-    setError,
-    clearErrors,
+    settings,
     errors,
     isSubmitSuccessful
 }) {
@@ -26,26 +23,8 @@ export default function FormInput({
 
     const update = (e) => {
         if (e.target.files) {
-            setFile(e.target.files[0] || null);
+            setFile(e.target.files[0]);
             setLabelTitle(e.target.files[0]?.name || label);
-
-            // const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
-
-            // if (regex.test(e.target.files[0]?.name)) {
-                // console.log('passed');
-                // setFile(e.target.files[0]);
-                // setLabelTitle(e.target.files[0]?.name);
-                // clearErrors?.(custom?.name);
-            // } else {
-                // console.log('not passed');
-                // setFile(null);
-                // setLabelTitle(label);
-                // resetField?.(custom?.name);
-                // setError?.(custom?.name, {
-                //     type: 'filetype',
-                //     message: 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid'
-                // });
-            // }
         }
     };
 
@@ -76,9 +55,9 @@ export default function FormInput({
                         placeholder={placeholder}
                         value={value}
                         required={required}
-                        {...custom }
+                        {...settings }
                         onChange={(e) => {
-                            custom.onChange(e);
+                            settings.onChange(e);
                             update(e);
                         }}
                     />

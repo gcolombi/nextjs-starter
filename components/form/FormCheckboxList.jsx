@@ -46,7 +46,7 @@ export default function FormCheckboxList({
                         onChange={() =>
                             change(item)
                         }
-                        custom={name && {...register?.(name, {required: true})}}
+                        settings={name && {...register?.(name, {required: true})}}
                     />
                 ))}
             </div>
