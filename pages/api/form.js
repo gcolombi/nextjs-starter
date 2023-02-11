@@ -31,7 +31,7 @@ function formidablePromise(req, opts) {
 
 const fileConsumer = (acc) => {
     const writable = new Writable({
-        write: (chunk, _enc, next) => {
+        write: (chunk, _encoding, next) => {
             acc.push(chunk);
             next();
         }
@@ -46,17 +46,8 @@ export default async function handler(req, res) {
     // const notFoundPage = await fetchRes.text();
     // return res.status(404).send(notFoundPage)
 
-    // if (req.method !== 'POST') {
-    //     res.setHeader('Allow', 'POST');
-    //     res.status(405).json({
-    //         data: null,
-    //         error: 'Method Not Allowed',
-    //     });
-    //     return;
-    // }
-
-    if (req.method !== 'POST') return res.status(404).end();
     // if (req.method !== 'POST') return res.status(404).send(notFoundPage);
+    if (req.method !== 'POST') return res.status(404).end();
 
 
     try {
@@ -64,7 +55,7 @@ export default async function handler(req, res) {
 
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
-            // consume this, otherwise formidable tries to save the file to disk
+            /* consume this, otherwise formidable tries to save the file to disk */
             fileWriteStreamHandler: () => fileConsumer(chunks),
         });
         // or the actual field name you used in the front end
@@ -74,7 +65,7 @@ export default async function handler(req, res) {
 
         const filename = resume?.originalFilename;
 
-        const attachments = [{ content: fileData, filename }];
+        const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
         console.log({
             attachments,
             fields,
