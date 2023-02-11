@@ -9,10 +9,10 @@ import Button from '../Button';
 import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
+import FormFileInput from './FormFileInput';
 
 
 import { useState } from 'react';
-import FileInput from './FormFileInput';
 
 async function saveFormData(data) {
     console.log('save form data');
@@ -29,23 +29,15 @@ async function saveFormData(data) {
     // });
 }
 
-// const FileInput = ({ control, name }) => {
-//     const { field } = useController({ control, name });
-//     const [value, setValue] = useState("");
-//     return (
-//         <input
-//             type="file"
-//             value={value}
-//             onChange={(e) => {
-//                 setValue(e.target.value);
-//                 field.onChange(e.target.files);
-//             }}
-//         />
-//     );
-// };
-
 export default function Form() {
-    const {register, control, handleSubmit, setError, reset, formState: { isSubmitting, isSubmitSuccessful, errors, isDirty }} = useForm();
+    const {
+        register,
+        control,
+        handleSubmit,
+        reset,
+        formState: { isSubmitting, errors, isDirty }
+    } = useForm();
+
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
@@ -97,7 +89,7 @@ export default function Form() {
                         errors={errors['lastname']}
                     />
                 </div>
-                <FormInput
+                {/* <FormInput
                     htmlFor="email"
                     label="Email"
                     type="email"
@@ -107,8 +99,8 @@ export default function Form() {
                     className="c-formElement--bordered"
                     settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
-                />
-                {/* <FormInput
+                /> */}
+                <FormFileInput
                     htmlFor="resume"
                     label="Resume"
                     type="file"
@@ -116,17 +108,22 @@ export default function Form() {
                     name="resume"
                     required={true}
                     className="c-formElement--upload--bordered"
-                    // settings={{...register("resume", {required: true,
-                    // validate: (files) => {
-                    //     const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
-                    //     return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
-                    // }})}}
-                    // errors={errors['resume']}
+                    rules={{
+                        required: true,
+                        validate: (files) => {
+                            console.log(files);
+                            console.log('validate');
+                            const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
+
+                            if (!files.length)
+                                return 'This field is required';
+
+                            return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
+                        }
+                    }}
                     control={control}
-                    isSubmitSuccessful={isSubmitSuccessful}
-                /> */}
-                {/* <FileInput name="file" control={control} /> */}
-                <FormSelect
+                />
+                {/* <FormSelect
                     htmlFor="subject"
                     label="Subject"
                     id="subject"
@@ -157,7 +154,7 @@ export default function Form() {
                     className="c-formElement--bordered"
                     settings={{...register("message", {required: true})}}
                     errors={errors['message']}
-                />
+                /> */}
                 <Button
                     label="Send"
                     className="c-btn"

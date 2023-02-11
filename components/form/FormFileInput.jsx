@@ -4,34 +4,25 @@ import classNames from 'classnames';
 import FileUpload from '../icons/FileUpload';
 import { useController } from 'react-hook-form';
 
-export default function FormInput({
+export default function FormFileInput({
     htmlFor,
     label,
-    type="text",
     id,
     name,
-    placeholder=" ",
-    value,
     required,
     className,
     wrapperClassName,
-    settings,
-    errors,
-    control,
-    isSubmitSuccessful
+    rules,
+    control
 }) {
     const [labelTitle, setLabelTitle] = useState(label);
     const [file, setFile] = useState(null);
-    if (control) {
-        const { field } = useController({ control, name });
-    }
+    const { field, fieldState: { error }, formState: { isSubmitSuccessful } } = useController({ control, name, rules });
 
     const update = (e) => {
-        if (e.target.files) {
-            setFile(e.target.files[0]);
-            setLabelTitle(e.target.files[0]?.name || label);
-            // field.onChange(e.target.files);
-        }
+        field.onChange(e.target.files);
+        setFile(e.target.files[0]);
+        setLabelTitle(e.target.files[0]?.name || label);
     };
 
     /* Reset label after successful submit */
@@ -39,7 +30,6 @@ export default function FormInput({
       if (isSubmitSuccessful)
         setLabelTitle(label);
     }, [isSubmitSuccessful]);
-
 
     return(
         <>
@@ -49,40 +39,28 @@ export default function FormInput({
                         styles['c-formElement'],
                         styles[className],
                         {
-                            [styles['c-floatingLabel']]: type !== 'file',
-                            [styles['has-error']]: required && errors?.type === "required" || errors?.type === "pattern" || errors?.message
+                            [styles['has-error']]: required && error?.type === "required" || error?.type === "pattern" || error?.message
                         }
                     )}
                 >
                     <input
-                        type={type}
+                        type="file"
                         id={id}
-                        name={name}
-                        placeholder={placeholder}
-                        value={value}
+                        name={field.name}
                         required={required}
-                        {...settings }
-                        onChange={(e) => {
-                            settings.onChange(e);
-                            update(e);
-                        }}
+                        onChange={update}
                     />
-                    {type === 'file' &&
-                        <FileUpload />
-                    }
+                    <FileUpload />
                     {label && htmlFor &&
                         <label htmlFor={htmlFor}>{labelTitle}{required && labelTitle === label && ' *'}</label>
                     }
                     <span className={styles['c-formElement--focusLine']} />
                 </div>
-                {required && errors?.type === "required" &&
+                {required && error?.type === "required" &&
                     <label htmlFor={htmlFor}>This field is required</label>
                 }
-                {errors?.type === "pattern" &&
-                    <label htmlFor={htmlFor}>Invalid email address</label>
-                }
-                {errors?.message &&
-                    <label htmlFor={htmlFor}>{errors?.message}</label>
+                {error?.message &&
+                    <label htmlFor={htmlFor}>{error?.message}</label>
                 }
             </div>
         </>
