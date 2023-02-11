@@ -18,15 +18,25 @@ async function saveFormData(data) {
     console.log('save form data');
     console.log(data);
 
-    // const formData = new FormData();
-    // formData.append('file', data.file[0]);
+    const formData = new FormData();
 
-    // return await fetch("/api/form", {
-    //     // body: JSON.stringify(data),
-    //     body: formData,
-    //     // headers: {"Content-Type": "application/json"},
-    //     method: "POST"
-    // });
+    for (const key in data) {
+        if (data[key] instanceof FileList) {
+            formData.append(key, data[key][0]);
+            return;
+        }
+        formData.append(key, data[key]);
+    }
+
+
+    return await fetch("/api/form", {
+        // body: JSON.stringify(data),
+        // body: data,
+        body: formData,
+        // headers: {"Content-Type": "application/json"},
+        // headers: {"Content-Type": "multipart/form-data"},
+        method: "POST"
+    });
 }
 
 export default function Form() {
@@ -41,8 +51,9 @@ export default function Form() {
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
-        console.log(data);
-        // const response = await saveFormData(data);
+        const response = await saveFormData(data);
+
+        console.log(response);
 
         // if (response.status === 400) {
         //     // Validation error
