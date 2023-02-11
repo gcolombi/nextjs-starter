@@ -1,6 +1,50 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { Writable } from 'stream';
+import formidable from 'formidable';
 
-export default function handler(req, res) {
+const formidableConfig = {
+    keepExtensions: true,
+    // maxFileSize: 10_000_000,
+    // maxFieldsSize: 10_000_000,
+    // maxFields: 0,
+    // multiples: false,
+};
+
+export const config = {
+    api: {
+        bodyParser: false,
+    }
+};
+
+function formidablePromise(req, opts) {
+    return new Promise((accept, reject) => {
+        const form = formidable(opts);
+
+        form.parse(req, (err, fields, files) => {
+            if (err) {
+                return reject(err);
+            }
+            return accept({ fields, files });
+        });
+    });
+}
+
+const fileConsumer = (acc) => {
+    const writable = new Writable({
+        write: (chunk, _enc, next) => {
+            acc.push(chunk);
+            next();
+        }
+    });
+
+    return writable;
+};
+
+export default async function handler(req, res) {
+
+    // const fetchRes = await fetch('http://localhost:3000/404');
+    // const notFoundPage = await fetchRes.text();
+    // return res.status(404).send(notFoundPage)
 
     // if (req.method !== 'POST') {
     //     res.setHeader('Allow', 'POST');
@@ -12,22 +56,40 @@ export default function handler(req, res) {
     // }
 
     if (req.method !== 'POST') return res.status(404).end();
+    // if (req.method !== 'POST') return res.status(404).send(notFoundPage);
 
-    console.log(req.body);
 
-    // const { firstname, lastname, email, resume, subject, choices, question, message } = req.body;
+    try {
+        const chunks = [];
 
-    const obj = {
+        const { fields, files } = await formidablePromise(req, {
+            ...formidableConfig,
+            // consume this, otherwise formidable tries to save the file to disk
+            fileWriteStreamHandler: () => fileConsumer(chunks),
+        });
+        // or the actual field name you used in the front end
+        const { resume } = files;
 
+        const fileData = Buffer.concat(chunks);
+
+        const filename = resume?.originalFilename;
+
+        const attachments = [{ content: fileData, filename }];
+        console.log({
+            attachments,
+            fields,
+        });
+
+        // use fileData, fields (that has your form key, value pairs) or attachments as needed
+        return res.status(204).end();
+        // res.status(201).json({ message: 'Thank you, your message has been sent successfully.', message: "" });
+    } catch (err) {
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 
-    console.log(obj);
 
-    res.status(201).json({ message: 'Thank you, your message has been sent successfully.', message: obj });
+
+
+
+
 }
-
-export const config = {
-    api: {
-        bodyParser: false,
-    },
-};

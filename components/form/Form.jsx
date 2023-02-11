@@ -11,31 +11,28 @@ import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormFileInput from './FormFileInput';
 
-
-import { useState } from 'react';
-
 async function saveFormData(data) {
-    console.log('save form data');
-    console.log(data);
-
+    console.log('request');
     const formData = new FormData();
 
     for (const key in data) {
         if (data[key] instanceof FileList) {
             formData.append(key, data[key][0]);
-            return;
+        } else {
+            formData.append(key, data[key]);
         }
-        formData.append(key, data[key]);
     }
 
+    console.log(formData);
 
     return await fetch("/api/form", {
         // body: JSON.stringify(data),
         // body: data,
-        body: formData,
+        // body: formData,
+        method: "POST",
+        body: formData
         // headers: {"Content-Type": "application/json"},
         // headers: {"Content-Type": "multipart/form-data"},
-        method: "POST"
     });
 }
 
@@ -55,22 +52,22 @@ export default function Form() {
 
         console.log(response);
 
-        // if (response.status === 400) {
-        //     // Validation error
-        //     // Expect response to be a JSON response with the structure:
-        //     // {"fieldName": "error message for that field"}
-        //     const fieldToErrorMessage = await response.json();
-        //     for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
-        //         setError(fieldName, {type: 'custom', message: errorMessage});
-        //     }
-        // } else if (response.ok) {
-        //     // successful
+        if (response.status === 400) {
+            // Validation error
+            // Expect response to be a JSON response with the structure:
+            // {"fieldName": "error message for that field"}
+            const fieldToErrorMessage = await response.json();
+            for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
+                setError(fieldName, {type: 'custom', message: errorMessage});
+            }
+        } else if (response.ok) {
+            // successful
 
-        //     /* reset the form values */
-        //     reset();
-        // } else {
-        //     // unknown error
-        // }
+            /* reset the form values */
+            reset();
+        } else {
+            // unknown error
+        }
     };
 
     // const onSubmit = (data) => console.log(data);
@@ -111,7 +108,7 @@ export default function Form() {
                     settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 /> */}
-                <FormFileInput
+                {/* <FormFileInput
                     htmlFor="resume"
                     label="Resume"
                     type="file"
@@ -122,8 +119,6 @@ export default function Form() {
                     rules={{
                         required: true,
                         validate: (files) => {
-                            console.log(files);
-                            console.log('validate');
                             const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
 
                             if (!files.length)
@@ -133,7 +128,7 @@ export default function Form() {
                         }
                     }}
                     control={control}
-                />
+                /> */}
                 {/* <FormSelect
                     htmlFor="subject"
                     label="Subject"
