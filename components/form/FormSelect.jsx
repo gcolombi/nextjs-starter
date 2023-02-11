@@ -28,8 +28,10 @@ export default function FormSelect({
                 className={classNames(
                     styles['c-formElement'],
                     styles[className],
-                    {[styles['c-floatingLabel']]: label},
-                    {[styles['has-error']]: required && errors?.type === "required" || errors?.message}
+                    {
+                        [styles['c-floatingLabel']]: label,
+                        [styles['has-error']]: required && errors?.type === "required" || errors?.message
+                    }
                 )}
             >
                 <Chevron />
