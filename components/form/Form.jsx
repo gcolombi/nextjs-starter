@@ -17,9 +17,9 @@ async function saveFormData(data) {
 
     for (const key in data) {
         if (data[key] instanceof FileList) {
-            formData.append(key, data[key][0]);
+            formData.set(key, data[key][0]);
         } else {
-            formData.append(key, data[key]);
+            formData.set(key, data[key]);
         }
     }
 
