@@ -32,9 +32,6 @@ export default function MobileNavigation({
                                 <div className={styles['c-mobileNav__primary--list']}>
                                     <ul>
                                         <li>
-                                            <NavItem href="#" title="Sollicitudin" className={styles['is-current-page']} />
-                                        </li>
-                                        <li>
                                             <NavItem href="/blog" title="Blog" className={styles['is-current-page']} />
                                         </li>
                                         <li>
