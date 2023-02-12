@@ -70,6 +70,7 @@ export default async function handler(req, res) {
         });
 
         // use fileData, fields (that has your form key, value pairs) or attachments as needed
+
         return res.status(204).end();
         // res.status(201).json({ message: 'Thank you, your message has been sent successfully.', message: "" });
     } catch (err) {
