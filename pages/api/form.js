@@ -100,7 +100,7 @@ export default async function handler(req, res) {
             });
             console.log('Message Sent', emailRes.messageId);
 
-            res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
+            return res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
         } catch (error) {
 
             // @todo add res status
@@ -108,7 +108,7 @@ export default async function handler(req, res) {
             console.log(error);
         }
 
-    } catch (err) {
-        return res.status(500).json({ error: "Internal Server Error" });
+    } catch (error) {
+        return res.status(error.statusCode || 500).json({ error: error.message });
     }
 }
