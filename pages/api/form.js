@@ -41,13 +41,11 @@ const fileConsumer = (acc) => {
 };
 
 export default async function handler(req, res) {
+    const fetchResponse = await fetch('http://localhost:3000/404');
+    const notFoundPage = await fetchResponse.text();
 
-    // const fetchRes = await fetch('http://localhost:3000/404');
-    // const notFoundPage = await fetchRes.text();
-    // return res.status(404).send(notFoundPage)
-
-    // if (req.method !== 'POST') return res.status(404).send(notFoundPage);
-    if (req.method !== 'POST') return res.status(404).end();
+    /* Return 404 page if request method is not equal to POST, you can use end() instead of send(notFoundPage) */
+    if (req.method !== 'POST') return res.status(404).send(notFoundPage);
 
 
     try {
