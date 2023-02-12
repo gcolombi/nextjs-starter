@@ -44,22 +44,22 @@ export default function Form() {
 
         console.log(response);
 
-        if (response.status === 400) {
-            // Validation error
-            // Expect response to be a JSON response with the structure:
-            // {"fieldName": "error message for that field"}
-            const fieldToErrorMessage = await response.json();
-            for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
-                setError(fieldName, {type: 'custom', message: errorMessage});
-            }
-        } else if (response.ok) {
-            // successful
+        // if (response.status === 400) {
+        //     // Validation error
+        //     // Expect response to be a JSON response with the structure:
+        //     // {"fieldName": "error message for that field"}
+        //     const fieldToErrorMessage = await response.json();
+        //     for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
+        //         setError(fieldName, {type: 'custom', message: errorMessage});
+        //     }
+        // } else if (response.ok) {
+        //     // successful
 
-            /* reset the form values */
-            reset();
-        } else {
-            // unknown error
-        }
+        //     /* reset the form values */
+        //     reset();
+        // } else {
+        //     // unknown error
+        // }
     };
 
     return(
@@ -98,7 +98,7 @@ export default function Form() {
                     settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
-                <FormFileInput
+                {/* <FormFileInput
                     htmlFor="resume"
                     label="Resume"
                     type="file"
@@ -118,7 +118,7 @@ export default function Form() {
                         }
                     }}
                     control={control}
-                />
+                /> */}
                 {/* <FormSelect
                     htmlFor="subject"
                     label="Subject"

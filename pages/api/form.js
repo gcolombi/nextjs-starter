@@ -1,7 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Writable } from 'stream';
 import formidable from 'formidable';
 import nodemailer from 'nodemailer';
+
+export const config = {
+    api: {
+        bodyParser: false,
+    }
+};
 
 const formidableConfig = {
     keepExtensions: true,
@@ -11,31 +16,17 @@ const formidableConfig = {
     // multiples: false,
 };
 
-export const config = {
-    api: {
-        bodyParser: false,
-    }
-};
-
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASSWORD,
-    }
-});
+const FormidableError = formidable.errors.FormidableError;
 
 function formidablePromise(req, opts) {
     return new Promise((accept, reject) => {
         const form = formidable(opts);
 
         form.parse(req, (err, fields, files) => {
-            if (err) {
+            // if (err) {
                 return reject(err);
-            }
-            return accept({ fields, files });
+            // }
+            // return accept({ fields, files });
         });
     });
 }
@@ -50,6 +41,16 @@ const fileConsumer = (acc) => {
 
     return writable;
 };
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
+    }
+});
 
 export default async function handler(req, res) {
     const fetchResponse = await fetch('http://localhost:3000/404');
@@ -69,7 +70,7 @@ export default async function handler(req, res) {
         });
 
         /* Fields */
-        const { firstname, lastname, email } = fields;
+        const { firstname, lastname, email, subject, choices, question, message } = fields;
 
         /* Files */
         const { resume } = files;
@@ -101,14 +102,23 @@ export default async function handler(req, res) {
             console.log('Message Sent', emailRes.messageId);
 
             return res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
-        } catch (error) {
-
-            // @todo add res status
-
-            console.log(error);
+        } catch (err) {
+            console.log(err);
+            return res.status(err.statusCode || 500).json({ error: err.message });
         }
 
-    } catch (error) {
-        return res.status(error.statusCode || 500).json({ error: error.message });
+    } catch (err) {
+        // console.log('passed here and catch');
+        // return res.status(500).json({ error: 'Internal Server Error' });
+
+        if (err instanceof FormidableError) {
+            console.log(err);
+            console.log('instance Formidable');
+            return res.status(e.httpCode || 400).json({ data: null, error: err.message });
+        } else {
+            console.log('error server');
+            console.error(err);
+            return res.status(500).json({ data: null, error: "Internal Server Error" });
+        }
     }
 }
