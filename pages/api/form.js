@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Writable } from 'stream';
 import formidable from 'formidable';
+import nodemailer from 'nodemailer';
 
 const formidableConfig = {
     keepExtensions: true,
@@ -15,6 +16,16 @@ export const config = {
         bodyParser: false,
     }
 };
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
+    }
+});
 
 function formidablePromise(req, opts) {
     return new Promise((accept, reject) => {
@@ -56,30 +67,48 @@ export default async function handler(req, res) {
             /* consume this, otherwise formidable tries to save the file to disk */
             fileWriteStreamHandler: () => fileConsumer(chunks),
         });
-        // or the actual field name you used in the front end
+
+        /* Fields */
+        const { firstname, lastname, email } = fields;
+
+        /* Files */
         const { resume } = files;
-
         const fileData = Buffer.concat(chunks);
-
         const filename = resume?.originalFilename;
 
         const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
+
+        /* Testing purpose */
         console.log({
             attachments,
             fields,
         });
 
-        // use fileData, fields (that has your form key, value pairs) or attachments as needed
+        /* Sends email */
+        try {
+            const emailRes = await transporter.sendMail({
+                from: `${firstname} ${lastname} <${email}>`,
+                to: 'gcolombi88@gmail.com',
+                subject: `Contact Form Submission from ${firstname} ${lastname}`,
+                html: `
+                    <p>You have a new contact form submission from ${firstname} ${lastname}.</p><br>
+                    <p><strong>Firstname: </strong> ${firstname} </p><br>
+                    <p><strong>Lastname: </strong> ${lastname} </p><br>
+                    <p><strong>Email: </strong> ${email} </p><br>
+                `,
+                attachments,
+            });
+            console.log('Message Sent', emailRes.messageId);
 
-        return res.status(204).end();
-        // res.status(201).json({ message: 'Thank you, your message has been sent successfully.', message: "" });
+            res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
+        } catch (error) {
+
+            // @todo add res status
+
+            console.log(error);
+        }
+
     } catch (err) {
         return res.status(500).json({ error: "Internal Server Error" });
     }
-
-
-
-
-
-
 }
