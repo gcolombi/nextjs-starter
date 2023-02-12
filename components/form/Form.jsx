@@ -98,7 +98,7 @@ export default function Form() {
                     settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
-                {/* <FormFileInput
+                <FormFileInput
                     htmlFor="resume"
                     label="Resume"
                     type="file"
@@ -118,7 +118,7 @@ export default function Form() {
                         }
                     }}
                     control={control}
-                /> */}
+                />
                 {/* <FormSelect
                     htmlFor="subject"
                     label="Subject"
