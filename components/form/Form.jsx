@@ -1,5 +1,5 @@
 import styles from '../../styles/modules/Form.module.scss';
-import { useController, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
@@ -12,7 +12,6 @@ import FormRadioList from './FormRadioList';
 import FormFileInput from './FormFileInput';
 
 async function saveFormData(data) {
-    console.log('request');
     const formData = new FormData();
 
     for (const key in data) {
@@ -23,16 +22,9 @@ async function saveFormData(data) {
         }
     }
 
-    console.log(formData);
-
     return await fetch("/api/form", {
-        // body: JSON.stringify(data),
-        // body: data,
-        // body: formData,
         method: "POST",
         body: formData
-        // headers: {"Content-Type": "application/json"},
-        // headers: {"Content-Type": "multipart/form-data"},
     });
 }
 
@@ -69,8 +61,6 @@ export default function Form() {
             // unknown error
         }
     };
-
-    // const onSubmit = (data) => console.log(data);
 
     return(
         <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(onSubmit)} noValidate>
