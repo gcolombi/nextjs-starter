@@ -17,7 +17,7 @@ export default function FormFileInput({
 }) {
     const [labelTitle, setLabelTitle] = useState(label);
     const [file, setFile] = useState(null);
-    const { field, fieldState: { error }, formState: { isSubmitSuccessful } } = useController({ control, name, rules });
+    const { field, fieldState: { error }, formState: { isSubmitSuccessful }} = useController({ control, name, rules });
 
     const update = (e) => {
         field.onChange(e.target.files);

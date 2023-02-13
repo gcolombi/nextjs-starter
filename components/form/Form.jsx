@@ -11,7 +11,7 @@ import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormFileInput from './FormFileInput';
 
-async function saveFormData(data) {
+async function sendFormData(data) {
     const formData = new FormData();
 
     for (const key in data) {
@@ -22,10 +22,18 @@ async function saveFormData(data) {
         }
     }
 
-    return await fetch("/api/form", {
+    const response = await fetch("/api/form", {
         method: "POST",
         body: formData
     });
+
+    const _data = await response.json();
+
+    console.log(_data);
+
+    if (!response.ok) {
+        throw new Error(_data.message || 'Something went wrong');
+    }
 }
 
 export default function Form() {
@@ -40,9 +48,21 @@ export default function Form() {
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
-        const response = await saveFormData(data);
 
-        console.log(response);
+        try {
+            const response = await sendFormData(data);
+
+            console.log(response);
+
+            // @todo success toast notification
+
+            reset();
+        } catch (error) {
+            console.log(error);
+
+            // @todo error toast notification
+        }
+
 
         // if (response.status === 400) {
         //     // Validation error
@@ -98,7 +118,7 @@ export default function Form() {
                     settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
                     errors={errors['email']}
                 />
-                {/* <FormFileInput
+                <FormFileInput
                     htmlFor="resume"
                     label="Resume"
                     type="file"
@@ -118,7 +138,7 @@ export default function Form() {
                         }
                     }}
                     control={control}
-                /> */}
+                />
                 {/* <FormSelect
                     htmlFor="subject"
                     label="Subject"

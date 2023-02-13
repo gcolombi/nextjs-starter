@@ -1,5 +1,5 @@
 import { Writable } from 'stream';
-import formidable from 'formidable';
+import formidable, { errors as formidableErrors } from 'formidable';
 import nodemailer from 'nodemailer';
 
 export const config = {
@@ -10,23 +10,21 @@ export const config = {
 
 const formidableConfig = {
     keepExtensions: true,
-    // maxFileSize: 10_000_000,
+    maxFileSize: 5 * 1024 * 1024,
     // maxFieldsSize: 10_000_000,
     // maxFields: 0,
     // multiples: false,
 };
 
-const FormidableError = formidable.errors.FormidableError;
-
 function formidablePromise(req, opts) {
-    return new Promise((accept, reject) => {
+    return new Promise((resolve, reject) => {
         const form = formidable(opts);
 
         form.parse(req, (err, fields, files) => {
-            // if (err) {
+            if (err) {
                 return reject(err);
-            // }
-            // return accept({ fields, files });
+            }
+            return resolve({ fields, files });
         });
     });
 }
@@ -104,21 +102,23 @@ export default async function handler(req, res) {
             return res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
         } catch (err) {
             console.log(err);
-            return res.status(err.statusCode || 500).json({ error: err.message });
+            return res.status(err.statusCode || 500).json({ message: err.message });
         }
 
     } catch (err) {
-        // console.log('passed here and catch');
-        // return res.status(500).json({ error: 'Internal Server Error' });
+        if (err instanceof formidableErrors.FormidableError) {
+            console.log('instance FormidableError');
+            let message = 'An error has occurred';
 
-        if (err instanceof FormidableError) {
-            console.log(err);
-            console.log('instance Formidable');
-            return res.status(e.httpCode || 400).json({ data: null, error: err.message });
+            /* check specific formidable error according to the object's configuration */
+            if (err.code === formidableErrors.biggerThanMaxFileSize) {
+                message = 'Max file size 5MB exceeded';
+            }
+
+            return res.status(err.httpCode || 400).json({ data: null, message });
         } else {
-            console.log('error server');
-            console.error(err);
-            return res.status(500).json({ data: null, error: "Internal Server Error" });
+            console.log('Server Error');
+            return res.status(500).json({ data: null, message: "Internal Server Error" });
         }
     }
 }
