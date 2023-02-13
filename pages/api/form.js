@@ -63,7 +63,7 @@ export default async function handler(req, res) {
 
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
-            /* consume this, otherwise formidable tries to save the file to disk */
+            /* consumes this, otherwise formidable tries to save the file to disk */
             fileWriteStreamHandler: () => fileConsumer(chunks),
         });
 
@@ -110,7 +110,7 @@ export default async function handler(req, res) {
             console.log('instance FormidableError');
             let message = 'An error has occurred';
 
-            /* check specific formidable error according to the object's configuration */
+            /* checks specific formidable error according to the object's configuration */
             if (err.code === formidableErrors.biggerThanMaxFileSize) {
                 message = 'Max file size 5MB exceeded';
             }
