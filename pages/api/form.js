@@ -13,7 +13,7 @@ export const config = {
 const formidableConfig = {
     keepExtensions: true,
     maxFileSize: 5 * 1024 * 1024,
-    // maxFieldsSize: 10_000_000,
+    // maxFieldsSize: 0,
     // maxFields: 0,
     // multiples: false,
 };
@@ -26,6 +26,10 @@ function formidablePromise(req, opts) {
             if (err) {
                 return reject(err);
             }
+
+            /* Testing purpose */
+            // return resolve({});
+
             return resolve({ fields, files });
         });
     });
@@ -46,7 +50,7 @@ export default async function handler(req, res) {
     const fetchResponse = await fetch('http://localhost:3000/404');
     const notFoundPage = await fetchResponse.text();
 
-    /* Return 404 page if request method isn't equal to POST, you can use end() instead of send(notFoundPage) */
+    /* Returns 404 page if request method isn't equal to POST, you can use end() instead of send(notFoundPage) */
     if (req.method !== 'POST') return res.status(404).send(notFoundPage);
 
     try {
@@ -54,7 +58,7 @@ export default async function handler(req, res) {
 
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
-            /* consumes this, otherwise formidable tries to save the file to disk */
+            /* Consumes this, otherwise formidable tries to save the file to disk */
             fileWriteStreamHandler: () => fileConsumer(chunks),
         });
 
@@ -100,7 +104,7 @@ export default async function handler(req, res) {
         if (err instanceof formidableErrors.FormidableError) {
             let message = 'An error has occurred';
 
-            /* checks specific formidable error according to the object's configuration */
+            /* Checks specific formidable error according to the object's configuration */
             if (err.code === formidableErrors.biggerThanMaxFileSize) {
                 message = 'Max file size 5MB exceeded';
             }

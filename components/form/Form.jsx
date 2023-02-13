@@ -11,7 +11,7 @@ import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormFileInput from './FormFileInput';
 
-async function sendFormData(data) {
+async function sendFormData(data, setError) {
     const formData = new FormData();
 
     for (const key in data) {
@@ -29,9 +29,14 @@ async function sendFormData(data) {
 
     const _data = await response.json();
 
+    console.log(response);
     console.log(_data);
 
     if (!response.ok) {
+        /* API returns validation errors, this type of error will not persist with each submission */
+        setError('root.serverError', {
+            type: response.status,
+        });
         throw new Error(_data.message || 'Something went wrong');
     }
 }
@@ -42,20 +47,23 @@ export default function Form() {
         control,
         handleSubmit,
         reset,
+        setError,
         formState: { isSubmitting, errors, isDirty }
     } = useForm();
 
+    /* Prompt the user if they try and leave with unsaved changes */
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
 
         try {
-            const response = await sendFormData(data);
+            const response = await sendFormData(data, setError);
 
             console.log(response);
 
             // @todo success toast notification
 
+            /* Resets form after success */
             reset();
         } catch (error) {
             console.log(error);
