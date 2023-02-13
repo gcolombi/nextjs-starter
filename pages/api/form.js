@@ -1,6 +1,5 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
-
 import sendgrid from '@sendgrid/mail';
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
@@ -100,7 +99,6 @@ export default async function handler(req, res) {
 
     } catch (err) {
         if (err instanceof formidableErrors.FormidableError) {
-            console.log('instance FormidableError');
             let message = 'An error has occurred';
 
             /* checks specific formidable error according to the object's configuration */
@@ -110,7 +108,6 @@ export default async function handler(req, res) {
 
             return res.status(err.httpCode || 400).json({ data: null, message });
         } else {
-            console.log('Server Error');
             return res.status(500).json({ data: null, message: 'Internal Server Error' });
         }
     }
