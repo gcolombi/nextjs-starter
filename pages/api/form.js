@@ -102,7 +102,7 @@ export default async function handler(req, res) {
             return res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
         } catch (err) {
             console.log(err);
-            return res.status(err.statusCode || 500).json({ message: err.message });
+            return res.status(500).json({ message: 'An error occurred while sending the email' });
         }
 
     } catch (err) {
@@ -118,7 +118,7 @@ export default async function handler(req, res) {
             return res.status(err.httpCode || 400).json({ data: null, message });
         } else {
             console.log('Server Error');
-            return res.status(500).json({ data: null, message: "Internal Server Error" });
+            return res.status(500).json({ data: null, message: 'Internal Server Error' });
         }
     }
 }
