@@ -49,7 +49,6 @@ export default async function handler(req, res) {
     /* Return 404 page if request method isn't equal to POST, you can use end() instead of send(notFoundPage) */
     if (req.method !== 'POST') return res.status(404).send(notFoundPage);
 
-
     try {
         const chunks = [];
 

@@ -128,13 +128,16 @@ export default function Form() {
                     className="c-formElement--upload--bordered"
                     rules={{
                         required: true,
-                        validate: (files) => {
-                            const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
+                        validate: {
+                            acceptedFormats: (files) => {
+                                const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
 
-                            if (!files.length)
-                                return 'This field is required';
+                                if (!files.length)
+                                    return 'This field is required';
 
-                            return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
+                                return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
+                            },
+                            lessThan5MB: (files) => files[0]?.size < 5 * 1024 * 1024 || 'Max file size 5MB exceeded'
                         }
                     }}
                     control={control}
