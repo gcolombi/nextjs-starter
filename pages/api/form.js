@@ -1,6 +1,9 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
-import nodemailer from 'nodemailer';
+
+import sendgrid from '@sendgrid/mail';
+
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const config = {
     api: {
@@ -40,16 +43,6 @@ const fileConsumer = (acc) => {
     return writable;
 };
 
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASSWORD,
-    }
-});
-
 export default async function handler(req, res) {
     const fetchResponse = await fetch('http://localhost:3000/404');
     const notFoundPage = await fetchResponse.text();
@@ -72,7 +65,7 @@ export default async function handler(req, res) {
 
         /* Files */
         const { resume } = files;
-        const fileData = Buffer.concat(chunks);
+        const fileData = Buffer.concat(chunks).toString('base64');
         const filename = resume?.originalFilename;
 
         const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
@@ -85,9 +78,9 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            const emailRes = await transporter.sendMail({
-                from: `${firstname} ${lastname} <${email}>`,
-                to: process.env.GMAIL_USER,
+            const emailRes = await sendgrid.send({
+                to: process.env.GMAIL_FROM,
+                from: `${firstname} ${lastname} <${process.env.GMAIL_FROM}>`,
                 subject: `Contact Form Submission from ${firstname} ${lastname}`,
                 html: `
                     <p>You have a new contact form submission from ${firstname} ${lastname}.</p><br>
@@ -97,8 +90,8 @@ export default async function handler(req, res) {
                 `,
                 attachments,
             });
-            console.log('Message Sent', emailRes.messageId);
 
+            console.log('Message Sent', emailRes);
             return res.status(201).json({ message: 'Thank you, your message has been sent successfully.'});
         } catch (err) {
             console.log(err);
