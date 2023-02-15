@@ -188,6 +188,7 @@ export default function Form() {
                     position={toast.POSITION.BOTTOM_CENTER}
                     transition={Zoom}
                     theme={resolvedTheme}
+                    className="c-toastify"
                 />
             }
         </>

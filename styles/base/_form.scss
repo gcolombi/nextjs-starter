@@ -61,3 +61,17 @@ label, .c-label {
 	display: block;
 	margin-bottom: var(--margin-thinner);
 }
+
+/* Toastify
+========================================================================== */
+
+.c-toastify {
+    .Toastify__toast {
+        background: var(--body-bg-color);
+        color: var(--body-text-color);
+
+        .Toastify__close-button {
+            color: var(--body-text-color);
+        }
+    }
+}
