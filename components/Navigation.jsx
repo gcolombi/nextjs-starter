@@ -17,7 +17,7 @@ export default function Navigation() {
 
     /* After mounting, we have access to the theme */
     useEffect(() => {
-        setMounted(true)
+        setMounted(true);
     }, [])
 
     return (
