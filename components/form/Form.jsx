@@ -61,18 +61,32 @@ export default function Form() {
 
     const onSubmit = async (data) => {
 
+        const toastConfig = {
+            isLoading: false,
+            autoClose: 3000,
+            closeButton: true,
+            draggable: true
+        }
+        const toastId = toast.loading('Your message is on its way !');
+
         try {
             const response = await sendFormData(data, setError);
 
-            console.log(response);
-
-            toast.success(response.message);
+            toast.update(toastId, {
+                render: response.message,
+                type: 'success',
+                ...toastConfig
+            });
 
             /* Resets form after success */
             reset();
+
         } catch (error) {
-            console.log(error);
-            toast.error(error.message);
+            toast.update(toastId, {
+                render: error.message,
+                type: 'error',
+                ...toastConfig
+            });
         }
     };
 
