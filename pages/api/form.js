@@ -93,7 +93,8 @@ export default async function handler(req, res) {
                 attachments,
             });
 
-            // console.log('Message Sent', emailRes);
+            console.log('Message Sent', emailRes);
+
             return res.status(201).json({
                 data: {
                     fields,
@@ -102,7 +103,6 @@ export default async function handler(req, res) {
                 message: 'Thank you, your message has been sent successfully.'
             });
         } catch (err) {
-            // console.log(err);
             return res.status(500).json({ data: null, message: 'An error occurred while sending the email' });
         }
 

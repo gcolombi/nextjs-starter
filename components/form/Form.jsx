@@ -69,24 +69,6 @@ export default function Form() {
 
             // @todo error toast notification
         }
-
-
-        // if (response.status === 400) {
-        //     // Validation error
-        //     // Expect response to be a JSON response with the structure:
-        //     // {"fieldName": "error message for that field"}
-        //     const fieldToErrorMessage = await response.json();
-        //     for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
-        //         setError(fieldName, {type: 'custom', message: errorMessage});
-        //     }
-        // } else if (response.ok) {
-        //     // successful
-
-        //     /* reset the form values */
-        //     reset();
-        // } else {
-        //     // unknown error
-        // }
     };
 
     return(
