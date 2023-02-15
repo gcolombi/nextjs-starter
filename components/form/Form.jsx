@@ -29,9 +29,6 @@ async function sendFormData(data, setError) {
 
     const _data = await response.json();
 
-    console.log(response);
-    console.log(_data);
-
     if (!response.ok) {
         /* API returns validation errors, this type of error will not persist with each submission */
         setError('root.serverError', {
@@ -39,6 +36,8 @@ async function sendFormData(data, setError) {
         });
         throw new Error(_data.message || 'Something went wrong');
     }
+
+    return _data;
 }
 
 export default function Form() {

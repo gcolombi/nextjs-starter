@@ -1,6 +1,7 @@
 import MetaData from '@/components/MetaData';
 import HeaderBasic from '@/components/HeaderBasic';
 import FormInput from '@/components/form/FormInput';
+import FormFileInput from '@/components/form/FormFileInput';
 import FormSelect from '@/components/form/FormSelect';
 import FormCheckboxList from '@/components/form/FormCheckboxList';
 import FormRadioList from '@/components/form/FormRadioList';
@@ -29,7 +30,7 @@ export default function FormElements() {
                             required={true}
                             className="c-formElement--bordered"
                         />
-                        <FormInput
+                        {/* <FormFileInput
                             htmlFor="resume"
                             label="Resume"
                             type="file"
@@ -37,7 +38,7 @@ export default function FormElements() {
                             name="resume"
                             required={true}
                             className="c-formElement--upload--bordered"
-                        />
+                        /> */}
                         <FormSelect
                             htmlFor="subject"
                             label="Subject"
