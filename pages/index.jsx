@@ -9,6 +9,7 @@ export default function Home() {
     const toggleLocked = () => {
         setLocked(!locked);
     }
+
     return (
         <>
             <MetaData />
