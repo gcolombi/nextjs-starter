@@ -1,12 +1,13 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
-import sendgrid from '@sendgrid/mail';
+import Email from '../../utils/email';
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
+/**
+ * Config
+ */
 export const config = {
     api: {
-        bodyParser: false,
+        bodyParser: false
     }
 };
 
@@ -18,6 +19,9 @@ const formidableConfig = {
     // multiples: false,
 };
 
+/**
+ * Helpers
+ */
 function formidablePromise(req, opts) {
     return new Promise((resolve, reject) => {
         const form = formidable(opts);
@@ -46,6 +50,9 @@ const fileConsumer = (acc) => {
     return writable;
 };
 
+/**
+ * Handler
+ */
 export default async function handler(req, res) {
     const fetchResponse = await fetch('http://localhost:3000/404');
     const notFoundPage = await fetchResponse.text();
@@ -63,7 +70,7 @@ export default async function handler(req, res) {
         });
 
         /* Fields */
-        const { firstname, lastname, email, subject, choices, question, message } = fields;
+        // const { firstname, lastname, email, subject, choices, question, message } = fields;
 
         /* Files */
         const { resume } = files;
@@ -80,20 +87,7 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            const emailRes = await sendgrid.send({
-                to: process.env.GMAIL_FROM,
-                from: `${firstname} ${lastname} <${process.env.GMAIL_FROM}>`,
-                subject: `Contact Form Submission from ${firstname} ${lastname}`,
-                html: `
-                    <p>You have a new contact form submission from ${firstname} ${lastname}.</p><br>
-                    <p><strong>Firstname: </strong> ${firstname} </p><br>
-                    <p><strong>Lastname: </strong> ${lastname} </p><br>
-                    <p><strong>Email: </strong> ${email} </p><br>
-                `,
-                attachments,
-            });
-
-            console.log('Message Sent', emailRes);
+            await new Email(fields, attachments).send();
 
             return res.status(201).json({
                 data: {
