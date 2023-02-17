@@ -4,6 +4,7 @@ sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = class Email {
     constructor(fields, attachments) {
+        this.fields = fields,
         this.to = process.env.GMAIL_FROM;
         this.from = {
             email: process.env.GMAIL_FROM,
@@ -19,7 +20,19 @@ module.exports = class Email {
         this.attachments = attachments;
     }
 
+    generateEmailContent() {
+
+        const htmlData = Object.entries(this.fields).reduce((str, [key, value]) => {
+            return (str += `<h3 class="form-heading" align="left">${key}</h3><p class="form-answer" align="left">${value}</p>`);
+        }, '');
+
+        return {
+            html: htmlData
+        };
+    }
+
     async send() {
+
         const mailOptions = {
             to: this.to,
             from: {
