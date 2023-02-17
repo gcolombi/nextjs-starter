@@ -18,13 +18,13 @@ import FormFileInput from './FormFileInput';
 async function sendFormData(data, setError) {
     const formData = new FormData();
 
-    for (const key in data) {
-        if (data[key] instanceof FileList) {
-            formData.set(key, data[key][0]);
+    Object.entries(data).forEach(([key, value]) => {
+        if (value instanceof FileList) {
+            formData.set(key, value[0]);
         } else {
-            formData.set(key, data[key]);
+            formData.set(key, value);
         }
-    }
+    });
 
     const response = await fetch('/api/form', {
         method: 'POST',
