@@ -3,7 +3,7 @@ import sendGrid from '@sendgrid/mail';
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = class Email {
-    constructor(host, fields, attachments) {
+    constructor(host, subject, fields, attachments) {
         this.siteName = process.env.SITE_NAME;
         this.host = host;
         this.fields = fields;
@@ -12,7 +12,7 @@ module.exports = class Email {
             email: process.env.GMAIL_FROM,
             name: `${fields?.firstname} ${fields?.lastname}`
         };
-        this.subject = `New contact form from ${fields?.firstname} ${fields?.lastname}`;
+        this.subject = subject;
         this.attachments = attachments;
     }
 

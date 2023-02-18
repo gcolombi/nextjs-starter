@@ -2,8 +2,13 @@ import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '../../utils/email';
 
+import { buffer } from "micro";
+
 /**
  * Config
+ *
+ * https://nextjs.org/docs/api-routes/request-helpers
+ * https://github.com/node-formidable/formidable#options
  */
 export const config = {
     api: {
@@ -13,14 +18,13 @@ export const config = {
 
 const formidableConfig = {
     keepExtensions: true,
-    maxFileSize: 5 * 1024 * 1024,
-    // maxFieldsSize: 0,
-    // maxFields: 0,
-    // multiples: false,
+    maxFileSize: 4 * 1024 * 1024
 };
 
 /**
  * Helpers
+ *
+ * https://github.com/node-formidable/formidable
  */
 function formidablePromise(req, opts) {
     return new Promise((resolve, reject) => {
@@ -52,6 +56,8 @@ const fileConsumer = (acc) => {
 
 /**
  * Handler
+ *
+ * https://nextjs.org/docs/api-routes/introduction
  */
 export default async function handler(req, res) {
 
@@ -87,8 +93,8 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            await new Email(req.headers.host, fields, attachments).send();
-            // const test = new Email(req.headers.host, fields, attachments);
+            await new Email(req.headers.host, 'New contact form', fields, attachments).send();
+            // const test = new Email(req.headers.host, 'New contact form', fields, attachments);
             // console.log(test);
             // await test.send();
 

@@ -151,7 +151,7 @@ export default function Form() {
 
                                     return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
                                 },
-                                lessThan5MB: (files) => files[0]?.size < 5 * 1024 * 1024 || 'Max file size 5MB exceeded'
+                                lessThan5MB: (files) => files[0]?.size < 4 * 1024 * 1024 || 'Max file size 5MB exceeded'
                             }
                         }}
                         control={control}
