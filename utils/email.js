@@ -316,7 +316,7 @@ module.exports = class Email {
                                                     <tr>
                                                         <td class="content-cell" align="center" style="word-break: break-word; font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; font-size: 16px; padding: 45px;">
                                                             <p class="f-fallback sub align-center u-margin-none" style="margin: .4em 0 1.1875em; line-height: 1.625; text-align: center; font-size: 14px; color: #6C757D; margin: 0;">
-                                                                &copy; 2023 Next.js starter - All rights reserved
+                                                                &copy; ${new Date().getFullYear(), this.siteName} - All rights reserved
                                                             </p>
                                                         </td>
                                                     </tr>
