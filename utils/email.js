@@ -4,7 +4,7 @@ sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = class Email {
     constructor(host, fields, attachments) {
-        this.siteName = 'Next.js starter';
+        this.siteName = process.env.SITE_NAME;
         this.host = host;
         this.fields = fields;
         this.to = process.env.GMAIL_FROM;
@@ -224,7 +224,7 @@ module.exports = class Email {
                             }
 
                             .email-footer p {
-                                color: #A8AAAF;
+                                color: #6C757D;
                             }
 
                             .content-cell {
@@ -248,7 +248,7 @@ module.exports = class Email {
                                 }
 
                                 .email-footer p {
-                                    color: #A8AAAF !important;
+                                    color: #6C757D !important;
                                 }
 
                                 p,
@@ -305,7 +305,7 @@ module.exports = class Email {
                                                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="width: 570px; margin: 0 auto; padding: 0; -premailer-width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; text-align: center;">
                                                     <tr>
                                                         <td class="content-cell" align="center" style="word-break: break-word; font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; font-size: 16px; padding: 45px;">
-                                                            <p class="f-fallback sub align-center u-margin-none" style="margin: .4em 0 1.1875em; line-height: 1.625; text-align: center; font-size: 14px; color: #A8AAAF; margin: 0;">
+                                                            <p class="f-fallback sub align-center u-margin-none" style="margin: .4em 0 1.1875em; line-height: 1.625; text-align: center; font-size: 14px; color: #6C757D; margin: 0;">
                                                                 &copy; 2023 Next.js starter - All rights reserved
                                                             </p>
                                                         </td>
