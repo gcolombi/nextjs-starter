@@ -29,7 +29,7 @@ export default function FormFileInput({
     useEffect(() => {
       if (isSubmitSuccessful)
         setLabelTitle(label);
-    }, [isSubmitSuccessful]);
+    }, [isSubmitSuccessful, label]);
 
     return(
         <div className={wrapperClassName}>

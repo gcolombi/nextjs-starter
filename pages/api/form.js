@@ -81,10 +81,10 @@ export default async function handler(req, res) {
         const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
 
         /* Testing purpose */
-        console.log({
-            attachments,
-            fields,
-        });
+        // console.log({
+        //     attachments,
+        //     fields,
+        // });
 
         /* Sends email */
         try {
