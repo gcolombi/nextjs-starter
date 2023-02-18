@@ -2,8 +2,6 @@ import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '../../utils/email';
 
-import { buffer } from "micro";
-
 /**
  * Config
  *
@@ -74,9 +72,6 @@ export default async function handler(req, res) {
             /* Consumes this, otherwise formidable tries to save the file to disk */
             fileWriteStreamHandler: () => fileConsumer(chunks),
         });
-
-        /* Fields */
-        // const { firstname, lastname, email, subject, choices, question, message } = fields;
 
         /* Files */
         const { resume } = files;
