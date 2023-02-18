@@ -1,8 +1,8 @@
 import styles from '../../styles/modules/Form.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import useIsMounted from '@/hooks/useIsMounted';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
@@ -53,7 +53,7 @@ export default function Form() {
         setError,
         formState: { isSubmitting, errors, isDirty }
     } = useForm();
-    const [mounted, setMounted] = useState(false);
+    const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
 
     /* Prompt the user if they try and leave with unsaved changes */
@@ -89,11 +89,6 @@ export default function Form() {
             });
         }
     };
-
-    /* After mounting, we have access to the theme */
-    useEffect(() => {
-        setMounted(true);
-    }, [])
 
     return(
         <>
@@ -197,7 +192,7 @@ export default function Form() {
                     />
                 </div>
             </form>
-            {mounted &&
+            {isMounted() &&
                 <ToastContainer
                     position={toast.POSITION.BOTTOM_CENTER}
                     transition={Zoom}
