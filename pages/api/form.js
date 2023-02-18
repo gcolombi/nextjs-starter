@@ -87,7 +87,10 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            await new Email(fields, attachments).send();
+            await new Email(req.headers.host, fields, attachments).send();
+            // const test = new Email(req.headers.host, fields, attachments);
+            // console.log(test);
+            // await test.send();
 
             return res.status(201).json({
                 data: {
