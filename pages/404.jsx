@@ -16,6 +16,7 @@ export default function PageNotFound() {
                     href: '/',
                     className: 'c-btn'
                 }}
+                className="c-headerBasic--fullHeight"
             />
         </>
     );

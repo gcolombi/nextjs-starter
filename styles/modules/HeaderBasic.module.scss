@@ -13,4 +13,11 @@
     &__btn {
         margin-top: rem(20px);
     }
+
+    /* modifiers */
+    &--fullHeight {
+        display: flex;
+        align-items: center;
+        min-height: calc(100vh - var(--navigation-height));
+    }
 }
