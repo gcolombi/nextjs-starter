@@ -31,8 +31,18 @@ module.exports = class Email {
     }
 
     generateContent() {
+        const LABELS = {
+            firstname: 'Firstname',
+            lastname: 'Lastname',
+            email: 'Email',
+            subject: 'Subject',
+            choices: 'Choices',
+            question: 'Question',
+            message: 'Message'
+        }
+
         return Object.entries(this.fields).reduce((str, [key, value]) => {
-            return (str += `<p style="margin: .4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545E;"><strong>${key} : </strong>${value}</p>`);
+            return (str += `<p style="margin: .4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545E;"><strong>${LABELS?.[key]}: </strong>${value}</p>`);
         }, '');
     }
 
