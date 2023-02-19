@@ -3,47 +3,40 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
-
-
-
-import * as yup from 'yup';
+import { object, string, mixed, array, addMethod } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-
-
-
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
+import FormFileInput from './FormFileInput';
+import FormSelect from './FormSelect';
+import FormCheckboxList from './FormCheckboxList';
+import FormRadioList from './FormRadioList';
 import FormTextarea from './FormTextarea';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
-import FormSelect from './FormSelect';
-import FormCheckboxList from './FormCheckboxList';
-import FormRadioList from './FormRadioList';
-import FormFileInput from './FormFileInput';
 
 function getFormSchema() {
     /* override the email method */
-    yup.addMethod(yup.string, 'email', function validateEmail(message){
+    addMethod(string, 'email', function validateEmail(message){
         return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
             message,
             name: 'email',
         });
     });
 
-    return yup.object().shape({
-        firstname: yup.string().required('This field is required'),
-        lastname: yup.string().required('This field is required'),
-        email: yup.string().required('This field is required').email('Invalid email address'),
-        resume: yup.mixed().test('required', 'This field is required', (files) => files?.length)
+    return object({
+        firstname: string().required('This field is required'),
+        lastname: string().required('This field is required'),
+        email: string().required('This field is required').email('Invalid email address'),
+        resume: mixed().test('required', 'This field is required', (files) => files?.length)
         .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files[0]?.name))
         .test('fileSize', 'Max file size 4MB exceeded', (files) => files[0]?.size <= 4 * 1024 * 1024 ),
-        subject: yup.string().required('This field is required'),
-        choices: yup.array().of(yup.string()).min(1, 'Please select one of these choices'),
-        question: yup.string().required('Please select one of these answers'),
-        message: yup.string().required('This field is required'),
+        subject: string().required('This field is required'),
+        choices: array().of(string()).min(1, 'Please select one of these choices'),
+        question: string().required('Please select one of these answers'),
+        message: string().required('This field is required'),
     });
 }
 
