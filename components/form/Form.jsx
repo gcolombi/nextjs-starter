@@ -3,6 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
@@ -14,6 +16,12 @@ import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormFileInput from './FormFileInput';
+
+const formSchema = z.object({
+    firstname: z.string().min(1, 'This field is required'),
+    lastname: z.string().min(1, 'This field is required'),
+    email: z.string().min(1, 'This field is required').email('Invalid email address'),
+});
 
 async function sendFormData(data, setError) {
     const formData = new FormData();
@@ -52,7 +60,9 @@ export default function Form() {
         reset,
         setError,
         formState: { isSubmitting, errors, isDirty }
-    } = useForm();
+    } = useForm({
+        resolver: zodResolver(formSchema)
+    });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
 
@@ -102,7 +112,7 @@ export default function Form() {
                             name="firstname"
                             required={true}
                             className="c-formElement--bordered"
-                            settings={{...register("firstname", {required: true})}}
+                            settings={register('firstname')}
                             errors={errors['firstname']}
                         />
                         <FormInput
@@ -112,7 +122,7 @@ export default function Form() {
                             name="lastname"
                             required={true}
                             className="c-formElement--bordered"
-                            settings={{...register("lastname", {required: true})}}
+                            settings={register('lastname')}
                             errors={errors['lastname']}
                         />
                     </div>
@@ -124,7 +134,7 @@ export default function Form() {
                         name="email"
                         required={true}
                         className="c-formElement--bordered"
-                        settings={{...register("email", {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}}
+                        settings={register('email')}
                         errors={errors['email']}
                     />
                     {/* <FormFileInput

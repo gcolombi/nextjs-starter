@@ -24,7 +24,7 @@ export default function FormInput({
                     styles[className],
                     {
                         [styles['c-floatingLabel']]: label,
-                        [styles['has-error']]: required && errors?.type === "required" || errors?.type === "pattern" || errors?.message
+                        [styles['has-error']]: required && errors?.message
                     }
                 )}
             >
@@ -42,12 +42,6 @@ export default function FormInput({
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div>
-            {required && errors?.type === "required" &&
-                <label htmlFor={htmlFor}>This field is required</label>
-            }
-            {errors?.type === "pattern" &&
-                <label htmlFor={htmlFor}>Invalid email address</label>
-            }
             {errors?.message &&
                 <label htmlFor={htmlFor}>{errors?.message}</label>
             }
