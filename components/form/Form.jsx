@@ -22,6 +22,8 @@ const formSchema = z.object({
     lastname: z.string().min(1, 'This field is required'),
     email: z.string().min(1, 'This field is required').email('Invalid email address'),
     subject: z.string().min(1, 'This field is required'),
+    choices: z.string().array().min(1, 'Please select one of these choices'),
+    question: z.string().min(1, 'Please select one of these answers'),
     message: z.string().min(1, 'This field is required'),
 });
 
@@ -63,6 +65,10 @@ export default function Form() {
         setError,
         formState: { isSubmitting, errors, isDirty }
     } = useForm({
+        defaultValues: {
+            choices: [],
+            question: ''
+        },
         resolver: zodResolver(formSchema)
     });
     const isMounted = useIsMounted();
@@ -170,22 +176,21 @@ export default function Form() {
                         name="subject"
                         required={true}
                         className="c-formElement--select--bordered"
-                        // settings={{...register("subject", {required: true})}}
                         settings={register('subject')}
                         errors={errors['subject']}
                     />
-                    {/* <FormCheckboxList
+                    <FormCheckboxList
                         title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
                         name="choices"
                         register={register}
                         errors={errors['choices']}
-                    /> */}
-                    {/* <FormRadioList
+                    />
+                    <FormRadioList
                         title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
                         name="question"
                         register={register}
                         errors={errors['question']}
-                    /> */}
+                    />
                     <FormTextarea
                         htmlFor="message"
                         label="Message"

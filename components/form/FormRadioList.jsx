@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import FormRadio from './FormRadio';
 import classNames from 'classnames';
 
@@ -10,12 +9,6 @@ export default function FormRadioList({
     register,
     errors
 }) {
-    const [selected, setSelected] = useState('');
-
-    const change = (e) => {
-        setSelected(e.target.value);
-    }
-
     return(
        <div className={className}>
             <p>{title}</p>
@@ -23,26 +16,22 @@ export default function FormRadioList({
                 className={classNames(
                     'c-formElement',
                     'c-formElement--marginNone',
-                    {'has-error': errors?.type === "required"}
+                    {'has-error': errors?.message}
                 )}
             >
-                {items.map((item, index) => (
+                {items.map((item) => (
                     <FormRadio
-                        key={`${item.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`}
-                        htmlFor={`${item.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`}
+                        key={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
+                        htmlFor={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
                         label={item}
-                        id={`${item.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`}
+                        id={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
                         name={name}
                         value={item}
                         className="c-formElement--radio"
-                        onChange={change}
-                        settings={name && {...register?.(name, {required: true})}}
+                        settings={name && register?.(name)}
                     />
                 ))}
             </div>
-            {errors?.type === "required" &&
-                <label htmlFor={name}>This field is required</label>
-            }
             {errors?.message &&
                 <label htmlFor={name}>{errors?.message}</label>
             }

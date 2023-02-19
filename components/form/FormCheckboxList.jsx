@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import FormCheckbox from './FormCheckbox';
 import classNames from 'classnames';
 
@@ -10,20 +9,6 @@ export default function FormCheckboxList({
     register,
     errors
 }) {
-    const [selections, setSelections] = useState([]);
-
-    const change = (element) => {
-        const values = selections;
-        const find = values.indexOf(element);
-
-        if (find > -1)
-            values.splice(find, 1);
-        else
-            values.push(element);
-
-        setSelections(values);
-    }
-
     return(
        <div className={className}>
             <p>{title}</p>
@@ -31,28 +16,22 @@ export default function FormCheckboxList({
                 className={classNames(
                     'c-formElement',
                     'c-formElement--marginNone',
-                    {'has-error': errors?.type === "required"}
+                    {'has-error': errors?.message}
                 )}
             >
-                {items.map((item, index) => (
+                {items.map((item) => (
                     <FormCheckbox
-                        key={`${item.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`}
-                        htmlFor={`${item.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`}
+                        key={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
+                        htmlFor={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
                         label={item}
-                        id={`${item.trim().replace( /\s+/g, '-').toLowerCase()}-${index}`}
+                        id={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
                         name={name}
                         value={item}
                         className="c-formElement--checkboxSvg"
-                        onChange={() =>
-                            change(item)
-                        }
-                        settings={name && {...register?.(name, {required: true})}}
+                        settings={name && register?.(name)}
                     />
                 ))}
             </div>
-            {errors?.type === "required" &&
-                <label htmlFor={name}>This field is required</label>
-            }
             {errors?.message &&
                 <label htmlFor={name}>{errors?.message}</label>
             }

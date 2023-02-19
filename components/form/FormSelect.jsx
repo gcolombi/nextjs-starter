@@ -1,5 +1,4 @@
 import styles from '../../styles/modules/FormSelect.module.scss';
-import { useState } from 'react';
 import classNames from 'classnames';
 import Chevron from '../icons/Chevron';
 

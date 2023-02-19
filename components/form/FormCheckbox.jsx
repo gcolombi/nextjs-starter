@@ -9,7 +9,6 @@ export default function FormCheckbox({
     name,
     value,
     className,
-    onChange,
     settings,
 }) {
     return(
@@ -24,7 +23,6 @@ export default function FormCheckbox({
                 id={id}
                 name={name}
                 value={value}
-                onChange={onChange}
                 {...settings}
             />
             <label htmlFor={htmlFor}>
