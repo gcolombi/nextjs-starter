@@ -7,6 +7,7 @@ export default function FormSelect({
     htmlFor,
     label,
     id,
+    name,
     required,
     className,
     wrapperClassName,
@@ -30,6 +31,7 @@ export default function FormSelect({
                 <select
                     defaultValue={defaultValue ?? ''}
                     id={id}
+                    name={name}
                     required={required}
                     {...register}
                 >

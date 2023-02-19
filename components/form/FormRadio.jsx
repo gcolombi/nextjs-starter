@@ -5,6 +5,7 @@ export default function FormRadio({
     htmlFor,
     label,
     id,
+    name,
     value,
     className,
     register,
@@ -19,6 +20,7 @@ export default function FormRadio({
             <input
                 type="radio"
                 id={id}
+                name={name}
                 value={value}
                 {...register}
             />

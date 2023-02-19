@@ -5,6 +5,7 @@ export default function FormTextarea({
     htmlFor,
     label,
     id,
+    name,
     placeholder=" ",
     required,
     className,
@@ -26,6 +27,7 @@ export default function FormTextarea({
             >
                 <textarea
                     id={id}
+                    name={name}
                     placeholder={placeholder}
                     required={required}
                     {...register}

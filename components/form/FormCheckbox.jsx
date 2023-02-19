@@ -6,6 +6,7 @@ export default function FormCheckbox({
     htmlFor,
     label,
     id,
+    name,
     value,
     className,
     register,
@@ -20,6 +21,7 @@ export default function FormCheckbox({
             <input
                 type="checkbox"
                 id={id}
+                name={name}
                 value={value}
                 {...register}
             />

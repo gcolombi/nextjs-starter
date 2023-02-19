@@ -5,6 +5,7 @@ export default function FormRadioList({
     title,
     items = ['Temporibus nesciunt', 'Exercitationem', 'Velit eveniet', 'Quaerat'],
     className,
+    name,
     register = {},
     errors
 }) {
@@ -24,6 +25,7 @@ export default function FormRadioList({
                         htmlFor={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
                         label={item}
                         id={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
+                        name={name}
                         value={item}
                         className="c-formElement--radio"
                         register={register}

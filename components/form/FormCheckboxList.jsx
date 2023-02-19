@@ -5,6 +5,7 @@ export default function FormCheckboxList({
     title,
     items = ['Perspiciatis amet', 'Quibusdam', 'Recusandae sit', 'Consectetur'],
     className,
+    name,
     register = {},
     errors
 }) {
@@ -24,9 +25,9 @@ export default function FormCheckboxList({
                         htmlFor={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
                         label={item}
                         id={`${item.trim().replace( /\s+/g, '-').toLowerCase()}`}
+                        name={name}
                         value={item}
                         className="c-formElement--checkboxSvg"
-                        // register={name && register?.(name)}
                         register={register}
                     />
                 ))}
