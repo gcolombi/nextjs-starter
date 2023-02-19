@@ -16,12 +16,6 @@ export default function FormSelect({
     settings,
     errors
 }) {
-    const [selected, setSelected] = useState('');
-
-    const change = (e) => {
-        setSelected(e.target.value);
-    }
-
     return(
         <div className={wrapperClassName}>
             <div
@@ -30,7 +24,7 @@ export default function FormSelect({
                     styles[className],
                     {
                         [styles['c-floatingLabel']]: label,
-                        [styles['has-error']]: required && errors?.type === "required" || errors?.message
+                        [styles['has-error']]: required && errors?.message
                     }
                 )}
             >
@@ -40,7 +34,6 @@ export default function FormSelect({
                     id={id}
                     name={name}
                     required={required}
-                    onChange={change}
                     {...settings}
                 >
                     {defaultValue &&
@@ -58,9 +51,6 @@ export default function FormSelect({
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div>
-            {required && errors?.type === "required" &&
-                <label htmlFor={htmlFor}>This field is required</label>
-            }
             {errors?.message &&
                 <label htmlFor={htmlFor}>{errors?.message}</label>
             }

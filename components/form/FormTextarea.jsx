@@ -21,7 +21,7 @@ export default function FormTextarea({
                     styles[className],
                     {
                         [styles['c-floatingLabel']]: label,
-                        [styles['has-error']]: required && errors?.type === "required" || errors?.message
+                        [styles['has-error']]: required && errors?.message
                     }
                 )}
             >
@@ -37,9 +37,6 @@ export default function FormTextarea({
                 }
                 <span className={styles['c-formElement--focusLine']} />
             </div>
-            {required && errors?.type === "required" &&
-                <label htmlFor={htmlFor}>This field is required</label>
-            }
             {errors?.message &&
                 <label htmlFor={htmlFor}>{errors?.message}</label>
             }
