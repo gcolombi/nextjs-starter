@@ -142,20 +142,18 @@ export default function Form() {
                             htmlFor="firstname"
                             label="Firstname"
                             id="firstname"
-                            name="firstname"
                             required={true}
                             className="c-formElement--bordered"
-                            settings={register('firstname')}
+                            register={register('firstname')}
                             errors={errors['firstname']}
                         />
                         <FormInput
                             htmlFor="lastname"
                             label="Lastname"
                             id="lastname"
-                            name="lastname"
                             required={true}
                             className="c-formElement--bordered"
-                            settings={register('lastname')}
+                            register={register('lastname')}
                             errors={errors['lastname']}
                         />
                     </div>
@@ -164,10 +162,9 @@ export default function Form() {
                         label="Email"
                         type="email"
                         id="email"
-                        name="email"
                         required={true}
                         className="c-formElement--bordered"
-                        settings={register('email')}
+                        register={register('email')}
                         errors={errors['email']}
                     />
                     <FormFileInput
@@ -186,21 +183,18 @@ export default function Form() {
                         htmlFor="subject"
                         label="Subject"
                         id="subject"
-                        name="subject"
                         required={true}
                         className="c-formElement--select--bordered"
-                        settings={register('subject')}
+                        register={register('subject')}
                         errors={errors['subject']}
                     />
                     <FormCheckboxList
                         title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                        name="choices"
                         register={register('choices')}
                         errors={errors['choices']}
                     />
                     <FormRadioList
                         title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                        name="question"
                         register={register('question')}
                         errors={errors['question']}
                     />
@@ -208,10 +202,9 @@ export default function Form() {
                         htmlFor="message"
                         label="Message"
                         id="message"
-                        name="message"
                         required={true}
                         className="c-formElement--bordered"
-                        settings={register('message')}
+                        register={register('message')}
                         errors={errors['message']}
                     />
                     <Button

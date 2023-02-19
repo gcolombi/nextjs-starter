@@ -6,16 +6,14 @@ export default function FormInput({
     label,
     type="text",
     id,
-    name,
     placeholder=" ",
     value,
     required,
     className,
     wrapperClassName,
-    settings,
+    register,
     errors,
 }) {
-
     return(
         <div className={wrapperClassName}>
             <div
@@ -31,11 +29,10 @@ export default function FormInput({
                 <input
                     type={type}
                     id={id}
-                    name={name}
                     placeholder={placeholder}
                     value={value}
                     required={required}
-                    {...settings }
+                    {...register}
                 />
                 {label && htmlFor &&
                     <label htmlFor={htmlFor}>{label}{required && ' *'}</label>

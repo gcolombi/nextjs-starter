@@ -5,12 +5,11 @@ export default function FormTextarea({
     htmlFor,
     label,
     id,
-    name,
     placeholder=" ",
     required,
     className,
     wrapperClassName,
-    settings,
+    register,
     errors
 }) {
     return(
@@ -27,10 +26,9 @@ export default function FormTextarea({
             >
                 <textarea
                     id={id}
-                    name={name}
                     placeholder={placeholder}
                     required={required}
-                    {...settings}
+                    {...register}
                 />
                 {label && htmlFor &&
                     <label htmlFor={htmlFor}>{label}{required && ' *'}</label>

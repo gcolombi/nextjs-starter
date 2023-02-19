@@ -7,12 +7,11 @@ export default function FormSelect({
     htmlFor,
     label,
     id,
-    name,
     required,
     className,
     wrapperClassName,
     options = ['Option 1', 'Option 2', 'Option 3'],
-    settings,
+    register,
     errors
 }) {
     return(
@@ -31,9 +30,8 @@ export default function FormSelect({
                 <select
                     defaultValue={defaultValue ?? ''}
                     id={id}
-                    name={name}
                     required={required}
-                    {...settings}
+                    {...register}
                 >
                     {defaultValue &&
                         <option value={defaultValue} disabled>{defaultValue}</option>
