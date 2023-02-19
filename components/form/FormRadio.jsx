@@ -8,7 +8,7 @@ export default function FormRadio({
     name,
     value,
     className,
-    settings,
+    register,
 }) {
     return(
         <div
@@ -22,7 +22,7 @@ export default function FormRadio({
                 id={id}
                 name={name}
                 value={value}
-                {...settings}
+                {...register}
             />
             <label htmlFor={htmlFor}>
                 {label}

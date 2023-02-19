@@ -3,8 +3,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+
+
+
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+
+
+
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
@@ -17,15 +24,28 @@ import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormFileInput from './FormFileInput';
 
-const formSchema = z.object({
-    firstname: z.string().min(1, 'This field is required'),
-    lastname: z.string().min(1, 'This field is required'),
-    email: z.string().min(1, 'This field is required').email('Invalid email address'),
-    subject: z.string().min(1, 'This field is required'),
-    choices: z.string().array().min(1, 'Please select one of these choices'),
-    question: z.string().min(1, 'Please select one of these answers'),
-    message: z.string().min(1, 'This field is required'),
-});
+function getFormSchema() {
+    /* override the email method */
+    yup.addMethod(yup.string, 'email', function validateEmail(message){
+        return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
+            message,
+            name: 'email',
+        });
+    });
+
+    return yup.object().shape({
+        firstname: yup.string().required('This field is required'),
+        lastname: yup.string().required('This field is required'),
+        email: yup.string().required('This field is required').email('Invalid email address'),
+        resume: yup.mixed().test('required', 'This field is required', (files) => files?.length)
+        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files[0]?.name))
+        .test('fileSize', 'Max file size 4MB exceeded', (files) => files[0]?.size <= 4 * 1024 * 1024 ),
+        subject: yup.string().required('This field is required'),
+        choices: yup.array().of(yup.string()).min(1, 'Please select one of these choices'),
+        question: yup.string().required('Please select one of these answers'),
+        message: yup.string().required('This field is required'),
+    });
+}
 
 async function sendFormData(data, setError) {
     const formData = new FormData();
@@ -59,17 +79,22 @@ async function sendFormData(data, setError) {
 export default function Form() {
     const {
         register,
-        control,
         handleSubmit,
         reset,
         setError,
-        formState: { isSubmitting, errors, isDirty }
+        formState: { isSubmitting, isSubmitSuccessful, errors, isDirty }
     } = useForm({
         defaultValues: {
+            firstname: '',
+            lastname: '',
+            email: '',
+            resume: [],
+            subject: '',
             choices: [],
-            question: ''
+            question: '',
+            message: ''
         },
-        resolver: zodResolver(formSchema)
+        resolver: yupResolver(getFormSchema())
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
@@ -145,7 +170,7 @@ export default function Form() {
                         settings={register('email')}
                         errors={errors['email']}
                     />
-                    {/* <FormFileInput
+                    <FormFileInput
                         htmlFor="resume"
                         label="Resume"
                         type="file"
@@ -153,22 +178,10 @@ export default function Form() {
                         name="resume"
                         required={true}
                         className="c-formElement--upload--bordered"
-                        rules={{
-                            required: true,
-                            validate: {
-                                acceptedFormats: (files) => {
-                                    const regex = new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i);
-
-                                    if (!files.length)
-                                        return 'This field is required';
-
-                                    return regex.test(files[0]?.name) || 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid';
-                                },
-                                lessThan5MB: (files) => files[0]?.size < 4 * 1024 * 1024 || 'Max file size 5MB exceeded'
-                            }
-                        }}
-                        control={control}
-                    /> */}
+                        register={register('resume')}
+                        errors={errors['resume']}
+                        isSubmitSuccessful={isSubmitSuccessful}
+                    />
                     <FormSelect
                         htmlFor="subject"
                         label="Subject"
@@ -182,13 +195,13 @@ export default function Form() {
                     <FormCheckboxList
                         title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
                         name="choices"
-                        register={register}
+                        register={register('choices')}
                         errors={errors['choices']}
                     />
                     <FormRadioList
                         title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
                         name="question"
-                        register={register}
+                        register={register('question')}
                         errors={errors['question']}
                     />
                     <FormTextarea

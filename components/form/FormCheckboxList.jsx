@@ -6,7 +6,7 @@ export default function FormCheckboxList({
     items = ['Perspiciatis amet', 'Quibusdam', 'Recusandae sit', 'Consectetur'],
     className,
     name,
-    register,
+    register = {},
     errors
 }) {
     return(
@@ -28,7 +28,8 @@ export default function FormCheckboxList({
                         name={name}
                         value={item}
                         className="c-formElement--checkboxSvg"
-                        settings={name && register?.(name)}
+                        // register={name && register?.(name)}
+                        register={name && register}
                     />
                 ))}
             </div>

@@ -6,7 +6,7 @@ export default function FormRadioList({
     items = ['Temporibus nesciunt', 'Exercitationem', 'Velit eveniet', 'Quaerat'],
     className,
     name,
-    register,
+    register = {},
     errors
 }) {
     return(
@@ -28,7 +28,8 @@ export default function FormRadioList({
                         name={name}
                         value={item}
                         className="c-formElement--radio"
-                        settings={name && register?.(name)}
+                        // settings={name && register?.(name)}
+                        register={name && register}
                     />
                 ))}
             </div>

@@ -9,7 +9,7 @@ export default function FormCheckbox({
     name,
     value,
     className,
-    settings,
+    register,
 }) {
     return(
         <div
@@ -23,7 +23,7 @@ export default function FormCheckbox({
                 id={id}
                 name={name}
                 value={value}
-                {...settings}
+                {...register}
             />
             <label htmlFor={htmlFor}>
                 <Cross />

@@ -24,7 +24,7 @@
         "react-toastify": "^9.1.1",
         "react-toggle-dark-mode": "^1.1.1",
         "use-delayed-render": "^0.0.7",
-        "zod": "^3.20.6"
+        "yup": "^1.0.0"
     },
     "devDependencies": {
         "sass": "^1.57.1"
