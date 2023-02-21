@@ -1,6 +1,7 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '../../utils/email';
+import { object, string, mixed, array, addMethod, ValidationError } from 'yup';
 
 /**
  * Config
@@ -16,7 +17,7 @@ export const config = {
 
 const formidableConfig = {
     keepExtensions: true,
-    maxFileSize: 4 * 1024 * 1024
+    // maxFileSize: 4 * 1024 * 1024
 };
 
 /**
@@ -29,6 +30,8 @@ function formidablePromise(req, opts) {
         const form = formidable(opts);
 
         form.parse(req, (err, fields, files) => {
+            // console.log(fields);
+            // console.log(files);
             if (err) {
                 return reject(err);
             }
@@ -53,6 +56,37 @@ const fileConsumer = (acc) => {
 };
 
 /**
+ * Validation
+ */
+function getFormSchema() {
+    /* override the email method */
+    addMethod(string, 'email', function validateEmail(message){
+        return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
+            message,
+            name: 'email',
+        });
+    });
+
+    return object({
+        firstname: string().required('This field is required'),
+        lastname: string().required('This field is required'),
+        email: string().required('This field is required').email('Invalid email address'),
+        resume: mixed().test('required', 'This field is required', (files) => files)
+        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files.originalFilename))
+        .test('fileSize', 'Max file size 4MB exceeded', (files) => files.size <= 4 * 1024 * 1024 ),
+        subject: string().required('This field is required'),
+        choices: string().required('Please select one of these choices'),
+        question: string().required('Please select one of these answers'),
+        message: string().required('This field is required'),
+    });
+}
+
+async function validateFormData(fields, files) {
+    const formSchema = getFormSchema();
+    await formSchema.validate({ ...fields, ...files }, { abortEarly: false });
+}
+
+/**
  * Handler
  *
  * https://nextjs.org/docs/api-routes/introduction
@@ -70,8 +104,11 @@ export default async function handler(req, res) {
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
             /* Consumes this, otherwise formidable tries to save the file to disk */
-            fileWriteStreamHandler: () => fileConsumer(chunks),
+            fileWriteStreamHandler: () => fileConsumer(chunks)
         });
+
+        /* Validation */
+        await validateFormData(fields, files);
 
         /* Files */
         const { resume } = files;
@@ -105,14 +142,27 @@ export default async function handler(req, res) {
         if (err instanceof formidableErrors.FormidableError) {
             let message = 'An error has occurred';
 
+            /* Form data validation is done by yup */
+
             /* Checks specific formidable error according to the object's configuration */
-            if (err.code === formidableErrors.biggerThanMaxFileSize) {
-                message = 'Max file size 5MB exceeded';
-            }
+            // if (err.code === formidableErrors.biggerThanMaxFileSize) {
+            //     message = 'Max file size 4MB exceeded';
+            // }
 
             return res.status(err.httpCode || 400).json({ data: null, message });
-        } else {
-            return res.status(500).json({ data: null, message: 'Internal Server Error' });
         }
+
+        if (err instanceof ValidationError) {
+            let validationErrors = {}
+
+            err.inner.forEach((error) => {
+                if (!validationErrors[error.path])
+                    validationErrors[error.path] = error.errors[0];
+            });
+
+            return res.status(400).json({ data: null, errors: validationErrors });
+        }
+
+        return res.status(500).json({ data: null, message: 'Internal Server Error' });
     }
 }

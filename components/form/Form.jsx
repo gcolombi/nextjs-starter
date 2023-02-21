@@ -41,11 +41,12 @@ function getFormSchema() {
 }
 
 async function sendFormData(data, setError) {
+    console.log(data);
     const formData = new FormData();
 
     Object.entries(data).forEach(([key, value]) => {
         if (value instanceof FileList) {
-            formData.set(key, value[0]);
+            formData.set(key, value[0] || []);
         } else {
             formData.set(key, value);
         }
@@ -63,7 +64,13 @@ async function sendFormData(data, setError) {
         setError('root.serverError', {
             type: response.status,
         });
-        throw new Error(_data.message || 'Something went wrong');
+        if (_data.errors) {
+            /* Validation error, expect response to be a JSON response {"field": "error message for that field"} */
+            for (const [fieldName, errorMessage] of Object.entries(_data.errors)) {
+                setError(fieldName, {type: 'custom', message: errorMessage});
+            }
+        }
+        throw new Error(_data.message || 'Form has errors');
     }
 
     return _data;
@@ -72,10 +79,11 @@ async function sendFormData(data, setError) {
 export default function Form() {
     const {
         register,
+        control,
         handleSubmit,
         reset,
         setError,
-        formState: { isSubmitting, isSubmitSuccessful, errors, isDirty }
+        formState: { isSubmitting, errors, isDirty }
     } = useForm({
         defaultValues: {
             firstname: '',
@@ -168,9 +176,8 @@ export default function Form() {
                         name="resume"
                         required={true}
                         className="c-formElement--upload--bordered"
-                        register={register('resume')}
+                        control={control}
                         errors={errors['resume']}
-                        isSubmitSuccessful={isSubmitSuccessful}
                     />
                     <FormSelect
                         htmlFor="subject"
