@@ -49,14 +49,62 @@ export default function CareerForm() {
             <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} noValidate>
                 <div className="o-container">
                     <div className={styles['c-form__row']}>
-                        <Button
-                            label="Send"
-                            className="c-btn"
-                            wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
-                            type="submit"
-                            disabled={isSubmitting}
+                        <FormInput
+                            htmlFor="firstname"
+                            label="Firstname"
+                            id="firstname"
+                            required={true}
+                            className="c-formElement--bordered"
+                            register={register('firstname')}
+                            errors={errors['firstname']}
+                        />
+                        <FormInput
+                            htmlFor="lastname"
+                            label="Lastname"
+                            id="lastname"
+                            required={true}
+                            className="c-formElement--bordered"
+                            register={register('lastname')}
+                            errors={errors['lastname']}
+                        />
+                        <FormInput
+                            htmlFor="email"
+                            label="Email"
+                            type="email"
+                            id="email"
+                            required={true}
+                            className="c-formElement--bordered"
+                            register={register('email')}
+                            errors={errors['email']}
+                        />
+                        <FormFileInput
+                            htmlFor="resume"
+                            label="Resume"
+                            type="file"
+                            id="resume"
+                            name="resume"
+                            required={true}
+                            className="c-formElement--upload--bordered"
+                            control={control}
+                            errors={errors['resume']}
                         />
                     </div>
+                    <FormTextarea
+                        htmlFor="message"
+                        label="Message"
+                        id="message"
+                        required={true}
+                        className="c-formElement--bordered"
+                        register={register('message')}
+                        errors={errors['message']}
+                    />
+                    <Button
+                        label="Send"
+                        className="c-btn"
+                        wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
+                        type="submit"
+                        disabled={isSubmitting}
+                    />
                 </div>
             </form>
             {isMounted() &&
