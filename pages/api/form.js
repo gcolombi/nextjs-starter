@@ -1,7 +1,7 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
-import { object, string, mixed, array, addMethod, ValidationError } from 'yup';
+import { object, string, mixed, addMethod, ValidationError } from 'yup';
 import { labels } from '@/components/form/Form';
 
 /**
@@ -31,14 +31,9 @@ function formidablePromise(req, opts) {
         const form = formidable(opts);
 
         form.parse(req, (err, fields, files) => {
-            // console.log(fields);
-            // console.log(files);
             if (err) {
                 return reject(err);
             }
-
-            /* Testing purpose */
-            // return resolve({});
 
             return resolve({ fields, files });
         });
@@ -117,12 +112,6 @@ export default async function handler(req, res) {
         const filename = resume?.originalFilename;
 
         const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
-
-        /* Testing purpose */
-        // console.log({
-        //     attachments,
-        //     fields,
-        // });
 
         /* Sends email */
         try {
