@@ -8,9 +8,9 @@ module.exports = class Email {
         this.host = host;
         this.labels = labels
         this.fields = fields;
-        this.to = process.env.GMAIL_FROM;
+        this.to = process.env.EMAIL_FROM;
         this.from = {
-            email: process.env.GMAIL_FROM,
+            email: process.env.EMAIL_FROM,
             name: `${fields?.firstname} ${fields?.lastname}`
         };
         this.subject = subject;
