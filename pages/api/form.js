@@ -1,7 +1,8 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
-import Email from '../../utils/email';
+import Email from '@/utils/email';
 import { object, string, mixed, array, addMethod, ValidationError } from 'yup';
+import { labels } from '@/components/form/Form';
 
 /**
  * Config
@@ -125,7 +126,7 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            await new Email(req.headers.host, 'New contact form', fields, attachments).send();
+            await new Email(req.headers.host, 'New contact form', labels, fields, attachments).send();
 
             return res.status(201).json({
                 data: {

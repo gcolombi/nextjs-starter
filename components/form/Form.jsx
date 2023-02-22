@@ -16,6 +16,15 @@ import FormTextarea from './FormTextarea';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
+export const labels = {
+    firstname: 'Firstname',
+    lastname: 'Lastname',
+    email: 'Email',
+    subject: 'Subject',
+    choices: 'Choices',
+    question: 'Question',
+    message: 'Message'
+}
 
 function getFormSchema() {
     /* override the email method */
