@@ -18,6 +18,9 @@ export default function Footer() {
                             <li>
                                 <NavItem href="/contact" title="Contact" className={styles['is-current-page']} />
                             </li>
+                            <li>
+                                <NavItem href="/career" title="Career" className={styles['is-current-page']} />
+                            </li>
                         </ul>
                     </div>
                     <div className={classNames('o-wysiwyg' , styles['c-footer__copyright'])}>

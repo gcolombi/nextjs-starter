@@ -55,6 +55,9 @@ export default function Navigation() {
                                         <li>
                                             <NavItem href="/contact" title="Contact" className={styles['is-current-page']} />
                                         </li>
+                                        <li>
+                                            <NavItem href="/career" title="Career" className={styles['is-current-page']} />
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
