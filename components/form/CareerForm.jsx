@@ -40,6 +40,25 @@ function getFormSchema() {
     });
 }
 
+async function sendFormData() {
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+        if (value instanceof FileList) {
+            formData.set(key, value[0] || []);
+        } else {
+            formData.set(key, value);
+        }
+    });
+
+    const response = await fetch('/api/careerform', {
+        method: 'POST',
+        body: formData
+    });
+
+    return await response.json();
+}
+
 export default function CareerForm() {
     const {
         register,
@@ -66,7 +85,34 @@ export default function CareerForm() {
 
     const onSubmit = async (data) => {
 
+        const toastConfig = {
+            isLoading: false,
+            autoClose: 3000,
+            closeButton: true,
+            draggable: true
+        }
 
+        const toastId = toast.loading('Your message is on its way !');
+
+        try {
+            const response = await sendFormData(data);
+
+            toast.update(toastId, {
+                render: response.message,
+                type: 'success',
+                ...toastConfig
+            });
+
+            /* Resets form after success */
+            reset();
+
+        } catch (error) {
+            toast.update(toastId, {
+                render: error.message,
+                type: 'error',
+                ...toastConfig
+            });
+        }
     };
 
     return (
