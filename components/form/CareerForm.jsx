@@ -40,7 +40,7 @@ function getFormSchema() {
     });
 }
 
-async function sendFormData() {
+async function sendFormData(data) {
     const formData = new FormData();
 
     Object.entries(data).forEach(([key, value]) => {
@@ -51,12 +51,10 @@ async function sendFormData() {
         }
     });
 
-    const response = await fetch('/api/careerform', {
+    return await fetch('/api/careerform', {
         method: 'POST',
         body: formData
     });
-
-    return await response.json();
 }
 
 export default function CareerForm() {
@@ -84,7 +82,6 @@ export default function CareerForm() {
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
-
         const toastConfig = {
             isLoading: false,
             autoClose: 3000,
@@ -97,8 +94,24 @@ export default function CareerForm() {
         try {
             const response = await sendFormData(data);
 
+            const _data = await response.json();
+
+            if (!response.ok) {
+                /* API returns validation errors, this type of error will not persist with each submission */
+                setError('root.serverError', {
+                    type: response.status,
+                });
+                if (_data.errors) {
+                    /* Validation error, expect response to be a JSON response {"field": "error message for that field"} */
+                    for (const [fieldName, errorMessage] of Object.entries(_data.errors)) {
+                        setError(fieldName, {type: 'custom', message: errorMessage});
+                    }
+                }
+                throw new Error(_data.message || 'Form has errors');
+            }
+
             toast.update(toastId, {
-                render: response.message,
+                render: _data.message,
                 type: 'success',
                 ...toastConfig
             });
