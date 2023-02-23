@@ -1,7 +1,7 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
-import { object, string, mixed, addMethod, ValidationError } from 'yup';
+import { object, string, array, addMethod, ValidationError } from 'yup';
 import { labels } from '@/components/form/ContactForm';
 
 /**
@@ -68,15 +68,15 @@ function getFormSchema() {
         lastname: string().required('This field is required'),
         email: string().required('This field is required').email('Invalid email address'),
         subject: string().required('This field is required'),
-        choices: string().required('Please select one of these choices'),
+        choices: array().of(string()).min(1, 'Please select one of these choices'),
         question: string().required('Please select one of these answers'),
         message: string().required('This field is required'),
     });
 }
 
-async function validateFormData(fields, files) {
+async function validateFormData(fields) {
     const formSchema = getFormSchema();
-    await formSchema.validate({ ...fields, ...files }, { abortEarly: false });
+    await formSchema.validate({ ...fields }, { abortEarly: false });
 }
 
 /**
@@ -92,6 +92,9 @@ export default async function handler(req, res) {
     }
 
     try {
+        /* Fields */
+        const fields = req.body;
+
         // const chunks = [];
 
         // const { fields, files } = await formidablePromise(req, {
@@ -101,7 +104,7 @@ export default async function handler(req, res) {
         // });
 
         /* Validation */
-        // await validateFormData(fields, files);
+        await validateFormData(fields);
 
         /* Files */
         // const { resume } = files;
@@ -112,17 +115,16 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            // await new Email(req.headers.host, 'New contact form', labels, fields, attachments).send();
-            console.log(req.body);
+            await new Email(req.headers.host, 'New contact form', labels, fields, []).send();
 
             return res.status(201).json({
                 data: {
-                    fields,
-                    attachments
+                    fields
                 },
                 message: 'Thank you, your message has been sent successfully.'
             });
         } catch (err) {
+            console.log(err);
             return res.status(500).json({ data: null, message: 'An error occurred while sending the email' });
         }
 
