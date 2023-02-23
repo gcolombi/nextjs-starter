@@ -21,8 +21,8 @@ export default function FormFileInput({
 
     /* Sets input and label value */
     const updateOnChange = (e) => {
-        field.onChange(e.target.files);
-        setFile(e.target.files[0]);
+        field.onChange(e.target.files.length && e.target.files || '');
+        setFile(e.target.files[0] || null);
         setLabelValue(e.target.files[0]?.name || label);
     };
 
