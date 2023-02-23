@@ -2,7 +2,7 @@ import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
 import { object, string, mixed, addMethod, ValidationError } from 'yup';
-import { labels } from '@/components/form/Form';
+import { labels } from '@/components/form/ContactForm';
 
 /**
  * Config
@@ -10,46 +10,46 @@ import { labels } from '@/components/form/Form';
  * https://nextjs.org/docs/api-routes/request-helpers
  * https://github.com/node-formidable/formidable#options
  */
-export const config = {
-    api: {
-        bodyParser: false
-    }
-};
+// export const config = {
+//     api: {
+//         bodyParser: false
+//     }
+// };
 
-const formidableConfig = {
-    keepExtensions: true,
-    // maxFileSize: 4 * 1024 * 1024
-};
+// const formidableConfig = {
+//     keepExtensions: true,
+//     // maxFileSize: 4 * 1024 * 1024
+// };
 
 /**
  * Helpers
  *
  * https://github.com/node-formidable/formidable
  */
-function formidablePromise(req, opts) {
-    return new Promise((resolve, reject) => {
-        const form = formidable(opts);
+// function formidablePromise(req, opts) {
+//     return new Promise((resolve, reject) => {
+//         const form = formidable(opts);
 
-        form.parse(req, (err, fields, files) => {
-            if (err) {
-                return reject(err);
-            }
+//         form.parse(req, (err, fields, files) => {
+//             if (err) {
+//                 return reject(err);
+//             }
 
-            return resolve({ fields, files });
-        });
-    });
-}
+//             return resolve({ fields, files });
+//         });
+//     });
+// }
 
-const fileConsumer = (acc) => {
-    const writable = new Writable({
-        write: (chunk, _encoding, next) => {
-            acc.push(chunk);
-            next();
-        }
-    });
+// const fileConsumer = (acc) => {
+//     const writable = new Writable({
+//         write: (chunk, _encoding, next) => {
+//             acc.push(chunk);
+//             next();
+//         }
+//     });
 
-    return writable;
-};
+//     return writable;
+// };
 
 /**
  * Validation
@@ -67,9 +67,6 @@ function getFormSchema() {
         firstname: string().required('This field is required'),
         lastname: string().required('This field is required'),
         email: string().required('This field is required').email('Invalid email address'),
-        resume: mixed().test('required', 'This field is required', (files) => files)
-        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files.originalFilename))
-        .test('fileSize', 'Max file size 4MB exceeded', (files) => files.size <= 4 * 1024 * 1024 ),
         subject: string().required('This field is required'),
         choices: string().required('Please select one of these choices'),
         question: string().required('Please select one of these answers'),
@@ -95,27 +92,28 @@ export default async function handler(req, res) {
     }
 
     try {
-        const chunks = [];
+        // const chunks = [];
 
-        const { fields, files } = await formidablePromise(req, {
-            ...formidableConfig,
-            /* Consumes this, otherwise formidable tries to save the file to disk */
-            fileWriteStreamHandler: () => fileConsumer(chunks)
-        });
+        // const { fields, files } = await formidablePromise(req, {
+        //     ...formidableConfig,
+        //     /* Consumes this, otherwise formidable tries to save the file to disk */
+        //     fileWriteStreamHandler: () => fileConsumer(chunks)
+        // });
 
         /* Validation */
-        await validateFormData(fields, files);
+        // await validateFormData(fields, files);
 
         /* Files */
-        const { resume } = files;
-        const fileData = Buffer.concat(chunks).toString('base64');
-        const filename = resume?.originalFilename;
+        // const { resume } = files;
+        // const fileData = Buffer.concat(chunks).toString('base64');
+        // const filename = resume?.originalFilename;
 
-        const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
+        // const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
 
         /* Sends email */
         try {
-            await new Email(req.headers.host, 'New contact form', labels, fields, attachments).send();
+            // await new Email(req.headers.host, 'New contact form', labels, fields, attachments).send();
+            console.log(req.body);
 
             return res.status(201).json({
                 data: {
@@ -129,18 +127,18 @@ export default async function handler(req, res) {
         }
 
     } catch (err) {
-        if (err instanceof formidableErrors.FormidableError) {
-            let message = 'An error has occurred';
+        // if (err instanceof formidableErrors.FormidableError) {
+        //     let message = 'An error has occurred';
 
-            /* Form data validation is done by yup */
+        //     /* Form data validation is done by yup */
 
-            /* Checks specific formidable error according to the object's configuration */
-            // if (err.code === formidableErrors.biggerThanMaxFileSize) {
-            //     message = 'Max file size 4MB exceeded';
-            // }
+        //     /* Checks specific formidable error according to the object's configuration */
+        //     // if (err.code === formidableErrors.biggerThanMaxFileSize) {
+        //     //     message = 'Max file size 4MB exceeded';
+        //     // }
 
-            return res.status(err.httpCode || 400).json({ data: null, message });
-        }
+        //     return res.status(err.httpCode || 400).json({ data: null, message });
+        // }
 
         if (err instanceof ValidationError) {
             let validationErrors = {}

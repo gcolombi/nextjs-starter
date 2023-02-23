@@ -8,7 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
-import FormFileInput from './FormFileInput';
 import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
@@ -39,9 +38,6 @@ function getFormSchema() {
         firstname: string().required('This field is required'),
         lastname: string().required('This field is required'),
         email: string().required('This field is required').email('Invalid email address'),
-        resume: mixed().test('required', 'This field is required', (files) => files?.length)
-        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files[0]?.name))
-        .test('fileSize', 'Max file size 4MB exceeded', (files) => files[0]?.size <= 4 * 1024 * 1024 ),
         subject: string().required('This field is required'),
         choices: array().of(string()).min(1, 'Please select one of these choices'),
         question: string().required('Please select one of these answers'),
@@ -49,40 +45,13 @@ function getFormSchema() {
     });
 }
 
-async function sendFormData(data, setError) {
+async function sendFormData(data) {
     console.log(data);
-    const formData = new FormData();
-
-    Object.entries(data).forEach(([key, value]) => {
-        if (value instanceof FileList) {
-            formData.set(key, value[0] || []);
-        } else {
-            formData.set(key, value);
-        }
-    });
-
-    const response = await fetch('/api/form', {
+    return await fetch('/api/contactform', {
         method: 'POST',
-        body: formData
+        body: JSON.stringify(data),
+        headers: {'Content-Type': 'application/json'}
     });
-
-    const _data = await response.json();
-
-    if (!response.ok) {
-        /* API returns validation errors, this type of error will not persist with each submission */
-        setError('root.serverError', {
-            type: response.status,
-        });
-        if (_data.errors) {
-            /* Validation error, expect response to be a JSON response {"field": "error message for that field"} */
-            for (const [fieldName, errorMessage] of Object.entries(_data.errors)) {
-                setError(fieldName, {type: 'custom', message: errorMessage});
-            }
-        }
-        throw new Error(_data.message || 'Form has errors');
-    }
-
-    return _data;
 }
 
 export default function Form() {
@@ -98,13 +67,12 @@ export default function Form() {
             firstname: '',
             lastname: '',
             email: '',
-            resume: [],
             subject: '',
             choices: [],
             question: '',
             message: ''
         },
-        resolver: yupResolver(getFormSchema())
+        // resolver: yupResolver(getFormSchema())
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
@@ -113,20 +81,36 @@ export default function Form() {
     useUnsavedChanges(isDirty);
 
     const onSubmit = async (data) => {
-
         const toastConfig = {
             isLoading: false,
             autoClose: 3000,
             closeButton: true,
             draggable: true
         }
+
         const toastId = toast.loading('Your message is on its way !');
 
         try {
-            const response = await sendFormData(data, setError);
+            const response = await sendFormData(data);
+
+            const _data = await response.json();
+
+            if (!response.ok) {
+                /* API returns validation errors, this type of error will not persist with each submission */
+                setError('root.serverError', {
+                    type: response.status,
+                });
+                if (_data.errors) {
+                    /* Validation error, expect response to be a JSON response {"field": "error message for that field"} */
+                    for (const [fieldName, errorMessage] of Object.entries(_data.errors)) {
+                        setError(fieldName, {type: 'custom', message: errorMessage});
+                    }
+                }
+                throw new Error(_data.message || 'Form has errors');
+            }
 
             toast.update(toastId, {
-                render: response.message,
+                render: _data.message,
                 type: 'success',
                 ...toastConfig
             });
@@ -176,17 +160,6 @@ export default function Form() {
                         className="c-formElement--bordered"
                         register={register('email')}
                         errors={errors['email']}
-                    />
-                    <FormFileInput
-                        htmlFor="resume"
-                        label="Resume"
-                        type="file"
-                        id="resume"
-                        name="resume"
-                        required={true}
-                        className="c-formElement--upload--bordered"
-                        control={control}
-                        errors={errors['resume']}
                     />
                     <FormSelect
                         htmlFor="subject"
