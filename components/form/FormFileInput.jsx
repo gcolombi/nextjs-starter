@@ -28,8 +28,8 @@ export default function FormFileInput({
 
     /* Reset label after successful submit */
     useEffect(() => {
-      if (isSubmitSuccessful)
-        setLabelValue(label);
+        if (isSubmitSuccessful)
+            setLabelValue(label);
     }, [isSubmitSuccessful, label]);
 
     return(
@@ -46,7 +46,7 @@ export default function FormFileInput({
                 <input
                     type="file"
                     id={id}
-                    name={field?.name}
+                    name={field.name}
                     required={required}
                     ref={field.ref}
                     onBlur={field.onBlur}
