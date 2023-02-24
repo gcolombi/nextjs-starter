@@ -31,6 +31,8 @@ function formidablePromise(req, opts) {
         const form = formidable(opts);
 
         form.parse(req, (err, fields, files) => {
+            console.log(fields);
+            console.log(files);
             if (err) {
                 return reject(err);
             }
@@ -68,8 +70,8 @@ function getFormSchema() {
         lastname: string().required('This field is required'),
         email: string().required('This field is required').email('Invalid email address'),
         resume: mixed().test('required', 'This field is required', (files) => files)
-        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files.originalFilename))
-        .test('fileSize', 'Max file size 4MB exceeded', (files) => files.size <= 4 * 1024 * 1024 ),
+        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files[0]?.name || files.originalFilename))
+        .test('fileSize', 'Max file size 4MB exceeded', (files) => (files[0]?.size || files.size) <= 4 * 1024 * 1024 ),
         message: string().required('This field is required'),
     });
 }
