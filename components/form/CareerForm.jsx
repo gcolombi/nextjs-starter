@@ -54,7 +54,7 @@ export default function CareerForm() {
             resume: '',
             message: ''
         },
-        resolver: yupResolver(careerSchema)
+        // resolver: yupResolver(careerSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();

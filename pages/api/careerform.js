@@ -1,7 +1,8 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
-import { object, string, mixed, addMethod, ValidationError } from 'yup';
+import { ValidationError } from 'yup';
+import { careerSchema } from '@/schemas/career';
 import { labels } from '@/components/form/CareerForm';
 
 /**
@@ -52,34 +53,6 @@ const fileConsumer = (acc) => {
 };
 
 /**
- * Validation
- */
-function getFormSchema() {
-    /* override the email method */
-    addMethod(string, 'email', function validateEmail(message){
-        return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
-            message,
-            name: 'email',
-        });
-    });
-
-    return object({
-        firstname: string().required('This field is required'),
-        lastname: string().required('This field is required'),
-        email: string().required('This field is required').email('Invalid email address'),
-        resume: mixed().test('required', 'This field is required', (files) => files)
-        .test('fileType', 'Unauthorized format, only jpeg, jpg, png, doc, docx and pdf are valid', (files) => new RegExp(/[^\s]+(.*?).(jpe?g|png|docx?|pdf)$/i).test(files[0]?.name || files.originalFilename))
-        .test('fileSize', 'Max file size 4MB exceeded', (files) => (files[0]?.size || files.size) <= 4 * 1024 * 1024 ),
-        message: string().required('This field is required'),
-    });
-}
-
-async function validateFormData(fields, files) {
-    const formSchema = getFormSchema();
-    await formSchema.validate({ ...fields, ...files }, { abortEarly: false });
-}
-
-/**
  * Handler
  *
  * https://nextjs.org/docs/api-routes/introduction
@@ -101,7 +74,7 @@ export default async function handler(req, res) {
         });
 
         /* Validation */
-        await validateFormData(fields, files);
+        await careerSchema.validate({ ...fields, ...files }, { abortEarly: false });
 
         /* Files */
         const { resume } = files;
