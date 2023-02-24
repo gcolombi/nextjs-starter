@@ -13,24 +13,23 @@ export default function FormFileInput({
     className,
     wrapperClassName,
     errors,
-    control
+    controller
 }) {
     const [labelValue, setLabelValue] = useState(label);
     const [file, setFile] = useState(null);
-    const { field, formState: { isSubmitSuccessful }} = useController({ control, name });
 
     /* Sets input and label value */
     const updateOnChange = (e) => {
-        field.onChange(e.target.files.length && e.target.files || '');
-        setFile(e.target.files[0] || null);
-        setLabelValue(e.target.files[0]?.name || label);
+        controller?.field.onChange(e.target.files.length && e.target.files || '');
+        setFile(e.target.files[0] ?? null);
+        setLabelValue(e.target.files[0]?.name ?? label);
     };
 
     /* Reset label after successful submit */
     useEffect(() => {
-        if (isSubmitSuccessful)
+        if (controller?.formState.isSubmitSuccessful)
             setLabelValue(label);
-    }, [isSubmitSuccessful, label]);
+    }, [controller?.formState.isSubmitSuccessful, label]);
 
     return(
         <div className={wrapperClassName}>
@@ -46,10 +45,10 @@ export default function FormFileInput({
                 <input
                     type="file"
                     id={id}
-                    name={field.name}
+                    name={controller?.field.name || name}
                     required={required}
-                    ref={field.ref}
-                    onBlur={field.onBlur}
+                    ref={controller?.field.ref}
+                    onBlur={controller?.field.onBlur}
                     onChange={updateOnChange}
                 />
                 <FileUpload />

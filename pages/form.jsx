@@ -30,7 +30,7 @@ export default function FormElements() {
                             required={true}
                             className="c-formElement--bordered"
                         />
-                        {/* <FormFileInput
+                        <FormFileInput
                             htmlFor="resume"
                             label="Resume"
                             type="file"
@@ -38,7 +38,7 @@ export default function FormElements() {
                             name="resume"
                             required={true}
                             className="c-formElement--upload--bordered"
-                        /> */}
+                        />
                         <FormSelect
                             htmlFor="subject"
                             label="Subject"

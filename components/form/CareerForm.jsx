@@ -1,6 +1,7 @@
 import styles from '../../styles/modules/Form.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
 import { object, string, mixed, array, addMethod } from 'yup';
@@ -166,10 +167,9 @@ export default function CareerForm() {
                             label="Resume"
                             type="file"
                             id="resume"
-                            name="resume"
                             required={true}
                             className="c-formElement--upload--bordered"
-                            control={control}
+                            controller={useController({ control, name: 'resume' })}
                             errors={errors['resume']}
                         />
                     </div>
