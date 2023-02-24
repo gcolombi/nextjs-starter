@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
-import { object, string, mixed, array, addMethod } from 'yup';
+import { contactSchema } from '@/schemas/contact';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
@@ -23,26 +23,6 @@ export const labels = {
     choices: 'Choices',
     question: 'Question',
     message: 'Message'
-}
-
-function getFormSchema() {
-    /* override the email method */
-    addMethod(string, 'email', function validateEmail(message){
-        return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
-            message,
-            name: 'email',
-        });
-    });
-
-    return object({
-        firstname: string().required('This field is required'),
-        lastname: string().required('This field is required'),
-        email: string().required('This field is required').email('Invalid email address'),
-        subject: string().required('This field is required'),
-        choices: array().of(string()).min(1, 'Please select one of these choices'),
-        question: string().required('Please select one of these answers'),
-        message: string().required('This field is required'),
-    });
 }
 
 async function sendFormData(data) {
@@ -72,7 +52,7 @@ export default function Form() {
             question: '',
             message: ''
         },
-        // resolver: yupResolver(getFormSchema())
+        resolver: yupResolver(contactSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
