@@ -2,7 +2,6 @@ import styles from '../../styles/modules/FormInput.module.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import FileUpload from '../icons/FileUpload';
-import { useController } from 'react-hook-form';
 
 export default function FormFileInput({
     htmlFor,
