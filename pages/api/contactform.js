@@ -1,7 +1,8 @@
 import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
-import { object, string, array, addMethod, ValidationError } from 'yup';
+import { ValidationError } from 'yup';
+import { contactSchema } from '@/schemas/contact';
 import { labels } from '@/components/form/ContactForm';
 
 /**
@@ -52,34 +53,6 @@ import { labels } from '@/components/form/ContactForm';
 // };
 
 /**
- * Validation
- */
-function getFormSchema() {
-    /* override the email method */
-    addMethod(string, 'email', function validateEmail(message){
-        return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
-            message,
-            name: 'email',
-        });
-    });
-
-    return object({
-        firstname: string().required('This field is required'),
-        lastname: string().required('This field is required'),
-        email: string().required('This field is required').email('Invalid email address'),
-        subject: string().required('This field is required'),
-        choices: array().of(string()).min(1, 'Please select one of these choices'),
-        question: string().required('Please select one of these answers'),
-        message: string().required('This field is required'),
-    });
-}
-
-async function validateFormData(fields) {
-    const formSchema = getFormSchema();
-    await formSchema.validate({ ...fields }, { abortEarly: false });
-}
-
-/**
  * Handler
  *
  * https://nextjs.org/docs/api-routes/introduction
@@ -104,7 +77,7 @@ export default async function handler(req, res) {
         // });
 
         /* Validation */
-        await validateFormData(fields);
+        await contactSchema.validate({ ...fields }, { abortEarly: false })
 
         /* Files */
         // const { resume } = files;
