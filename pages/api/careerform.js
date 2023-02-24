@@ -31,8 +31,6 @@ function formidablePromise(req, opts) {
         const form = formidable(opts);
 
         form.parse(req, (err, fields, files) => {
-            console.log(fields);
-            console.log(files);
             if (err) {
                 return reject(err);
             }
