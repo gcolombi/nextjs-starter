@@ -3,7 +3,6 @@ import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
 import { ValidationError } from 'yup';
 import { careerSchema } from '@/schemas/career';
-import { labels } from '@/components/form/CareerForm';
 
 /**
  * Config
@@ -74,8 +73,16 @@ export default async function handler(req, res) {
             fileWriteStreamHandler: () => fileConsumer(chunks)
         });
 
+        /* Destructuring fiedls */
+        const { recaptchaToken, labels, ...formFields } = fields;
+
+        // console.log(recaptchaToken);
+        // console.log(JSON.parse(labels));
+        // console.log(formFields);
+
         /* Validation */
-        await careerSchema.validate({ ...fields, ...files }, { abortEarly: false });
+        await careerSchema.validate({ ...formFields, ...files }, { abortEarly: false });
+        // await careerSchema.validate({ ...fields, ...files }, { abortEarly: false });
 
         /* Files */
         const { resume } = files;
@@ -86,13 +93,18 @@ export default async function handler(req, res) {
 
         /* Sends email */
         try {
-            await new Email(req.headers.host, 'New career form', labels, fields, attachments).send();
+            await new Email(req.headers.host, 'New career form', JSON.parse(labels), formFields, attachments).send();
+            // await new Email(req.headers.host, 'New career form', labels, fields, attachments).send();
 
             return res.status(201).json({
                 data: {
-                    fields,
+                    formFields,
                     attachments
                 },
+                // data: {
+                //     fields,
+                //     attachments
+                // },
                 message: 'Thank you, your message has been sent successfully.'
             });
         } catch (err) {

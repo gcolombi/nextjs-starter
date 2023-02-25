@@ -14,7 +14,7 @@ import FormTextarea from './FormTextarea';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
-export const labels = {
+const labels = {
     firstname: 'Firstname',
     lastname: 'Lastname',
     email: 'Email',
@@ -26,11 +26,15 @@ async function sendFormData(data) {
 
     Object.entries(data).forEach(([key, value]) => {
         if (value instanceof FileList) {
-            formData.set(key, value[0]);
+            formData.append(key, value[0]);
         } else {
-            formData.set(key, value);
+            formData.append(key, value);
         }
     });
+
+    formData.append('labels', JSON.stringify(labels));
+
+    formData.append('recaptchaToken', '##########');
 
     return await fetch('/api/careerform', {
         method: 'POST',
