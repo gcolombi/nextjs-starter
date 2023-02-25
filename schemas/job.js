@@ -23,4 +23,4 @@ const getFormSchema = () => {
     });
 }
 
-export const careerSchema = getFormSchema();
+export const jobSchema = getFormSchema();

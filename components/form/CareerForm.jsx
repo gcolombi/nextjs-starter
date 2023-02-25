@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
-import { careerSchema } from '@/schemas/career';
+import { jobSchema } from '@/schemas/job';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
@@ -42,7 +42,7 @@ async function sendFormData(data) {
 
     formData.append('recaptchaToken', '##########');
 
-    return await fetch('/api/careerform', {
+    return await fetch('/api/jobform', {
         method: 'POST',
         body: formData
     });
@@ -65,7 +65,7 @@ export default function CareerForm() {
             coverletter: '',
             message: ''
         },
-        // resolver: yupResolver(careerSchema)
+        // resolver: yupResolver(jobSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();

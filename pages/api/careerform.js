@@ -2,7 +2,7 @@ import { Writable } from 'stream';
 import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
 import { ValidationError } from 'yup';
-import { careerSchema } from '@/schemas/career';
+import { jobSchema } from '@/schemas/job';
 
 /**
  * Config
@@ -83,7 +83,7 @@ export default async function handler(req, res) {
         const { recaptchaToken, labels, ...formFields } = fields;
 
         /* Validation */
-        await careerSchema.validate({ ...formFields, ...files }, { abortEarly: false });
+        await jobSchema.validate({ ...formFields, ...files }, { abortEarly: false });
 
         /* Builds attachments */
         const attachments = [];
