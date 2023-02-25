@@ -23,7 +23,7 @@ export default function FormInput({
                     styles[className],
                     {
                         [styles['c-floatingLabel']]: label,
-                        [styles['has-error']]: required && errors?.message
+                        [styles['has-error']]: errors?.message
                     }
                 )}
             >

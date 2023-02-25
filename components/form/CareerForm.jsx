@@ -65,7 +65,7 @@ export default function CareerForm() {
             coverletter: '',
             message: ''
         },
-        // resolver: yupResolver(jobSchema)
+        resolver: yupResolver(jobSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
@@ -168,7 +168,6 @@ export default function CareerForm() {
                             label="Cover Letter"
                             type="file"
                             id="coverletter"
-                            required={true}
                             className="c-formElement--upload--bordered"
                             controller={useController({ control, name: 'coverletter' })}
                             errors={errors['coverletter']}

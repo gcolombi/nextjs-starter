@@ -37,7 +37,7 @@ export default function FormFileInput({
                     styles['c-formElement'],
                     styles[className],
                     {
-                        [styles['has-error']]: required && errors?.message
+                        [styles['has-error']]: errors?.message
                     }
                 )}
             >
