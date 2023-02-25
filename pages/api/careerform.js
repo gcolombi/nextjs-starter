@@ -81,7 +81,7 @@ export default async function handler(req, res) {
         const fileData = Buffer.concat(chunks).toString('base64');
         const filename = resume?.originalFilename;
 
-        const attachments = fileData.length && filename ? [{ content: fileData, filename }] : [];
+        const attachments = fileData.length ? [{ content: fileData, filename }] : [];
 
         /* Sends email */
         try {
