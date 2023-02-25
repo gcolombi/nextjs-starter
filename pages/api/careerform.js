@@ -3,6 +3,7 @@ import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
 import { ValidationError } from 'yup';
 import { careerSchema } from '@/schemas/career';
+const fs = require("fs");
 
 /**
  * Config
@@ -18,7 +19,6 @@ export const config = {
 
 const formidableConfig = {
     keepExtensions: true,
-    multiples: false
     // maxFileSize: 4 * 1024 * 1024
 };
 
@@ -28,27 +28,113 @@ const formidableConfig = {
  * https://github.com/node-formidable/formidable
  */
 function formidablePromise(req, opts) {
+// function formidablePromise(req) {
     return new Promise((resolve, reject) => {
         const form = formidable(opts);
+        // let endBuffers = {};
+        // const form = formidable({
+        //     ...formidableConfig,
+        //     fileWriteStreamHandler: (file) => {
+        //         const chunks = [];
+
+        //         const writable = new Writable({
+        //             write (chunk, enc, next) {
+        //                 chunks.push(chunk);
+        //                 next();
+        //             },
+        //             destroy() {
+        //                 endBuffers = {};
+        //             },
+        //             final(cb) {
+        //                 const buffer = Buffer.concat(chunks);
+        //                 // if filename option is not provided file.newFilename will be a random string
+        //                 endBuffers[file.originalFilename] = buffer;
+        //                 cb();
+        //             },
+        //         })
+        //         return writable;
+        //     }
+        // });
+
+        // const filesData = [];
+        // let endBuffers = {};
+        // const form = formidable({
+        //     ...formidableConfig,
+        //     fileWriteStreamHandler: (file) => {
+        //         console.log('here file');
+        //         console.log(file);
+        //       const chunks = [];
+
+        //       const writable = new Writable({
+        //         write (chunk, enc, next) {
+        //           chunks.push(chunk);
+        //           next();
+        //         },
+        //         destroy() {
+        //           endBuffers = {};
+        //         },
+        //         final(cb) {
+        //           const buffer = Buffer.concat(chunks);
+        //           // if filename option is not provided file.newFilename will be a random string
+        //           endBuffers[file.originalFilename] = buffer;
+        //           filesData.push(endBuffers);
+        //           cb();
+        //         },
+        //       })
+        //       return writable;
+        //     },
+        // });
 
         form.parse(req, (err, fields, files) => {
+            // console.log(files);
+            // console.log(endBuffers);
+
             if (err) {
                 return reject(err);
             }
 
+            // console.log(filesData);
             return resolve({ fields, files });
         });
     });
 }
 
-const fileConsumer = (acc) => {
-    const writable = new Writable({
-        write: (chunk, _encoding, next) => {
-            acc.push(chunk);
-            next();
-        }
-    });
+// const fileConsumer = (acc) => {
+const fileConsumer = (file, filesData) => {
+    // const writable = new Writable({
+    //     write: (chunk, _encoding, next) => {
+    //         acc.push(chunk);
+    //         next();
+    //     }
+    // });
 
+    // return writable;
+
+    console.log('here file');
+    // console.log(file);
+    const chunks = [];
+
+    const writable = new Writable({
+        write (chunk, _enc, next) {
+            chunks.push(chunk);
+
+            next();
+        },
+        // destroy() {
+        //     endBuffers = {};
+        // },
+        final(cb) {
+            const buffer = Buffer.concat(chunks);
+            /* if filename option is not provided filename will be a random string */
+            // endBuffers[file.originalFilename] = buffer;
+            // filesData.push(endBuffers);
+            // filesData.push({
+            //     [file.originalFilename]: buffer
+            // });
+            filesData[file.originalFilename] = buffer;
+            cb();
+        },
+    })
     return writable;
 };
 
@@ -65,13 +151,54 @@ export default async function handler(req, res) {
     }
 
     try {
-        const chunks = [];
+        // const chunks = [];
+        let endBuffers = {};
+        const filesData = {};
+
+        // const { fields, files } = await formidablePromise(req, {
+        //     ...formidableConfig,
+        //     /* Consumes this, otherwise formidable tries to save the file to disk */
+        //     // fileWriteStreamHandler: () => fileConsumer(chunks)
+        // });
 
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
-            /* Consumes this, otherwise formidable tries to save the file to disk */
-            fileWriteStreamHandler: () => fileConsumer(chunks)
+            fileWriteStreamHandler: (file) => fileConsumer(file, filesData)
+
+            // fileWriteStreamHandler: (file) => {
+            //     console.log('here file');
+            //     console.log(file);
+            //     const chunks = [];
+
+            //     const writable = new Writable({
+            //         write (chunk, enc, next) {
+            //             chunks.push(chunk);
+
+            //             next();
+            //         },
+            //         // destroy() {
+            //         //     endBuffers = {};
+            //         // },
+            //         final(cb) {
+            //             const buffer = Buffer.concat(chunks);
+            //             /* if filename option is not provided filename will be a random string */
+            //             // endBuffers[file.originalFilename] = buffer;
+            //             // filesData.push(endBuffers);
+            //             filesData.push({
+            //                 [file.originalFilename]: buffer
+            //             });
+            //             cb();
+            //         },
+            //     })
+            //     return writable;
+            // }
         });
+
+        console.log(filesData);
+
+        // const { fields, files } = await formidablePromise(req);
+
+        // console.log(files);
 
         /* Destructuring fiedls */
         const { recaptchaToken, labels, ...formFields } = fields;
@@ -85,11 +212,39 @@ export default async function handler(req, res) {
         // await careerSchema.validate({ ...fields, ...files }, { abortEarly: false });
 
         /* Files */
-        const { resume } = files;
-        const fileData = Buffer.concat(chunks).toString('base64');
-        const filename = resume?.originalFilename;
+        // const { resume, letter } = files;
 
-        const attachments = fileData.length ? [{ content: fileData, filename }] : [];
+        const attachments = [];
+
+        // for (const key in files) {
+        //     const fileData = Buffer.concat(chunks).toString('base64');
+        //     // console.log(fileData);
+        //     const filename = files[key]?.originalFilename;
+        //     attachments.push({ content: fileData, filename })
+        //     // attachments.push({ content: files[key], filename })
+        // }
+
+
+        // for (const filename in filesData) {
+        //     console.log(filesData[filename]);
+        //     // const fileData = Buffer.concat(chunks).toString('base64');
+        //     // const filename = files[key]?.originalFilename;
+        //     attachments.push({ content: filesData[filename].toString('base64'), filename })
+        //     // attachments.push({ content: files[key], filename })
+        // }
+
+        Object.entries(filesData).forEach(([key, value]) => {
+            attachments.push({ content: value.toString('base64'), filename: key });
+        });
+
+        console.log(attachments);
+
+        // return;
+
+        // const fileData = Buffer.concat(chunks).toString('base64');
+        // const filename = resume?.originalFilename;
+
+        // const attachments = fileData.length ? [{ content: fileData, filename }] : [];
 
         /* Sends email */
         try {

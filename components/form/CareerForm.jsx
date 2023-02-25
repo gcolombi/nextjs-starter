@@ -18,6 +18,8 @@ const labels = {
     firstname: 'Firstname',
     lastname: 'Lastname',
     email: 'Email',
+    resume: 'Resume',
+    coverletter: 'Cover Letter',
     message: 'Message'
 }
 
@@ -31,6 +33,10 @@ async function sendFormData(data) {
             formData.append(key, value);
         }
     });
+
+    // for (const obj of formData) {
+    //     console.log(obj);
+    // }
 
     formData.append('labels', JSON.stringify(labels));
 
@@ -56,6 +62,7 @@ export default function CareerForm() {
             lastname: '',
             email: '',
             resume: '',
+            coverletter: '',
             message: ''
         },
         // resolver: yupResolver(careerSchema)
@@ -155,6 +162,16 @@ export default function CareerForm() {
                             className="c-formElement--upload--bordered"
                             controller={useController({ control, name: 'resume' })}
                             errors={errors['resume']}
+                        />
+                        <FormFileInput
+                            htmlFor="coverletter"
+                            label="Cover Letter"
+                            type="file"
+                            id="coverletter"
+                            required={true}
+                            className="c-formElement--upload--bordered"
+                            controller={useController({ control, name: 'coverletter' })}
+                            errors={errors['coverletter']}
                         />
                     </div>
                     <FormTextarea
