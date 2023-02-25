@@ -72,100 +72,31 @@ export default async function handler(req, res) {
     }
 
     try {
-        // const chunks = [];
-        let endBuffers = {};
         const filesData = {};
-
-        // const { fields, files } = await formidablePromise(req, {
-        //     ...formidableConfig,
-        //     /* Consumes this, otherwise formidable tries to save the file to disk */
-        //     // fileWriteStreamHandler: () => fileConsumer(chunks)
-        // });
 
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
+            /* Consumes this, otherwise formidable tries to save the file to disk */
             fileWriteStreamHandler: (file) => fileConsumer(file, filesData)
-
-            // fileWriteStreamHandler: (file) => {
-            //     console.log('here file');
-            //     console.log(file);
-            //     const chunks = [];
-
-            //     const writable = new Writable({
-            //         write (chunk, enc, next) {
-            //             chunks.push(chunk);
-
-            //             next();
-            //         },
-            //         // destroy() {
-            //         //     endBuffers = {};
-            //         // },
-            //         final(cb) {
-            //             const buffer = Buffer.concat(chunks);
-            //             /* if filename option is not provided filename will be a random string */
-            //             // endBuffers[file.originalFilename] = buffer;
-            //             // filesData.push(endBuffers);
-            //             filesData.push({
-            //                 [file.originalFilename]: buffer
-            //             });
-            //             cb();
-            //         },
-            //     })
-            //     return writable;
-            // }
         });
 
-        console.log(filesData);
+        // console.log(filesData);
 
-        // const { fields, files } = await formidablePromise(req);
-
-        // console.log(files);
-
-        /* Destructuring fiedls */
+        /* Destructure fields */
         const { recaptchaToken, labels, ...formFields } = fields;
-
-        // console.log(recaptchaToken);
-        // console.log(JSON.parse(labels));
-        // console.log(formFields);
 
         /* Validation */
         await careerSchema.validate({ ...formFields, ...files }, { abortEarly: false });
         // await careerSchema.validate({ ...fields, ...files }, { abortEarly: false });
 
-        /* Files */
-        // const { resume, letter } = files;
-
+        /* Attachments */
         const attachments = [];
-
-        // for (const key in files) {
-        //     const fileData = Buffer.concat(chunks).toString('base64');
-        //     // console.log(fileData);
-        //     const filename = files[key]?.originalFilename;
-        //     attachments.push({ content: fileData, filename })
-        //     // attachments.push({ content: files[key], filename })
-        // }
-
-
-        // for (const filename in filesData) {
-        //     console.log(filesData[filename]);
-        //     // const fileData = Buffer.concat(chunks).toString('base64');
-        //     // const filename = files[key]?.originalFilename;
-        //     attachments.push({ content: filesData[filename].toString('base64'), filename })
-        //     // attachments.push({ content: files[key], filename })
-        // }
 
         Object.entries(filesData).forEach(([key, value]) => {
             attachments.push({ content: value.toString('base64'), filename: key });
         });
 
-        console.log(attachments);
-
-        // return;
-
-        // const fileData = Buffer.concat(chunks).toString('base64');
-        // const filename = resume?.originalFilename;
-
-        // const attachments = fileData.length ? [{ content: fileData, filename }] : [];
+        // console.log(attachments);
 
         /* Sends email */
         try {
@@ -177,10 +108,6 @@ export default async function handler(req, res) {
                     formFields,
                     attachments
                 },
-                // data: {
-                //     fields,
-                //     attachments
-                // },
                 message: 'Thank you, your message has been sent successfully.'
             });
         } catch (err) {
