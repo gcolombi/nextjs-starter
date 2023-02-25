@@ -3,7 +3,6 @@ import formidable, { errors as formidableErrors } from 'formidable';
 import Email from '@/utils/email';
 import { ValidationError } from 'yup';
 import { careerSchema } from '@/schemas/career';
-const fs = require("fs");
 
 /**
  * Config
@@ -80,28 +79,23 @@ export default async function handler(req, res) {
             fileWriteStreamHandler: (file) => fileConsumer(file, filesData)
         });
 
-        // console.log(filesData);
-
-        /* Destructure fields */
+        /* Destructures fields */
         const { recaptchaToken, labels, ...formFields } = fields;
 
         /* Validation */
         await careerSchema.validate({ ...formFields, ...files }, { abortEarly: false });
-        // await careerSchema.validate({ ...fields, ...files }, { abortEarly: false });
 
-        /* Attachments */
+        /* Builds attachments */
         const attachments = [];
 
         Object.entries(filesData).forEach(([key, value]) => {
             attachments.push({ content: value.toString('base64'), filename: key });
         });
 
-        // console.log(attachments);
 
         /* Sends email */
         try {
             await new Email(req.headers.host, 'New career form', JSON.parse(labels), formFields, attachments).send();
-            // await new Email(req.headers.host, 'New career form', labels, fields, attachments).send();
 
             return res.status(201).json({
                 data: {
