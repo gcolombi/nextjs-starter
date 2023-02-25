@@ -19,6 +19,7 @@ export const config = {
 
 const formidableConfig = {
     keepExtensions: true,
+    multiples: false
     // maxFileSize: 4 * 1024 * 1024
 };
 
