@@ -28,90 +28,20 @@ const formidableConfig = {
  * https://github.com/node-formidable/formidable
  */
 function formidablePromise(req, opts) {
-// function formidablePromise(req) {
     return new Promise((resolve, reject) => {
         const form = formidable(opts);
-        // let endBuffers = {};
-        // const form = formidable({
-        //     ...formidableConfig,
-        //     fileWriteStreamHandler: (file) => {
-        //         const chunks = [];
-
-        //         const writable = new Writable({
-        //             write (chunk, enc, next) {
-        //                 chunks.push(chunk);
-        //                 next();
-        //             },
-        //             destroy() {
-        //                 endBuffers = {};
-        //             },
-        //             final(cb) {
-        //                 const buffer = Buffer.concat(chunks);
-        //                 // if filename option is not provided file.newFilename will be a random string
-        //                 endBuffers[file.originalFilename] = buffer;
-        //                 cb();
-        //             },
-        //         })
-        //         return writable;
-        //     }
-        // });
-
-        // const filesData = [];
-        // let endBuffers = {};
-        // const form = formidable({
-        //     ...formidableConfig,
-        //     fileWriteStreamHandler: (file) => {
-        //         console.log('here file');
-        //         console.log(file);
-        //       const chunks = [];
-
-        //       const writable = new Writable({
-        //         write (chunk, enc, next) {
-        //           chunks.push(chunk);
-        //           next();
-        //         },
-        //         destroy() {
-        //           endBuffers = {};
-        //         },
-        //         final(cb) {
-        //           const buffer = Buffer.concat(chunks);
-        //           // if filename option is not provided file.newFilename will be a random string
-        //           endBuffers[file.originalFilename] = buffer;
-        //           filesData.push(endBuffers);
-        //           cb();
-        //         },
-        //       })
-        //       return writable;
-        //     },
-        // });
 
         form.parse(req, (err, fields, files) => {
-            // console.log(files);
-            // console.log(endBuffers);
-
             if (err) {
                 return reject(err);
             }
 
-            // console.log(filesData);
             return resolve({ fields, files });
         });
     });
 }
 
-// const fileConsumer = (acc) => {
 const fileConsumer = (file, filesData) => {
-    // const writable = new Writable({
-    //     write: (chunk, _encoding, next) => {
-    //         acc.push(chunk);
-    //         next();
-    //     }
-    // });
-
-    // return writable;
-
-    console.log('here file');
-    // console.log(file);
     const chunks = [];
 
     const writable = new Writable({
@@ -120,17 +50,8 @@ const fileConsumer = (file, filesData) => {
 
             next();
         },
-        // destroy() {
-        //     endBuffers = {};
-        // },
         final(cb) {
             const buffer = Buffer.concat(chunks);
-            /* if filename option is not provided filename will be a random string */
-            // endBuffers[file.originalFilename] = buffer;
-            // filesData.push(endBuffers);
-            // filesData.push({
-            //     [file.originalFilename]: buffer
-            // });
             filesData[file.originalFilename] = buffer;
             cb();
         },
