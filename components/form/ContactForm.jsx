@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import useIsMounted from '@/hooks/useIsMounted';
 import { useTheme } from 'next-themes';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { useCallback } from 'react';
 import { contactSchema } from '@/schemas/contact';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
@@ -31,15 +30,15 @@ async function sendFormData(data, recaptchaToken) {
     console.log(data);
     console.log(recaptchaToken);
 
-    // return await fetch('/api/contactform', {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify({
-    //         data,
-    //         labels,
-    //         recaptchaToken
-    //     })
-    // });
+    return await fetch('/api/contactform', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            data,
+            labels,
+            recaptchaToken
+        })
+    });
 }
 
 export default function Form() {
@@ -80,6 +79,7 @@ export default function Form() {
 
         try {
             const response = await sendFormData(data, recaptchaToken);
+            // const response = await sendFormData(data);
 
             const _data = await response.json();
 
@@ -115,7 +115,7 @@ export default function Form() {
         }
     };
 
-    const recaptchaVerify = useCallback(async (data) => {
+    const handleSubmitForm = async (data) => {
         if (!executeRecaptcha) {
             console.log('Execute recaptcha not yet available');
             return;
@@ -126,11 +126,11 @@ export default function Form() {
             submitForm(data, recaptchaToken);
         })
         .catch(error => console.error(`Form - Recaptcha Error : ${error}`));
-    }, [executeRecaptcha]);
+    }
 
     return(
         <>
-            <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(recaptchaVerify)} noValidate>
+            <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(handleSubmitForm)} noValidate>
                 <div className="o-container">
                     <div className={styles['c-form__row']}>
                         <FormInput
