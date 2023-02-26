@@ -1,8 +1,10 @@
 import styles from '../../styles/modules/Form.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
-import { useTheme } from 'next-themes';
 import useIsMounted from '@/hooks/useIsMounted';
+import { useTheme } from 'next-themes';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useCallback } from 'react';
 import { contactSchema } from '@/schemas/contact';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
@@ -25,16 +27,19 @@ const labels = {
     message: 'Message'
 }
 
-async function sendFormData(data) {
-    return await fetch('/api/contactform', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            data,
-            labels,
-            recaptchaToken: '##########'
-        })
-    });
+async function sendFormData(data, recaptchaToken) {
+    console.log(data);
+    console.log(recaptchaToken);
+
+    // return await fetch('/api/contactform', {
+    //     method: 'POST',
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: JSON.stringify({
+    //         data,
+    //         labels,
+    //         recaptchaToken
+    //     })
+    // });
 }
 
 export default function Form() {
@@ -58,11 +63,12 @@ export default function Form() {
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     /* Prompt the user if they try and leave with unsaved changes */
     useUnsavedChanges(isDirty);
 
-    const onSubmit = async (data) => {
+    const submitForm = async (data, recaptchaToken) => {
         const toastConfig = {
             isLoading: false,
             autoClose: 3000,
@@ -73,7 +79,7 @@ export default function Form() {
         const toastId = toast.loading('Your message is on its way !');
 
         try {
-            const response = await sendFormData(data);
+            const response = await sendFormData(data, recaptchaToken);
 
             const _data = await response.json();
 
@@ -109,9 +115,22 @@ export default function Form() {
         }
     };
 
+    const recaptchaVerify = useCallback(async (data) => {
+        if (!executeRecaptcha) {
+            console.log('Execute recaptcha not yet available');
+            return;
+        }
+
+        await executeRecaptcha('submit')
+        .then((recaptchaToken) => {
+            submitForm(data, recaptchaToken);
+        })
+        .catch(error => console.error(`Form - Recaptcha Error : ${error}`));
+    }, [executeRecaptcha]);
+
     return(
         <>
-            <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(recaptchaVerify)} noValidate>
                 <div className="o-container">
                     <div className={styles['c-form__row']}>
                         <FormInput
