@@ -15,7 +15,7 @@ import FormTextarea from './FormTextarea';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
-export const labels = {
+const labels = {
     firstname: 'Firstname',
     lastname: 'Lastname',
     email: 'Email',
@@ -26,18 +26,20 @@ export const labels = {
 }
 
 async function sendFormData(data) {
-    console.log(data);
     return await fetch('/api/contactform', {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            data,
+            labels,
+            recaptchaToken: '##########'
+        })
     });
 }
 
 export default function Form() {
     const {
         register,
-        control,
         handleSubmit,
         reset,
         setError,
