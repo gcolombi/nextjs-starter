@@ -1,5 +1,5 @@
 import { Writable } from 'stream';
-import formidable, { errors as formidableErrors } from 'formidable';
+import formidable from 'formidable';
 import Email from '@/utils/email';
 import { ValidationError } from 'yup';
 import { jobSchema } from '@/schemas/job';
@@ -17,8 +17,7 @@ export const config = {
 };
 
 const formidableConfig = {
-    keepExtensions: true,
-    // maxFileSize: 4 * 1024 * 1024
+    keepExtensions: true
 };
 
 /**
@@ -73,6 +72,7 @@ export default async function handler(req, res) {
     try {
         const filesData = {};
 
+        /* Parses form data */
         const { fields, files } = await formidablePromise(req, {
             ...formidableConfig,
             /* Consumes this, otherwise formidable tries to save the file to disk */
@@ -109,21 +109,9 @@ export default async function handler(req, res) {
         }
 
     } catch (err) {
-        if (err instanceof formidableErrors.FormidableError) {
-            let message = 'An error has occurred';
-
-            /* Form data validation is done by yup */
-
-            /* Checks specific formidable error according to the object's configuration */
-            // if (err.code === formidableErrors.biggerThanMaxFileSize) {
-            //     message = 'Max file size 4MB exceeded';
-            // }
-
-            return res.status(err.httpCode || 400).json({ data: null, message });
-        }
-
+        /* Yup validation */
         if (err instanceof ValidationError) {
-            let validationErrors = {}
+            const validationErrors = {}
 
             err.inner.forEach((error) => {
                 if (!validationErrors[error.path])
@@ -132,7 +120,7 @@ export default async function handler(req, res) {
 
             return res.status(400).json({ data: null, errors: validationErrors });
         }
-
+        /* Global server error */
         return res.status(500).json({ data: null, message: 'Internal Server Error' });
     }
 }

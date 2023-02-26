@@ -116,7 +116,7 @@ export default async function handler(req, res) {
         // }
 
         if (err instanceof ValidationError) {
-            let validationErrors = {}
+            const validationErrors = {}
 
             err.inner.forEach((error) => {
                 if (!validationErrors[error.path])
