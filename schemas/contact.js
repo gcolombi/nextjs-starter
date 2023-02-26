@@ -1,11 +1,11 @@
 import { object, string, mixed, array, addMethod } from 'yup';
 
 const getFormSchema = () => {
-    /* override the email method */
+    /* Override the email method, if email isn't required we need to add excludeEmptyString: true */
     addMethod(string, 'email', function validateEmail(message){
         return this.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
             message,
-            name: 'email',
+            name: 'email'
         });
     });
 
@@ -16,7 +16,7 @@ const getFormSchema = () => {
         subject: string().required('This field is required'),
         choices: array().of(string()).min(1, 'Please select one of these choices'),
         question: string().required('Please select one of these answers'),
-        message: string().required('This field is required'),
+        message: string().required('This field is required')
     });
 }
 
