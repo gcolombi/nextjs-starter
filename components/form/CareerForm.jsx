@@ -65,7 +65,7 @@ export default function CareerForm() {
             coverletter: '',
             message: ''
         },
-        resolver: yupResolver(jobSchema)
+        // resolver: yupResolver(jobSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
