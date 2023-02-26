@@ -50,7 +50,9 @@ export default function App({ Component, pageProps }) {
                 <GoogleReCaptchaProvider
                     reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}
                     scriptProps={{
-                        appendTo: 'body',
+                        async: true,
+                        defer: true,
+                        appendTo: 'body'
                     }}
                 >
                     <NavigationContextProvider>
