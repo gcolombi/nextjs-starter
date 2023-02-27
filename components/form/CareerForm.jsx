@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import FormInput from './FormInput';
 import FormFileInput from './FormFileInput';
 import FormTextarea from './FormTextarea';
+import FormRecaptchaMessage from './FormRecaptchaMessage';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
@@ -196,6 +197,7 @@ export default function CareerForm() {
                         register={register('message')}
                         errors={errors['message']}
                     />
+                    <FormRecaptchaMessage />
                     <Button
                         label="Send"
                         className="c-btn"
