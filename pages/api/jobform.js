@@ -3,6 +3,7 @@ import formidable from 'formidable';
 import Email from '@/utils/email';
 import { ValidationError } from 'yup';
 import { jobSchema } from '@/schemas/job';
+import { validateRecaptcha } from '@/utils/recaptcha';
 
 /**
  * Config
@@ -92,21 +93,24 @@ export default async function handler(req, res) {
             attachments.push({ content: value.toString('base64'), filename: key });
         });
 
+        /* Recaptcha */
+        const validReCaptcha = await validateRecaptcha(recaptchaToken, res);
 
-        /* Sends email */
-        try {
-            await new Email(req.headers.host, 'New career form', JSON.parse(labels), formFields, attachments).send();
+        if (validReCaptcha)
+            /* Sends email */
+            try {
+                await new Email(req.headers.host, 'New career form', JSON.parse(labels), formFields, attachments).send();
 
-            return res.status(201).json({
-                data: {
-                    formFields,
-                    attachments
-                },
-                message: 'Thank you, your message has been sent successfully.'
-            });
-        } catch (err) {
-            return res.status(500).json({ data: null, message: 'An error occurred while sending the email' });
-        }
+                return res.status(201).json({
+                    data: {
+                        formFields,
+                        attachments
+                    },
+                    message: 'Thank you, your message has been sent successfully.'
+                });
+            } catch (err) {
+                return res.status(500).json({ data: null, message: 'An error occurred while sending the email' });
+            }
 
     } catch (err) {
         /* Yup validation */
