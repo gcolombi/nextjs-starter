@@ -27,9 +27,6 @@ const labels = {
 }
 
 async function sendFormData(data, recaptchaToken) {
-    console.log(data);
-    console.log(recaptchaToken);
-
     return await fetch('/api/contactform', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
         <>
             <ThemeProvider disableTransitionOnChange>
                 <GoogleReCaptchaProvider
-                    reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}
+                    reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                     scriptProps={{
                         async: true,
                         defer: true,
