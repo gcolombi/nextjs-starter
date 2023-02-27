@@ -1,4 +1,4 @@
-export default function FormRecaptchaMessage() {
+export default function FormRecaptchaNote() {
     return (
         <>
             {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY &&

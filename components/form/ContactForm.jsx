@@ -13,7 +13,7 @@ import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormTextarea from './FormTextarea';
-import FormRecaptchaMessage from './FormRecaptchaMessage';
+import FormRecaptchaNote from './FormRecaptchaNote';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
@@ -188,7 +188,7 @@ export default function Form() {
                         register={register('message')}
                         errors={errors['message']}
                     />
-                    <FormRecaptchaMessage />
+                    <FormRecaptchaNote />
                     <Button
                         label="Send"
                         className="c-btn"
