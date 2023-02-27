@@ -12,15 +12,15 @@ const validateRecaptcha = async (token, res) => {
             body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
         })
 
-        const recaptchaResponse = await response.json();
+        const result = await response.json();
 
-        if (recaptchaResponse?.success) {
-            if (recaptchaResponse?.score >= 0.5) {
+        if (result?.success) {
+            if (result?.score >= 0.5) {
                 return true;
             }
             throw new Error(`ReCaptcha validation failed`);
         }
-        throw new Error(`Error validating captcha: ${recaptchaResponse['error-codes'][0]}`);
+        throw new Error(`Error validating captcha: ${result['error-codes'][0]}`);
 
     } catch (err) {
         res.status(422).json({ data: null, message: err.message });
@@ -65,7 +65,6 @@ export default async function handler(req, res) {
             }
 
     } catch (err) {
-        console.log(err);
         /* Yup validation */
         if (err instanceof ValidationError) {
             const validationErrors = {}
