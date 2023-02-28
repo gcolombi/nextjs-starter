@@ -1,7 +1,7 @@
 import styles from '@/styles/modules/HeaderBasic.module.scss';
 import Button from './Button';
 import classNames from 'classnames';
-import ScaleInOut from './gsap/ScaleInOut';
+import FadeIn from './gsap/FadeIn';
 
 export default function HeaderBasic({
     title,
@@ -21,7 +21,7 @@ export default function HeaderBasic({
                                 <p>{wysiwyg}</p>
                             </div>
                             {button &&
-                                <ScaleInOut delay={1}>
+                                <FadeIn stagger={0.1} x={100} >
                                     <Button
                                         label={button.label}
                                         href={button.href}
@@ -32,7 +32,7 @@ export default function HeaderBasic({
                                         className={button.className}
                                         wrapperClassName={styles['c-headerBasic__btn']}
                                     />
-                                </ScaleInOut>
+                                </FadeIn>
                             }
                         </div>
                     </div>
