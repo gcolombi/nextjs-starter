@@ -1,6 +1,7 @@
 import styles from '@/styles/modules/HeaderBasic.module.scss';
 import Button from './Button';
 import classNames from 'classnames';
+import ScaleInOut from './gsap/ScaleInOut';
 
 export default function HeaderBasic({
     title,
@@ -20,16 +21,18 @@ export default function HeaderBasic({
                                 <p>{wysiwyg}</p>
                             </div>
                             {button &&
-                                <Button
-                                    label={button.label}
-                                    href={button.href}
-                                    isExternal={button.isExternal}
-                                    externalHref={button.externalHref}
-                                    anchor={button.anchor}
-                                    onClick={button.onClick}
-                                    className={button.className}
-                                    wrapperClassName={styles['c-headerBasic__btn']}
-                                />
+                                <ScaleInOut delay={1}>
+                                    <Button
+                                        label={button.label}
+                                        href={button.href}
+                                        isExternal={button.isExternal}
+                                        externalHref={button.externalHref}
+                                        anchor={button.anchor}
+                                        onClick={button.onClick}
+                                        className={button.className}
+                                        wrapperClassName={styles['c-headerBasic__btn']}
+                                    />
+                                </ScaleInOut>
                             }
                         </div>
                     </div>

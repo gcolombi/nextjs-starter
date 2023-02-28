@@ -1,12 +1,12 @@
 import React, { useState, createContext } from 'react';
 import gsap from 'gsap';
 
-const TransitionContext = createContext({})
+const TransitionContext = createContext({});
 
 const TransitionProvider = ({ children }) => {
     const [timeline, setTimeline] = useState(() =>
         gsap.timeline({ paused: true })
-    )
+    );
 
     return (
         <TransitionContext.Provider
@@ -20,4 +20,4 @@ const TransitionProvider = ({ children }) => {
     )
 }
 
-export { TransitionContext, TransitionProvider }
+export { TransitionContext, TransitionProvider };
