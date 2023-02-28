@@ -1,11 +1,9 @@
-import { gsap } from 'gsap';
 import { TransitionContext } from '@/context/TransitionContext';
-import { useState, useContext, useRef, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 export default function TransitionLayout({ children }) {
     const [displayChildren, setDisplayChildren] = useState(children);
     const { timeline } = useContext(TransitionContext);
-    const element = useRef();
 
     useEffect(() => {
         if (children !== displayChildren) {
@@ -23,6 +21,6 @@ export default function TransitionLayout({ children }) {
     }, [children]);
 
     return (
-        <div ref={element}>{displayChildren}</div>
+        <div>{displayChildren}</div>
     );
 }
