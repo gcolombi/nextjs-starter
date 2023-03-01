@@ -15,7 +15,7 @@ export default function FadeIn({
 
     useIsomorphicLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(element.current, {
+            gsap.from(element.current.children, {
                 opacity: 0,
                 delay,
                 duration,
@@ -24,7 +24,7 @@ export default function FadeIn({
                 x,
                 y
             });
-        });
+        }, element);
         return () => ctx.revert();
     }, []);
 
