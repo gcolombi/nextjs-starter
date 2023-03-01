@@ -5,19 +5,24 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 export default function FadeIn({
     children,
     delay = 1,
+    duration = 0.4,
     stagger = 0,
-    x = 0
+    ease = 'power4.out',
+    x = 0,
+    y = 0
 }) {
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(element.current.children, {
-            // gsap.from(element.current, {
+            gsap.from(element.current, {
                 opacity: 0,
                 delay,
+                duration,
                 stagger,
-                x
+                ease,
+                x,
+                y
             });
         });
         return () => ctx.revert();

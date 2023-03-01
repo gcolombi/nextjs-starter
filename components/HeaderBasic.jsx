@@ -17,11 +17,30 @@ export default function HeaderBasic({
                     <div className="o-container">
                         <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
                             <div className="o-wysiwyg">
-                                <h1>{title}</h1>
-                                <p>{wysiwyg}</p>
+                                <FadeIn
+                                    delay={.5}
+                                    stagger={0.1}
+                                    y={50}
+                                    ease="back.out"
+                                >
+                                    <h1>{title}</h1>
+                                </FadeIn>
+                                <FadeIn
+                                    delay={.7}
+                                    stagger={0.1}
+                                    y={70}
+                                    ease="back.out"
+                                >
+                                    <p>{wysiwyg}</p>
+                                </FadeIn>
                             </div>
                             {button &&
-                                <FadeIn stagger={0.1} x={100} >
+                                <FadeIn
+                                    delay={.9}
+                                    stagger={0.1}
+                                    y={90}
+                                    ease="back.out"
+                                >
                                     <Button
                                         label={button.label}
                                         href={button.href}
