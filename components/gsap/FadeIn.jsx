@@ -10,26 +10,69 @@ export default function FadeIn({
     ease = 'power4.out',
     x = 0,
     y = 0
+    // x,
+    // y
 }) {
     const element = useRef();
 
+    // gsap.set(element.current, { opacity: 0, transform: `translate(${x || 0}px, ${y || 0}px)` });
+
+    // useIsomorphicLayoutEffect(() => {
+    //     const ctx = gsap.context(() => {
+    //         gsap.from(element.current, {
+    //             opacity: 0,
+    //             delay,
+    //             duration,
+    //             stagger,
+    //             ease,
+    //             x,
+    //             y
+    //         });
+    //     }, element);
+    //     return () => ctx.revert();
+    // }, []);
+
     useIsomorphicLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(element.current.children, {
-                opacity: 0,
+            gsap.to(element.current, {
+                opacity: 1,
                 delay,
                 duration,
                 stagger,
                 ease,
-                x,
-                y
+                x: 0,
+                y: 0
             });
         }, element);
         return () => ctx.revert();
     }, []);
 
+    // useIsomorphicLayoutEffect(() => {
+    //     const ctx = gsap.context(() => {
+    //         gsap.fromTo(element.current,
+    //             {
+    //                 opacity: 0,
+    //                 x,
+    //                 y
+    //             },
+    //             {
+    //                 opacity: 1,
+    //                 duration,
+    //                 delay,
+    //                 ease,
+    //                 stagger,
+    //                 ease,
+    //                 x: 0,
+    //                 y: 0
+    //             }
+    //         );
+    //     }, element);
+    //     return () => ctx.revert();
+    // }, []);
+
     return (
-        <div ref={element}>
+        <div ref={element} style={{ opacity: 0, transform: `translate(${x}px, ${y}px)` }}>
+        {/* <div ref={element}> */}
             {children}
         </div>
     );
