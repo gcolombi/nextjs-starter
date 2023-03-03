@@ -4,7 +4,6 @@ import useScrollbar from '@/hooks/useScrollbar';
 import useWindowSize from '@/hooks/useWindowSize';
 import useLockedScroll from '@/hooks/useLockedScroll';
 
-
 const NavigationContext = createContext({
     items: null,
     open: false,
@@ -17,7 +16,7 @@ const NavigationContext = createContext({
 export function NavigationContextProvider({ children }) {
     const [isOpen, setIsOpen] = useState(false);
     const { scrollY, directionY } = useScrollbar();
-    const { windowSize } = useWindowSize();
+    const { windowSize, isDesktop } = useWindowSize();
     const [locked, setLocked] = useLockedScroll(false);
     const router = useRouter();
 
@@ -30,19 +29,11 @@ export function NavigationContextProvider({ children }) {
      * Closes navigation if viewport is larger than 1200px
      */
     useEffect(() => {
-        const close = () => {
-            if (window.innerWidth >= 1200) {
-                setIsOpen(false);
-                setLocked(false);
-            }
+        if (isDesktop) {
+            setIsOpen(false);
+            setLocked(false);
         }
-
-        /* Add event listener */
-        window.addEventListener('resize', close);
-
-        /* Remove event listener on cleanup */
-        return () => window.removeEventListener('resize', close);
-    }, []);/* Empty array ensures that effect is only run on mount */
+    }, [isDesktop])
 
     /**
      * Closes navigation on route change
@@ -53,7 +44,6 @@ export function NavigationContextProvider({ children }) {
             setLocked(false);
         }
     }, [router.asPath]);
-
 
     return (
         <NavigationContext.Provider
@@ -69,7 +59,6 @@ export function NavigationContextProvider({ children }) {
         </NavigationContext.Provider>
     );
 };
-
 
 export default function useNavigationContext() {
     return useContext(NavigationContext);
