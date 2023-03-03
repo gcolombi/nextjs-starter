@@ -6,7 +6,7 @@ export default function Layout({ children }) {
         <>
             <Navigation />
             <main>
-                <div className="c-spacer"></div>
+                <div className="c-spacer" />
                 {children}
                 <Footer />
             </main>
