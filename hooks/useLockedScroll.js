@@ -7,7 +7,6 @@ export default function useLockedScroll(
 
     /* Do the side effect before render */
     useEffect(() => {
-
         if (!locked) {
             return;
         }
@@ -15,7 +14,6 @@ export default function useLockedScroll(
         /* Save initial body style */
         const originalOverflow = document.body.style.overflow;
         const originalHeight = document.body.style.height;
-
 
         /* Lock body scroll */
         document.body.style.overflow = 'hidden';
