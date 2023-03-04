@@ -3,7 +3,7 @@ import AnimateInOut from './AnimateInOut';
 export default function ScaleInOut({
     children,
     durationIn = .5,
-    durationOut = 0.35,
+    durationOut = 0.25,
     delay = 0,
     delayOut = 0,
     ease = 'power4.out',
@@ -15,23 +15,6 @@ export default function ScaleInOut({
     yTo = 0,
     skipOutro
 }) {
-    // const element = useRef();
-
-    // useIsomorphicLayoutEffect(() => {
-    //     const ctx = gsap.context(() => {
-    //         gsap.to(element.current, {
-    //             opacity: 1,
-    //             delay,
-    //             duration,
-    //             ease,
-    //             scale: scaleTo,
-    //             x: xTo,
-    //             y: yTo
-    //         });
-    //     }, element);
-    //     return () => ctx.revert();
-    // }, []);
-
     return (
         <AnimateInOut
             durationIn={durationIn}
@@ -54,9 +37,4 @@ export default function ScaleInOut({
             {children}
         </AnimateInOut>
     );
-    // return (
-    //     <div ref={element} style={{ opacity: 0, transform: `translate(${x}px, ${y}px) scale(${scale})` }}>
-    //         {children}
-    //     </div>
-    // );
 };

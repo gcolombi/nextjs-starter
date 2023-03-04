@@ -3,7 +3,7 @@ import AnimateInOut from './AnimateInOut';
 export default function FadeInOut({
     children,
     durationIn = 0.5,
-    durationOut = 0.35,
+    durationOut = 0.25,
     delay = 0,
     delayOut = 0,
     ease = 'power4.out',
