@@ -24,7 +24,8 @@ export default function TransitionLayout({
                         console.log('outro');
                         /* outro complete so reset to an empty paused timeline */
                         // timeline.seek(0).pause().clear();
-                        setTimeline(() => gsap.timeline({ paused: true }));
+                        // setTimeline(() => gsap.timeline({ paused: true }));
+                        setTimeline(gsap.timeline({ paused: true }));
                         setDisplayChildren(children);
                     })
                 }
