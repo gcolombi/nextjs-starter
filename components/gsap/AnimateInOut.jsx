@@ -12,7 +12,6 @@ function AnimateInOut({
     delay,
     delayOut,
     set,
-    ease,
     skipOutro
 }) {
     const { timeline } = useTransitionContext();
@@ -29,8 +28,7 @@ function AnimateInOut({
             gsap.to(element.current, {
                 ...to,
                 delay: delay,
-                duration: durationIn,
-                ease
+                duration: durationIn
             })
 
             /* Outro animation */
