@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 
-export default function AnimationInOut({
+function AnimateInOut({
     children,
     from,
     to,
@@ -49,4 +49,4 @@ export default function AnimationInOut({
     )
 }
 
-// export default React.memo(AnimateInOut)
+export default React.memo(AnimateInOut);
