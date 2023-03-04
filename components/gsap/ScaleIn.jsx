@@ -5,7 +5,7 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 export default function ScaleIn({
     children,
     delay = 1,
-    duration = 0.4,
+    duration = 0.5,
     ease = 'power4.out',
     scale = 0.01,
     scaleTo = 1,
@@ -32,7 +32,7 @@ export default function ScaleIn({
     }, []);
 
     return (
-        <div ref={element} style={{ opacity: 0, transform: `translate(${x}px, ${y}px), scale(${scale})` }}>
+        <div ref={element} style={{ opacity: 0, transform: `translate(${x}px, ${y}px) scale(${scale})` }}>
             {children}
         </div>
     );

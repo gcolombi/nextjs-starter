@@ -3,6 +3,7 @@ import Button from './Button';
 import classNames from 'classnames';
 import FadeIn from './gsap/FadeIn';
 import FadeInOut from './gsap/FadeInOut';
+import ScaleIn from './gsap/ScaleIn';
 
 export default function HeaderBasic({
     title,
@@ -68,20 +69,23 @@ export default function HeaderBasic({
                                 <FadeInOut
                                     delay={.5}
                                     y={50}
+                                    skipOutro
                                 >
                                     <h1>{title}</h1>
                                 </FadeInOut>
                                 <FadeInOut
                                     delay={.7}
                                     y={70}
+                                    skipOutro
                                 >
                                     <p>{wysiwyg}</p>
                                 </FadeInOut>
                             </div>
                             {button &&
-                                <FadeInOut
+                                <ScaleIn
                                     delay={.9}
-                                    y={90}
+                                    ease="elastic"
+                                    duration={1}
                                 >
                                     <Button
                                         label={button.label}
@@ -93,7 +97,7 @@ export default function HeaderBasic({
                                         className={button.className}
                                         wrapperClassName={styles['c-headerBasic__btn']}
                                     />
-                                </FadeInOut>
+                                </ScaleIn>
                             }
                         </div>
                     </div>

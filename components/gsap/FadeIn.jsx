@@ -5,7 +5,7 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 export default function FadeIn({
     children,
     delay = 1,
-    duration = 0.4,
+    duration = 0.5,
     ease = 'power4.out',
     x = 0,
     y = 0,

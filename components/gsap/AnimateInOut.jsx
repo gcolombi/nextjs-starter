@@ -40,8 +40,7 @@ function AnimateInOut({
                     gsap.to(element.current, {
                         ...from,
                         delay: delayOut,
-                        duration: durationOut,
-                        ease
+                        duration: durationOut
                     }),
                     0
                 )
