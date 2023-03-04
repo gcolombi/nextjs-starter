@@ -34,6 +34,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { TransitionContextProvider } from '@/context/transitionContext';
 import { NavigationContextProvider } from '@/context/navigationContext';
 import Layout from '@/components/Layout';
 
@@ -55,17 +56,19 @@ export default function App({ Component, pageProps }) {
                         appendTo: 'body'
                     }}
                 >
-                    <NavigationContextProvider>
-                        <style jsx global>{`
-                            :root {
-                                --font-primary: ${roboto.style.fontFamily};
-                                --font-secondary: ${victorMono.style.fontFamily};
-                            }
-                        `}</style>
-                        <Layout>
-                            <Component {...pageProps} />
-                        </Layout>
-                    </NavigationContextProvider>
+                    <TransitionContextProvider>
+                        <NavigationContextProvider>
+                            <style jsx global>{`
+                                :root {
+                                    --font-primary: ${roboto.style.fontFamily};
+                                    --font-secondary: ${victorMono.style.fontFamily};
+                                }
+                            `}</style>
+                            <Layout>
+                                <Component {...pageProps} />
+                            </Layout>
+                        </NavigationContextProvider>
+                    </TransitionContextProvider>
                 </GoogleReCaptchaProvider>
             </ThemeProvider>
         </>
