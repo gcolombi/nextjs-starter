@@ -2,11 +2,13 @@ import gsap from 'gsap';
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
-export default function FadeIn({
+export default function ScaleIn({
     children,
     delay = 1,
     duration = 0.4,
     ease = 'power4.out',
+    scale = 0.01,
+    scaleTo = 1,
     x = 0,
     y = 0,
     xTo = 0,
@@ -21,6 +23,7 @@ export default function FadeIn({
                 delay,
                 duration,
                 ease,
+                scale: scaleTo,
                 x: xTo,
                 y: yTo
             });
@@ -29,7 +32,7 @@ export default function FadeIn({
     }, []);
 
     return (
-        <div ref={element} style={{ opacity: 0, transform: `translate(${x}px, ${y}px)` }}>
+        <div ref={element} style={{ opacity: 0, transform: `translate(${x}px, ${y}px), scale(${scale})` }}>
             {children}
         </div>
     );
