@@ -35,7 +35,7 @@ function AnimateInOut({
 
             /* Outro animation */
             if (!skipOutro) {
-                console.log('yo add from to timeline');
+                console.log('add new animation into timeline');
                 timeline.add(
                     gsap.to(element.current, {
                         ...from,
