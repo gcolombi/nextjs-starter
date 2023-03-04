@@ -2,31 +2,32 @@ import AnimateInOut from './AnimateInOut';
 
 export default function FadeInOut({
     children,
-    delay,
-    x,
-    y,
-    durationIn,
-    durationOut
+    durationIn = .5,
+    durationOut = 0.35,
+    delay = 0,
+    delayOut = 0,
+    x = 0,
+    y = 0,
+    ease = 'power4.out',
+    skipOutro
 }) {
     return (
         <AnimateInOut
             durationIn={durationIn}
-            // durationIn={durationIn || 1}
             durationOut={durationOut}
-            // durationOut={durationOut || 0.25}
             delay={delay}
+            delayOut={delayOut}
             from={{
                 transform: `translate(${x}px, ${y}px)`,
-                opacity: 0,
-                duration: 0.25,
-                ease: "power4.out",
+                opacity: 0
             }}
             to={{
                 opacity: 1,
                 x: 0,
-                y: 0,
-                ease: "power4.inOut",
+                y: 0
             }}
+            ease={ease}
+            skipOutro={skipOutro}
         >
             {children}
         </AnimateInOut>

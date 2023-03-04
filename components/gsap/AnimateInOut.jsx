@@ -7,43 +7,51 @@ function AnimateInOut({
     children,
     from,
     to,
-    durationIn = 1,
-    durationOut = 0.25,
-    delay = 0,
-    delayOut = 0,
+    durationIn,
+    durationOut,
+    delay,
+    delayOut,
     set,
-    skipOutro,
+    ease,
+    skipOutro
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
-        /* Intro animation */
-        if (set) {
-            gsap.set(element.current, { ...set });
-        }
+        const ctx = gsap.context(() => {
 
-        gsap.to(element.current, {
-            ...to,
-            delay: delay,
-            duration: durationIn
-        });
+            /* Intro animation */
+            if (set) {
+                gsap.set(element.current, { ...set })
+            }
 
-        /* Outro animation */
-        if (!skipOutro) {
-            timeline.add(
-                gsap.to(element.current, {
-                    ...from,
-                    delay: delayOut,
-                    duration: durationOut
-                }),
-                0
-            )
-        }
+            gsap.to(element.current, {
+                ...to,
+                delay: delay,
+                duration: durationIn,
+                ease
+            })
+
+            /* Outro animation */
+            if (!skipOutro) {
+                console.log('yo add from to timeline');
+                timeline.add(
+                    gsap.to(element.current, {
+                        ...from,
+                        delay: delayOut,
+                        duration: durationOut,
+                        ease
+                    }),
+                    0
+                )
+            }
+        }, element);
+        return () => ctx.revert();
     }, [])
 
     return (
-        <div ref={element}>
+        <div ref={element} style={from}>
             {children}
         </div>
     )

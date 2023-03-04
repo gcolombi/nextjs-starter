@@ -58,15 +58,19 @@ export default function App({ Component, pageProps }) {
                 >
                     <TransitionContextProvider>
                         <NavigationContextProvider>
-                            <style jsx global>{`
-                                :root {
-                                    --font-primary: ${roboto.style.fontFamily};
-                                    --font-secondary: ${victorMono.style.fontFamily};
-                                }
-                            `}</style>
-                            <Layout>
-                                <Component {...pageProps} />
-                            </Layout>
+                            <style jsx global>
+                                {`
+                                    :root {
+                                        --font-primary: ${roboto.style.fontFamily};
+                                        --font-secondary: ${victorMono.style.fontFamily};
+                                    }
+                                `}
+                            </style>
+                            <div style={{ overflow: 'hidden' }}>
+                                <Layout>
+                                    <Component {...pageProps} />
+                                </Layout>
+                            </div>
                         </NavigationContextProvider>
                     </TransitionContextProvider>
                 </GoogleReCaptchaProvider>
