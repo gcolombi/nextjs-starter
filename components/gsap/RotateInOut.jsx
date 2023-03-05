@@ -2,7 +2,7 @@ import AnimateInOut from './AnimateInOut';
 
 export default function RotateInOut({
     children,
-    durationIn = .5,
+    durationIn = 0.5,
     durationOut = 0.25,
     delay = 0,
     delayOut = 0,

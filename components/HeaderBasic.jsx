@@ -2,6 +2,7 @@ import styles from '@/styles/modules/HeaderBasic.module.scss';
 import Button from './Button';
 import FadeInOut from './gsap/FadeInOut';
 import ScaleInOut from './gsap/ScaleInOut';
+import ImplodeExplodeInOut from './gsap/ImplodeExplodeInOut';
 import classNames from 'classnames';
 
 export default function HeaderBasic({
@@ -25,13 +26,19 @@ export default function HeaderBasic({
                                 >
                                     <h1>{title}</h1>
                                 </FadeInOut>
-                                <FadeInOut
+                                {/* <FadeInOut
                                     delay={.7}
                                     y={70}
                                     // skipOutro
                                 >
                                     <p>{wysiwyg}</p>
-                                </FadeInOut>
+                                </FadeInOut> */}
+                                <ImplodeExplodeInOut
+                                    delay={1}
+                                    target="#subhead"
+                                >
+                                    <p id="subhead">{wysiwyg}</p>
+                                </ImplodeExplodeInOut>
                             </div>
                             {button &&
                                 <ScaleInOut
