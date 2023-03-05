@@ -5,13 +5,13 @@ import useTransitionContext from '@/context/transitionContext';
 
 function AnimateInOut({
     children,
-    from,
-    to,
     durationIn,
     durationOut,
     delay,
     delayOut,
     set,
+    from,
+    to,
     skipOutro
 }) {
     const { timeline } = useTransitionContext();
