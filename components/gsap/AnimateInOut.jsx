@@ -22,7 +22,7 @@ function AnimateInOut({
 
             /* Intro animation */
             if (set) {
-                gsap.set(element.current, { ...set })
+                gsap.set(element.current, { ...set });
             }
 
             gsap.to(element.current, {

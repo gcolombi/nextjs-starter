@@ -1,38 +1,43 @@
-import { gsap } from 'gsap';
 import useTransitionContext from '@/context/transitionContext';
-import { useMemo, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
 export default function TransitionLayout({
     children
 }) {
-    const [displayChildren, setDisplayChildren] = useState(children);
-    // const { timeline, background } = useTransitionContext();
-    const { timeline, setTimeline, background } = useTransitionContext();
+    const router = useRouter();
+    const [currentPage, setCurrentPage] = useState({
+        route: router.asPath,
+        children
+    })
+    const { timeline, resetTimeline, background } = useTransitionContext();
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            if (children !== displayChildren) {
-                if (timeline.duration() === 0) {
-                    console.log('intro');
-                    /* There are no outro animations, so immediately transition */
-                    setDisplayChildren(children);
-                } else {
-                    timeline.play().then(() => {
-                        console.log(timeline.duration());
-                        console.log('outro');
-                        /* outro complete so reset to an empty paused timeline */
-                        // timeline.seek(0).pause().clear();
-                        // setTimeline(() => gsap.timeline({ paused: true }));
-                        setTimeline(gsap.timeline({ paused: true }));
-                        setDisplayChildren(children);
+        console.log('route changed');
+        if (currentPage.route !== router.asPath) {
+            if (timeline.duration() === 0) {
+                console.log('intro');
+                /* There are no outro animations, so immediately transition */
+                setCurrentPage({
+                    route: router.asPath,
+                    children
+                })
+            } else {
+                timeline.play().then(() => {
+                    console.log(timeline.duration());
+                    console.log('outro');
+                    /* outro complete so reset to an empty paused timeline */
+                    resetTimeline();
+                    setCurrentPage({
+                        route: router.asPath,
+                        children
                     })
-                }
+                })
             }
-        }, element);
-        return () => ctx.revert();
-    }, [children]);
+        }
+    }, [router.asPath]);
 
     // useIsomorphicLayoutEffect(() => {
     //     gsap.to(element.current, {
@@ -45,7 +50,7 @@ export default function TransitionLayout({
         <div
             ref={element}
         >
-            {displayChildren}
+            {currentPage.children}
         </div>
     );
 }

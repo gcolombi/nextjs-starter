@@ -9,19 +9,21 @@ const TransitionContext = createContext({
 });
 
 export function TransitionContextProvider({ children }) {
-    // const [timeline, setTimeline] = useState(() =>
-    //     gsap.timeline({ paused: true })
-    // );
     const [timeline, setTimeline] = useState(
         gsap.timeline({ paused: true })
     );
     const [background, setBackground] = useState('white');
+
+    const resetTimeline = () => {
+        timeline.pause().clear();
+    }
 
     return (
         <TransitionContext.Provider
             value={{
                 timeline,
                 setTimeline,
+                resetTimeline,
                 background,
                 setBackground
             }}
