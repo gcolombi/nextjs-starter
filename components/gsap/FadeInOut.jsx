@@ -9,6 +9,8 @@ export default function FadeInOut({
     ease = 'power4.out',
     x = 0,
     y = 0,
+    xTo = 0,
+    yTo = 0,
     skipOutro
 }) {
     return (
@@ -24,8 +26,8 @@ export default function FadeInOut({
             to={{
                 ease,
                 opacity: 1,
-                x: 0,
-                y: 0
+                x: xTo,
+                y: yTo
             }}
             skipOutro={skipOutro}
         >
