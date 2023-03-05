@@ -19,26 +19,20 @@ export default function HeaderBasic({
                     <div className="o-container">
                         <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
                             <div className="o-wysiwyg">
-                                <FadeInOut
+                                <ImplodeExplodeInOut
                                     delay={.5}
-                                    y={50}
+                                    target="#title"
                                     // skipOutro
                                 >
-                                    <h1>{title}</h1>
-                                </FadeInOut>
-                                {/* <FadeInOut
+                                    <h1 id="title">{title}</h1>
+                                </ImplodeExplodeInOut>
+                                <FadeInOut
                                     delay={.7}
                                     y={70}
                                     // skipOutro
                                 >
                                     <p>{wysiwyg}</p>
-                                </FadeInOut> */}
-                                <ImplodeExplodeInOut
-                                    delay={1}
-                                    target="#subhead"
-                                >
-                                    <p id="subhead">{wysiwyg}</p>
-                                </ImplodeExplodeInOut>
+                                </FadeInOut>
                             </div>
                             {button &&
                                 <ScaleInOut

@@ -18,6 +18,7 @@ export default function ImplodeExplodeInOut({
     ease = 'power4.out',
     easeOut = 'power4.in',
     target,
+    skipOutro
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
@@ -28,7 +29,7 @@ export default function ImplodeExplodeInOut({
             const chars = splitText.chars;
 
             chars.forEach(char => {
-                /* Intro */
+                /* Intro animation */
                 gsap.fromTo(
                     char,
                     {
@@ -55,24 +56,27 @@ export default function ImplodeExplodeInOut({
                     }
                 )
 
-                /* Outro */
-                timeline.add(
-                    gsap.to(
-                        char,
-                        {
-                            x: randomNumber(-2000, 2000),
-                            y: randomNumber(-1000, 1000),
-                            z: randomNumber(100, 100),
-                            opacity: 0,
-                            rotation: randomNumber(360, 720),
-                            rotationX: randomNumber(-360, 360),
-                            rotationY: randomNumber(-360, 360),
-                            ease: easeOut,
-                            duration: durationOut
-                        }
-                    ),
-                    0
-                )
+                /* Outro animation */
+                if (!skipOutro) {
+                    timeline.add(
+                        gsap.to(
+                            char,
+                            {
+                                x: randomNumber(-2000, 2000),
+                                y: randomNumber(-1000, 1000),
+                                z: randomNumber(100, 100),
+                                opacity: 0,
+                                rotation: randomNumber(360, 720),
+                                rotationX: randomNumber(-360, 360),
+                                rotationY: randomNumber(-360, 360),
+                                ease: easeOut,
+                                delay: delayOut,
+                                duration: durationOut
+                            }
+                        ),
+                        0
+                    )
+                }
             });
 
             gsap.to(element.current, {
