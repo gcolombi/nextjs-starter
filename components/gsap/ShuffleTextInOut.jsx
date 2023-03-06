@@ -13,10 +13,10 @@ if (typeof window !== "undefined"){
 export default function ShuffleTextInOut({
     children,
     durationIn = 0.5,
-    durationOut = 0.25,
-    delay = 0,
-    delayOut = 0,
-    ease = 'power4.out',
+    durationOut = 0.5,
+    revealDelayIn = 0.5,
+    revealDelayOut = 0.35,
+    ease = 'none',
     target,
     skipOutro
 }) {
@@ -32,7 +32,7 @@ export default function ShuffleTextInOut({
             const words = splitWord.words;
 
             /* Intro animation */
-            words.forEach((word, index) => {
+            words.forEach(word => {
                 const splitText = new SplitText(word);
                 const chars = shuffle(splitText.chars);
                 let string = '';
@@ -43,12 +43,12 @@ export default function ShuffleTextInOut({
 
                 console.log(string);
 
-                const tween = gsap.to(word, {
-                    duration: 0.5,
+                gsap.to(word, {
+                    duration: durationIn,
                     scrambleText:{
                         text: '{original}',
                         chars: string,
-                        revealDelay: 0.5
+                        revealDelay: revealDelayIn
                     }
                 });
 
@@ -56,11 +56,11 @@ export default function ShuffleTextInOut({
                 if (!skipOutro) {
                     timeline.add(
                         gsap.to(word, {
-                            duration: .5,
+                            duration: durationOut,
                             scrambleText:{
                                 text: '{original}',
                                 chars: string,
-                                revealDelay: 0.35
+                                revealDelay: revealDelayOut
                             }
                         }),
                         0
