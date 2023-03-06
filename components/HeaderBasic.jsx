@@ -39,7 +39,7 @@ export default function HeaderBasic({
                                     delay={.9}
                                     y={90}
                                     durationIn={1}
-                                    ease="elastic"
+                                    ease="elastic.out"
                                     // skipOutro
                                 >
                                     <Button

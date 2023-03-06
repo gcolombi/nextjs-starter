@@ -2,6 +2,7 @@ import MetaData from '@/components/MetaData';
 import HeaderBasic from '@/components/HeaderBasic';
 import Button from '@/components/Button';
 import useLockedScroll from '@/hooks/useLockedScroll';
+import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
@@ -26,6 +27,17 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
+            <section className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <div className="o-wysiwyg">
+                        <ShuffleTextInOut
+                            target="#shuffleTitle"
+                        >
+                            <h2 id="shuffleTitle">GreenSock is awesome</h2>
+                        </ShuffleTextInOut>
+                    </div>
+                </div>
+            </section>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div>
