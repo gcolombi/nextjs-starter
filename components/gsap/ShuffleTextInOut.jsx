@@ -12,7 +12,7 @@ if (typeof window !== "undefined"){
 
 export default function ShuffleTextInOut({
     children,
-    durationIn = 0.5,
+    durationIn = 0.8,
     durationOut = 0.5,
     revealDelayIn = 0.5,
     revealDelayOut = 0.35,
@@ -41,10 +41,9 @@ export default function ShuffleTextInOut({
                     string += char.innerText;
                 });
 
-                console.log(string);
-
                 gsap.to(word, {
                     duration: durationIn,
+                    ease,
                     scrambleText:{
                         text: '{original}',
                         chars: string,
@@ -57,6 +56,7 @@ export default function ShuffleTextInOut({
                     timeline.add(
                         gsap.to(word, {
                             duration: durationOut,
+                            ease,
                             scrambleText:{
                                 text: '{original}',
                                 chars: string,
