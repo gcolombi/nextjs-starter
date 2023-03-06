@@ -5,7 +5,6 @@ import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 import { shuffle } from '@/utils/array';
-import { randomNumber } from '@/utils/number';
 
 if (typeof window !== "undefined"){
     gsap.registerPlugin(SplitText, ScrambleTextPlugin);
@@ -45,54 +44,34 @@ export default function ShuffleTextInOut({
                 console.log(string);
 
                 const tween = gsap.to(word, {
-                    duration: .45,
-                    // delay: .5,
+                    duration: 0.5,
                     scrambleText:{
                         text: '{original}',
-                        // text: string,
                         chars: string,
-                        // rightToLeft: true
-                    },
-                    onComplete: () => tween.reverse()
-                    // paused: true
+                        revealDelay: 0.5
+                    }
                 });
 
                 /* Outro animation */
                 if (!skipOutro) {
                     timeline.add(
                         gsap.to(word, {
-                            duration: .25,
-                            // delay: .5,
+                            duration: .5,
                             scrambleText:{
                                 text: '{original}',
-                                // text: string,
                                 chars: string,
-                                // rightToLeft: true
-                            },
-                            onComplete: () => tween.reverse()
-                            // paused: true
-                        })
+                                revealDelay: 0.35
+                            }
+                        }),
+                        0
                     )
                 }
             });
-
-            // /* Outro animation */
-            // if (!skipOutro) {
-            //     timeline.add(
-            //         tween.reverse()
-            //     )
-            // }
-
-            // gsap.to(element.current, {
-            //     opacity: 1
-            // })
-
         }, element);
         return () => ctx.revert();
     }, [])
 
     return (
-        // <div ref={element} style={{ opacity: 0 }}>
         <div ref={element}>
             {children}
         </div>
