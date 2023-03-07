@@ -8,8 +8,9 @@ export default function RotateInOut3D({
     delay = 0,
     delayOut = 0,
     ease = 'power4.out',
-    // rotate = 0,
-    // rotateTo = 0,
+    rotationX = randomNumber(-80, 80),
+    rotationY = randomNumber(-40, 40),
+    rotationZ = randomNumber(-10, 10),
     x = 0,
     y = 0,
     xTo = 0,
@@ -30,12 +31,22 @@ export default function RotateInOut3D({
                 rotationX: randomNumber(-80, 80),
                 rotationY: randomNumber(-40, 40),
                 rotationZ: randomNumber(-10, 10),
+                // rotationX,
+                // rotationY,
+                // rotationZ,
                 x,
                 y
             }}
             from={{
                 opacity: 0,
-                transform: `translate(${x}px, ${y}px) rotate3d(${randomNumber(-80, 80)}, ${randomNumber(-40, 40)}, ${randomNumber(-10, 10)}), 0`
+                rotationX: -35,
+                rotationY: -21,
+                rotationZ: -23,
+                // rotationX: randomNumber(-80, 80),
+                // rotationY: randomNumber(-40, 40),
+                // rotationZ: randomNumber(-10, 10),
+                // transform: `translate(${x}px, ${y}px) rotate3d(${randomNumber(-80, 80)}, ${randomNumber(-40, 40)}, ${randomNumber(-10, 10)}, 0)`
+                // transform: `translate(${x}px, ${y}px) rotate3d(${rotationX}, ${rotationY}, ${rotationZ}, 0)`
             }}
             to={{
                 ease,

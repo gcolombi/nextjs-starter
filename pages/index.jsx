@@ -3,6 +3,7 @@ import HeaderBasic from '@/components/HeaderBasic';
 import Button from '@/components/Button';
 import useLockedScroll from '@/hooks/useLockedScroll';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
+import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
@@ -27,6 +28,62 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
+            <section className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr 1fr",
+                            gridAutoRows: "1fr",
+                            width: "100%"
+                        }}
+                    >
+
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            delay={0.5 + Math.random()}
+                            y={120}
+                        >
+                            <div
+                                style={{
+                                    overflow: "hidden",
+                                    width: "100%",
+                                    height: "300px",
+                                    background: "var(--primary)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            delay={0.5 + Math.random()}
+                            y={120}
+                        >
+                            <div
+                                style={{
+                                    overflow: "hidden",
+                                    width: "100%",
+                                    height: "300px",
+                                    background: "var(--primary-light)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            delay={0.5 + Math.random()}
+                            y={120}
+                        >
+                            <div
+                                style={{
+                                    overflow: "hidden",
+                                    width: "100%",
+                                    height: "300px",
+                                    background: "var(--primary-lighter)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                    </div>
+                </div>
+            </section>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div className="o-wysiwyg">
