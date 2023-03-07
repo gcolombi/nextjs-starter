@@ -33,12 +33,11 @@ export default function Home() {
                     <div
                         style={{
                             display: "grid",
-                            gridTemplateColumns: "1fr 1fr 1fr",
+                            gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
                             gridAutoRows: "1fr",
                             width: "100%"
                         }}
                     >
-
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
                             delay={0.5 + Math.random()}
@@ -48,21 +47,7 @@ export default function Home() {
                                 style={{
                                     overflow: "hidden",
                                     width: "100%",
-                                    height: "300px",
-                                    background: "var(--primary)"
-                                }}
-                            />
-                        </RotateInOut3D>
-                        <RotateInOut3D
-                            durationIn={1 + Math.random()}
-                            delay={0.5 + Math.random()}
-                            y={120}
-                        >
-                            <div
-                                style={{
-                                    overflow: "hidden",
-                                    width: "100%",
-                                    height: "300px",
+                                    height: "200px",
                                     background: "var(--primary-light)"
                                 }}
                             />
@@ -76,8 +61,50 @@ export default function Home() {
                                 style={{
                                     overflow: "hidden",
                                     width: "100%",
-                                    height: "300px",
+                                    height: "200px",
                                     background: "var(--primary-lighter)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            delay={0.5 + Math.random()}
+                            y={120}
+                        >
+                            <div
+                                style={{
+                                    overflow: "hidden",
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            delay={0.5 + Math.random()}
+                            y={120}
+                        >
+                            <div
+                                style={{
+                                    overflow: "hidden",
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary-dark)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            delay={0.5 + Math.random()}
+                            y={120}
+                        >
+                            <div
+                                style={{
+                                    overflow: "hidden",
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary-darker)"
                                 }}
                             />
                         </RotateInOut3D>

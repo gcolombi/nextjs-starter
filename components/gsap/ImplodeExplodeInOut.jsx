@@ -36,10 +36,10 @@ export default function ImplodeExplodeInOut({
                         x: randomNumber(-2000, 2000),
                         y: randomNumber(-1000, 1000),
                         z: randomNumber(100, 100),
-                        opacity: 0,
                         rotation: randomNumber(360, 720),
                         rotationX: randomNumber(-360, 360),
                         rotationY: randomNumber(-360, 360),
+                        opacity: 0,
                         ease
                     },
                     {
@@ -65,10 +65,10 @@ export default function ImplodeExplodeInOut({
                                 x: randomNumber(-2000, 2000),
                                 y: randomNumber(-1000, 1000),
                                 z: randomNumber(100, 100),
-                                opacity: 0,
                                 rotation: randomNumber(360, 720),
                                 rotationX: randomNumber(-360, 360),
                                 rotationY: randomNumber(-360, 360),
+                                opacity: 0,
                                 ease: easeOut,
                                 delay: delayOut,
                                 duration: durationOut
