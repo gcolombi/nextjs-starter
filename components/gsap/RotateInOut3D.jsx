@@ -30,8 +30,6 @@ export default function RotateInOut3D({
                     rotationX: randomNumber(-80, 80),
                     rotationY: randomNumber(-40, 40),
                     rotationZ: randomNumber(-10, 10),
-                    transformOrigin: '50% 50%',
-                    perspective: 10,
                     scale: 0.8,
                     opacity: 0
                 },

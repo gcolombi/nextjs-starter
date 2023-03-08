@@ -30,6 +30,11 @@ export default function Home() {
             />
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
+                        <ShuffleTextInOut
+                            target="#shuffle"
+                        >
+                            <h2 id="shuffle">GreenSock is awesome</h2>
+                        </ShuffleTextInOut>
                     <div
                         style={{
                             display: "grid",
@@ -108,17 +113,6 @@ export default function Home() {
                                 }}
                             />
                         </RotateInOut3D>
-                    </div>
-                </div>
-            </section>
-            <section className="u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <div className="o-wysiwyg">
-                        <ShuffleTextInOut
-                            target="#shuffleTitle"
-                        >
-                            <h2 id="shuffleTitle">GreenSock is awesome</h2>
-                        </ShuffleTextInOut>
                     </div>
                 </div>
             </section>
