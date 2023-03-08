@@ -50,7 +50,6 @@ export default function Home() {
                         >
                             <div
                                 style={{
-                                    overflow: "hidden",
                                     width: "100%",
                                     height: "200px",
                                     background: "var(--primary-light)"
@@ -64,7 +63,6 @@ export default function Home() {
                         >
                             <div
                                 style={{
-                                    overflow: "hidden",
                                     width: "100%",
                                     height: "200px",
                                     background: "var(--primary-lighter)"
@@ -78,7 +76,6 @@ export default function Home() {
                         >
                             <div
                                 style={{
-                                    overflow: "hidden",
                                     width: "100%",
                                     height: "200px",
                                     background: "var(--primary)"
@@ -92,7 +89,6 @@ export default function Home() {
                         >
                             <div
                                 style={{
-                                    overflow: "hidden",
                                     width: "100%",
                                     height: "200px",
                                     background: "var(--primary-dark)"
@@ -106,7 +102,6 @@ export default function Home() {
                         >
                             <div
                                 style={{
-                                    overflow: "hidden",
                                     width: "100%",
                                     height: "200px",
                                     background: "var(--primary-darker)"
