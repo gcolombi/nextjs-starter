@@ -18,22 +18,23 @@ export default function HeaderBasic({
                 <section className={classNames('u-spacing--responsive', styles['c-headerBasic'], styles[className])}>
                     <div className="o-container">
                         <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
-                            <div className="o-wysiwyg">
-                                <ImplodeExplodeInOut
-                                    delay={.5}
-                                    target="#title"
-                                    // skipOutro
-                                >
-                                    <h1 id="title">{title}</h1>
-                                </ImplodeExplodeInOut>
-                                <FadeInOut
-                                    delay={.7}
-                                    y={70}
-                                    // skipOutro
-                                >
+                            <ImplodeExplodeInOut
+                                delay={.5}
+                                target="#title"
+                                // skipOutro
+                            >
+                                <h1 id="title">{title}</h1>
+                            </ImplodeExplodeInOut>
+                            <FadeInOut
+                                overflowHidden
+                                delay={.7}
+                                y={70}
+                                // skipOutro
+                            >
+                                <div className="o-wysiwyg">
                                     <p>{wysiwyg}</p>
-                                </FadeInOut>
-                            </div>
+                                </div>
+                            </FadeInOut>
                             {button &&
                                 <ScaleInOut
                                     delay={.9}

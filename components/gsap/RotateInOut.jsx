@@ -1,7 +1,9 @@
+import classNames from 'classnames';
 import AnimateInOut from './AnimateInOut';
 
 export default function RotateInOut({
     children,
+    overflowHidden,
     durationIn = 0.5,
     durationOut = 0.25,
     delay = 0,
@@ -16,25 +18,31 @@ export default function RotateInOut({
     skipOutro
 }) {
     return (
-        <AnimateInOut
-            durationIn={durationIn}
-            durationOut={durationOut}
-            delay={delay}
-            delayOut={delayOut}
-            from={{
-                opacity: 0,
-                transform: `translate(${x}px, ${y}px) rotate(${rotate}deg)`
-            }}
-            to={{
-                ease,
-                opacity: 1,
-                rotate: rotateTo,
-                x: xTo,
-                y: yTo
-            }}
-            skipOutro={skipOutro}
+        <div
+            className={classNames({
+                'u-overflow--hidden': overflowHidden
+            })}
         >
-            {children}
-        </AnimateInOut>
+            <AnimateInOut
+                durationIn={durationIn}
+                durationOut={durationOut}
+                delay={delay}
+                delayOut={delayOut}
+                from={{
+                    opacity: 0,
+                    transform: `translate(${x}px, ${y}px) rotate(${rotate}deg)`
+                }}
+                to={{
+                    ease,
+                    opacity: 1,
+                    rotate: rotateTo,
+                    x: xTo,
+                    y: yTo
+                }}
+                skipOutro={skipOutro}
+            >
+                {children}
+            </AnimateInOut>
+        </div>
     );
 };
