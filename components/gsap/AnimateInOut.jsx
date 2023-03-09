@@ -9,7 +9,6 @@ function AnimateInOut({
     durationOut,
     delay,
     delayOut,
-    set,
     from,
     to,
     skipOutro
@@ -21,10 +20,6 @@ function AnimateInOut({
         const ctx = gsap.context(() => {
 
             /* Intro animation */
-            if (set) {
-                gsap.set(element.current, { ...set });
-            }
-
             gsap.to(element.current, {
                 ...to,
                 delay: delay,
