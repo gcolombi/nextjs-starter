@@ -64,7 +64,7 @@ export default function ShuffleTextInOut({
                             }
                         }),
                         0
-                    )
+                    );
                 }
             });
         }, element);

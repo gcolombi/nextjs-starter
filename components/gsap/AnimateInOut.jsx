@@ -24,7 +24,7 @@ function AnimateInOut({
                 ...to,
                 delay: delay,
                 duration: durationIn
-            })
+            });
 
             /* Outro animation */
             if (!skipOutro) {
@@ -35,7 +35,7 @@ function AnimateInOut({
                         duration: durationOut
                     }),
                     0
-                )
+                );
             }
         }, element);
         return () => ctx.revert();

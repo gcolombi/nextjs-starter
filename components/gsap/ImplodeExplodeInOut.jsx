@@ -54,7 +54,7 @@ export default function ImplodeExplodeInOut({
                         delay,
                         duration: durationIn
                     }
-                )
+                );
 
                 /* Outro animation */
                 if (!skipOutro) {
@@ -75,7 +75,7 @@ export default function ImplodeExplodeInOut({
                             }
                         ),
                         0
-                    )
+                    );
                 }
             });
 

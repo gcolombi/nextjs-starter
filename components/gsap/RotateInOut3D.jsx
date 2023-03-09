@@ -45,7 +45,7 @@ export default function RotateInOut3D({
                     delay,
                     duration: durationIn
                 }
-            )
+            );
 
             /* Outro animation */
             if (!skipOutro) {
@@ -65,7 +65,7 @@ export default function RotateInOut3D({
                         }
                     ),
                     0
-                )
+                );
             }
         }, element);
         return () => ctx.revert();
