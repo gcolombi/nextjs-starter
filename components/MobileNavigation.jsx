@@ -30,16 +30,48 @@ export default function MobileNavigation() {
                                 <div className={styles['c-mobileNav__primary--list']}>
                                     <ul>
                                         <li>
-                                            <NavItem href="/blog" title="Blog" className={styles['is-current-page']} />
+                                            <NavItem
+                                                href="/blog"
+                                                title="Blog"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={0.4}
+                                                y={20}
+                                                rotate={10}
+                                            />
                                         </li>
                                         <li>
-                                            <NavItem href="/form" title="Form" className={styles['is-current-page']} />
+                                            <NavItem
+                                                href="/form"
+                                                title="Form"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={0.5}
+                                                y={20}
+                                                rotate={10}
+                                            />
                                         </li>
                                         <li>
-                                            <NavItem href="/contact" title="Contact" className={styles['is-current-page']} />
+                                            <NavItem
+                                                href="/contact"
+                                                title="Contact"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={0.6}
+                                                y={20}
+                                                rotate={10}
+                                            />
                                         </li>
                                         <li>
-                                            <NavItem href="/career" title="Career" className={styles['is-current-page']} />
+                                            <NavItem
+                                                href="/career"
+                                                title="Career"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={0.7}
+                                                y={20}
+                                                rotate={10}
+                                            />
                                         </li>
                                     </ul>
                                 </div>

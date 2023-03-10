@@ -3,7 +3,7 @@
 ========================================================================== */
 
 .c-mobileNav {
-    --navigation-primary-padding: 25px;
+    --navigation-primary-padding: 100px;
     --navigation-scroll-padding: 100px;
     --navigation-link-color: var(--gray-100);
 
@@ -31,49 +31,23 @@
 
         &--list {
 
-            > ul {
+            ul {
                 margin: 0;
                 padding: 0;
                 list-style: none;
                 font-family: var(--font-primary);
 
-                > li {
+                li {
                     position: relative;
-                    padding: 24px var(--half-container);
+                    padding: 15px var(--half-container);
                     margin: 0;
 
-                    &:before {
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 1px;
-                        background: var(--gray-600);
-                        pointer-events: none;
-                    }
+                    span {
+                        display: inline-block;
 
-                    &:last-child {
-                        &:after {
-                            content: '';
-                            display: block;
-                            position: absolute;
-                            left: 0;
-                            bottom: 0;
-                            width: 100%;
-                            height: 1px;
-                            background: var(--gray-600);
-                            pointer-events: none;
-                        }
-                    }
-
-                    > span {
-                        display: block;
-
-                        > a {
+                        a {
                             display: inline-block;
-                            @include font-size(18px);
+                            @include font-size(25px);
                             font-weight: var(--font-regular);
                             color: var(--navigation-link-color);
                             text-transform: uppercase;
