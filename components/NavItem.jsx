@@ -34,7 +34,10 @@ export default function NavItem({
     }
 
     useIsomorphicLayoutEffect(() => {
+        console.log('enter iso');
         const ctx = gsap.context(() => {
+            console.log('animation');
+
             /* Intro animation */
             gsap.to(element.current, {
                 x: 0,
@@ -44,21 +47,19 @@ export default function NavItem({
                 ease,
                 delay,
                 duration: durationIn
-            })
+            });
 
             /* Outro animation */
-            if (!skipOutro) {
-                timeline.add(
-                    gsap.to(element.current,
-                        {
-                            ...from,
-                            delay: delayOut,
-                            duration: durationOut
-                        }
-                    ),
-                    0
-                )
-            }
+            // if (!skipOutro) {
+            //     timeline.add(
+            //         gsap.to(element.current,{
+            //             ...from,
+            //             delay: delayOut,
+            //             duration: durationOut
+            //         }),
+            //         0
+            //     );
+            // }
         }, element);
         return () => ctx.revert();
     }, []);
@@ -70,6 +71,7 @@ export default function NavItem({
             })}
         >
             <span ref={element} style={{ ...from }}>
+            {/* <span ref={element}> */}
                 <Link
                     href={href}
                     className={classNames({

@@ -30,11 +30,11 @@ export default function Home() {
             />
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
-                        <ShuffleTextInOut
-                            target="#shuffle"
-                        >
-                            <h2 id="shuffle">GreenSock is awesome</h2>
-                        </ShuffleTextInOut>
+                    <ShuffleTextInOut
+                        target="#shuffle"
+                    >
+                        <h2 id="shuffle">GreenSock is awesome</h2>
+                    </ShuffleTextInOut>
                     <div
                         style={{
                             display: "grid",

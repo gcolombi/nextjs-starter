@@ -4,9 +4,7 @@ import useDelayedRender from 'use-delayed-render';
 import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
 
-export default function MobileNavigation({
-    onClick
-}) {
+export default function MobileNavigation() {
     const { open, toggle } = useNavigationContext();
     const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
         open,
