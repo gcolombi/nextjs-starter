@@ -1,6 +1,6 @@
-import { gsap } from 'gsap';
-import { SplitText } from 'gsap/dist/SplitText';
-import { ScrambleTextPlugin } from 'gsap/dist/ScrambleTextPlugin';
+import gsap from 'gsap';
+import SplitText from 'gsap/dist/SplitText';
+import ScrambleTextPlugin from 'gsap/dist/ScrambleTextPlugin';
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';

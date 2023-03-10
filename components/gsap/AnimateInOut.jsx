@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 import React, { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';

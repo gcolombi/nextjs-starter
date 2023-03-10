@@ -1,5 +1,5 @@
-import { gsap } from 'gsap';
-import { SplitText } from 'gsap/dist/SplitText';
+import gsap from 'gsap';
+import SplitText from 'gsap/dist/SplitText';
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
