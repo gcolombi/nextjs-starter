@@ -10,7 +10,7 @@ import Button from './Button';
 import classNames from 'classnames';
 
 export default function Navigation() {
-    const { open, sticky, hidden } = useNavigationContext();
+    const { isOpen, sticky, hidden } = useNavigationContext();
     const [navigationRef, { height }] = useElementSize();
     const isMounted = useIsMounted();
     const { resolvedTheme, setTheme } = useTheme();
@@ -28,7 +28,7 @@ export default function Navigation() {
                     {
                         [styles['is-sticky']]: sticky,
                         [styles['is-hidden']]: hidden,
-                        [styles['is-open']]: open
+                        [styles['is-open']]: isOpen
                     }
                 )}
                 ref={navigationRef}

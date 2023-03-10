@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
 
 export default function MobileNavigation() {
-    const { open, toggle } = useNavigationContext();
+    const { isOpen, toggle } = useNavigationContext();
     const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
-        open,
+        isOpen,
         {
           enterDelay: 200,
           exitDelay: 350
@@ -16,7 +16,7 @@ export default function MobileNavigation() {
 
     return (
         <>
-            <Hamburger open={open} toggle={toggle} />
+            <Hamburger isOpen={isOpen} toggle={toggle} />
             {isMenuMounted &&
                 <nav
                    className={classNames(
@@ -85,14 +85,14 @@ export default function MobileNavigation() {
 }
 
 function Hamburger({
-    open,
+    isOpen,
     toggle
 }) {
     return (
         <button
             className={classNames(
                 styles['m-hamburger'],
-                {[styles['is-nav-active']]: open}
+                {[styles['is-nav-active']]: isOpen}
             )}
             type="button"
             aria-label="Toggle menu"

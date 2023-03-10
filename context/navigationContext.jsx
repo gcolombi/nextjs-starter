@@ -20,7 +20,7 @@ export function NavigationContextProvider({ children }) {
     const [locked, setLocked] = useLockedScroll(false);
     const router = useRouter();
 
-    const toggleNavigation = () => {
+    const toggle = () => {
         setIsOpen(!isOpen);
         setLocked(!locked);
     }
@@ -48,11 +48,11 @@ export function NavigationContextProvider({ children }) {
     return (
         <NavigationContext.Provider
             value={{
-                open: isOpen,
+                isOpen,
                 sticky: scrollY > 0,
                 hidden: directionY > 0 && scrollY > windowSize.height,
-                setOpen: setIsOpen,
-                toggle: toggleNavigation
+                setIsOpen,
+                toggle
             }}
         >
             {children}
