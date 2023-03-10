@@ -34,9 +34,7 @@ export default function NavItem({
     }
 
     useIsomorphicLayoutEffect(() => {
-        console.log('enter iso');
         const ctx = gsap.context(() => {
-            console.log('animation');
 
             /* Intro animation */
             gsap.to(element.current, {
@@ -71,7 +69,6 @@ export default function NavItem({
             })}
         >
             <span ref={element} style={{ ...from }}>
-            {/* <span ref={element}> */}
                 <Link
                     href={href}
                     className={classNames({
