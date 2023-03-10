@@ -11,14 +11,12 @@ export default function TransitionLayout({
         route: router.asPath,
         children
     })
-    const { timeline, resetTimeline, background } = useTransitionContext();
+    const { timeline, resetTimeline } = useTransitionContext();
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
-        console.log('route changed');
         if (currentPage.route !== router.asPath) {
             if (timeline.duration() === 0) {
-                console.log('intro');
                 /* There are no outro animations, so immediately transition */
                 setCurrentPage({
                     route: router.asPath,
@@ -26,8 +24,6 @@ export default function TransitionLayout({
                 })
             } else {
                 timeline.play().then(() => {
-                    console.log(timeline.duration());
-                    console.log('outro');
                     /* outro complete so reset to an empty paused timeline */
                     resetTimeline();
                     setCurrentPage({
@@ -38,13 +34,6 @@ export default function TransitionLayout({
             }
         }
     }, [router.asPath]);
-
-    // useIsomorphicLayoutEffect(() => {
-    //     gsap.to(element.current, {
-    //         background,
-    //         duration: 1,
-    //     });
-    // }, [background]);
 
     return (
         <div
