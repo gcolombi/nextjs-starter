@@ -15,7 +15,7 @@ export default function HeaderBasic({
         <>
             {
                 title &&
-                <section className={classNames('u-spacing--responsive', styles['c-headerBasic'], styles[className])}>
+                <section className={classNames(styles['c-headerBasic'], styles[className])}>
                     <div className="o-container">
                         <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
                             <ImplodeExplodeInOut

@@ -8,7 +8,6 @@ export default function Layout({ children }) {
             <TransitionLayout>
                 <Navigation />
                 <main>
-                    <div className="c-spacer" />
                     {children}
                     <Footer />
                 </main>
