@@ -2,6 +2,18 @@
     Utilities / Helpers
 ========================================================================== */
 
+/* Utilities
+========================================================================== */
+
+.u-visuallyHidden {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+}
+
 /* Layout
 ========================================================================== */
 
@@ -29,20 +41,20 @@
 .u-box {
 	border-radius: 25px;
 	background: var(--gray-100);
-	box-shadow:  20px 20px 60px var(--gray-400), 
+	box-shadow:  20px 20px 60px var(--gray-400),
 				-20px -20px 60px var(--white);
 }
 
 .u-box--thin {
 	border-radius: 22px;
 	background: var(--gray-100);
-	box-shadow:  15px 15px 45px var(--gray-400), 
+	box-shadow:  15px 15px 45px var(--gray-400),
 				-15px -15px 45px var(--white);
 }
 
 .u-box--thinner {
 	border-radius: 20px;
 	background: var(--gray-100);
-	box-shadow:  12px 12px 35px var(--gray-400), 
+	box-shadow:  12px 12px 35px var(--gray-400),
 				-12px -12px 35px var(--white);
 }

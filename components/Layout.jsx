@@ -7,7 +7,7 @@ export default function Layout({ children }) {
         <>
             <TransitionLayout>
                 <Navigation />
-                <main>
+                <main id="content">
                     {children}
                     <Footer />
                 </main>
