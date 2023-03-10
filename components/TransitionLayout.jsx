@@ -48,6 +48,7 @@ export default function TransitionLayout({
 
     return (
         <div
+            className='u-overflow--hidden'
             ref={element}
         >
             {currentPage.children}

@@ -66,11 +66,9 @@ export default function App({ Component, pageProps }) {
                                     }
                                 `}
                             </style>
-                            <div style={{ overflow: 'hidden' }}>
-                                <Layout>
-                                    <Component {...pageProps} />
-                                </Layout>
-                            </div>
+                            <Layout>
+                                <Component {...pageProps} />
+                            </Layout>
                         </NavigationContextProvider>
                     </TransitionContextProvider>
                 </GoogleReCaptchaProvider>
