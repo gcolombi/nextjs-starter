@@ -1,5 +1,5 @@
 import useTransitionContext from '@/context/transitionContext';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
@@ -12,7 +12,6 @@ export default function TransitionLayout({
         children
     })
     const { timeline, resetTimeline } = useTransitionContext();
-    const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
         if (currentPage.route !== router.asPath) {
@@ -38,7 +37,6 @@ export default function TransitionLayout({
     return (
         <div
             className='u-overflow--hidden'
-            ref={element}
         >
             {currentPage.children}
         </div>
