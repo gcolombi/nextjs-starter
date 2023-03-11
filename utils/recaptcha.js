@@ -1,5 +1,6 @@
 /**
  * Validates recaptcha and interprets the score
+ *
  * https://developers.google.com/recaptcha/docs/v3
  *
  * @param {string} token recaptcha token

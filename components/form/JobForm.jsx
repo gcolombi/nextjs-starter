@@ -49,7 +49,7 @@ async function sendFormData(data, recaptchaToken) {
     });
 }
 
-export default function CareerForm() {
+export default function JobForm() {
     const {
         register,
         control,

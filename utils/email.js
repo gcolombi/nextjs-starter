@@ -4,6 +4,7 @@ sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 /**
  * Documentation
+ *
  * https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication
  */
 

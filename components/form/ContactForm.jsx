@@ -56,7 +56,7 @@ export default function Form() {
             question: '',
             message: ''
         },
-        // resolver: yupResolver(contactSchema)
+        resolver: yupResolver(contactSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();

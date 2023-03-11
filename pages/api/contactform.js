@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         await contactSchema.validate({ ...data }, { abortEarly: false })
 
         /* Recaptcha */
-        const validReCaptcha = await validateRecaptcha(recaptchaToken, res);
+        const validReCaptcha = validateRecaptcha(recaptchaToken, res);
 
         if (validReCaptcha)
             /* Sends email */
