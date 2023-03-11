@@ -3,8 +3,8 @@
  * https://developers.google.com/recaptcha/docs/v3
  *
  * @param {Stringg} token recaptcha token
- * @param {Object} res
- * @returns {Boolean}
+ * @param {Object} res server response object
+ * @returns {Boolean} true or false
  */
 export const validateRecaptcha = async (token, res) => {
     try {
