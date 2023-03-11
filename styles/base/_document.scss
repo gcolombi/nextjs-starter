@@ -23,6 +23,11 @@
 	--btn-hover-color: var(--white);
     --btn-hover-bg-color: var(--primary-light);
     --btn-hover-border-color: var(--primary-light);
+    --navigation-sticky-bg: hsla(0,0%,100%,.8);
+    --navigation-box-shadow: inset 0 -1px 0 0 rgba(0,0,0,.1);
+    --navigation-mobile-bg-color: var(--secondary);
+    --navigation-link-color: var(--black);
+    --navigation-link-current-color: var(--primary);
 
 	/* Font Families
 
@@ -69,14 +74,19 @@
 [data-theme='dark'] {
     --body-text-color: var(--white);
 	--body-heading-color: var(--secondary);
-	--body-bg-color: var(--gray-900);
+	--body-bg-color: var(--black);
     --section-bg-color: var(--gray-600);
     --btn-bg-color: var(--secondary);
     --btn-border-color: var(--secondary);
-    --btn-color: var(--gray-900);
+    --btn-color: var(--black);
     --btn-hover-bg-color: var(--secondary-light);
-	--btn-hover-color: var(--gray-900);
+	--btn-hover-color: var(--black);
     --btn-hover-border-color: var(--secondary-light);
+    --navigation-sticky-bg: rgba(0,0,0,.5);
+    --navigation-box-shadow: inset 0 -1px 0 0 hsla(0,0%,100%,.1);
+    --navigation-mobile-bg-color: var(--primary);
+    --navigation-link-color: var(--white);
+    --navigation-link-current-color: var(--secondary);
 }
 
 /* Document

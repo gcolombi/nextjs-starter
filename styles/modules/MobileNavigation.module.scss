@@ -5,7 +5,6 @@
 .c-mobileNav {
     --navigation-primary-padding: 100px;
     --navigation-scroll-padding: 100px;
-    --navigation-link-color: var(--gray-100);
 
     position: absolute;
     top: 100%;
@@ -53,7 +52,7 @@
                             text-transform: uppercase;
 
                             &.is-current-page {
-                                --navigation-link-color: var(--secondary);
+                                color: var(--navigation-link-current-color);
                             }
                         }
                     }
