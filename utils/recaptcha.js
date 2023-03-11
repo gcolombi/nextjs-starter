@@ -2,9 +2,9 @@
  * Validates recaptcha and interprets the score
  * https://developers.google.com/recaptcha/docs/v3
  *
- * @param {Stringg} token recaptcha token
+ * @param {string} token recaptcha token
  * @param {Object} res server response object
- * @returns {Boolean} true or false
+ * @returns {boolean} true or false
  */
 export const validateRecaptcha = async (token, res) => {
     try {
