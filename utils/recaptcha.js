@@ -1,3 +1,11 @@
+/**
+ * Validates recaptcha and interprets the score
+ * https://developers.google.com/recaptcha/docs/v3
+ *
+ * @param {Stringg} token recaptcha token
+ * @param {Object} res
+ * @returns {Boolean}
+ */
 export const validateRecaptcha = async (token, res) => {
     try {
         const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
