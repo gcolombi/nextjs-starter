@@ -2,6 +2,11 @@ import sendGrid from '@sendgrid/mail';
 
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
+/**
+ * Documentation
+ * https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication
+ */
+
 module.exports = class Email {
     constructor(host, subject, labels, fields, attachments) {
         this.siteName = process.env.SITE_NAME;
@@ -17,6 +22,9 @@ module.exports = class Email {
         this.attachments = attachments;
     }
 
+    /**
+     * Sends the email with sendgrid
+     */
     async send() {
         const mailOptions = {
             to: this.to,
@@ -31,12 +39,20 @@ module.exports = class Email {
         await sendGrid.send(mailOptions);
     }
 
+    /**
+     * Generates email content
+     * @returns {string} a string containing email content
+     */
     generateContent() {
         return Object.entries(this.fields).reduce((str, [key, value]) => {
             return (str += `<p style="margin: .4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545E;"><strong>${this.labels?.[key]}: </strong>${value}</p>`);
         }, '');
     }
 
+    /**
+     * Generates email template
+     * @returns {Object} an object containing the email template
+     */
     generateTemplate() {
         return {
             html: `
