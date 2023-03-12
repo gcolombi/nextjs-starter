@@ -4,7 +4,7 @@ import Button from '@/components/Button';
 import useLockedScroll from '@/hooks/useLockedScroll';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
-import FadeInOut from '@/components/gsap/FadeInOut';
+import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
@@ -115,7 +115,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <FadeInOut
+            <TranslateInOut
                 y={100}
                 watch
             >
@@ -141,21 +141,21 @@ export default function Home() {
                         </ScaleInOut>
                     </div>
                 </section>
-            </FadeInOut>
+            </TranslateInOut>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div className="o-wysiwyg">
                         <ImplodeExplodeInOut
                             target="#text"
                             watch
-                            markers
+                            // markers
                         >
                             <h2 id="text">GreenSock</h2>
                         </ImplodeExplodeInOut>
                     </div>
                 </div>
             </div>
-            <FadeInOut
+            <TranslateInOut
                 y={100}
                 watch
             >
@@ -169,7 +169,7 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-            </FadeInOut>
+            </TranslateInOut>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -187,7 +187,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <FadeInOut
+            <TranslateInOut
                 y={100}
                 watch
             >
@@ -201,13 +201,13 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-            </FadeInOut>
+            </TranslateInOut>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut
                         target="#shuffleText"
                         watch
-                        markers
+                        // markers
                     >
                         <h2 id="shuffleText">GreenSock is awesome</h2>
                     </ShuffleTextInOut>
@@ -227,7 +227,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            markers
+                            // markers
                         >
                             <div
                                 style={{
@@ -241,7 +241,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            markers
+                            // markers
                         >
                             <div
                                 style={{
@@ -255,7 +255,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            markers
+                            // markers
                         >
                             <div
                                 style={{
@@ -269,7 +269,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            markers
+                            // markers
                         >
                             <div
                                 style={{
@@ -283,7 +283,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            markers
+                            // markers
                         >
                             <div
                                 style={{
@@ -296,7 +296,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <FadeInOut
+            <TranslateInOut
                 y={100}
                 watch
             >
@@ -310,7 +310,7 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-            </FadeInOut>
+            </TranslateInOut>
         </>
     )
 }

@@ -4,6 +4,7 @@ import AnimateInOut from './AnimateInOut';
 export default function FadeInOut({
     children,
     overflowHidden,
+    fade = true,
     durationIn = 0.5,
     durationOut = 0.25,
     delay = 0,
@@ -32,7 +33,7 @@ export default function FadeInOut({
                 delay={delay}
                 delayOut={delayOut}
                 from={{
-                    opacity: 0,
+                    opacity: fade ? 0 : 1,
                     transform: `translate(${x}px, ${y}px)`
                 }}
                 to={{

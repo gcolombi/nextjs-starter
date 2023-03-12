@@ -1,6 +1,6 @@
 import styles from '@/styles/modules/HeaderBasic.module.scss';
 import Button from './Button';
-import FadeInOut from './gsap/FadeInOut';
+import TranslateInOut from './gsap/TranslateInOut';
 import ScaleInOut from './gsap/ScaleInOut';
 import ImplodeExplodeInOut from './gsap/ImplodeExplodeInOut';
 import classNames from 'classnames';
@@ -25,7 +25,7 @@ export default function HeaderBasic({
                             >
                                 <h1 id="title">{title}</h1>
                             </ImplodeExplodeInOut>
-                            <FadeInOut
+                            <TranslateInOut
                                 overflowHidden
                                 delay={.7}
                                 y={70}
@@ -34,7 +34,7 @@ export default function HeaderBasic({
                                 <div className="o-wysiwyg">
                                     <p>{wysiwyg}</p>
                                 </div>
-                            </FadeInOut>
+                            </TranslateInOut>
                             {button &&
                                 <ScaleInOut
                                     delay={.9}
