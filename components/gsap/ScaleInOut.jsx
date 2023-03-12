@@ -4,12 +4,13 @@ import AnimateInOut from './AnimateInOut';
 export default function ScaleInOut({
     children,
     overflowHidden,
+    fade = true,
     durationIn = 0.5,
     durationOut = 0.25,
     delay = 0,
     delayOut = 0,
     ease = 'power4.out',
-    scale = 0.01,
+    scale = 0,
     scaleTo = 1,
     x = 0,
     y = 0,
@@ -34,7 +35,7 @@ export default function ScaleInOut({
                 delay={delay}
                 delayOut={delayOut}
                 from={{
-                    opacity: 0,
+                    opacity: fade ? 0 : 1,
                     transform: `translate(${x}px, ${y}px) scale(${scale})`
                 }}
                 to={{
