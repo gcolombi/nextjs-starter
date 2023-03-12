@@ -20,7 +20,8 @@ function AnimateInOut({
     watch = false,
     start = 'top 90%',
     end = '',
-    scrub = false
+    scrub = false,
+    markers
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
@@ -32,7 +33,7 @@ function AnimateInOut({
                 start,
                 end,
                 scrub,
-                markers: true
+                markers: markers
             }
         } : {};
 

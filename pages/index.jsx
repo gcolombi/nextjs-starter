@@ -6,6 +6,7 @@ import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 import FadeInOut from '@/components/gsap/FadeInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
+import RotateInOut from '@/components/gsap/RotateInOut';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
@@ -155,6 +156,23 @@ export default function Home() {
                     </div>
                 </section>
             </FadeInOut>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <RotateInOut
+                            durationIn={.25}
+                            rotateTo={360}
+                            watch
+                            start="bottom bottom"
+                            end="top top"
+                            scrub
+                            markers
+                        >
+                                <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
+                        </RotateInOut>
+                    </div>
+                </div>
+            </div>
             <FadeInOut
                 y={100}
                 watch

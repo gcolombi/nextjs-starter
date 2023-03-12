@@ -8,14 +8,19 @@ export default function RotateInOut({
     durationOut = 0.25,
     delay = 0,
     delayOut = 0,
-    ease = 'power4.out',
+    ease = 'power1.out',
     rotate = 0,
     rotateTo = 0,
     x = 0,
     y = 0,
     xTo = 0,
     yTo = 0,
-    skipOutro
+    skipOutro,
+    watch,
+    start = 'top 90%',
+    end = '',
+    scrub = false,
+    markers
 }) {
     return (
         <div
@@ -40,6 +45,11 @@ export default function RotateInOut({
                     y: yTo
                 }}
                 skipOutro={skipOutro}
+                watch={watch}
+                start={start}
+                end={end}
+                scrub={scrub}
+                markers={markers}
             >
                 {children}
             </AnimateInOut>

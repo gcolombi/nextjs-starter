@@ -16,7 +16,11 @@ export default function ScaleInOut({
     xTo = 0,
     yTo = 0,
     skipOutro,
-    watch
+    watch,
+    start = 'top 90%',
+    end = '',
+    scrub = false,
+    markers
 }) {
     return (
         <div
@@ -42,6 +46,10 @@ export default function ScaleInOut({
                 }}
                 skipOutro={skipOutro}
                 watch={watch}
+                start={start}
+                end={end}
+                scrub={scrub}
+                markers={markers}
             >
                 {children}
             </AnimateInOut>
