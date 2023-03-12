@@ -13,7 +13,8 @@ export default function FadeInOut({
     y = 0,
     xTo = 0,
     yTo = 0,
-    skipOutro
+    skipOutro,
+    watch
 }) {
     return (
         <div
@@ -37,6 +38,7 @@ export default function FadeInOut({
                     y: yTo
                 }}
                 skipOutro={skipOutro}
+                watch={watch}
             >
                 {children}
             </AnimateInOut>

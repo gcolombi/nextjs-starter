@@ -1,7 +1,12 @@
 import gsap from 'gsap';
+import ScrollTriger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
+
+if (typeof window !== "undefined"){
+    gsap.registerPlugin(ScrollTriger);
+}
 
 function AnimateInOut({
     children,
@@ -11,19 +16,34 @@ function AnimateInOut({
     delayOut,
     from,
     to,
-    skipOutro
+    skipOutro,
+    watch = false,
+    start = 'top 90%',
+    end = '',
+    scrub = false
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
+        const scrollTrigger = watch ? {
+            scrollTrigger: {
+                trigger: element.current,
+                start,
+                end,
+                scrub,
+                markers: true
+            }
+        } : {};
+
         const ctx = gsap.context(() => {
 
             /* Intro animation */
             gsap.to(element.current, {
                 ...to,
                 delay: delay,
-                duration: durationIn
+                duration: durationIn,
+                ...scrollTrigger
             });
 
             /* Outro animation */
