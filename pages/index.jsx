@@ -166,7 +166,7 @@ export default function Home() {
                             start="bottom bottom"
                             end="top top"
                             scrub
-                            markers
+                            // markers
                         >
                                 <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
                         </RotateInOut>
@@ -188,6 +188,17 @@ export default function Home() {
                     </div>
                 </section>
             </FadeInOut>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <ShuffleTextInOut
+                        target="#shuffleText"
+                        watch
+                        markers
+                    >
+                        <h2 id="shuffleText">GreenSock is awesome</h2>
+                    </ShuffleTextInOut>
+                </div>
+            </div>
             <FadeInOut
                 y={100}
                 watch

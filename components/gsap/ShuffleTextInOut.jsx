@@ -18,13 +18,27 @@ export default function ShuffleTextInOut({
     revealDelayOut = 0.35,
     ease = 'none',
     target,
-    skipOutro
+    skipOutro,
+    watch = false,
+    start = 'top 90%',
+    end = '',
+    scrub = false,
+    markers
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
 
-
     useIsomorphicLayoutEffect(() => {
+        const scrollTrigger = watch ? {
+            scrollTrigger: {
+                trigger: element.current,
+                start,
+                end,
+                scrub,
+                markers: markers
+            }
+        } : {};
+
         const ctx = gsap.context(() => {
             const splitWord = new SplitText(target, {
                 type: 'words'
@@ -48,7 +62,8 @@ export default function ShuffleTextInOut({
                         text: '{original}',
                         chars: string,
                         revealDelay: revealDelayIn
-                    }
+                    },
+                    ...scrollTrigger
                 });
 
                 /* Outro animation */
