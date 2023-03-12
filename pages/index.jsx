@@ -174,6 +174,7 @@ export default function Home() {
                 <div className="o-container">
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <RotateInOut
+                            fade={false}
                             durationIn={.25}
                             rotateTo={360}
                             watch

@@ -41,7 +41,6 @@ export default function HeaderBasic({
                                     y={90}
                                     durationIn={1}
                                     ease="elastic.out"
-                                    fade={false}
                                     // skipOutro
                                 >
                                     <Button

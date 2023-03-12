@@ -4,6 +4,7 @@ import AnimateInOut from './AnimateInOut';
 export default function RotateInOut({
     children,
     overflowHidden,
+    fade = true,
     durationIn = 0.5,
     durationOut = 0.25,
     delay = 0,
@@ -34,7 +35,7 @@ export default function RotateInOut({
                 delay={delay}
                 delayOut={delayOut}
                 from={{
-                    opacity: 0,
+                    opacity: fade ? 0 : 1,
                     transform: `translate(${x}px, ${y}px) rotate(${rotate}deg)`
                 }}
                 to={{
