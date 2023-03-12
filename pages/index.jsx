@@ -149,7 +149,7 @@ export default function Home() {
                         <ImplodeExplodeInOut
                             target="#text"
                             watch
-                            // markers
+                            markers
                         >
                             <h2 id="text">GreenSock</h2>
                         </ImplodeExplodeInOut>
@@ -182,7 +182,7 @@ export default function Home() {
                             start="bottom bottom"
                             end="top top"
                             scrub
-                            // markers
+                            markers
                         >
                                 <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
                         </RotateInOut>

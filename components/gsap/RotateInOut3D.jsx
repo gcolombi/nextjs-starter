@@ -1,8 +1,13 @@
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 import { randomNumber } from '@/utils/number';
+
+if (typeof window !== "undefined"){
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function RotateInOut3D({
     children,
