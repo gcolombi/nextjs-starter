@@ -213,6 +213,89 @@ export default function Home() {
                     </ShuffleTextInOut>
                 </div>
             </div>
+            <section className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+                            gridAutoRows: "1fr",
+                            width: "100%"
+                        }}
+                    >
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y={120}
+                            watch
+                            markers
+                        >
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary-light)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y={120}
+                            watch
+                            markers
+                        >
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary-lighter)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y={120}
+                            watch
+                            markers
+                        >
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y={120}
+                            watch
+                            markers
+                        >
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary-dark)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y={120}
+                            watch
+                            markers
+                        >
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "200px",
+                                    background: "var(--primary-darker)"
+                                }}
+                            />
+                        </RotateInOut3D>
+                    </div>
+                </div>
+            </section>
             <FadeInOut
                 y={100}
                 watch

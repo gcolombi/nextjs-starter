@@ -14,12 +14,27 @@ export default function RotateInOut3D({
     easeOut = 'power4.out',
     x = 0,
     y = 0,
-    skipOutro
+    skipOutro,
+    watch = false,
+    start = 'top 90%',
+    end = '',
+    scrub = false,
+    markers
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
+        const scrollTrigger = watch ? {
+            scrollTrigger: {
+                trigger: element.current,
+                start,
+                end,
+                scrub,
+                markers: markers
+            }
+        } : {};
+
         const ctx = gsap.context(() => {
             /* Intro animation */
             gsap.fromTo(
@@ -43,7 +58,8 @@ export default function RotateInOut3D({
                     opacity: 1,
                     ease,
                     delay,
-                    duration: durationIn
+                    duration: durationIn,
+                    ...scrollTrigger
                 }
             );
 
