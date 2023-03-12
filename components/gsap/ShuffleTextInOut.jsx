@@ -12,8 +12,11 @@ if (typeof window !== "undefined"){
 
 export default function ShuffleTextInOut({
     children,
+    fade = true,
     durationIn = 0.8,
     durationOut = 0.5,
+    delay = 0,
+    delayOut = 0,
     revealDelayIn = 0.5,
     revealDelayOut = 0.35,
     ease = 'none',
@@ -40,6 +43,16 @@ export default function ShuffleTextInOut({
         } : {};
 
         const ctx = gsap.context(() => {
+            /* Sets opacity on the parent */
+            if (fade) {
+                gsap.to(element.current, {
+                    opacity: 1,
+                    delay,
+                    ...scrollTrigger
+                })
+            }
+
+            /* Splits the target */
             const splitWord = new SplitText(target, {
                 type: 'words'
             });
@@ -56,8 +69,9 @@ export default function ShuffleTextInOut({
                 });
 
                 gsap.to(word, {
-                    duration: durationIn,
                     ease,
+                    delay,
+                    duration: durationIn,
                     scrambleText:{
                         text: '{original}',
                         chars: string,
@@ -70,8 +84,10 @@ export default function ShuffleTextInOut({
                 if (!skipOutro) {
                     timeline.add(
                         gsap.to(word, {
-                            duration: durationOut,
+                            opacity: fade ? 0 : 1,
                             ease,
+                            delay: delayOut,
+                            duration: durationOut,
                             scrambleText:{
                                 text: '{original}',
                                 chars: string,
@@ -87,7 +103,7 @@ export default function ShuffleTextInOut({
     }, [])
 
     return (
-        <div ref={element}>
+        <div ref={element} style={{ opacity: fade ? 0 : 1 }}>
             {children}
         </div>
     );

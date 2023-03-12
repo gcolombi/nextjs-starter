@@ -35,6 +35,7 @@ export default function Home() {
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut
+                        delay={0.5}
                         target="#shuffle"
                     >
                         <h2 id="shuffle">GreenSock is awesome</h2>
