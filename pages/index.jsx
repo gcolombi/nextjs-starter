@@ -7,6 +7,7 @@ import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 import FadeInOut from '@/components/gsap/FadeInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
+import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
@@ -141,6 +142,19 @@ export default function Home() {
                     </div>
                 </section>
             </FadeInOut>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <div className="o-wysiwyg">
+                        <ImplodeExplodeInOut
+                            target="#text"
+                            watch
+                            markers
+                        >
+                            <h2 id="text">GreenSock</h2>
+                        </ImplodeExplodeInOut>
+                    </div>
+                </div>
+            </div>
             <FadeInOut
                 y={100}
                 watch

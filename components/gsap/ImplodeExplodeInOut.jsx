@@ -18,12 +18,27 @@ export default function ImplodeExplodeInOut({
     ease = 'power4.out',
     easeOut = 'power4.in',
     target,
-    skipOutro
+    skipOutro,
+    watch = false,
+    start = 'top 90%',
+    end = '',
+    scrub = false,
+    markers
 }) {
     const { timeline } = useTransitionContext();
     const element = useRef();
 
     useIsomorphicLayoutEffect(() => {
+        const scrollTrigger = watch ? {
+            scrollTrigger: {
+                trigger: element.current,
+                start,
+                end,
+                scrub,
+                markers: markers
+            }
+        } : {};
+
         const ctx = gsap.context(() => {
             const splitText = new SplitText(target);
             const chars = splitText.chars;
@@ -52,7 +67,8 @@ export default function ImplodeExplodeInOut({
                         opacity: 1,
                         ease,
                         delay,
-                        duration: durationIn
+                        duration: durationIn,
+                        ...scrollTrigger
                     }
                 );
 
