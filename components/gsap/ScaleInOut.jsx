@@ -15,7 +15,8 @@ export default function ScaleInOut({
     y = 0,
     xTo = 0,
     yTo = 0,
-    skipOutro
+    skipOutro,
+    watch
 }) {
     return (
         <div
@@ -40,6 +41,7 @@ export default function ScaleInOut({
                     y: yTo
                 }}
                 skipOutro={skipOutro}
+                watch={watch}
             >
                 {children}
             </AnimateInOut>

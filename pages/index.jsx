@@ -5,6 +5,7 @@ import useLockedScroll from '@/hooks/useLockedScroll';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 import FadeInOut from '@/components/gsap/FadeInOut';
+import ScaleInOut from '@/components/gsap/ScaleInOut';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
@@ -124,11 +125,18 @@ export default function Home() {
                             <p>Sit amet tellus cras adipiscing. Ullamcorper morbi tincidunt ornare massa eget egestas purus. Id consectetur purus ut faucibus pulvinar elementum integer. Sit amet nisl suscipit adipiscing. Nulla pharetra diam sit amet nisl suscipit. Duis at tellus at urna. Fames ac turpis egestas sed tempus urna et pharetra pharetra. Porta lorem mollis aliquam ut porttitor leo. Sed nisi lacus sed viverra tellus in hac habitasse. Molestie ac feugiat sed lectus vestibulum mattis. Aliquam nulla facilisi cras fermentum odio eu feugiat. Elementum tempus egestas sed sed risus. Aliquam ultrices sagittis orci a scelerisque purus semper.</p>
                             <p>Fames ac turpis egestas maecenas. Lectus quam id leo in. Mauris commodo quis imperdiet massa tincidunt. Eu mi bibendum neque egestas. Nibh praesent tristique magna sit. At volutpat diam ut venenatis tellus in metus vulputate eu. Felis eget nunc lobortis mattis aliquam faucibus. Dui nunc mattis enim ut tellus. Nulla malesuada pellentesque elit eget gravida cum sociis. Pharetra pharetra massa massa ultricies. Quisque egestas diam in arcu. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Nibh tellus molestie nunc non. Turpis nunc eget lorem dolor sed viverra ipsum. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Orci eu lobortis elementum nibh tellus molestie nunc. Elit duis tristique sollicitudin nibh sit amet. Tellus at urna condimentum mattis pellentesque id nibh tortor. Purus viverra accumsan in nisl nisi. Blandit libero volutpat sed cras ornare arcu dui.</p>
                         </div>
-                        <Button
-                            label={locked ? 'Unlock scroll' : 'Lock scroll'}
-                            onClick={toggleLocked}
-                            className="c-btn"
-                        />
+                        <ScaleInOut
+                            x={-90}
+                            durationIn={1}
+                            ease="elastic.out"
+                            watch
+                        >
+                            <Button
+                                label={locked ? 'Unlock scroll' : 'Lock scroll'}
+                                onClick={toggleLocked}
+                                className="c-btn"
+                            />
+                        </ScaleInOut>
                     </div>
                 </section>
             </FadeInOut>
