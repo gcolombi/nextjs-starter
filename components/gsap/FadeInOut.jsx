@@ -1,19 +1,14 @@
 import classNames from 'classnames';
 import AnimateInOut from './AnimateInOut';
 
-export default function TranslateInOut({
+export default function FadeInOut({
     children,
     overflowHidden,
-    fade = true,
     durationIn = 0.5,
     durationOut = 0.25,
     delay = 0,
     delayOut = 0,
     ease = 'power4.out',
-    x = 0,
-    y = 0,
-    xTo = 0,
-    yTo = 0,
     skipOutro,
     watch,
     start = 'top 90%',
@@ -33,14 +28,11 @@ export default function TranslateInOut({
                 delay={delay}
                 delayOut={delayOut}
                 from={{
-                    opacity: fade ? 0 : 1,
-                    transform: `translate(${x}px, ${y}px)`
+                    opacity: 0
                 }}
                 to={{
                     ease,
-                    opacity: 1,
-                    x: xTo,
-                    y: yTo
+                    opacity: 1
                 }}
                 skipOutro={skipOutro}
                 watch={watch}
