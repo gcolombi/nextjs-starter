@@ -4,9 +4,7 @@ import React, { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 
-if (typeof window !== "undefined"){
-    gsap.registerPlugin(ScrollTrigger);
-}
+// gsap.registerPlugin(ScrollTrigger);
 
 function AnimateInOut({
     children,
@@ -60,7 +58,7 @@ function AnimateInOut({
             }
         }, element);
         return () => ctx.revert();
-    }, [])
+    }, []);
 
     return (
         <div ref={element} style={from}>

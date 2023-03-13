@@ -6,8 +6,9 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 import { randomNumber } from '@/utils/number';
 
-if (typeof window !== "undefined"){
-    gsap.registerPlugin(SplitText, ScrollTrigger);
+if (typeof window !== 'undefined') {
+    // gsap.registerPlugin(SplitText, ScrollTrigger);
+    gsap.registerPlugin(SplitText);
 }
 
 export default function ImplodeExplodeInOut({
@@ -98,11 +99,11 @@ export default function ImplodeExplodeInOut({
 
             gsap.to(element.current, {
                 opacity: 1
-            })
+            });
 
         }, element);
         return () => ctx.revert();
-    }, [])
+    }, []);
 
     return (
         <div ref={element} style={{ opacity: 0 }}>

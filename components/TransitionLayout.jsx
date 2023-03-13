@@ -10,7 +10,7 @@ export default function TransitionLayout({
     const [currentPage, setCurrentPage] = useState({
         route: router.asPath,
         children
-    })
+    });
     const { timeline, resetTimeline } = useTransitionContext();
 
     useIsomorphicLayoutEffect(() => {
@@ -20,7 +20,7 @@ export default function TransitionLayout({
                 setCurrentPage({
                     route: router.asPath,
                     children
-                })
+                });
             } else {
                 timeline.play().then(() => {
                     /* outro complete so reset to an empty paused timeline */
@@ -28,8 +28,8 @@ export default function TransitionLayout({
                     setCurrentPage({
                         route: router.asPath,
                         children
-                    })
-                })
+                    });
+                });
             }
         }
     }, [router.asPath]);

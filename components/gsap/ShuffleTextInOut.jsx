@@ -7,9 +7,11 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 import { shuffle } from '@/utils/array';
 
-if (typeof window !== "undefined"){
-    gsap.registerPlugin(SplitText, ScrambleTextPlugin, ScrollTrigger);
+if (typeof window !== 'undefined') {
+    // gsap.registerPlugin(SplitText, ScrambleTextPlugin, ScrollTrigger);
+    gsap.registerPlugin(SplitText);
 }
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export default function ShuffleTextInOut({
     children,
@@ -50,7 +52,7 @@ export default function ShuffleTextInOut({
                     opacity: 1,
                     delay,
                     ...scrollTrigger
-                })
+                });
             }
 
             /* Splits the target */
@@ -101,7 +103,7 @@ export default function ShuffleTextInOut({
             });
         }, element);
         return () => ctx.revert();
-    }, [])
+    }, []);
 
     return (
         <div ref={element} style={{ opacity: fade ? 0 : 1 }}>

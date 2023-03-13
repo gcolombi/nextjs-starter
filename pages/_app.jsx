@@ -29,6 +29,8 @@ const victorMono = localFont({
     display: 'swap'
 });
 
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import '@/styles/style.scss';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -38,9 +40,12 @@ import { TransitionContextProvider } from '@/context/transitionContext';
 import { NavigationContextProvider } from '@/context/navigationContext';
 import Layout from '@/components/Layout';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function App({ Component, pageProps }) {
     const router = useRouter();
 
+    /* Removes focus from next/link element after page change */
     useEffect(() => {
         document.activeElement && document.activeElement.blur();
     }, [router]);

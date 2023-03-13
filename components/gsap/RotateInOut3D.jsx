@@ -5,9 +5,7 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 import { randomNumber } from '@/utils/number';
 
-if (typeof window !== "undefined"){
-    gsap.registerPlugin(ScrollTrigger);
-}
+// gsap.registerPlugin(ScrollTrigger);
 
 export default function RotateInOut3D({
     children,
@@ -90,7 +88,7 @@ export default function RotateInOut3D({
             }
         }, element);
         return () => ctx.revert();
-    }, [])
+    }, []);
 
     return (
         <div ref={element} style={{ opacity: 0 }}>
