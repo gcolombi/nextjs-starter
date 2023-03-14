@@ -1,14 +1,12 @@
 import gsap from 'gsap';
 import SplitText from 'gsap/dist/SplitText';
 import ScrambleTextPlugin from 'gsap/dist/ScrambleTextPlugin';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
 import { shuffle } from '@/utils/array';
 
 if (typeof window !== 'undefined') {
-    // gsap.registerPlugin(SplitText, ScrambleTextPlugin, ScrollTrigger);
     gsap.registerPlugin(SplitText);
 }
 gsap.registerPlugin(ScrambleTextPlugin);

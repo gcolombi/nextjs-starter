@@ -1,10 +1,7 @@
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import useTransitionContext from '@/context/transitionContext';
-
-// gsap.registerPlugin(ScrollTrigger);
 
 function AnimateInOut({
     children,
