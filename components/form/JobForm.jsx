@@ -39,10 +39,6 @@ async function sendFormData(data, recaptchaToken) {
     formData.append('labels', JSON.stringify(labels));
     formData.append('recaptchaToken', recaptchaToken);
 
-    // for (const obj of formData) {
-    //     console.log(obj);
-    // }
-
     return await fetch('/api/jobform', {
         method: 'POST',
         body: formData
@@ -66,7 +62,7 @@ export default function JobForm() {
             coverletter: '',
             message: ''
         },
-        // resolver: yupResolver(jobSchema)
+        resolver: yupResolver(jobSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();

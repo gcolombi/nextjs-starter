@@ -77,7 +77,6 @@ export default function Form() {
 
         try {
             const response = await sendFormData(data, recaptchaToken);
-            // const response = await sendFormData(data);
 
             const _data = await response.json();
 
