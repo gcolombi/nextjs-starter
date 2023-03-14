@@ -5,7 +5,6 @@
 .c-headerBasic {
     position: relative;
     padding: calc(var(--spacing-responsive) + var(--navigation-height)) 0 var(--spacing-responsive) 0;
-    // padding: calc(var(--spacing-responsive) + 89px) 0 var(--spacing-responsive) 0;
 
     &__row {
         max-width: 800px;
@@ -20,6 +19,6 @@
     &--fullHeight {
         display: flex;
         align-items: center;
-        min-height: calc(100vh - var(--navigation-height));
+        min-height: 100vh;
     }
 }

@@ -21,7 +21,6 @@ export default function HeaderBasic({
                             <ImplodeExplodeInOut
                                 delay={.5}
                                 target="#title"
-                                // skipOutro
                             >
                                 <h1 id="title">{title}</h1>
                             </ImplodeExplodeInOut>
@@ -29,7 +28,6 @@ export default function HeaderBasic({
                                 overflowHidden
                                 delay={.7}
                                 y={70}
-                                // skipOutro
                             >
                                 <div className="o-wysiwyg">
                                     <p>{wysiwyg}</p>
@@ -41,7 +39,6 @@ export default function HeaderBasic({
                                     y={90}
                                     durationIn={1}
                                     ease="elastic.out"
-                                    // skipOutro
                                 >
                                     <Button
                                         label={button.label}

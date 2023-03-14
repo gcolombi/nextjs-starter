@@ -149,7 +149,6 @@ export default function Home() {
                         <ImplodeExplodeInOut
                             target="#text"
                             watch
-                            markers
                         >
                             <h2 id="text">GreenSock</h2>
                         </ImplodeExplodeInOut>
@@ -182,7 +181,6 @@ export default function Home() {
                             start="bottom bottom"
                             end="top top"
                             scrub
-                            markers
                         >
                                 <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
                         </RotateInOut>
@@ -209,7 +207,6 @@ export default function Home() {
                     <ShuffleTextInOut
                         target="#shuffleText"
                         watch
-                        // markers
                     >
                         <h2 id="shuffleText">GreenSock is awesome</h2>
                     </ShuffleTextInOut>
@@ -229,7 +226,6 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            // markers
                         >
                             <div
                                 style={{
@@ -243,7 +239,6 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            // markers
                         >
                             <div
                                 style={{
@@ -257,7 +252,6 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            // markers
                         >
                             <div
                                 style={{
@@ -271,7 +265,6 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            // markers
                         >
                             <div
                                 style={{
@@ -285,7 +278,6 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={120}
                             watch
-                            // markers
                         >
                             <div
                                 style={{
