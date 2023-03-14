@@ -2,6 +2,7 @@ import useTransitionContext from '@/context/transitionContext';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 export default function TransitionLayout({
     children
@@ -21,16 +22,22 @@ export default function TransitionLayout({
                     route: router.asPath,
                     children
                 });
-            } else {
-                timeline.play().then(() => {
-                    /* outro complete so reset to an empty paused timeline */
-                    resetTimeline();
-                    setCurrentPage({
-                        route: router.asPath,
-                        children
-                    });
-                });
+                ScrollTrigger.refresh(true);
+                return;
             }
+
+            timeline.play().then(() => {
+                /* outro complete so reset to an empty paused timeline */
+                resetTimeline();
+                setCurrentPage({
+                    route: router.asPath,
+                    children
+                });
+                ScrollTrigger.refresh(true);
+            });
+
+        } else {
+            ScrollTrigger.refresh(true);
         }
     }, [router.asPath]);
 
