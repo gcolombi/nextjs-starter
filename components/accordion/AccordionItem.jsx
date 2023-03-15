@@ -1,5 +1,6 @@
 export default function AccordionItem({
     header,
+    headingTag = 'h3',
     id,
     children
 }) {
@@ -7,6 +8,7 @@ export default function AccordionItem({
         <div className="c-accordions__item">
             <Heading
                 header={header}
+                headingTag={headingTag}
                 id={id}
             />
             <div className="c-accordions__inner">
@@ -22,7 +24,7 @@ export default function AccordionItem({
 
 function Heading({
     header,
-    headingTag = 'h3',
+    headingTag,
     id
 }) {
     const validHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];

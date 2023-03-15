@@ -12,10 +12,10 @@ function AnimateInOut({
     from,
     to,
     skipOutro,
-    watch = false,
-    start = 'top 90%',
-    end = '',
-    scrub = false,
+    watch,
+    start,
+    end,
+    scrub,
     markers
 }) {
     const { timeline } = useTransitionContext();
