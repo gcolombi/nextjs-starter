@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         const { recaptchaToken, labels, data } = req.body;
 
         /* Validation */
-        await contactSchema.validate({ ...data }, { abortEarly: false })
+        await contactSchema.validate({ ...data }, { abortEarly: false });
 
         /* Recaptcha */
         const validReCaptcha = validateRecaptcha(recaptchaToken, res);

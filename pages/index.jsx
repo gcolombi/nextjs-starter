@@ -8,6 +8,7 @@ import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
+import Accordion from '@/components/accordion/Accordion';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
@@ -31,6 +32,22 @@ export default function Home() {
                     onClick: '',
                     className: 'c-btn'
                 }}
+            />
+            <Accordion
+                items={[
+                    {
+                        header: 'What is Lorem Ipsum?',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing...'
+                    },
+                    {
+                        header: 'Where does it come from?',
+                        content: 'Quisque eget luctus mi, vehicula mollis lorem...'
+                    },
+                    {
+                        header: 'Why do we use it?',
+                        content: 'Suspendisse massa risus, pretium id interdum in...'
+                    }
+                ]}
             />
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">

@@ -4,7 +4,7 @@ export default function ArticleList({
     articles
 }) {
 
-    if (articles.length) {
+    if (articles?.length) {
         return (
             <section className="u-spacing--responsive">
                 <div className="o-container">
