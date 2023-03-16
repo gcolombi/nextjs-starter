@@ -33,22 +33,25 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
-            <Accordion
-                items={[
-                    {
-                        header: 'What is Lorem Ipsum?',
-                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing...'
-                    },
-                    {
-                        header: 'Where does it come from?',
-                        content: 'Quisque eget luctus mi, vehicula mollis lorem...'
-                    },
-                    {
-                        header: 'Why do we use it?',
-                        content: 'Suspendisse massa risus, pretium id interdum in...'
-                    }
-                ]}
-            />
+            <div className="u-spacing--responsive--bottom">
+                <Accordion
+                    items={[
+                        {
+                            header: 'What is Lorem Ipsum?',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing...'
+                        },
+                        {
+                            header: 'Where does it come from?',
+                            content: 'Quisque eget luctus mi, vehicula mollis lorem...'
+                        },
+                        {
+                            header: 'Why do we use it?',
+                            content: 'Suspendisse massa risus, pretium id interdum in...'
+                        }
+                    ]}
+                    headingTag = 'h5'
+                />
+            </div>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut

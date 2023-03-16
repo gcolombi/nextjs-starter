@@ -1,0 +1,33 @@
+.c-accordions {
+    &__item {
+        border: 1px solid var(--gray-600);
+
+        &:first-of-type {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        &:last-of-type {
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        > h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        button {
+            padding: 16px 20px;
+        }
+    }
+
+    &__container {
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    &__content {
+        padding: 16px 20px;
+    }
+}

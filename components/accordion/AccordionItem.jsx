@@ -1,18 +1,20 @@
+import styles from '@/styles/modules/AccordionItem.module.scss';
+
 export default function AccordionItem({
     header,
-    headingTag = 'h3',
+    headingTag,
     id,
     children
 }) {
     return (
-        <div className="c-accordions__item">
+        <div className={styles['c-accordions__item']}>
             <Heading
                 header={header}
                 headingTag={headingTag}
                 id={id}
             />
-            <div className="c-accordions__inner">
-                <div>
+            <div className={styles['c-accordions__container']}>
+                <div className={styles['c-accordions__content']}>
                     <div className="o-wysiwyg">
                         <p>{children}</p>
                     </div>
