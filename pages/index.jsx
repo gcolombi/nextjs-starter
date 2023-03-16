@@ -9,9 +9,25 @@ import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import Accordion from '@/components/accordion/Accordion';
+import AccordionItem from '@/components/accordion/AccordionItem';
 
 export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
+
+    const items = [
+        {
+            header: 'What is Lorem Ipsum?',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing...'
+        },
+        {
+            header: 'Where does it come from?',
+            content: 'Quisque eget luctus mi, vehicula mollis lorem...'
+        },
+        {
+            header: 'Why do we use it?',
+            content: 'Suspendisse massa risus, pretium id interdum in...'
+        }
+    ];
 
     const toggleLocked = () => {
         setLocked(!locked);
@@ -34,23 +50,15 @@ export default function Home() {
                 }}
             />
             <div className="u-spacing--responsive--bottom">
-                <Accordion
-                    items={[
-                        {
-                            header: 'What is Lorem Ipsum?',
-                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing...'
-                        },
-                        {
-                            header: 'Where does it come from?',
-                            content: 'Quisque eget luctus mi, vehicula mollis lorem...'
-                        },
-                        {
-                            header: 'Why do we use it?',
-                            content: 'Suspendisse massa risus, pretium id interdum in...'
-                        }
-                    ]}
-                    headingTag = 'h5'
-                />
+                <div className="o-container">
+                    <Accordion>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem headingTag={'h5'} header={header} id={i} key={i}>
+                                {content}
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </div>
             </div>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">

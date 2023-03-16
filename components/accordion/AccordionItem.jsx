@@ -2,7 +2,7 @@ import styles from '@/styles/modules/AccordionItem.module.scss';
 
 export default function AccordionItem({
     header,
-    headingTag,
+    headingTag = 'h3',
     id,
     children
 }) {
