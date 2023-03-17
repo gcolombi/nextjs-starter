@@ -11,8 +11,8 @@ export function AccordionContextProvider({ children }) {
     const [items, setItems] = useState([]);
     const latestItems = useRef(items);
 
-    const registerAccordionItem = useCallback((id, expanded = false) => {
-        setItems((state) => [...state, { id, expanded }]);
+    const registerAccordionItem = useCallback((id, expanded = false, container, content) => {
+        setItems((state) => [...state, { id, expanded, container, content }]);
     }, [setItems]);
 
     const unregisterAccordionItem = useCallback((id) => {
@@ -51,7 +51,7 @@ export function AccordionContextProvider({ children }) {
     );
 };
 
-export default function useAccordionContext({ id }) {
+export default function useAccordionContext({ id, container, content }) {
     const context = useContext(AccordionContext);
 
     if (!context)
@@ -72,7 +72,10 @@ export default function useAccordionContext({ id }) {
     );
 
     useEffect(() => {
-        registerAccordionItem(id);
+        console.log(container);
+        console.log(content);
+
+        registerAccordionItem(id, false, container, content);
         return () => {
             unregisterAccordionItem(id);
         };

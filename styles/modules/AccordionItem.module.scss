@@ -21,10 +21,9 @@
         }
 
         &__container {
-            display: none;
-            // height: 0;
-            overflow: hidden;
+            height: 0;
             opacity: 0;
+            overflow: hidden;
 
             &--content {
                 padding: 16px 20px;
@@ -32,13 +31,12 @@
         }
 
 
-        /* states */
-        &.is-open & {
-            &__container {
-                display: block;
-                opacity: 1;
-            }
-        }
+        // /* states */
+        // &.is-open & {
+        //     &__container {
+        //         opacity: 1;
+        //     }
+        // }
     }
 
 }
