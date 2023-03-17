@@ -1,7 +1,7 @@
 import styles from '@/styles/modules/AccordionItem.module.scss';
 import gsap from 'gsap';
 import { useRef } from 'react';
-import useAccordionContext from '@/context/accordionContext';
+import useAccordionContext, { useAccordionItem } from '@/context/accordionContext';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
 export default function AccordionItem({
@@ -12,7 +12,7 @@ export default function AccordionItem({
 }) {
     const container = useRef();
     const content = useRef();
-    const { expanded, toggle } = useAccordionContext({ id, container, content });
+    const { expanded, toggle } = useAccordionItem({ id, container, content });
 
     // useIsomorphicLayoutEffect(() => {
     // }, []);

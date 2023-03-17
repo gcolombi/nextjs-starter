@@ -1,48 +1,70 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const AccordionContext = createContext({
-    items: [],
-    registerAccordionItem: () => {},
-    unregisterAccordionItem: () => {},
+    items: new Map(),
+    setItem: () => {},
+    deleteItem: () => {},
     toggle: () => {}
 });
 
 export function AccordionContextProvider({ children }) {
-    const [items, setItems] = useState([]);
+    // const [items, setItems] = useState([]);
+    const [items, setItems] = useState(new Map());
     const latestItems = useRef(items);
 
-    const registerAccordionItem = useCallback((id, expanded = false, container, content) => {
-        setItems((state) => [...state, { id, expanded, container, content }]);
+    const setItem = useCallback((id, expanded, container, content) => {
+        // setItems((state) => [...state, { id, expanded, container, content }]);
+        const itemsMap = new Map(latestItems.current);
+        itemsMap.set(id, {expanded, container, content });
+        setItems(itemsMap);
+        latestItems.current = itemsMap;
     }, [setItems]);
 
-    const unregisterAccordionItem = useCallback((id) => {
-        setItems((state) => state.filter((ap) => ap.id !== id));
-    }, [setItems]);
+    const deleteItem = useCallback((id) => {
+        // setItems((state) => state.filter((ap) => ap.id !== id));
+        const newItemsMap = new Map(latestItems.current);
 
-    const toggle = (id, force = false) => {
-        const foundIndex = items.findIndex((ap) => ap.id === id);
-        const currentItem = items[foundIndex];
-        const flushedItems = items.map((ap) => ({
-            ...ap,
-            expanded: false
-        }));
+        if (newItemsMap.delete(id)) {
+            setItems(newItemsMap);
+            latestItems.current = newItemsMap;
+            return true;
+        }
+        return false;
+    }, []);
 
-        setItems([
-            ...flushedItems.slice(0, foundIndex),
-            {
-                ...currentItem,
-                expanded: force ? force : !currentItem.expanded
-            },
-            ...flushedItems.slice(foundIndex + 1)
-        ]);
+    const toggle = (id, force) => {
+        console.log(id);
+        console.log(force);
+
+        if (force) {
+
+        } else {
+
+        }
+
+        // const foundIndex = items.findIndex((ap) => ap.id === id);
+        // const currentItem = items[foundIndex];
+        // const flushedItems = items.map((ap) => ({
+        //     ...ap,
+        //     expanded: false
+        // }));
+
+        // setItems([
+        //     ...flushedItems.slice(0, foundIndex),
+        //     {
+        //         ...currentItem,
+        //         expanded: force ? force : !currentItem.expanded
+        //     },
+        //     ...flushedItems.slice(foundIndex + 1)
+        // ]);
     };
 
     return (
         <AccordionContext.Provider
             value={{
                 items,
-                registerAccordionItem,
-                unregisterAccordionItem,
+                setItem,
+                deleteItem,
                 toggle
             }}
         >
@@ -51,7 +73,7 @@ export function AccordionContextProvider({ children }) {
     );
 };
 
-export default function useAccordionContext({ id, container, content }) {
+export default function useAccordionContext() {
     const context = useContext(AccordionContext);
 
     if (!context)
@@ -59,41 +81,33 @@ export default function useAccordionContext({ id, container, content }) {
             'AccordionItem must be used within an Accordion'
         );
 
-    const {
-        items,
-        registerAccordionItem,
-        unregisterAccordionItem,
-        toggle
-    } = context;
-    // } = useContext(AccordionContext);
-
-    const currentAccordionItem = items.find(
-        (ap) => ap.id === id
-    );
-
-    useEffect(() => {
-        console.log(container);
-        console.log(content);
-
-        registerAccordionItem(id, false, container, content);
-        return () => {
-            unregisterAccordionItem(id);
-        };
-    }, [id, registerAccordionItem, unregisterAccordionItem]);
-
-    return {
-        expanded: currentAccordionItem ? currentAccordionItem.expanded : false,
-        toggle: (force = false) => toggle(id, force)
-    };
-    // return context;
+    return context;
 }
 
-// export default function useAccordionContext() {
-//     const context = useContext(AccordionContext);
-//     if (!context)
-//         throw new Error(
-//             'AccordionItem must be used within an Accordion'
-//         );
+export function useAccordionItem({ id, container, content }) {
+    const {
+        items,
+        setItem,
+        deleteItem,
+        toggle
+    } = useAccordionContext();
 
-//     return context;
-// }
+    // const currentAccordionItem = items.find(
+    //     (ap) => ap.id === id
+    // );
+
+    const currentItem = items.get(id);
+
+    useEffect(() => {
+        // console.log(container);
+        // console.log(content);
+
+        setItem(id, false, container, content);
+        return () => deleteItem(id);
+    }, [setItem, deleteItem, id]);
+
+    return {
+        expanded: currentItem ? currentItem.expanded : false,
+        toggle: (force = false) => toggle(id, force)
+    };
+}
