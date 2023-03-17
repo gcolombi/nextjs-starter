@@ -11,7 +11,7 @@ export function AccordionContextProvider({ children }) {
 
     const unregisterAccordionItem = useCallback((index) => {
           setItems((state) => state.filter((ap) => ap.index !== index));
-    }, [setAccordionPanels]);
+    }, [setItems]);
 
     const toggle = (index, force = false) => {
         const foundIndex = items.findIndex((ap) => ap.index === index);
