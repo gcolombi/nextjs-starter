@@ -4,7 +4,7 @@ export default function AccordionItem({
     header,
     headingTag = 'h3',
     id,
-    children
+    children,
 }) {
     return (
         <div className={styles['c-accordions__item']}>

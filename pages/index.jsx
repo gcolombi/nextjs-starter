@@ -51,7 +51,7 @@ export default function Home() {
             />
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <Accordion>
+                    <Accordion items={items}>
                         {items.map(({ header, content }, i) => (
                             <AccordionItem headingTag={'h5'} header={header} id={i} key={i}>
                                 {content}
