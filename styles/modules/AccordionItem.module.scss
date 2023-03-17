@@ -19,15 +19,26 @@
         button {
             padding: 16px 20px;
         }
+
+        &__container {
+            display: none;
+            // height: 0;
+            overflow: hidden;
+            opacity: 0;
+
+            &--content {
+                padding: 16px 20px;
+            }
+        }
+
+
+        /* states */
+        &.is-open & {
+            &__container {
+                display: block;
+                opacity: 1;
+            }
+        }
     }
 
-    &__container {
-        height: 0;
-        overflow: hidden;
-        opacity: 0;
-    }
-
-    &__content {
-        padding: 16px 20px;
-    }
 }

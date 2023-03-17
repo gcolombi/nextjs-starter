@@ -3,7 +3,8 @@ import gsap from 'gsap';
 
 const TransitionContext = createContext({
     timeline: {},
-    setTimeline: () => {}
+    setTimeline: () => {},
+    resetTimeline: () => {}
 });
 
 export function TransitionContextProvider({ children }) {

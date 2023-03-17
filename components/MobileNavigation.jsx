@@ -16,7 +16,10 @@ export default function MobileNavigation() {
 
     return (
         <>
-            <Hamburger isOpen={isOpen} toggle={toggle} />
+            <Hamburger
+                isOpen={isOpen}
+                toggle={toggle}
+            />
             {isMenuMounted &&
                 <nav
                    className={classNames(

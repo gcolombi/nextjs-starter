@@ -1,25 +1,32 @@
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
-const AccordionContext = createContext();
+const AccordionContext = createContext({
+    items: [],
+    registerAccordionItem: () => {},
+    unregisterAccordionItem: () => {},
+    toggle: () => {}
+});
 
 export function AccordionContextProvider({ children }) {
     const [items, setItems] = useState([]);
+    const latestItems = useRef(items);
 
-    const registerAccordionItem = useCallback((index, expanded = false) => {
-          setItems((state) => [...state, { index, expanded }]);
+    const registerAccordionItem = useCallback((id, expanded = false) => {
+        setItems((state) => [...state, { id, expanded }]);
     }, [setItems]);
 
-    const unregisterAccordionItem = useCallback((index) => {
-          setItems((state) => state.filter((ap) => ap.index !== index));
+    const unregisterAccordionItem = useCallback((id) => {
+        setItems((state) => state.filter((ap) => ap.id !== id));
     }, [setItems]);
 
-    const toggle = (index, force = false) => {
-        const foundIndex = items.findIndex((ap) => ap.index === index);
+    const toggle = (id, force = false) => {
+        const foundIndex = items.findIndex((ap) => ap.id === id);
         const currentItem = items[foundIndex];
         const flushedItems = items.map((ap) => ({
             ...ap,
             expanded: false
         }));
+
         setItems([
             ...flushedItems.slice(0, foundIndex),
             {
@@ -44,8 +51,38 @@ export function AccordionContextProvider({ children }) {
     );
 };
 
-export default function useAccordionContext() {
+export default function useAccordionContext({ id }) {
+    const context = useContext(AccordionContext);
 
+    if (!context)
+        throw new Error(
+            'AccordionItem must be used within an Accordion'
+        );
+
+    const {
+        items,
+        registerAccordionItem,
+        unregisterAccordionItem,
+        toggle
+    } = context;
+    // } = useContext(AccordionContext);
+
+    const currentAccordionItem = items.find(
+        (ap) => ap.id === id
+    );
+
+    useEffect(() => {
+        registerAccordionItem(id);
+        return () => {
+            unregisterAccordionItem(id);
+        };
+    }, [id, registerAccordionItem, unregisterAccordionItem]);
+
+    return {
+        expanded: currentAccordionItem ? currentAccordionItem.expanded : false,
+        toggle: (force = false) => toggle(id, force)
+    };
+    // return context;
 }
 
 // export default function useAccordionContext() {
