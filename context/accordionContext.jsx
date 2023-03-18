@@ -32,14 +32,40 @@ export function AccordionContextProvider({ children }) {
         return false;
     }, []);
 
-    const toggle = (id, force) => {
+    const toggle = (id, expanded) => {
         console.log(id);
-        console.log(force);
+        console.log(expanded);
 
-        if (force) {
+        const itemObj = latestItems.current.get(id);
 
+        console.log(items);
+
+        if (!itemObj) {
+            process.env.NODE_ENV !== 'production' &&
+            console.error(`[AccordionItem] invalid key: ${key}`);
+            return;
+        }
+
+        if (typeof expanded !== 'boolean') expanded = !itemObj.expanded;
+
+        if (expanded) {
+            const itemsMap = new Map(latestItems.current);
+            itemsMap.set(id, {expanded});
+            setItems(itemsMap);
+            latestItems.current = itemsMap;
+
+            // itemObj.expanded = !itemObj.expanded;
+            // console.log(itemObj);
+            // console.log('enter');
         } else {
+            const itemsMap = new Map(latestItems.current);
+            itemsMap.set(id, {expanded});
+            setItems(itemsMap);
+            latestItems.current = itemsMap;
 
+            // itemObj.expanded = !itemObj.expanded;
+            // console.log(itemObj);
+            // console.log('exit');
         }
 
         // const foundIndex = items.findIndex((ap) => ap.id === id);
@@ -92,10 +118,6 @@ export function useAccordionItem({ id, container, content }) {
         toggle
     } = useAccordionContext();
 
-    // const currentAccordionItem = items.find(
-    //     (ap) => ap.id === id
-    // );
-
     const currentItem = items.get(id);
 
     useEffect(() => {
@@ -108,6 +130,6 @@ export function useAccordionItem({ id, container, content }) {
 
     return {
         expanded: currentItem ? currentItem.expanded : false,
-        toggle: (force = false) => toggle(id, force)
+        toggle: (expanded) => toggle(id, expanded)
     };
 }

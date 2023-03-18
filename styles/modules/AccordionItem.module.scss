@@ -17,7 +17,10 @@
         }
 
         button {
+            display: flex;
+            width: 100%;
             padding: 16px 20px;
+        	transition: all .35s $ease-in;
         }
 
         &__container {
@@ -31,12 +34,12 @@
         }
 
 
-        // /* states */
-        // &.is-open & {
-        //     &__container {
-        //         opacity: 1;
-        //     }
-        // }
+        /* states */
+        &.is-open {
+            button {
+                background: var(--btn-bg-color);
+                color: var(--btn-color);
+            }
+        }
     }
-
 }
