@@ -10,6 +10,7 @@ const AccordionContext = createContext({
 
 const updateItem = (id, expanded, timeline, latestItems, setItems) => {
     const itemsMap = new Map(latestItems.current);
+
     itemsMap.set(id, {expanded, timeline });
     setItems(itemsMap);
     latestItems.current = itemsMap;
@@ -55,24 +56,12 @@ export function AccordionContextProvider({ children, allowMultiple }) {
             console.log(id);
             console.log('enter');
             updateItem(id, expanded, timeline, latestItems, setItems);
-
             updateHeightTransition(timeline);
-
             !allowMultiple &&
-            latestItems.current.forEach(({ expanded, timeline }, _id) => {
-                if (_id !== id) {
-                    // console.log(_id);
-                    // console.log(_.expanded);
-                    if (expanded) toggle(_id, false, timeline);
-                }
-            });
-
+            latestItems.current.forEach(({ expanded, timeline }, _id) => _id !== id && expanded && toggle(_id, false, timeline));
         } else {
             updateItem(id, expanded, timeline, latestItems, setItems);
             updateHeightTransition(timeline);
-
-            // console.log(id);
-            // console.log(id);
             console.log('exit');
         }
     };

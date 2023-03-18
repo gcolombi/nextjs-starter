@@ -209,7 +209,6 @@ export default function Home() {
                             start="bottom bottom"
                             end="top top"
                             scrub
-                            markers
                         >
                                 <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
                         </RotateInOut>
