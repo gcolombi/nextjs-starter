@@ -16,10 +16,6 @@ export default function AccordionItem({
     const timeline = useRef();
     const { expanded, toggle } = useAccordionItem({ id, timeline });
 
-    // const toggleTransition = () => {
-    //     timeline.current.reversed(!timeline.current.reversed());
-    // };
-
     useIsomorphicLayoutEffect(() => {
         const ctx = gsap.context(() => {
             timeline.current = gsap
@@ -55,7 +51,6 @@ export default function AccordionItem({
                 headingTag={headingTag}
                 id={id}
                 toggle={toggle}
-                // toggleTransition={toggleTransition}
             />
             <div className={styles['c-accordions__item__container']} ref={container}>
                 <div className={styles['c-accordions__item__container--content']} ref={content}>
@@ -73,7 +68,6 @@ function Heading({
     headingTag,
     id,
     toggle,
-    toggleTransition
 }) {
     const validHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const safeHeading = headingTag ? headingTag.toLowerCase() : '';
@@ -85,10 +79,7 @@ function Heading({
                 type="button"
                 id={id}
                 aria-expanded=""
-                onClick={() => {
-                    toggle();
-                    // toggleTransition();
-                }}
+                onClick={() => toggle()}
             >
                 {header}
             </button>
