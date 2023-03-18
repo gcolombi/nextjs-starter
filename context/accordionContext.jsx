@@ -7,6 +7,13 @@ const AccordionContext = createContext({
     toggle: () => {}
 });
 
+const updateItem = (id, expanded, container, content, latestItems, setItems) => {
+    const itemsMap = new Map(latestItems.current);
+    itemsMap.set(id, {expanded, container, content });
+    setItems(itemsMap);
+    latestItems.current = itemsMap;
+};
+
 export function AccordionContextProvider({ children, allowMultiple }) {
     // console.log(children);
     // console.log(allowMultiple);
