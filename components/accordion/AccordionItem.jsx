@@ -27,9 +27,6 @@ export default function AccordionItem({
                 ease: 'expo.inOut',
                 onComplete: () => {
                     gsap.set(container.current, {height: 'auto'})
-
-                    /* update ScrollTrigger */
-                    // @todo
                 }
             })
             .reverse();

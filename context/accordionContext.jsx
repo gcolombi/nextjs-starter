@@ -1,3 +1,4 @@
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const AccordionContext = createContext({
@@ -13,6 +14,12 @@ const updateItem = (id, expanded, timeline, latestItems, setItems) => {
     setItems(itemsMap);
     latestItems.current = itemsMap;
 };
+
+const updateHeightTransition = (timeline) => {
+    timeline.current.reversed(!timeline.current.reversed()).then(() => {
+        ScrollTrigger.refresh(true);
+    });
+}
 
 export function AccordionContextProvider({ children, allowMultiple }) {
     const [items, setItems] = useState(new Map());
@@ -49,7 +56,7 @@ export function AccordionContextProvider({ children, allowMultiple }) {
             console.log('enter');
             updateItem(id, expanded, timeline, latestItems, setItems);
 
-            timeline.current.reversed(!timeline.current.reversed());
+            updateHeightTransition(timeline);
 
             !allowMultiple &&
             latestItems.current.forEach(({ expanded, timeline }, _id) => {
@@ -62,7 +69,7 @@ export function AccordionContextProvider({ children, allowMultiple }) {
 
         } else {
             updateItem(id, expanded, timeline, latestItems, setItems);
-            timeline.current.reversed(!timeline.current.reversed());
+            updateHeightTransition(timeline);
 
             // console.log(id);
             // console.log(id);
