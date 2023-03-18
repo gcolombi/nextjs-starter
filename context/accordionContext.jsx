@@ -1,5 +1,3 @@
-import gsap from 'gsap';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const AccordionContext = createContext({
@@ -9,9 +7,9 @@ const AccordionContext = createContext({
     toggle: () => {}
 });
 
-const updateItem = (id, expanded, container, content, latestItems, setItems) => {
+const updateItem = (id, expanded, timeline, latestItems, setItems) => {
     const itemsMap = new Map(latestItems.current);
-    itemsMap.set(id, {expanded, container, content });
+    itemsMap.set(id, {expanded, timeline });
     setItems(itemsMap);
     latestItems.current = itemsMap;
 };
@@ -20,8 +18,8 @@ export function AccordionContextProvider({ children, allowMultiple }) {
     const [items, setItems] = useState(new Map());
     const latestItems = useRef(items);
 
-    const setItem = useCallback((id, expanded, container, content) => {
-        updateItem(id, expanded, container, content, latestItems, setItems);
+    const setItem = useCallback((id, expanded, timeline) => {
+        updateItem(id, expanded, timeline, latestItems, setItems);
     }, [setItems]);
 
     const deleteItem = useCallback((id) => {
@@ -35,9 +33,7 @@ export function AccordionContextProvider({ children, allowMultiple }) {
         return false;
     }, []);
 
-    const toggle = (id, expanded, container, content) => {
-        // const { toggleTransition } = useHeightTransition({ container, content });
-
+    const toggle = (id, expanded, timeline) => {
         const itemObj = latestItems.current.get(id);
 
         if (!itemObj) {
@@ -49,15 +45,27 @@ export function AccordionContextProvider({ children, allowMultiple }) {
         if (typeof expanded !== 'boolean') expanded = !itemObj.expanded;
 
         if (expanded) {
-            updateItem(id, expanded, container, content, latestItems, setItems);
+            console.log(id);
+            console.log('enter');
+            updateItem(id, expanded, timeline, latestItems, setItems);
+
+            timeline.current.reversed(!timeline.current.reversed());
 
             !allowMultiple &&
-            latestItems.current.forEach((_, _id) => _id !== id && toggle(_id, false, container, content));
+            latestItems.current.forEach(({ expanded, timeline }, _id) => {
+                if (_id !== id) {
+                    // console.log(_id);
+                    // console.log(_.expanded);
+                    if (expanded) toggle(_id, false, timeline);
+                }
+            });
 
         } else {
-            updateItem(id, expanded, container, content, latestItems, setItems);
+            updateItem(id, expanded, timeline, latestItems, setItems);
+            timeline.current.reversed(!timeline.current.reversed());
 
-            console.log(id);
+            // console.log(id);
+            // console.log(id);
             console.log('exit');
         }
     };
@@ -87,7 +95,7 @@ export default function useAccordionContext() {
     return context;
 }
 
-export function useAccordionItem({ id, container, content }) {
+export function useAccordionItem({ id, timeline }) {
     const {
         items,
         setItem,
@@ -98,46 +106,12 @@ export function useAccordionItem({ id, container, content }) {
     const currentItem = items.get(id);
 
     useEffect(() => {
-        // console.log(container);
-        // console.log(content);
-
-        setItem(id, false, container, content);
+        setItem(id, false, timeline);
         return () => deleteItem(id);
     }, [setItem, deleteItem, id]);
 
     return {
         expanded: currentItem ? currentItem.expanded : false,
-        toggle: (expanded) => toggle(id, expanded, container, content)
+        toggle: (expanded) => toggle(id, expanded, timeline)
     };
 }
-
-// function useHeightTransition({ container, content }) {
-//     const timeline = useRef();
-
-//     const toggleTransition = () => {
-//         timeline.current.reversed(!timeline.current.reversed());
-//     };
-
-//     useIsomorphicLayoutEffect(() => {
-//         const ctx = gsap.context(() => {
-//             timeline.current = gsap
-//             .timeline()
-//             .to(container.current, {
-//                 duration: 0.45,
-//                 height: content.current.getBoundingClientRect().height,
-//                 opacity: 1,
-//                 ease: 'expo.inOut',
-//                 onComplete: () => {
-//                     gsap.set(container.current, {height: 'auto'})
-
-//                     /* update ScrollTrigger */
-//                     // @todo
-//                 }
-//             })
-//             .reverse();
-//         }, container);
-//         return () => ctx.revert();
-//     }, []);
-
-//     return toggleTransition();
-// }
