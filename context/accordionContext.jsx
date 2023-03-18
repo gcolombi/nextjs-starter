@@ -7,7 +7,9 @@ const AccordionContext = createContext({
     toggle: () => {}
 });
 
-export function AccordionContextProvider({ children }) {
+export function AccordionContextProvider({ children, allowMultiple }) {
+    // console.log(children);
+    // console.log(allowMultiple);
     // const [items, setItems] = useState([]);
     const [items, setItems] = useState(new Map());
     const latestItems = useRef(items);
@@ -33,12 +35,10 @@ export function AccordionContextProvider({ children }) {
     }, []);
 
     const toggle = (id, expanded) => {
-        console.log(id);
-        console.log(expanded);
+        // console.log(id);
+        // console.log(expanded);
 
         const itemObj = latestItems.current.get(id);
-
-        console.log(items);
 
         if (!itemObj) {
             process.env.NODE_ENV !== 'production' &&
@@ -54,6 +54,9 @@ export function AccordionContextProvider({ children }) {
             setItems(itemsMap);
             latestItems.current = itemsMap;
 
+            !allowMultiple &&
+            latestItems.current.forEach((_, _id) => _id !== id && toggle(_id, false));
+
             // itemObj.expanded = !itemObj.expanded;
             // console.log(itemObj);
             // console.log('enter');
@@ -65,7 +68,8 @@ export function AccordionContextProvider({ children }) {
 
             // itemObj.expanded = !itemObj.expanded;
             // console.log(itemObj);
-            // console.log('exit');
+            console.log(id);
+            console.log('exit');
         }
 
         // const foundIndex = items.findIndex((ap) => ap.id === id);
