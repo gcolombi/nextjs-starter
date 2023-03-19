@@ -5,7 +5,6 @@ import useWindowSize from '@/hooks/useWindowSize';
 import useLockedScroll from '@/hooks/useLockedScroll';
 
 const NavigationContext = createContext({
-    items: null,
     open: false,
     sticky: false,
     hidden: false,
