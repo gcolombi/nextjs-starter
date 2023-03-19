@@ -1,7 +1,7 @@
 import styles from '@/styles/modules/AccordionItem.module.scss';
 import gsap from 'gsap';
 import { useRef } from 'react';
-import { useAccordionItem } from '@/context/accordionContext';
+import useAccordionItem from '@/context/accordionContext';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import classNames from 'classnames';
 

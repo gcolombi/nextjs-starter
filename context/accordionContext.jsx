@@ -2,7 +2,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const AccordionContext = createContext({
-    items: new Map(),
+    items: null,
     setItem: () => {},
     deleteItem: () => {},
     toggle: () => {}
@@ -78,10 +78,10 @@ export function AccordionContextProvider({ children, allowMultiple }) {
     );
 };
 
-export default function useAccordionContext() {
+export function useAccordionContext() {
     const context = useContext(AccordionContext);
 
-    if (!context)
+    if (process.env.NODE_ENV !== 'production' && !context.items)
         throw new Error(
             'AccordionItem must be used within an Accordion'
         );
@@ -89,7 +89,7 @@ export default function useAccordionContext() {
     return context;
 }
 
-export function useAccordionItem({ id, timeline, initialExpanded }) {
+export default function useAccordionItem({ id, timeline, initialExpanded }) {
     const {
         items,
         setItem,
