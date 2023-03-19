@@ -19,7 +19,7 @@ export default function RotateInOut({
     skipOutro,
     watch,
     start = 'top 90%',
-    end = '',
+    end = 'bottom top',
     scrub = false,
     markers
 }) {

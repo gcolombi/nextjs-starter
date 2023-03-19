@@ -21,7 +21,7 @@ export default function ImplodeExplodeInOut({
     skipOutro,
     watch = false,
     start = 'top 90%',
-    end = '',
+    end = 'bottom top',
     scrub = false,
     markers
 }) {

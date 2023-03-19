@@ -17,7 +17,7 @@ export default function TranslateInOut({
     skipOutro,
     watch,
     start = 'top 90%',
-    end = '',
+    end = 'bottom top',
     scrub = false,
     markers
 }) {

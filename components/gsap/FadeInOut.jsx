@@ -12,7 +12,7 @@ export default function FadeInOut({
     skipOutro,
     watch,
     start = 'top 90%',
-    end = '',
+    end = 'bottom top',
     scrub = false,
     markers
 }) {
