@@ -59,10 +59,10 @@ export default function Home() {
                                 id={i}
                                 key={i}
                             >
-                                {/* <div className="o-wysiwyg">
+                                <div className="o-wysiwyg">
                                     <p>{content}</p>
-                                </div> */}
-                                <Accordion>
+                                </div>
+                                {/* <Accordion>
                                     {items.map(({ header, content }, i) => (
                                         <AccordionItem
                                             header={header}
@@ -73,7 +73,7 @@ export default function Home() {
                                             {content}
                                         </AccordionItem>
                                     ))}
-                                </Accordion>
+                                </Accordion> */}
                             </AccordionItem>
                         ))}
                     </Accordion>
@@ -228,6 +228,7 @@ export default function Home() {
                             start="bottom bottom"
                             end="top top"
                             scrub
+                            markers
                         >
                                 <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
                         </RotateInOut>

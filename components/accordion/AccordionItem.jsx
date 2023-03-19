@@ -1,8 +1,6 @@
 import styles from '@/styles/modules/AccordionItem.module.scss';
-import gsap from 'gsap';
 import { useRef } from 'react';
 import useAccordionItem from '@/context/accordionContext';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import classNames from 'classnames';
 
 export default function AccordionItem({
@@ -14,26 +12,7 @@ export default function AccordionItem({
 }) {
     const container = useRef();
     const content = useRef();
-    const timeline = useRef();
-    const { expanded, toggle } = useAccordionItem({ id, timeline, initialExpanded });
-
-    useIsomorphicLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            timeline.current = gsap
-            .timeline()
-            .to(container.current, {
-                duration: 0.45,
-                height: content.current.getBoundingClientRect().height,
-                opacity: 1,
-                ease: 'expo.inOut',
-                onComplete: () => {
-                    gsap.set(container.current, {height: 'auto'})
-                }
-            })
-            .reverse();
-        }, container);
-        return () => ctx.revert();
-    }, []);
+    const { expanded, toggle } = useAccordionItem({ id, initialExpanded, container, content });
 
     return (
         <div
