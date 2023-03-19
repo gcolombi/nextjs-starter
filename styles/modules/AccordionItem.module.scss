@@ -18,14 +18,25 @@
 
         &__button {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
             padding: 16px 20px;
         	transition: all .35s $ease-in;
+
+            svg {
+                width: 35px;
+                transition: transform .35s $ease-in;
+            }
 
             /* states */
             &.is-expanded {
                 background: var(--btn-bg-color);
                 color: var(--btn-color);
+
+                svg {
+                    transform: rotate(180deg);
+                }
             }
         }
 

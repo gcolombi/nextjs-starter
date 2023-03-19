@@ -2,6 +2,7 @@ import styles from '@/styles/modules/AccordionItem.module.scss';
 import { useRef } from 'react';
 import useAccordionItem from '@/context/accordionContext';
 import classNames from 'classnames';
+import Chevron from '../icons/Chevron';
 
 export default function AccordionItem({
     children,
@@ -60,6 +61,7 @@ function Heading({
                 )}
             >
                 {header}
+                <Chevron />
             </button>
         </Heading>
     );
