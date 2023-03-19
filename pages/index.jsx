@@ -29,10 +29,6 @@ export default function Home() {
         }
     ];
 
-    const toggleLocked = () => {
-        setLocked(!locked);
-    }
-
     return (
         <>
             <MetaData />
@@ -171,7 +167,7 @@ export default function Home() {
                         >
                             <Button
                                 label={locked ? 'Unlock scroll' : 'Lock scroll'}
-                                onClick={toggleLocked}
+                                onClick={() => setLocked(!locked)}
                                 className="c-btn"
                             />
                         </ScaleInOut>

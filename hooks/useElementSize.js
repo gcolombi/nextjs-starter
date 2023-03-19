@@ -29,7 +29,7 @@ export default function useElementSize() {
 
         /* Remove event listener on cleanup */
         return () => window.removeEventListener('resize', handleSize);
-    }, [ref?.getBoundingClientRect().height, ref?.getBoundingClientRect().width]);
+    }, [handleSize]);
 
     return [
         setRef,
