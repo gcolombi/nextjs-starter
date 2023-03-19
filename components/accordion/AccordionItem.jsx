@@ -6,15 +6,16 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import classNames from 'classnames';
 
 export default function AccordionItem({
+    children,
     header,
     headingTag = 'h3',
     id,
-    children
+    initialExpanded
 }) {
     const container = useRef();
     const content = useRef();
     const timeline = useRef();
-    const { expanded, toggle } = useAccordionItem({ id, timeline });
+    const { expanded, toggle } = useAccordionItem({ id, timeline, initialExpanded });
 
     useIsomorphicLayoutEffect(() => {
         const ctx = gsap.context(() => {

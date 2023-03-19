@@ -53,7 +53,12 @@ export default function Home() {
                 <div className="o-container">
                     <Accordion>
                         {items.map(({ header, content }, i) => (
-                            <AccordionItem headingTag={'h5'} header={header} id={i} key={i}>
+                            <AccordionItem
+                                header={header}
+                                headingTag={'h5'}
+                                id={i}
+                                key={i}
+                            >
                                 {content}
                             </AccordionItem>
                         ))}

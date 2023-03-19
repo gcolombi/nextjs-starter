@@ -11,7 +11,7 @@ const AccordionContext = createContext({
 const updateItem = (id, expanded, timeline, latestItems, setItems) => {
     const itemsMap = new Map(latestItems.current);
 
-    itemsMap.set(id, {expanded, timeline });
+    itemsMap.set(id, {expanded, timeline});
     setItems(itemsMap);
     latestItems.current = itemsMap;
 };
@@ -28,6 +28,7 @@ export function AccordionContextProvider({ children, allowMultiple }) {
 
     const setItem = useCallback((id, expanded, timeline) => {
         updateItem(id, expanded, timeline, latestItems, setItems);
+        if (expanded) updateHeightTransition(timeline);
     }, [setItems]);
 
     const deleteItem = useCallback((id) => {
@@ -91,7 +92,7 @@ export default function useAccordionContext() {
     return context;
 }
 
-export function useAccordionItem({ id, timeline }) {
+export function useAccordionItem({ id, timeline, initialExpanded }) {
     const {
         items,
         setItem,
@@ -100,9 +101,10 @@ export function useAccordionItem({ id, timeline }) {
     } = useAccordionContext();
 
     const currentItem = items.get(id);
+    const initialState = initialExpanded ? initialExpanded : false;
 
     useEffect(() => {
-        setItem(id, false, timeline);
+        setItem(id, initialState, timeline);
         return () => deleteItem(id);
     }, [setItem, deleteItem, id]);
 
