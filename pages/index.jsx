@@ -62,18 +62,6 @@ export default function Home() {
                                 <div className="o-wysiwyg">
                                     <p>{content}</p>
                                 </div>
-                                {/* <Accordion>
-                                    {items.map(({ header, content }, i) => (
-                                        <AccordionItem
-                                            header={header}
-                                            headingTag={'h5'}
-                                            id={i}
-                                            key={i}
-                                        >
-                                            {content}
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion> */}
                             </AccordionItem>
                         ))}
                     </Accordion>
@@ -228,9 +216,8 @@ export default function Home() {
                             start="bottom bottom"
                             end="top top"
                             scrub
-                            markers
                         >
-                                <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
+                            <div style={{ width: '100px', height: '100px', background: 'var(--primary)', borderRadius: '10px' }} />
                         </RotateInOut>
                     </div>
                 </div>
