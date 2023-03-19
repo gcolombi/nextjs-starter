@@ -54,8 +54,6 @@ export function AccordionContextProvider({ children, allowMultiple }) {
         if (typeof expanded !== 'boolean') expanded = !itemObj.expanded;
 
         if (expanded) {
-            console.log(id);
-            console.log('enter');
             updateItem(id, expanded, timeline, latestItems, setItems);
             updateHeightTransition(timeline);
             !allowMultiple &&
@@ -63,7 +61,6 @@ export function AccordionContextProvider({ children, allowMultiple }) {
         } else {
             updateItem(id, expanded, timeline, latestItems, setItems);
             updateHeightTransition(timeline);
-            console.log('exit');
         }
     };
 
