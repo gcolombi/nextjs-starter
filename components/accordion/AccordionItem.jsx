@@ -26,7 +26,12 @@ export default function AccordionItem({
                 expanded={expanded}
                 toggle={toggle}
             />
-            <div className={styles['c-accordions__item__container']} ref={container}>
+            <div
+                className={styles['c-accordions__item__container']}
+                id={`${id}-panel`}
+                aria-labelledby={`${id}-header`}
+                ref={container}
+            >
                 <div className={styles['c-accordions__item__container--content']} ref={content}>
                     {children}
                 </div>
@@ -50,8 +55,9 @@ function Heading({
         <Heading>
             <button
                 type="button"
-                id={id}
-                aria-expanded=""
+                id={`${id}-header`}
+                aria-controls={`${id}-panel`}
+                aria-expanded={expanded}
                 onClick={() => toggle()}
                 className={classNames(
                     styles['c-accordions__item__button'],
