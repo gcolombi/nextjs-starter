@@ -59,7 +59,21 @@ export default function Home() {
                                 id={i}
                                 key={i}
                             >
-                                {content}
+                                {/* <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div> */}
+                                <Accordion>
+                                    {items.map(({ header, content }, i) => (
+                                        <AccordionItem
+                                            header={header}
+                                            headingTag={'h5'}
+                                            id={i}
+                                            key={i}
+                                        >
+                                            {content}
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
                             </AccordionItem>
                         ))}
                     </Accordion>

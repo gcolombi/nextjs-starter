@@ -16,11 +16,17 @@
             margin: 0;
         }
 
-        button {
+        &__button {
             display: flex;
             width: 100%;
             padding: 16px 20px;
         	transition: all .35s $ease-in;
+
+            /* states */
+            &.is-expanded {
+                background: var(--btn-bg-color);
+                color: var(--btn-color);
+            }
         }
 
         &__container {
@@ -30,15 +36,6 @@
 
             &--content {
                 padding: 16px 20px;
-            }
-        }
-
-
-        /* states */
-        &.is-open {
-            button {
-                background: var(--btn-bg-color);
-                color: var(--btn-color);
             }
         }
     }

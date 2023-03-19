@@ -37,24 +37,18 @@ export default function AccordionItem({
 
     return (
         <div
-            className={classNames(
-                styles['c-accordions__item'],
-                {
-                    [styles['is-open']]: expanded
-                }
-            )}
+            className={styles['c-accordions__item']}
         >
             <Heading
                 header={header}
                 headingTag={headingTag}
                 id={id}
+                expanded={expanded}
                 toggle={toggle}
             />
             <div className={styles['c-accordions__item__container']} ref={container}>
                 <div className={styles['c-accordions__item__container--content']} ref={content}>
-                    <div className="o-wysiwyg">
-                        <p>{children}</p>
-                    </div>
+                    {children}
                 </div>
             </div>
         </div>
@@ -65,7 +59,8 @@ function Heading({
     header,
     headingTag,
     id,
-    toggle,
+    expanded,
+    toggle
 }) {
     const validHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const safeHeading = headingTag ? headingTag.toLowerCase() : '';
@@ -78,6 +73,12 @@ function Heading({
                 id={id}
                 aria-expanded=""
                 onClick={() => toggle()}
+                className={classNames(
+                    styles['c-accordions__item__button'],
+                    {
+                        [styles['is-expanded']]: expanded
+                    }
+                )}
             >
                 {header}
             </button>
