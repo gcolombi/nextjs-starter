@@ -1,6 +1,7 @@
 .c-accordions {
     &__item {
         border: 1px solid var(--gray-600);
+        overflow: hidden;
 
         &:first-of-type {
             border-top-left-radius: 6px;
@@ -25,8 +26,9 @@
         	transition: all .35s $ease-in;
 
             svg {
-                width: 35px;
+                width: 30px;
                 transition: transform .35s $ease-in;
+                margin-left: 15px;
             }
 
             /* states */
