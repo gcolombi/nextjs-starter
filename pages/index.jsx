@@ -51,7 +51,8 @@ export default function Home() {
                         {items.map(({ header, content }, i) => (
                             <AccordionItem
                                 header={header}
-                                headingTag={'h5'}
+                                headingTag={'h2'}
+                                headingClassName={'h5'}
                                 id={i}
                                 key={i}
                             >

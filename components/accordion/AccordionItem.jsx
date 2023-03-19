@@ -7,7 +7,8 @@ import Chevron from '../icons/Chevron';
 export default function AccordionItem({
     children,
     header,
-    headingTag = 'h3',
+    headingTag='h3',
+    headingClassName='',
     id,
     initialExpanded
 }) {
@@ -22,6 +23,7 @@ export default function AccordionItem({
             <Heading
                 header={header}
                 headingTag={headingTag}
+                headingClassName={headingClassName}
                 id={id}
                 expanded={expanded}
                 toggle={toggle}
@@ -43,6 +45,7 @@ export default function AccordionItem({
 function Heading({
     header,
     headingTag,
+    headingClassName,
     id,
     expanded,
     toggle
@@ -52,7 +55,7 @@ function Heading({
     const Heading = validHeadingTags.includes(safeHeading) ? safeHeading : 'h3';
 
     return(
-        <Heading>
+        <Heading className={headingClassName}>
             <button
                 type="button"
                 id={`${id}-header`}
