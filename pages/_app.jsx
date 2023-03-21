@@ -34,6 +34,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import '@/styles/style.scss';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import useNextCssRemovalPrevention from '@/hooks/useNextCssRemovalPrevention';
 import { ThemeProvider } from 'next-themes';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { TransitionContextProvider } from '@/context/transitionContext';
@@ -49,6 +50,8 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         document.activeElement && document.activeElement.blur();
     }, [router]);
+
+    useNextCssRemovalPrevention();
 
     return (
         <>
