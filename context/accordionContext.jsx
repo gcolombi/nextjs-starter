@@ -19,7 +19,7 @@ const updateItem = (id, expanded, container, content, latestItems, setItems) => 
 
 const updateItemHeight = (expanded, container, content) => {
     if (expanded) {
-        gsap.to(container?.current, {
+        gsap.to(container.current, {
             duration: 0.45,
             height: content.current.getBoundingClientRect().height,
             opacity: 1,
