@@ -1,8 +1,8 @@
 import Email from '@/utils/email';
+import { getEmailTemplateFile } from '@/utils/template';
 import { ValidationError } from 'yup';
 import { contactSchema } from '@/schemas/contact';
 import { validateRecaptcha } from '@/utils/recaptcha';
-import { getEmailTemplateFile } from '@/utils/template';
 
 /**
  * Handler

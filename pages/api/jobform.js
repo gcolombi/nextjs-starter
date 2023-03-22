@@ -1,6 +1,7 @@
 import { Writable } from 'stream';
 import formidable from 'formidable';
 import Email from '@/utils/email';
+import { getEmailTemplateFile } from '@/utils/template';
 import { ValidationError } from 'yup';
 import { jobSchema } from '@/schemas/job';
 import { validateRecaptcha } from '@/utils/recaptcha';
@@ -99,7 +100,9 @@ export default async function handler(req, res) {
         if (validReCaptcha)
             /* Sends email */
             try {
-                await new Email(req.headers.host, 'New career form', JSON.parse(labels), formFields, attachments).send();
+                const emailTemplate = await getEmailTemplateFile(req.headers.host, '/templates/email.html', res);
+
+                await new Email(req.headers.host, emailTemplate, 'New career form', JSON.parse(labels), formFields, attachments).send();
 
                 return res.status(201).json({
                     data: {
