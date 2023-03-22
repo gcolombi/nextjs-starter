@@ -5,7 +5,7 @@
  *
  * @param {string} token recaptcha token
  * @param {Object} res server response object
- * @returns {boolean} true or false
+ * @returns true or false
  */
 export const validateRecaptcha = async (token, res) => {
     try {
