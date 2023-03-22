@@ -94,7 +94,7 @@ export default async function handler(req, res) {
         });
 
         /* Recaptcha */
-        const validReCaptcha = validateRecaptcha(recaptchaToken, res);
+        const validReCaptcha = await validateRecaptcha(recaptchaToken, res);
 
         if (validReCaptcha)
             /* Sends email */
