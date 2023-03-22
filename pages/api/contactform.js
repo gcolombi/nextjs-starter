@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         if (validReCaptcha)
             /* Sends email */
             try {
-                const emailTemplate = await getEmailTemplateFile(req.headers.host, '/templates/email-inlined.html', res);
+                const emailTemplate = await getEmailTemplateFile(req.headers.host, '/templates/email.html', res);
 
                 await new Email(req.headers.host, emailTemplate, 'New contact form', labels, data, []).send();
 
