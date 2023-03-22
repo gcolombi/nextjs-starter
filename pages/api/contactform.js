@@ -2,6 +2,7 @@ import Email from '@/utils/email';
 import { ValidationError } from 'yup';
 import { contactSchema } from '@/schemas/contact';
 import { validateRecaptcha } from '@/utils/recaptcha';
+import { getEmailTemplateFile } from '@/utils/template';
 
 /**
  * Handler
@@ -28,14 +29,15 @@ export default async function handler(req, res) {
         if (validReCaptcha)
             /* Sends email */
             try {
-                await new Email(req.headers.host, 'New contact form', labels, data, []).send();
+                const emailTemplate = await getEmailTemplateFile(req.headers.host, '/templates/email-inlined.html', res);
+
+                await new Email(req.headers.host, emailTemplate, 'New contact form', labels, data, []).send();
 
                 return res.status(201).json({
                     data,
                     message: 'Thank you, your message has been sent successfully.'
                 });
             } catch (err) {
-                console.log(err);
                 return res.status(500).json({ data: null, message: 'An error occurred while sending the email' });
             }
 

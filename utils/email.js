@@ -9,9 +9,10 @@ sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
  */
 
 module.exports = class Email {
-    constructor(host, subject, labels, fields, attachments) {
+    constructor(host, template, subject, labels, fields, attachments) {
         this.siteName = process.env.SITE_NAME;
         this.host = host;
+        this.template = template;
         this.labels = labels
         this.fields = fields;
         this.to = process.env.EMAIL_FROM;
@@ -27,27 +28,44 @@ module.exports = class Email {
      * Sends the email with sendgrid
      */
     async send() {
+
+        this.generateContent();
+
         const mailOptions = {
             to: this.to,
             from: {
                 ...this.from
             },
             subject: this.subject,
-            ...this.generateTemplate(),
+            // ...this.generateTemplate(),
             attachments: this.attachments
         }
 
-        await sendGrid.send(mailOptions);
+        // await sendGrid.send(mailOptions);
     }
 
     /**
      * Generates email content
      * @returns {string} a string containing email content
      */
-    generateContent() {
-        return Object.entries(this.fields).reduce((str, [key, value]) => {
+    async generateContent() {
+
+
+
+        console.log(this.template);
+
+        const content = Object.entries(this.fields).reduce((str, [key, value]) => {
             return (str += `<p style="margin: .4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545E;"><strong>${this.labels?.[key]}: </strong>${value}</p>`);
         }, '');
+
+
+
+
+
+
+        // return Object.entries(this.fields).reduce((str, [key, value]) => {
+        //     return (str += `<p style="margin: .4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545E;"><strong>${this.labels?.[key]}: </strong>${value}</p>`);
+        // }, '');
     }
 
     /**
