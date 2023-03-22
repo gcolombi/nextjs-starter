@@ -24,7 +24,7 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div className={classNames('o-wysiwyg' , styles['c-footer__copyright'])}>
-                        <p>&copy; {new Date().getFullYear()} Faucibus. All rights reserved.</p>
+                        <p>&copy; {new Date().getFullYear()} Next.js starter. All rights reserved.</p>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,11 @@
 import styles from '@/styles/modules/Navigation.module.scss';
+import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import useNavigationContext from '@/context/navigationContext';
 import useElementSize from '@/hooks/useElementSize';
 import useIsMounted from '@/hooks/useIsMounted';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import Logo from './icons/Logo';
 import MobileNavigation from './MobileNavigation';
 import NavItem from './NavItem';
 import Button from './Button';
@@ -35,12 +37,11 @@ export default function Navigation() {
             >
                 <div className="o-container">
                     <div className={styles['c-navigation__row']}>
-                        <Button
-                            label="Home"
-                            href="/"
-                            className="c-btn"
-                            wrapperClassName={styles['c-navigation__logo']}
-                        />
+                        <div className={styles['c-navigation__logo']}>
+                            <Link href="/">
+                                <Logo />
+                            </Link>
+                        </div>
                         <MobileNavigation />
                         <nav className={styles['c-navigation__nav']}>
                             <div className={styles['c-navigation__nav__primary']}>

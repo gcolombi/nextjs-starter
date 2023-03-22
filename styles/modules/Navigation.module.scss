@@ -37,11 +37,19 @@
 
     &__logo {
         position: relative;
-        // line-height: 0;
+        line-height: 0;
         padding-right: 15px;
 
         a {
             display: block;
+            width: 35px;
+
+            svg {
+                fill: var(--body-text-color);
+                path {
+                    fill: var(--body-bg-color);
+                }
+            }
         }
     }
 
