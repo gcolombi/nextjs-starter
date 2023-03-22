@@ -8,7 +8,6 @@ import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import Logo from './icons/Logo';
 import MobileNavigation from './MobileNavigation';
 import NavItem from './NavItem';
-import Button from './Button';
 import classNames from 'classnames';
 
 export default function Navigation() {
