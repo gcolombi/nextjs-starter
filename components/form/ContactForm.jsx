@@ -15,6 +15,9 @@ import FormRadioList from './FormRadioList';
 import FormTextarea from './FormTextarea';
 import FormRecaptchaNote from './FormRecaptchaNote';
 import Button from '../Button';
+import TranslateInOut from '../gsap/TranslateInOut';
+import FadeInOut from '../gsap/FadeInOut';
+import ScaleInOut from '../gsap/ScaleInOut';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
 const labels = {
@@ -130,71 +133,122 @@ export default function Form() {
             <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(handleSubmitForm)} noValidate>
                 <div className="o-container">
                     <div className={styles['c-form__row']}>
-                        <FormInput
-                            htmlFor="firstname"
-                            label="Firstname"
-                            id="firstname"
-                            required={true}
-                            className="c-formElement--bordered"
-                            register={register('firstname')}
-                            errors={errors['firstname']}
-                        />
-                        <FormInput
-                            htmlFor="lastname"
-                            label="Lastname"
-                            id="lastname"
-                            required={true}
-                            className="c-formElement--bordered"
-                            register={register('lastname')}
-                            errors={errors['lastname']}
-                        />
+                        <TranslateInOut
+                            delay={0.1}
+                            y={100}
+                            watch
+                        >
+                            <FormInput
+                                htmlFor="firstname"
+                                label="Firstname"
+                                id="firstname"
+                                required={true}
+                                className="c-formElement--bordered"
+                                register={register('firstname')}
+                                errors={errors['firstname']}
+                            />
+                        </TranslateInOut>
+                        <TranslateInOut
+                            delay={0.2}
+                            y={100}
+                            watch
+                        >
+                            <FormInput
+                                htmlFor="lastname"
+                                label="Lastname"
+                                id="lastname"
+                                required={true}
+                                className="c-formElement--bordered"
+                                register={register('lastname')}
+                                errors={errors['lastname']}
+                            />
+                        </TranslateInOut>
                     </div>
-                    <FormInput
-                        htmlFor="email"
-                        label="Email"
-                        type="email"
-                        id="email"
-                        required={true}
-                        className="c-formElement--bordered"
-                        register={register('email')}
-                        errors={errors['email']}
-                    />
-                    <FormSelect
-                        htmlFor="subject"
-                        label="Subject"
-                        id="subject"
-                        required={true}
-                        className="c-formElement--select--bordered"
-                        register={register('subject')}
-                        errors={errors['subject']}
-                    />
-                    <FormCheckboxList
-                        title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                        register={register('choices')}
-                        errors={errors['choices']}
-                    />
-                    <FormRadioList
-                        title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                        register={register('question')}
-                        errors={errors['question']}
-                    />
-                    <FormTextarea
-                        htmlFor="message"
-                        label="Message"
-                        id="message"
-                        required={true}
-                        className="c-formElement--bordered"
-                        register={register('message')}
-                        errors={errors['message']}
-                    />
-                    <FormRecaptchaNote />
-                    <Button
-                        label="Send"
-                        className="c-btn"
-                        wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
-                        type="submit"
-                        disabled={isSubmitting}
-                    />
+                    <TranslateInOut
+                        delay={0.3}
+                        y={100}
+                        watch
+                    >
+                        <FormInput
+                            htmlFor="email"
+                            label="Email"
+                            type="email"
+                            id="email"
+                            required={true}
+                            className="c-formElement--bordered"
+                            register={register('email')}
+                            errors={errors['email']}
+                        />
+                    </TranslateInOut>
+                    <TranslateInOut
+                        delay={0.4}
+                        y={100}
+                        watch
+                    >
+                        <FormSelect
+                            htmlFor="subject"
+                            label="Subject"
+                            id="subject"
+                            required={true}
+                            className="c-formElement--select--bordered"
+                            register={register('subject')}
+                            errors={errors['subject']}
+                        />
+                    </TranslateInOut>
+                    <TranslateInOut
+                        delay={0.5}
+                        y={100}
+                        watch
+                    >
+                        <FormCheckboxList
+                            title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                            register={register('choices')}
+                            errors={errors['choices']}
+                        />
+                    </TranslateInOut>
+                    <TranslateInOut
+                        delay={0.6}
+                        y={100}
+                        watch
+                    >
+                        <FormRadioList
+                            title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                            register={register('question')}
+                            errors={errors['question']}
+                        />
+                    </TranslateInOut>
+                    <TranslateInOut
+                        delay={0.7}
+                        y={100}
+                        watch
+                    >
+                        <FormTextarea
+                            htmlFor="message"
+                            label="Message"
+                            id="message"
+                            required={true}
+                            className="c-formElement--bordered"
+                            register={register('message')}
+                            errors={errors['message']}
+                        />
+                    </TranslateInOut>
+                    <FadeInOut
+                        watch
+                    >
+                        <FormRecaptchaNote />
+                    </FadeInOut>
+                    <ScaleInOut
+                        ease="elastic.out"
+                        watch
+                    >
+                        <Button
+                            label="Send"
+                            className="c-btn"
+                            wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
+                            type="submit"
+                            disabled={isSubmitting}
+                        />
+                    </ScaleInOut>
                 </div>
             </form>
             {isMounted() &&
