@@ -135,7 +135,8 @@ export default function Form() {
                     <div className={styles['c-form__row']}>
                         <TranslateInOut
                             delay={0.1}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormInput
@@ -150,7 +151,8 @@ export default function Form() {
                         </TranslateInOut>
                         <TranslateInOut
                             delay={0.2}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormInput
@@ -166,7 +168,8 @@ export default function Form() {
                     </div>
                     <TranslateInOut
                         delay={0.3}
-                        y={100}
+                        y="100%"
+                            start="-100% 90%"
                         watch
                     >
                         <FormInput
@@ -182,7 +185,8 @@ export default function Form() {
                     </TranslateInOut>
                     <TranslateInOut
                         delay={0.4}
-                        y={100}
+                        y="100%"
+                            start="-100% 90%"
                         watch
                     >
                         <FormSelect
@@ -197,7 +201,8 @@ export default function Form() {
                     </TranslateInOut>
                     <TranslateInOut
                         delay={0.5}
-                        y={100}
+                        y="100%"
+                            start="-100% 90%"
                         watch
                     >
                         <FormCheckboxList
@@ -208,7 +213,8 @@ export default function Form() {
                     </TranslateInOut>
                     <TranslateInOut
                         delay={0.6}
-                        y={100}
+                        y="100%"
+                            start="-100% 90%"
                         watch
                     >
                         <FormRadioList
@@ -219,7 +225,8 @@ export default function Form() {
                     </TranslateInOut>
                     <TranslateInOut
                         delay={0.7}
-                        y={100}
+                        y="100%"
+                            start="-100% 90%"
                         watch
                     >
                         <FormTextarea

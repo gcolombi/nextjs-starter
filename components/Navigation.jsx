@@ -54,7 +54,7 @@ export default function Navigation() {
                                                 overflowHidden
                                                 delay={.7}
                                                 ease="power.out"
-                                                y={15}
+                                                y="15px"
                                                 rotate={7}
                                             />
                                         </li>
@@ -66,7 +66,7 @@ export default function Navigation() {
                                                 overflowHidden
                                                 delay={.9}
                                                 ease="power.out"
-                                                y={15}
+                                                y="15px"
                                                 rotate={7}
                                             />
                                         </li>
@@ -78,7 +78,7 @@ export default function Navigation() {
                                                 overflowHidden
                                                 delay={1.1}
                                                 ease="power.out"
-                                                y={15}
+                                                y="15px"
                                                 rotate={7}
                                             />
                                         </li>
@@ -90,7 +90,7 @@ export default function Navigation() {
                                                 overflowHidden
                                                 delay={1.3}
                                                 ease="power.out"
-                                                y={15}
+                                                y="15px"
                                                 rotate={7}
                                             />
                                         </li>

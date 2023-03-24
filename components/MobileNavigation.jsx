@@ -39,7 +39,7 @@ export default function MobileNavigation() {
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.4}
-                                                y={20}
+                                                y="20px"
                                                 rotate={10}
                                             />
                                         </li>
@@ -50,7 +50,7 @@ export default function MobileNavigation() {
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.5}
-                                                y={20}
+                                                y="20px"
                                                 rotate={10}
                                             />
                                         </li>
@@ -61,7 +61,7 @@ export default function MobileNavigation() {
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.6}
-                                                y={20}
+                                                y="20px"
                                                 rotate={10}
                                             />
                                         </li>
@@ -72,7 +72,7 @@ export default function MobileNavigation() {
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.7}
-                                                y={20}
+                                                y="20px"
                                                 rotate={10}
                                             />
                                         </li>

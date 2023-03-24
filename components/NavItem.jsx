@@ -25,7 +25,7 @@ export default function NavItem({
 
     const from = {
         opacity: 0,
-        transform: `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`
+        transform: `translate(${x}, ${y}) rotate(${rotate}deg) scale(${scale})`
     }
 
     useIsomorphicLayoutEffect(() => {

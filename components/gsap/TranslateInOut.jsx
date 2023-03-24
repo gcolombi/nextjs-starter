@@ -34,7 +34,7 @@ export default function TranslateInOut({
                 delayOut={delayOut}
                 from={{
                     opacity: fade ? 0 : 1,
-                    transform: `translate(${x}px, ${y}px)`
+                    transform: `translate(${x}, ${y})`
                 }}
                 to={{
                     ease,

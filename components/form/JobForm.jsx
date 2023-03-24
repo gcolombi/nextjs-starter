@@ -141,7 +141,8 @@ export default function JobForm() {
                     <div className={styles['c-form__row']}>
                         <TranslateInOut
                             delay={0.1}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormInput
@@ -156,7 +157,8 @@ export default function JobForm() {
                         </TranslateInOut>
                         <TranslateInOut
                             delay={0.2}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormInput
@@ -171,7 +173,8 @@ export default function JobForm() {
                         </TranslateInOut>
                         <TranslateInOut
                             delay={0.3}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormInput
@@ -187,7 +190,8 @@ export default function JobForm() {
                         </TranslateInOut>
                         <TranslateInOut
                             delay={0.4}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormFileInput
@@ -203,7 +207,8 @@ export default function JobForm() {
                         </TranslateInOut>
                         <TranslateInOut
                             delay={0.5}
-                            y={100}
+                            y="100%"
+                            start="-100% 90%"
                             watch
                         >
                             <FormFileInput
@@ -219,7 +224,8 @@ export default function JobForm() {
                     </div>
                     <TranslateInOut
                         delay={0.6}
-                        y={100}
+                        y="100%"
+                        start="-100% 90%"
                         watch
                     >
                         <FormTextarea

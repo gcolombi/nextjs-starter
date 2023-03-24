@@ -27,7 +27,7 @@ export default function HeaderBasic({
                             <TranslateInOut
                                 overflowHidden
                                 delay={.7}
-                                y={70}
+                                y="70px"
                             >
                                 <div className="o-wysiwyg">
                                     <p>{wysiwyg}</p>
@@ -36,7 +36,7 @@ export default function HeaderBasic({
                             {button &&
                                 <ScaleInOut
                                     delay={.9}
-                                    y={90}
+                                    y="90px"
                                     durationIn={1}
                                     ease="elastic.out"
                                 >
