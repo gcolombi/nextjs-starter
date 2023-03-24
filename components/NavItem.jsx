@@ -1,9 +1,9 @@
 import gsap from 'gsap';
-import Link from 'next/link';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import classNames from 'classnames';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import Link from 'next/link';
+import classNames from 'classnames';
 
 export default function NavItem({
     href,

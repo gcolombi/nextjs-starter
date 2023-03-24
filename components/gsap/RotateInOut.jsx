@@ -36,7 +36,7 @@ export default function RotateInOut({
                 delayOut={delayOut}
                 from={{
                     opacity: fade ? 0 : 1,
-                    transform: `translate(${x}px, ${y}px) rotate(${rotate}deg)`
+                    transform: `translate(${x}, ${y}) rotate(${rotate}deg)`
                 }}
                 to={{
                     ease,
