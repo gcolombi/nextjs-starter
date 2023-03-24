@@ -149,7 +149,7 @@ export default function Home() {
                 </div>
             </section>
             <TranslateInOut
-                y={100}
+                y="100px"
                 watch
             >
                 <section className="u-spacing--responsive--bottom">
@@ -161,7 +161,7 @@ export default function Home() {
                             <p>Fames ac turpis egestas maecenas. Lectus quam id leo in. Mauris commodo quis imperdiet massa tincidunt. Eu mi bibendum neque egestas. Nibh praesent tristique magna sit. At volutpat diam ut venenatis tellus in metus vulputate eu. Felis eget nunc lobortis mattis aliquam faucibus. Dui nunc mattis enim ut tellus. Nulla malesuada pellentesque elit eget gravida cum sociis. Pharetra pharetra massa massa ultricies. Quisque egestas diam in arcu. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Nibh tellus molestie nunc non. Turpis nunc eget lorem dolor sed viverra ipsum. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Orci eu lobortis elementum nibh tellus molestie nunc. Elit duis tristique sollicitudin nibh sit amet. Tellus at urna condimentum mattis pellentesque id nibh tortor. Purus viverra accumsan in nisl nisi. Blandit libero volutpat sed cras ornare arcu dui.</p>
                         </div>
                         <ScaleInOut
-                            x={-90}
+                            x="-90px"
                             durationIn={1}
                             ease="elastic.out"
                             watch
@@ -188,7 +188,7 @@ export default function Home() {
                 </div>
             </div>
             <TranslateInOut
-                y={100}
+                y="100px"
                 watch
             >
                 <section className="u-spacing--responsive--bottom">
@@ -220,7 +220,7 @@ export default function Home() {
                 </div>
             </div>
             <TranslateInOut
-                y={100}
+                y="100px"
                 watch
             >
                 <section className="u-spacing--responsive--bottom">
@@ -323,7 +323,7 @@ export default function Home() {
                 </div>
             </section>
             <TranslateInOut
-                y={100}
+                y="100px"
                 watch
             >
                 <section className="u-spacing--responsive--bottom">

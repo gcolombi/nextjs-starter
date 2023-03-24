@@ -7,6 +7,7 @@ export default function Footer() {
     return (
         <TranslateInOut
             y="100%"
+            fade={false}
             delay={.5}
             start="-100% bottom"
             end="top top"

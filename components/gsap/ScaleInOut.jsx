@@ -36,7 +36,7 @@ export default function ScaleInOut({
                 delayOut={delayOut}
                 from={{
                     opacity: fade ? 0 : 1,
-                    transform: `translate(${x}px, ${y}px) scale(${scale})`
+                    transform: `translate(${x}, ${y}) scale(${scale})`
                 }}
                 to={{
                     ease,
