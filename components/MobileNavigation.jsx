@@ -3,7 +3,6 @@ import NavItem from './NavItem';
 import useDelayedRender from 'use-delayed-render';
 import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
-import RotateInOut from './gsap/RotateInOut';
 
 export default function MobileNavigation() {
     const { isOpen, toggle } = useNavigationContext();
@@ -34,88 +33,52 @@ export default function MobileNavigation() {
                                 <div className={styles['c-mobileNav__primary--list']}>
                                     <ul>
                                         <li>
-                                            {/* <RotateInOut
+                                            <NavItem
+                                                href="/blog"
+                                                title="Blog"
+                                                className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.4}
                                                 ease="sine.out"
-                                                rotate={10}
                                                 y="20px"
-                                                skipOutro
-                                            > */}
-                                                <NavItem
-                                                    href="/blog"
-                                                    title="Blog"
-                                                    className={styles['is-current-page']}
-                                                    overflowHidden
-                                                    delay={0.4}
-                                                    ease="sine.out"
-                                                    y="20px"
-                                                    rotate={10}
-                                                />
-                                            {/* </RotateInOut> */}
+                                                rotate={10}
+                                            />
                                         </li>
                                         <li>
-                                            {/* <RotateInOut
+                                            <NavItem
+                                                href="/form"
+                                                title="Form"
+                                                className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.5}
                                                 ease="sine.out"
-                                                rotate={10}
                                                 y="20px"
-                                                skipOutro
-                                            > */}
-                                                <NavItem
-                                                    href="/form"
-                                                    title="Form"
-                                                    className={styles['is-current-page']}
-                                                    overflowHidden
-                                                    delay={0.5}
-                                                    ease="sine.out"
-                                                    y="20px"
-                                                    rotate={10}
-                                                />
-                                            {/* </RotateInOut> */}
+                                                rotate={10}
+                                            />
                                         </li>
                                         <li>
-                                            {/* <RotateInOut
+                                            <NavItem
+                                                href="/contact"
+                                                title="Contact"
+                                                className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.6}
                                                 ease="sine.out"
-                                                rotate={10}
                                                 y="20px"
-                                                skipOutro
-                                            > */}
-                                                <NavItem
-                                                    href="/contact"
-                                                    title="Contact"
-                                                    className={styles['is-current-page']}
-                                                    overflowHidden
-                                                    delay={0.6}
-                                                    ease="sine.out"
-                                                    y="20px"
-                                                    rotate={10}
-                                                />
-                                            {/* </RotateInOut> */}
+                                                rotate={10}
+                                            />
                                         </li>
                                         <li>
-                                            {/* <RotateInOut
+                                            <NavItem
+                                                href="/career"
+                                                title="Career"
+                                                className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.7}
                                                 ease="sine.out"
-                                                rotate={10}
                                                 y="20px"
-                                                skipOutro
-                                            > */}
-                                                <NavItem
-                                                    href="/career"
-                                                    title="Career"
-                                                    className={styles['is-current-page']}
-                                                    overflowHidden
-                                                    delay={0.7}
-                                                    ease="sine.out"
-                                                    y="20px"
-                                                    rotate={10}
-                                                />
-                                            {/* </RotateInOut> */}
+                                                rotate={10}
+                                            />
                                         </li>
                                     </ul>
                                 </div>
