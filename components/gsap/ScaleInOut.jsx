@@ -18,7 +18,7 @@ export default function ScaleInOut({
     yTo = 0,
     skipOutro,
     watch,
-    start = 'top 90%',
+    start = 'top bottom',
     end = 'bottom top',
     scrub = false,
     markers

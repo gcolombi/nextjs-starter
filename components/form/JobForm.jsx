@@ -142,7 +142,8 @@ export default function JobForm() {
                         <TranslateInOut
                             delay={0.1}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <FormInput
@@ -156,9 +157,10 @@ export default function JobForm() {
                             />
                         </TranslateInOut>
                         <TranslateInOut
-                            delay={0.2}
+                            delay={0.15}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <FormInput
@@ -172,9 +174,10 @@ export default function JobForm() {
                             />
                         </TranslateInOut>
                         <TranslateInOut
-                            delay={0.3}
+                            delay={0.2}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <FormInput
@@ -189,9 +192,10 @@ export default function JobForm() {
                             />
                         </TranslateInOut>
                         <TranslateInOut
-                            delay={0.4}
+                            delay={0.25}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <FormFileInput
@@ -206,9 +210,10 @@ export default function JobForm() {
                             />
                         </TranslateInOut>
                         <TranslateInOut
-                            delay={0.5}
+                            delay={0.3}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <FormFileInput
@@ -223,10 +228,12 @@ export default function JobForm() {
                         </TranslateInOut>
                     </div>
                     <TranslateInOut
-                        delay={0.6}
+                        delay={0.35}
                         y="100%"
-                        start="-100% 90%"
+                        start="-100% bottom"
+                        end="top top"
                         watch
+                        markers
                     >
                         <FormTextarea
                             htmlFor="message"
@@ -239,6 +246,7 @@ export default function JobForm() {
                         />
                     </TranslateInOut>
                     <FadeInOut
+                        delay={0.25}
                         watch
                     >
                         <FormRecaptchaNote />

@@ -11,7 +11,7 @@ export default function FadeInOut({
     ease = 'power4.out',
     skipOutro,
     watch,
-    start = 'top 90%',
+    start = 'top bottom',
     end = 'bottom top',
     scrub = false,
     markers
