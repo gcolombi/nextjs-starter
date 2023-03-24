@@ -136,7 +136,8 @@ export default function Form() {
                         <TranslateInOut
                             delay={0.1}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end='top top'
                             watch
                         >
                             <FormInput
@@ -150,9 +151,10 @@ export default function Form() {
                             />
                         </TranslateInOut>
                         <TranslateInOut
-                            delay={0.2}
+                            delay={0.15}
                             y="100%"
-                            start="-100% 90%"
+                            start="-100% bottom"
+                            end='top top'
                             watch
                         >
                             <FormInput
@@ -167,9 +169,10 @@ export default function Form() {
                         </TranslateInOut>
                     </div>
                     <TranslateInOut
-                        delay={0.3}
+                        delay={0.20}
                         y="100%"
-                            start="-100% 90%"
+                        start="-100% bottom"
+                        end='top top'
                         watch
                     >
                         <FormInput
@@ -184,9 +187,10 @@ export default function Form() {
                         />
                     </TranslateInOut>
                     <TranslateInOut
-                        delay={0.4}
+                        delay={0.25}
                         y="100%"
-                            start="-100% 90%"
+                        start="-100% bottom"
+                        end='top top'
                         watch
                     >
                         <FormSelect
@@ -200,9 +204,10 @@ export default function Form() {
                         />
                     </TranslateInOut>
                     <TranslateInOut
-                        delay={0.5}
+                        delay={0.30}
                         y="100%"
-                            start="-100% 90%"
+                        start="-100% bottom"
+                        end='top top'
                         watch
                     >
                         <FormCheckboxList
@@ -212,9 +217,10 @@ export default function Form() {
                         />
                     </TranslateInOut>
                     <TranslateInOut
-                        delay={0.6}
+                        delay={0.35}
                         y="100%"
-                            start="-100% 90%"
+                        start="-100% bottom"
+                        end='top top'
                         watch
                     >
                         <FormRadioList
@@ -224,9 +230,10 @@ export default function Form() {
                         />
                     </TranslateInOut>
                     <TranslateInOut
-                        delay={0.7}
+                        delay={0.40}
                         y="100%"
-                            start="-100% 90%"
+                        start="-100% bottom"
+                        end='top top'
                         watch
                     >
                         <FormTextarea
@@ -240,6 +247,7 @@ export default function Form() {
                         />
                     </TranslateInOut>
                     <FadeInOut
+                        delay={0.25}
                         watch
                     >
                         <FormRecaptchaNote />

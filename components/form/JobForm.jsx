@@ -233,7 +233,6 @@ export default function JobForm() {
                         start="-100% bottom"
                         end="top top"
                         watch
-                        markers
                     >
                         <FormTextarea
                             htmlFor="message"
