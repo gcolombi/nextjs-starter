@@ -64,7 +64,6 @@ export default function AccordionPage() {
                                     >
                                         <div className="o-wysiwyg">
                                             <p>{content}</p>
-                                            {i}
                                         </div>
                                     </AccordionItem>
                                 </TranslateInOut>

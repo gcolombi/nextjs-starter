@@ -46,18 +46,6 @@ export default function MobileNavigation() {
                                         </li>
                                         <li>
                                             <NavItem
-                                                href="/form"
-                                                title="Form"
-                                                className={styles['is-current-page']}
-                                                overflowHidden
-                                                delay={0.3}
-                                                ease="sine.out"
-                                                y="20px"
-                                                rotate={10}
-                                            />
-                                        </li>
-                                        <li>
-                                            <NavItem
                                                 href="/accordion"
                                                 title="Accordion"
                                                 className={styles['is-current-page']}

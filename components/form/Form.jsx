@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import useIsMounted from '@/hooks/useIsMounted';
 import { useTheme } from 'next-themes';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { contactSchema } from '@/schemas/contact';
+import { formSchema } from '@/schemas/form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
@@ -31,7 +31,7 @@ const labels = {
 }
 
 async function sendFormData(data, recaptchaToken) {
-    return await fetch('/api/contactform', {
+    return await fetch('/api/form', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -59,7 +59,7 @@ export default function Form() {
             question: '',
             message: ''
         },
-        resolver: yupResolver(contactSchema)
+        resolver: yupResolver(formSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();

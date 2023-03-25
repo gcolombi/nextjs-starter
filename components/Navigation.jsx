@@ -60,18 +60,6 @@ export default function Navigation() {
                                         </li>
                                         <li>
                                             <NavItem
-                                                href="/form"
-                                                title="Form"
-                                                className={styles['is-current-page']}
-                                                overflowHidden
-                                                delay={0.9}
-                                                ease="power.out"
-                                                y="15px"
-                                                rotate={7}
-                                            />
-                                        </li>
-                                        <li>
-                                            <NavItem
                                                 href="/accordion"
                                                 title="Accordion"
                                                 className={styles['is-current-page']}

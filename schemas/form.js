@@ -1,4 +1,4 @@
-import { object, string, mixed, array, addMethod } from 'yup';
+import { object, string, array, addMethod } from 'yup';
 
 const getFormSchema = () => {
     /* Override the email method, if email isn't required we need to add excludeEmptyString: true */
@@ -20,4 +20,4 @@ const getFormSchema = () => {
     });
 }
 
-export const contactSchema = getFormSchema();
+export const formSchema = getFormSchema();

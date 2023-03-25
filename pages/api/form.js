@@ -1,7 +1,7 @@
 import Email from '@/utils/email';
 import { getEmailTemplateFile } from '@/utils/template';
 import { ValidationError } from 'yup';
-import { contactSchema } from '@/schemas/contact';
+import { formSchema } from '@/schemas/form';
 import { validateRecaptcha } from '@/utils/recaptcha';
 
 /**
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         const { recaptchaToken, labels, data } = req.body;
 
         /* Validation */
-        await contactSchema.validate({ ...data }, { abortEarly: false });
+        await formSchema.validate({ ...data }, { abortEarly: false });
 
         /* Recaptcha */
         const validReCaptcha = await validateRecaptcha(recaptchaToken, res);
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
             try {
                 const emailTemplate = await getEmailTemplateFile(req.headers.host, '/templates/email.html', res);
 
-                await new Email(req.headers.host, emailTemplate, 'New contact form', labels, data, []).send();
+                await new Email(req.headers.host, emailTemplate, 'New form', labels, data, []).send();
 
                 return res.status(201).json({
                     data,
