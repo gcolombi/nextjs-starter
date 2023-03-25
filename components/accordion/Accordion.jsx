@@ -8,9 +8,9 @@ export default function Accordion({
 
     return (
         <AccordionContextProvider allowMultiple={allowMultiple}>
-            <div className={styles['c-accordions']}>
+            <ul className={styles['c-accordions']}>
                 {children}
-            </div>
+            </ul>
         </AccordionContextProvider>
     );
 }

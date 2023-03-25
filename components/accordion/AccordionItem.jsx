@@ -17,7 +17,7 @@ export default function AccordionItem({
     const { expanded, toggle } = useAccordionItem({ id, initialExpanded, container, content });
 
     return (
-        <div
+        <li
             className={styles['c-accordions__item']}
         >
             <Heading
@@ -38,7 +38,7 @@ export default function AccordionItem({
                     {children}
                 </div>
             </div>
-        </div>
+        </li>
     );
 }
 

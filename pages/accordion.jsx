@@ -43,7 +43,7 @@ export default function AccordionPage() {
                         <TranslateInOut
                             overflowHidden
                             delay={0.3}
-                            y="70px"
+                            y="100%"
                         >
                             <div className="o-wysiwyg">
                                 <p>An accordion is created by wrapping any number of <strong>AccordionItem</strong> components inside an <strong>Accordion</strong> component.</p>
@@ -51,17 +51,24 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion>
                             {items.map(({ header, content }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingTag={'h3'}
-                                    headingClassName={'h6'}
-                                    id={i}
+                                <TranslateInOut
+                                    delay={0.3 + i / 10}
+                                    y="100%"
                                     key={i}
                                 >
-                                    <div className="o-wysiwyg">
-                                        <p>{content}</p>
-                                    </div>
-                                </AccordionItem>
+                                    <AccordionItem
+                                        header={header}
+                                        headingTag={'h3'}
+                                        headingClassName={'h6'}
+                                        id={i}
+                                        key={i}
+                                    >
+                                        <div className="o-wysiwyg">
+                                            <p>{content}</p>
+                                            {i}
+                                        </div>
+                                    </AccordionItem>
+                                </TranslateInOut>
                             ))}
                         </Accordion>
                     </div>
