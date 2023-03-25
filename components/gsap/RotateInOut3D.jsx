@@ -16,7 +16,7 @@ export default function RotateInOut3D({
     y = 0,
     skipOutro,
     watch = false,
-    start = 'top 90%',
+    start = 'top bottom',
     end = 'bottom top',
     scrub = false,
     markers

@@ -24,7 +24,7 @@ export default function ShuffleTextInOut({
     target,
     skipOutro,
     watch = false,
-    start = 'top 90%',
+    start = 'top bottom',
     end = 'bottom top',
     scrub = false,
     markers
