@@ -7,7 +7,6 @@ export default function Contact() {
         <>
             <MetaData
                 title="Contact"
-                description="Lorem ipsum dolor sit contact."
             />
             <HeaderBasic
                 title="Contact"

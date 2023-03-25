@@ -12,7 +12,6 @@ export default function FormElements() {
         <>
             <MetaData
                 title="Form"
-                description="Lorem ipsum dolor sit form."
             />
             <HeaderBasic
                 title="Form"

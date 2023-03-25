@@ -72,11 +72,23 @@ export default function Navigation() {
                                         </li>
                                         <li>
                                             <NavItem
+                                                href="/accordion"
+                                                title="Accordion"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={1.1}
+                                                ease="power.out"
+                                                y="15px"
+                                                rotate={7}
+                                            />
+                                        </li>
+                                        <li>
+                                            <NavItem
                                                 href="/contact"
                                                 title="Contact"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={1.1}
+                                                delay={1.3}
                                                 ease="power.out"
                                                 y="15px"
                                                 rotate={7}
@@ -88,7 +100,7 @@ export default function Navigation() {
                                                 title="Career"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={1.3}
+                                                delay={1.5}
                                                 ease="power.out"
                                                 y="15px"
                                                 rotate={7}

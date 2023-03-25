@@ -58,11 +58,23 @@ export default function MobileNavigation() {
                                         </li>
                                         <li>
                                             <NavItem
+                                                href="/accordion"
+                                                title="Accordion"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={0.6}
+                                                ease="sine.out"
+                                                y="20px"
+                                                rotate={10}
+                                            />
+                                        </li>
+                                        <li>
+                                            <NavItem
                                                 href="/contact"
                                                 title="Contact"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.6}
+                                                delay={0.7}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}
@@ -74,7 +86,7 @@ export default function MobileNavigation() {
                                                 title="Career"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.7}
+                                                delay={0.8}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}

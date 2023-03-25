@@ -7,7 +7,6 @@ export default function Career() {
         <>
             <MetaData
                 title="Career"
-                description="Lorem ipsum dolor sit career."
             />
             <HeaderBasic
                 title="Career"
