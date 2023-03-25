@@ -22,4 +22,4 @@ const getFormSchema = () => {
     });
 }
 
-export const jobSchema = getFormSchema();
+export const uploadSchema = getFormSchema();

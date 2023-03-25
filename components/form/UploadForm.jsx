@@ -5,7 +5,7 @@ import { useController } from 'react-hook-form';
 import useIsMounted from '@/hooks/useIsMounted';
 import { useTheme } from 'next-themes';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { jobSchema } from '@/schemas/job';
+import { uploadSchema } from '@/schemas/uploadForm';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
@@ -42,13 +42,13 @@ async function sendFormData(data, recaptchaToken) {
     formData.append('labels', JSON.stringify(labels));
     formData.append('recaptchaToken', recaptchaToken);
 
-    return await fetch('/api/jobform', {
+    return await fetch('/api/uploadform', {
         method: 'POST',
         body: formData
     });
 }
 
-export default function JobForm() {
+export default function UploadForm() {
     const {
         register,
         control,
@@ -65,7 +65,7 @@ export default function JobForm() {
             coverletter: '',
             message: ''
         },
-        resolver: yupResolver(jobSchema)
+        resolver: yupResolver(uploadSchema)
     });
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();

@@ -3,7 +3,7 @@ import formidable from 'formidable';
 import Email from '@/utils/email';
 import { getEmailTemplateFile } from '@/utils/template';
 import { ValidationError } from 'yup';
-import { jobSchema } from '@/schemas/job';
+import { uploadSchema } from '@/schemas/uploadForm';
 import { validateRecaptcha } from '@/utils/recaptcha';
 
 /**
@@ -85,7 +85,7 @@ export default async function handler(req, res) {
         const { recaptchaToken, labels, ...formFields } = fields;
 
         /* Validation */
-        await jobSchema.validate({ ...formFields, ...files }, { abortEarly: false });
+        await uploadSchema.validate({ ...formFields, ...files }, { abortEarly: false });
 
         /* Builds attachments */
         const attachments = [];
@@ -102,7 +102,7 @@ export default async function handler(req, res) {
             try {
                 const emailTemplate = await getEmailTemplateFile(req.headers.host, '/templates/email.html', res);
 
-                await new Email(req.headers.host, emailTemplate, 'New career form', JSON.parse(labels), formFields, attachments).send();
+                await new Email(req.headers.host, emailTemplate, 'New form', JSON.parse(labels), formFields, attachments).send();
 
                 return res.status(201).json({
                     data: {
