@@ -8,8 +8,10 @@ import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
+import useDemoModal from '@/components/modal/DemoModal';
 
 export default function Home() {
+    const { DemoModal, setShowDemoModal } = useDemoModal();
     const [locked, setLocked] = useLockedScroll(false);
 
     return (
@@ -28,6 +30,16 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
+            <section className="u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <DemoModal />
+                    <Button
+                        label="Modal"
+                        onClick={() => setShowDemoModal(true)}
+                        className="c-btn"
+                    />
+                </div>
+            </section>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut

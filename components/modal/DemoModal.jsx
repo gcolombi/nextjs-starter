@@ -14,13 +14,13 @@ export default function useDemoModal() {
     }, [showDemoModal, setShowDemoModal]);
 
     return useMemo(() => ({
-        setShowDemoModal, DemoModalCallback
+        setShowDemoModal, DemoModal: DemoModalCallback
     }), [setShowDemoModal, DemoModalCallback]);
 }
 
 function DemoModal({
     showDemoModal,
-    setShowDemoModal,
+    setShowDemoModal
 }) {
     return (
         <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
