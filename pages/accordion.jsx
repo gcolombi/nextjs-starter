@@ -29,101 +29,117 @@ export default function AccordionPage() {
                 title="Accordion"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
             />
-            <div className="u-spacing--responsive--bottom">
+            <div className="c-accordionSection u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <h2>Usage</h2>
-                    <p>An accordion is created by wrapping any number of <strong>AccordionItem</strong> components inside an <strong>Accordion</strong> component.</p>
-                    <Accordion>
-                        {items.map(({ header, content }, i) => (
-                            <AccordionItem
-                                header={header}
-                                headingTag={'h3'}
-                                headingClassName={'h6'}
-                                id={i}
-                                key={i}
-                            >
-                                <div className="o-wysiwyg">
-                                    <p>{content}</p>
-                                </div>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                    <div className="c-accordionSection__inner">
+                        <h2>Usage</h2>
+                        <div className="o-wysiwyg">
+                            <p>An accordion is created by wrapping any number of <strong>AccordionItem</strong> components inside an <strong>Accordion</strong> component.</p>
+                        </div>
+                        <Accordion>
+                            {items.map(({ header, content }, i) => (
+                                <AccordionItem
+                                    header={header}
+                                    headingTag={'h3'}
+                                    headingClassName={'h6'}
+                                    id={i}
+                                    key={i}
+                                >
+                                    <div className="o-wysiwyg">
+                                        <p>{content}</p>
+                                    </div>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
                 </div>
             </div>
-            <div className="u-spacing--responsive--bottom">
+            <div className="c-accordionSection u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <h2>Allowing multiple</h2>
-                    <p>To allow multiple accordion items to expand at once, set the <strong>allowMultiple</strong> prop of the <strong>Accordion</strong> component.</p>
-                    <Accordion allowMultiple>
-                        {items.map(({ header, content }, i) => (
-                            <AccordionItem
-                                header={header}
-                                headingTag={'h3'}
-                                headingClassName={'h6'}
-                                id={i}
-                                key={i}
-                            >
-                                <div className="o-wysiwyg">
-                                    <p>{content}</p>
-                                </div>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                    <div className="c-accordionSection__inner">
+                        <h2>Allowing multiple</h2>
+                        <div className="o-wysiwyg">
+                            <p>To allow multiple accordion items to expand at once, set the <strong>allowMultiple</strong> prop of the <strong>Accordion</strong> component.</p>
+                        </div>
+                        <Accordion allowMultiple>
+                            {items.map(({ header, content }, i) => (
+                                <AccordionItem
+                                    header={header}
+                                    headingTag={'h3'}
+                                    headingClassName={'h6'}
+                                    id={i}
+                                    key={i}
+                                >
+                                    <div className="o-wysiwyg">
+                                        <p>{content}</p>
+                                    </div>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
                 </div>
             </div>
-            <div className="u-spacing--responsive--bottom">
+            <div className="c-accordionSection u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <h2>Expanding items initially</h2>
-                    <p>You could use the <strong>initialExpanded</strong> prop of <strong>AccordionItem</strong> to expand items when accordion first mounts. In the following example, the first item is expanded on mount.</p>
-                    <Accordion>
-                        {items.map(({ header, content }, i) => (
-                            <AccordionItem
-                                header={header}
-                                headingTag={'h3'}
-                                headingClassName={'h6'}
-                                id={i}
-                                key={i}
-                                initialExpanded={i === 0 ? true : false}
-                            >
-                                <div className="o-wysiwyg">
-                                    <p>{content}</p>
-                                </div>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                    <div className="c-accordionSection__inner">
+                        <h2>Expanding items initially</h2>
+                        <div className="o-wysiwyg">
+                            <p>You could use the <strong>initialExpanded</strong> prop of <strong>AccordionItem</strong> to expand items when accordion first mounts. In the following example, the first item is expanded on mount.</p>
+                        </div>
+                        <Accordion>
+                            {items.map(({ header, content }, i) => (
+                                <AccordionItem
+                                    header={header}
+                                    headingTag={'h3'}
+                                    headingClassName={'h6'}
+                                    id={i}
+                                    key={i}
+                                    initialExpanded={i === 0 ? true : false}
+                                >
+                                    <div className="o-wysiwyg">
+                                        <p>{content}</p>
+                                    </div>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
                 </div>
             </div>
-            <div className="u-spacing--responsive--bottom">
+            <div className="c-accordionSection u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <h2>Nested accordion</h2>
-                    <p><strong>AccordionItem</strong> can have a nested accordion</p>
-                    <Accordion>
-                        {items.map(({ header }, i) => (
-                            <AccordionItem
-                                header={header}
-                                headingTag={'h3'}
-                                headingClassName={'h6'}
-                                id={i}
-                                key={i}
-                            >
-                                <Accordion>
-                                    {items.map(({ header, content }, i) => (
-                                        <AccordionItem
-                                            header={header}
-                                            headingTag={'h4'}
-                                            headingClassName={'h6'}
-                                            id={i}
-                                            key={i}
-                                        >
-                                            <div className="o-wysiwyg">
-                                                <p>{content}</p>
-                                            </div>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                    <div className="c-accordionSection__inner">
+                        <h2>Nested accordion</h2>
+                        <div className="o-wysiwyg">
+                            <p><strong>AccordionItem</strong> can have a nested accordion</p>
+                        </div>
+                        <Accordion>
+                            {items.map(({ header }, i) => (
+                                <AccordionItem
+                                    header={header}
+                                    headingTag={'h3'}
+                                    headingClassName={'h6'}
+                                    id={i}
+                                    key={i}
+                                >
+                                    <Accordion>
+                                        {items.map(({ header, content }, i) => (
+                                            <AccordionItem
+                                                header={header}
+                                                headingTag={'h4'}
+                                                headingClassName={'h6'}
+                                                id={i}
+                                                key={i}
+                                            >
+                                                <div className="o-wysiwyg">
+                                                    <p>{content}</p>
+                                                </div>
+                                            </AccordionItem>
+                                        ))}
+                                    </Accordion>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
                 </div>
             </div>
         </>
