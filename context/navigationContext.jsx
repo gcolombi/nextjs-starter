@@ -32,7 +32,7 @@ export function NavigationContextProvider({ children }) {
             setIsOpen(false);
             setLocked(false);
         }
-    }, [isDesktop])
+    }, [isDesktop]);
 
     /**
      * Closes navigation on route change
