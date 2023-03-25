@@ -58,8 +58,7 @@ export default function AccordionPage() {
                                 >
                                     <AccordionItem
                                         header={header}
-                                        headingTag={'h3'}
-                                        headingClassName={'h6'}
+                                        headingClassName="h6"
                                         id={i}
                                         key={i}
                                     >
@@ -98,17 +97,25 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion allowMultiple>
                             {items.map(({ header, content }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingTag={'h3'}
-                                    headingClassName={'h6'}
-                                    id={i}
+                                <TranslateInOut
+                                    delay={0.2}
+                                    y="100%"
+                                    start= "-100% bottom"
+                                    end= "top top"
+                                    watch
                                     key={i}
                                 >
-                                    <div className="o-wysiwyg">
-                                        <p>{content}</p>
-                                    </div>
-                                </AccordionItem>
+                                    <AccordionItem
+                                        header={header}
+                                        headingClassName="h6"
+                                        id={i}
+                                        key={i}
+                                    >
+                                        <div className="o-wysiwyg">
+                                            <p>{content}</p>
+                                        </div>
+                                    </AccordionItem>
+                                </TranslateInOut>
                             ))}
                         </Accordion>
                     </div>
@@ -138,18 +145,26 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion>
                             {items.map(({ header, content }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingTag={'h3'}
-                                    headingClassName={'h6'}
-                                    id={i}
+                                <TranslateInOut
+                                    delay={0.2}
+                                    y="100%"
+                                    start= "-100% bottom"
+                                    end= "top top"
+                                    watch
                                     key={i}
-                                    initialExpanded={i === 0 ? true : false}
                                 >
-                                    <div className="o-wysiwyg">
-                                        <p>{content}</p>
-                                    </div>
-                                </AccordionItem>
+                                    <AccordionItem
+                                        header={header}
+                                        headingClassName="h6"
+                                        id={i}
+                                        key={i}
+                                        initialExpanded={i === 0 ? true : false}
+                                    >
+                                        <div className="o-wysiwyg">
+                                            <p>{content}</p>
+                                        </div>
+                                    </AccordionItem>
+                                </TranslateInOut>
                             ))}
                         </Accordion>
                     </div>
@@ -179,29 +194,37 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion>
                             {items.map(({ header }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingTag={'h3'}
-                                    headingClassName={'h6'}
-                                    id={i}
+                                <TranslateInOut
+                                    delay={0.2}
+                                    y="100%"
+                                    start= "-100% bottom"
+                                    end= "top top"
+                                    watch
                                     key={i}
                                 >
-                                    <Accordion>
-                                        {items.map(({ header, content }, i) => (
-                                            <AccordionItem
-                                                header={header}
-                                                headingTag={'h4'}
-                                                headingClassName={'h6'}
-                                                id={i}
-                                                key={i}
-                                            >
-                                                <div className="o-wysiwyg">
-                                                    <p>{content}</p>
-                                                </div>
-                                            </AccordionItem>
-                                        ))}
-                                    </Accordion>
-                                </AccordionItem>
+                                    <AccordionItem
+                                        header={header}
+                                        headingClassName="h6"
+                                        id={i}
+                                        key={i}
+                                    >
+                                        <Accordion>
+                                            {items.map(({ header, content }, i) => (
+                                                <AccordionItem
+                                                    header={header}
+                                                    headingTag={'h4'}
+                                                    headingClassName="h6"
+                                                    id={i}
+                                                    key={i}
+                                                >
+                                                    <div className="o-wysiwyg">
+                                                        <p>{content}</p>
+                                                    </div>
+                                                </AccordionItem>
+                                            ))}
+                                        </Accordion>
+                                    </AccordionItem>
+                                </TranslateInOut>
                             ))}
                         </Accordion>
                     </div>

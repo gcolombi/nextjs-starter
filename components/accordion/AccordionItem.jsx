@@ -7,7 +7,7 @@ import Chevron from '../icons/Chevron';
 export default function AccordionItem({
     children,
     header,
-    headingTag='h3',
+    headingTag = 'h3',
     headingClassName='',
     id,
     initialExpanded

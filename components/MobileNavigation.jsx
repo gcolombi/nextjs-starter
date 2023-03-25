@@ -38,7 +38,7 @@ export default function MobileNavigation() {
                                                 title="Blog"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.4}
+                                                delay={0.2}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}
@@ -50,7 +50,7 @@ export default function MobileNavigation() {
                                                 title="Form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.5}
+                                                delay={0.3}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}
@@ -62,7 +62,7 @@ export default function MobileNavigation() {
                                                 title="Accordion"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.6}
+                                                delay={0.4}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}
@@ -74,7 +74,7 @@ export default function MobileNavigation() {
                                                 title="Contact"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.7}
+                                                delay={0.5}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}
@@ -86,7 +86,7 @@ export default function MobileNavigation() {
                                                 title="Career"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.8}
+                                                delay={0.6}
                                                 ease="sine.out"
                                                 y="20px"
                                                 rotate={10}
