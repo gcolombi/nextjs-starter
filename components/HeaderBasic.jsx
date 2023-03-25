@@ -19,15 +19,15 @@ export default function HeaderBasic({
                     <div className="o-container">
                         <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
                             <ImplodeExplodeInOut
-                                delay={.5}
+                                delay={0.5}
                                 target="#title"
                             >
                                 <h1 id="title">{title}</h1>
                             </ImplodeExplodeInOut>
                             <TranslateInOut
                                 overflowHidden
-                                delay={.7}
-                                y="70px"
+                                delay={0.7}
+                                y="100%"
                             >
                                 <div className="o-wysiwyg">
                                     <p>{wysiwyg}</p>
@@ -35,8 +35,8 @@ export default function HeaderBasic({
                             </TranslateInOut>
                             {button &&
                                 <ScaleInOut
-                                    delay={.9}
-                                    y="90px"
+                                    delay={0.9}
+                                    y="100%"
                                     durationIn={1}
                                     ease="elastic.out"
                                 >
