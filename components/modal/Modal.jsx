@@ -1,3 +1,4 @@
+import styles from '@/styles/modules/Modal.module.scss';
 import { useCallback, useEffect } from 'react';
 
 export default function Modal({
@@ -19,9 +20,9 @@ export default function Modal({
     return (
         <>
             {showModal &&
-                <section className="m-modal">
+                <section className={styles['m-modal']}>
                     <div
-                        className="m-modal__backdrop"
+                        className={styles['m-modal__backdrop']}
                         onClick={() => setShowModal(false)}
                     />
                     {children}

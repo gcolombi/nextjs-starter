@@ -28,6 +28,7 @@
     --navigation-mobile-bg-color: var(--secondary);
     --navigation-link-color: var(--black);
     --navigation-link-current-color: var(--primary);
+    --modal-backdrop-color: hsla(0,0%,100%,.8);
 
 	/* Font Families
 
@@ -82,11 +83,12 @@
     --btn-hover-bg-color: var(--secondary-light);
 	--btn-hover-color: var(--black);
     --btn-hover-border-color: var(--secondary-light);
-    --navigation-sticky-bg: rgba(0,0,0,.5);
+    --navigation-sticky-bg: rgba(0, 0, 0, 0.5);
     --navigation-box-shadow: inset 0 -1px 0 0 hsla(0,0%,100%,.1);
     --navigation-mobile-bg-color: var(--primary);
     --navigation-link-color: var(--white);
     --navigation-link-current-color: var(--secondary);
+    --modal-backdrop-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Document
