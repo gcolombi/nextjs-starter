@@ -4,9 +4,9 @@ import useWindowLocation from '@/hooks/useWindowLocation';
 export default function MetaData({ ...customMeta }) {
     const { currentURL } = useWindowLocation();
     const meta = {
-        title: 'Lorem ipsum dolor sit',
+        title: 'Next.js starter',
         description: `Nulla posuere sollicitudin aliquam ultrices sagittis orci a. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque.`,
-        image: 'http://localhost:3000/static/example.jpg',
+        image: `${currentURL}static/example.jpg`,
         type: 'website',
         ...customMeta
     };
@@ -21,7 +21,7 @@ export default function MetaData({ ...customMeta }) {
             <meta property="og:title" content={meta.title} />
             <meta property="og:description" content={meta.description} />
             <meta property="og:url" content={currentURL} />
-            <meta property="og:site_name" content="Lorem ipsum dolor sit" />
+            <meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_NAME} />
             <meta property="og:type" content={meta.type} />
             <meta property="og:image" content={meta.image} />
             {meta.date && (

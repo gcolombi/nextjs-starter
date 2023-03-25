@@ -27,7 +27,7 @@ export default function Footer() {
                 scrollTrigger: {
                     trigger: element.current,
                     start: '-100% bottom',
-                    end: 'top top',
+                    end: 'top top'
                 }
             });
         }, element);
