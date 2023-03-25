@@ -56,15 +56,15 @@ export default function Footer() {
                             </li>
                             <li>
                                 <NavItem
-                                    href="/contact"
-                                    title="Contact"
+                                    href="/form"
+                                    title="Form"
                                     className={styles['is-current-page']}
                                 />
                             </li>
                             <li>
                                 <NavItem
-                                    href="/career"
-                                    title="Career"
+                                    href="/upload"
+                                    title="File upload form"
                                     className={styles['is-current-page']}
                                 />
                             </li>

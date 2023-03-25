@@ -58,8 +58,8 @@ export default function MobileNavigation() {
                                         </li>
                                         <li>
                                             <NavItem
-                                                href="/contact"
-                                                title="Contact"
+                                                href="/form"
+                                                title="Form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.5}
@@ -70,8 +70,8 @@ export default function MobileNavigation() {
                                         </li>
                                         <li>
                                             <NavItem
-                                                href="/career"
-                                                title="Career"
+                                                href="/upload"
+                                                title="File upload form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.6}

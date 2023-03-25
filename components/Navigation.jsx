@@ -72,8 +72,8 @@ export default function Navigation() {
                                         </li>
                                         <li>
                                             <NavItem
-                                                href="/contact"
-                                                title="Contact"
+                                                href="/form"
+                                                title="Form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={1.3}
@@ -84,8 +84,8 @@ export default function Navigation() {
                                         </li>
                                         <li>
                                             <NavItem
-                                                href="/career"
-                                                title="Career"
+                                                href="/upload"
+                                                title="File upload form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={1.5}

@@ -29,9 +29,9 @@ const victorMono = localFont({
     display: 'swap'
 });
 
+import '@/styles/style.scss';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import '@/styles/style.scss';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useNextCssRemovalPrevention from '@/hooks/useNextCssRemovalPrevention';
