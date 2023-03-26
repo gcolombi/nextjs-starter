@@ -7,9 +7,9 @@ export default function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);
     const [locked, setLocked] = useLockedScroll(false);
 
-    const setModal = () => {
-        setShowDemoModal(!showDemoModal);
-        setLocked(!locked);
+    const setModal = (state) => {
+        setShowDemoModal(state);
+        setLocked(state);
     }
 
     const DemoModalCallback = useCallback(() => {

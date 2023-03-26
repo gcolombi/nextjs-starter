@@ -35,7 +35,7 @@ export default function Home() {
                     <DemoModal />
                     <Button
                         label="Modal"
-                        onClick={setModal}
+                        onClick={() => setModal(true)}
                         className="c-btn"
                     />
                 </div>

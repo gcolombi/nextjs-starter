@@ -8,7 +8,7 @@ export default function Modal({
 }) {
     const onKeyDown = useCallback((e) => {
         if (e.key === "Escape") {
-            setModal();
+            setModal(false);
         }
     }, [setModal]);
 
@@ -23,7 +23,7 @@ export default function Modal({
                 <section className={styles['m-modal']}>
                     <div
                         className={styles['m-modal__backdrop']}
-                        onClick={setModal}
+                        onClick={() => setModal(false)}
                     />
                     {children}
                 </section>
