@@ -1,30 +1,37 @@
 import styles from '@/styles/modules/DemoModal.module.scss';
 import { useState, useCallback, useMemo } from 'react';
+import useLockedScroll from '@/hooks/useLockedScroll';
 import Modal from './Modal';
 
 export default function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);
+    const [locked, setLocked] = useLockedScroll(false);
+
+    const setModal = () => {
+        setShowDemoModal(!showDemoModal);
+        setLocked(!locked);
+    }
 
     const DemoModalCallback = useCallback(() => {
         return (
             <DemoModal
                 showDemoModal={showDemoModal}
-                setShowDemoModal={setShowDemoModal}
+                setModal={setModal}
             />
         );
-    }, [showDemoModal, setShowDemoModal]);
+    }, [showDemoModal, setModal]);
 
     return useMemo(() => ({
-        setShowDemoModal, DemoModal: DemoModalCallback
-    }), [setShowDemoModal, DemoModalCallback]);
+        setModal, DemoModal: DemoModalCallback
+    }), [setModal, DemoModalCallback]);
 }
 
 function DemoModal({
     showDemoModal,
-    setShowDemoModal
+    setModal
 }) {
     return (
-        <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
+        <Modal showModal={showDemoModal} setModal={setModal}>
             <div className={styles['c-demoModal']}>
                 <div className={styles['c-demoModal__inner']}>
                     <h2>Demo modal</h2>

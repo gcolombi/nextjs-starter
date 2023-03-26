@@ -4,13 +4,13 @@ import { useCallback, useEffect } from 'react';
 export default function Modal({
     children,
     showModal,
-    setShowModal,
+    setModal,
 }) {
     const onKeyDown = useCallback((e) => {
         if (e.key === "Escape") {
-            setShowModal(false);
+            setModal();
         }
-    }, [setShowModal]);
+    }, [setModal]);
 
     useEffect(() => {
         document.addEventListener('keydown', onKeyDown);
@@ -23,7 +23,7 @@ export default function Modal({
                 <section className={styles['m-modal']}>
                     <div
                         className={styles['m-modal__backdrop']}
-                        onClick={() => setShowModal(false)}
+                        onClick={setModal}
                     />
                     {children}
                 </section>

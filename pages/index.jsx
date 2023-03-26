@@ -11,7 +11,7 @@ import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import useDemoModal from '@/components/modal/DemoModal';
 
 export default function Home() {
-    const { DemoModal, setShowDemoModal } = useDemoModal();
+    const { DemoModal, setModal } = useDemoModal();
     const [locked, setLocked] = useLockedScroll(false);
 
     return (
@@ -35,7 +35,7 @@ export default function Home() {
                     <DemoModal />
                     <Button
                         label="Modal"
-                        onClick={() => setShowDemoModal(true)}
+                        onClick={setModal}
                         className="c-btn"
                     />
                 </div>
