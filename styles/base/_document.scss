@@ -24,12 +24,11 @@
     --btn-hover-bg-color: var(--primary-light);
     --btn-hover-border-color: var(--primary-light);
     --navigation-sticky-bg: hsla(0,0%,100%,.8);
-    --navigation-box-shadow: inset 0 -1px 0 0 rgba(0,0,0,.1);
+    --navigation-box-shadow: inset 0 -1px 0 0 rgba(0 ,0 ,0 , 0.1);
     --navigation-mobile-bg-color: var(--secondary);
     --navigation-link-color: var(--black);
     --navigation-link-current-color: var(--primary);
-    --modal-background-color: var(--white);
-    --modal-backdrop-color: transparent;
+    --modal-backdrop-color: rgba(0, 0, 0, 0.1);
     --modal-box-shadow-color: 0, 0, 0;
 
 	/* Font Families
@@ -90,7 +89,6 @@
     --navigation-mobile-bg-color: var(--primary);
     --navigation-link-color: var(--white);
     --navigation-link-current-color: var(--secondary);
-    --modal-background-color: var(--white);
     --modal-backdrop-color: rgba(0, 0, 0, 0.5);
     --modal-box-shadow-color: 255, 255, 255;
 }
