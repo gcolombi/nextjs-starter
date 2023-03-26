@@ -33,6 +33,10 @@ function DemoModal({
     return (
         <Modal showModal={showDemoModal} setModal={setModal}>
             <div className={styles['c-demoModal']}>
+                <button
+                    className={styles['c-demoModal__close']}
+                    onClick={() => setModal(false) }
+                />
                 <div className={styles['c-demoModal__inner']}>
                     <h2>Demo modal</h2>
                     <div className="o-wysiwyg">
