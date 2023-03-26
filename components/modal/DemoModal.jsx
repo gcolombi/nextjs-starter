@@ -14,72 +14,23 @@ export function useDemoModal() {
         setLocked(state);
     }
 
-    // const DemoModalCallback = useCallback(() => {
+    const DemoModalCallback = useCallback(() => {
+        return (
+            <DemoModal
+                showDemoModal={showDemoModal}
+                setModal={setModal}
+            />
+        );
+    }, [showDemoModal, setModal]);
 
-    //     const [isReady, setIsReady] = useState(false);
+    return useMemo(() => ({
+        setModal, DemoModal: DemoModalCallback
+    }), [setModal, DemoModalCallback]);
 
-    //     useIsomorphicLayoutEffect(() => {
-
-    //         const ctx = gsap.context(() => {
-
-    //         if (showDemoModal) {
-    //             gsap
-    //             .timeline()
-    //             .to(modalRef.current, {
-    //                 opacity: 1,
-    //                 pointerEvents: 'all',
-    //                 duration: 1,
-    //                 ease: 'power4.out'
-    //             }).then(() => {
-    //                 console.log('open');
-    //                 setIsReady(true);
-    //             });
-
-    //         } else {
-    //             gsap
-    //             .timeline()
-    //             .to(modalRef.current, {
-    //                 opacity: 0,
-    //                 pointerEvents: 'none',
-    //                 duration: 1,
-    //                 ease: 'power4.out'
-    //             }).then(() => {
-    //                 console.log('close');
-    //                 setIsReady(false);
-    //             });
-    //         }
-
-    //         }, modalRef);
-
-    //         return () => ctx.revert();
-
-    //     }, [showDemoModal]);
-
-
-    //     return (
-    //         <>
-    //             {
-    //                 isReady &&
-    //                 <DemoModal
-    //                     showDemoModal={showDemoModal}
-    //                     setModal={setModal}
-    //                 />
-    //             }
-    //         </>
-    //     );
-    // }, [showDemoModal, setModal]);
-
-    // return useMemo(() => ({
-    //     setRef, setModal, showDemoModal
-    //     // setModal, DemoModal: DemoModalCallback
-    // // }), [setModal, DemoModalCallback]);
-    // }), [setModal]);
-
-    return [
-        // setRef,
-        setModal,
-        showDemoModal
-    ]
+    // return [
+    //     setModal,
+    //     showDemoModal
+    // ]
 }
 
 export default function DemoModal({
