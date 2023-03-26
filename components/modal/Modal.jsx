@@ -1,13 +1,15 @@
 import styles from '@/styles/modules/Modal.module.scss';
-import { useCallback, useEffect } from 'react';
+import { forwardRef, useCallback, useEffect } from 'react';
 
-export default function Modal({
+function Modal({
+// export default function Modal({
     children,
     showModal,
     setModal,
-}) {
+// }) {
+}, ref) {
     const onKeyDown = useCallback((e) => {
-        if (e.key === "Escape") {
+        if (e.key === 'Escape' && showModal) {
             setModal(false);
         }
     }, [setModal]);
@@ -18,16 +20,28 @@ export default function Modal({
     }, [onKeyDown]);
 
     return (
-        <>
-            {showModal &&
-                <section className={styles['m-modal']}>
-                    <div
-                        className={styles['m-modal__backdrop']}
-                        onClick={() => setModal(false)}
-                    />
-                    {children}
-                </section>
-            }
-        </>
+
+            // <section className={styles['m-modal']} ref={modalRef}>
+            <section className={styles['m-modal']} ref={ref}>
+                <div
+                    className={styles['m-modal__backdrop']}
+                    onClick={() => setModal(false)}
+                />
+                {children}
+            </section>
+
+        // <>
+        //     {showModal &&
+        //         <section className={styles['m-modal']} ref={ref}>
+        //             <div
+        //                 className={styles['m-modal__backdrop']}
+        //                 onClick={() => setModal(false)}
+        //             />
+        //             {children}
+        //         </section>
+        //     }
+        // </>
     );
 }
+
+export default forwardRef(Modal);

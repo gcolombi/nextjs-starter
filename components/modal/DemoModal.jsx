@@ -1,9 +1,11 @@
 import styles from '@/styles/modules/DemoModal.module.scss';
-import { useState, useCallback, useMemo } from 'react';
+import gsap from 'gsap';
+import { useState, useCallback, useMemo, useRef } from 'react';
 import useLockedScroll from '@/hooks/useLockedScroll';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import Modal from './Modal';
 
-export default function useDemoModal() {
+export function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);
     const [locked, setLocked] = useLockedScroll(false);
 
@@ -12,26 +14,105 @@ export default function useDemoModal() {
         setLocked(state);
     }
 
-    const DemoModalCallback = useCallback(() => {
-        return (
-            <DemoModal
-                showDemoModal={showDemoModal}
-                setModal={setModal}
-            />
-        );
-    }, [showDemoModal, setModal]);
+    // const DemoModalCallback = useCallback(() => {
 
-    return useMemo(() => ({
-        setModal, DemoModal: DemoModalCallback
-    }), [setModal, DemoModalCallback]);
+    //     const [isReady, setIsReady] = useState(false);
+
+    //     useIsomorphicLayoutEffect(() => {
+
+    //         const ctx = gsap.context(() => {
+
+    //         if (showDemoModal) {
+    //             gsap
+    //             .timeline()
+    //             .to(modalRef.current, {
+    //                 opacity: 1,
+    //                 pointerEvents: 'all',
+    //                 duration: 1,
+    //                 ease: 'power4.out'
+    //             }).then(() => {
+    //                 console.log('open');
+    //                 setIsReady(true);
+    //             });
+
+    //         } else {
+    //             gsap
+    //             .timeline()
+    //             .to(modalRef.current, {
+    //                 opacity: 0,
+    //                 pointerEvents: 'none',
+    //                 duration: 1,
+    //                 ease: 'power4.out'
+    //             }).then(() => {
+    //                 console.log('close');
+    //                 setIsReady(false);
+    //             });
+    //         }
+
+    //         }, modalRef);
+
+    //         return () => ctx.revert();
+
+    //     }, [showDemoModal]);
+
+
+    //     return (
+    //         <>
+    //             {
+    //                 isReady &&
+    //                 <DemoModal
+    //                     showDemoModal={showDemoModal}
+    //                     setModal={setModal}
+    //                 />
+    //             }
+    //         </>
+    //     );
+    // }, [showDemoModal, setModal]);
+
+    // return useMemo(() => ({
+    //     setRef, setModal, showDemoModal
+    //     // setModal, DemoModal: DemoModalCallback
+    // // }), [setModal, DemoModalCallback]);
+    // }), [setModal]);
+
+    return [
+        // setRef,
+        setModal,
+        showDemoModal
+    ]
 }
 
-function DemoModal({
+export default function DemoModal({
     showDemoModal,
     setModal
 }) {
+    const modalRef = useRef();
+    const timeline = useRef();
+
+    useIsomorphicLayoutEffect(() => {
+        console.log('first render');
+        const ctx = gsap.context(() => {
+            timeline.current = gsap
+            .timeline()
+            .to(modalRef.current, {
+                opacity: 1,
+                pointerEvents: 'all',
+                duration: .35,
+                ease: 'power4.out'
+            })
+            .reverse();
+        }, modalRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    useIsomorphicLayoutEffect(() => {
+        console.log(showDemoModal);
+        timeline.current.reversed(!showDemoModal);
+    }, [showDemoModal]);
+
     return (
-        <Modal showModal={showDemoModal} setModal={setModal}>
+        <Modal showModal={showDemoModal} setModal={setModal} ref={modalRef}>
             <div className={styles['c-demoModal']}>
                 <button
                     className={styles['c-demoModal__close']}
