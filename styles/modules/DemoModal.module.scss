@@ -1,0 +1,14 @@
+.c-demoModal {
+    --body-text-color: var(--black);
+
+    position: relative;
+    background: var(--modal-background-color);
+    max-width: 450px;
+    border-radius: rem(16px);
+    text-align: center;
+    box-shadow: rgba($black, 0.2) 0px 12px 28px 0px, rgba($black, 0.1) 0px 2px 4px 0px, rgba($black, 0.05) 0px 0px 0px 1px inset;
+
+    &__inner {
+        padding: rem(32px) rem(64px);
+    }
+}
