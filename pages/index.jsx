@@ -9,11 +9,9 @@ import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import useDemoModal from '@/components/modal/DemoModal';
-// import DemoModal, { useDemoModal } from '@/components/modal/DemoModal';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
-    // const [setModal, showDemoModal] = useDemoModal();
     const [locked, setLocked] = useLockedScroll(false);
 
     return (
@@ -34,10 +32,7 @@ export default function Home() {
             />
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <DemoModal
-                        // showDemoModal={showDemoModal}
-                        // setModal={setModal}
-                    />
+                    <DemoModal />
                     <Button
                         label="Modal"
                         onClick={() => setModal(true)}

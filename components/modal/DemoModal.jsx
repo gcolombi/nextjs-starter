@@ -26,14 +26,8 @@ export default function useDemoModal() {
     return useMemo(() => ({
         setModal, DemoModal: DemoModalCallback
     }), [setModal, DemoModalCallback]);
-
-    // return [
-    //     setModal,
-    //     showDemoModal
-    // ]
 }
 
-// export default function DemoModal({
 function DemoModal({
     showDemoModal,
     setModal
