@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function useScrollbar() {
     const [scrollbar, setScrollbar] = useState({
@@ -22,7 +23,7 @@ export default function useScrollbar() {
         })
     }, [scrollbar?.scrollY, scrollbar?.scrollX, scrollbar?.directionY, scrollbar?.directionX])
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         /* Add event listener */
         window.addEventListener('scroll', updateScrollbar);
 

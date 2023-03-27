@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function useElementSize() {
     /**
@@ -18,9 +19,9 @@ export default function useElementSize() {
             width: ref?.getBoundingClientRect().width || 0,
             height: ref?.getBoundingClientRect().height || 0,
         })
-    }, [ref?.getBoundingClientRect().height, ref?.getBoundingClientRect().width])
+    }, [ref?.getBoundingClientRect().height, ref?.getBoundingClientRect().width]);
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         /* Add event listener */
         window.addEventListener('resize', handleSize);
 

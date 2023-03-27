@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function useWindowSize() {
     /* Initialize state with undefined width/height so server and client renders match */
@@ -15,7 +16,7 @@ export default function useWindowSize() {
         });
     }
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         /* Add event listener */
         window.addEventListener('resize', handleResize);
 
