@@ -14,7 +14,7 @@
     padding: var(--navigation-padding) 0;
     background: var(--navigation-bg);
     box-shadow: none;
-    transition: all .35s $ease-in 0s;
+    transition: all .35s, right 0s $ease-in 0s;
 
     &:before {
         content: '';

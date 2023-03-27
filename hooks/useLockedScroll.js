@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function useLockedScroll(
     initialLocked
 ) {
-  const [locked, setLocked] = useState(initialLocked);
+    const [locked, setLocked] = useState(initialLocked);
 
     /* Do the side effect before render */
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (!locked) {
             return;
         }
 
-        /* Save initial body style */
+        /* Save initial window offset width & body style */
+        const originalDocumentWidth = document.documentElement.offsetWidth;
         const originalOverflow = document.body.style.overflow;
+        const originalPaddingRight = document.body.style.paddingRight
         const originalHeight = document.body.style.height;
 
         /* Lock body scroll */
@@ -20,10 +23,24 @@ export default function useLockedScroll(
         document.body.style.height = `${100}vh`;
         document.body.classList.add('has-scroll-lock');
 
+        /* Get the scrollbar width */
+        const scrollBarWidth = window.innerWidth - originalDocumentWidth;
+
+        /* Avoid width reflow */
+        if (scrollBarWidth) {
+            document.body.style.paddingRight = `${scrollBarWidth}px`;
+            document.body.querySelector('header').style.right = `${scrollBarWidth}px`;
+        }
+
         return () => {
             document.body.style.overflow = originalOverflow;
             document.body.style.height = originalHeight;
             document.body.classList.remove('has-scroll-lock');
+
+            if (scrollBarWidth) {
+                document.body.style.paddingRight = originalPaddingRight;
+                document.body.querySelector('header').style.right = 0;
+            }
         }
     }, [locked]);
 

@@ -42,7 +42,6 @@ function DemoModal({
     const timeline = useRef();
 
     useIsomorphicLayoutEffect(() => {
-        console.log('first render');
         const ctx = gsap.context(() => {
             timeline.current = gsap
             .timeline({
