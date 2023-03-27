@@ -46,7 +46,7 @@ function DemoModal({
             timeline.current = gsap
             .timeline({
                 defaults: {
-                    ease: 'power2.inOut'
+                    ease: 'power4.out'
                 }
             })
             .to(modalRef.current, {
@@ -58,7 +58,7 @@ function DemoModal({
                 opacity: 1,
                 scaleY: 0.01,
                 x: 1,
-                duration: 0.3
+                duration: 0.25
             })
             .to('[data-modal]', {
                 scaleY: 1,
