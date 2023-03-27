@@ -52,7 +52,7 @@ export default function DemoModal({
             .to(modalRef.current, {
                 opacity: 1,
                 pointerEvents: 'all',
-                duration: 0.2
+                duration: 0.35
             })
             .to('[data-modal]', {
                 opacity: 1,
@@ -61,7 +61,6 @@ export default function DemoModal({
                 duration: 0.3
             })
             .to('[data-modal]', {
-                opacity: 1,
                 scaleY: 1,
                 duration: 0.35
             })
