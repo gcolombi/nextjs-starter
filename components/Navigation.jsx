@@ -32,7 +32,6 @@ export default function Navigation() {
                         [styles['is-open']]: isOpen
                     }
                 )}
-                // ref={navigationRef}
                 ref={(el)=> {
                     navigationRef(el);
                     setRef(el);

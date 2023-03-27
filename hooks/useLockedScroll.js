@@ -29,7 +29,7 @@ export default function useLockedScroll(
         const scrollBarWidth = window.innerWidth - originalDocumentWidth;
 
         /* Avoid width reflow */
-        if (scrollBarWidth) {
+        if (ref && scrollBarWidth) {
             document.body.style.paddingRight = `${scrollBarWidth}px`;
             ref.style.right = `${scrollBarWidth}px`;
         }
@@ -39,7 +39,7 @@ export default function useLockedScroll(
             document.body.style.height = originalHeight;
             document.body.classList.remove('has-scroll-lock');
 
-            if (scrollBarWidth) {
+            if (ref && scrollBarWidth) {
                 document.body.style.paddingRight = originalPaddingRight;
                 ref.style.right = 0;
             }
