@@ -13,6 +13,7 @@ const NavigationContext = createContext({
 })
 
 export function NavigationContextProvider({ children }) {
+    const [ref, setRef] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const { scrollY, directionY } = useScrollbar();
     const { windowSize, isDesktop } = useWindowSize();
@@ -47,10 +48,12 @@ export function NavigationContextProvider({ children }) {
     return (
         <NavigationContext.Provider
             value={{
+                ref,
+                setRef,
                 isOpen,
+                setIsOpen,
                 sticky: scrollY > 0,
                 hidden: directionY > 0 && scrollY > windowSize.height,
-                setIsOpen,
                 toggle
             }}
         >

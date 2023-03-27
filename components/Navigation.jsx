@@ -11,7 +11,7 @@ import NavItem from './NavItem';
 import classNames from 'classnames';
 
 export default function Navigation() {
-    const { isOpen, sticky, hidden } = useNavigationContext();
+    const { setRef, isOpen, sticky, hidden } = useNavigationContext();
     const [navigationRef, { height }] = useElementSize();
     const isMounted = useIsMounted();
     const { resolvedTheme, setTheme } = useTheme();
@@ -32,7 +32,11 @@ export default function Navigation() {
                         [styles['is-open']]: isOpen
                     }
                 )}
-                ref={navigationRef}
+                // ref={navigationRef}
+                ref={(el)=> {
+                    navigationRef(el);
+                    setRef(el);
+                }}
             >
                 <div className="o-container">
                     <div className={styles['c-navigation__row']}>

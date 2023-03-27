@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import useNavigationContext from '@/context/navigationContext';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function useLockedScroll(
     initialLocked
 ) {
+    const { ref } = useNavigationContext();
     const [locked, setLocked] = useState(initialLocked);
 
     /* Do the side effect before render */
@@ -29,7 +31,7 @@ export default function useLockedScroll(
         /* Avoid width reflow */
         if (scrollBarWidth) {
             document.body.style.paddingRight = `${scrollBarWidth}px`;
-            document.body.querySelector('header').style.right = `${scrollBarWidth}px`;
+            ref.style.right = `${scrollBarWidth}px`;
         }
 
         return () => {
@@ -39,7 +41,7 @@ export default function useLockedScroll(
 
             if (scrollBarWidth) {
                 document.body.style.paddingRight = originalPaddingRight;
-                document.body.querySelector('header').style.right = 0;
+                ref.style.right = 0;
             }
         }
     }, [locked]);
