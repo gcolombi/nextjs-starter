@@ -5,7 +5,7 @@ import useLockedScroll from '@/hooks/useLockedScroll';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import Modal from './Modal';
 
-export function useDemoModal() {
+export default function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);
     const [locked, setLocked] = useLockedScroll(false);
 
@@ -33,7 +33,8 @@ export function useDemoModal() {
     // ]
 }
 
-export default function DemoModal({
+// export default function DemoModal({
+function DemoModal({
     showDemoModal,
     setModal
 }) {
@@ -80,7 +81,6 @@ export default function DemoModal({
     }, []);
 
     useIsomorphicLayoutEffect(() => {
-        console.log(showDemoModal);
         timeline.current.reversed(!showDemoModal);
     }, [showDemoModal]);
 

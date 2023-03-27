@@ -8,8 +8,8 @@ import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
-import DemoModal, { useDemoModal } from '@/components/modal/DemoModal';
-// import useDemoModal from '@/components/modal/DemoModal';
+import useDemoModal from '@/components/modal/DemoModal';
+// import DemoModal, { useDemoModal } from '@/components/modal/DemoModal';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
