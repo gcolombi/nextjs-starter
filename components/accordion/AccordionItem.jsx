@@ -1,6 +1,7 @@
 import styles from '@/styles/modules/AccordionItem.module.scss';
-import { useRef } from 'react';
+import { useId, useRef } from 'react';
 import useAccordionItem from '@/context/accordionContext';
+import { slugify } from '@/utils/string';
 import classNames from 'classnames';
 import Chevron from '../icons/Chevron';
 
@@ -15,6 +16,8 @@ export default function AccordionItem({
     const container = useRef();
     const content = useRef();
     const { expanded, toggle } = useAccordionItem({ id, initialExpanded, container, content });
+    const buttonId = `${slugify(header)}-${useId()}`;
+    const panelId = `${slugify(header)}-${useId()}`;
 
     return (
         <li
@@ -25,13 +28,15 @@ export default function AccordionItem({
                 headingTag={headingTag}
                 headingClassName={headingClassName}
                 id={id}
+                buttonId={buttonId}
+                panelId={panelId}
                 expanded={expanded}
                 toggle={toggle}
             />
             <div
                 className={styles['c-accordions__item__container']}
-                id={`${id}-panel`}
-                aria-labelledby={`${id}-header`}
+                id={panelId}
+                aria-labelledby={buttonId}
                 ref={container}
             >
                 <div className={styles['c-accordions__item__container--content']} ref={content}>
@@ -46,7 +51,8 @@ function Heading({
     header,
     headingTag,
     headingClassName,
-    id,
+    buttonId,
+    panelId,
     expanded,
     toggle
 }) {
@@ -58,8 +64,8 @@ function Heading({
         <Heading className={headingClassName}>
             <button
                 type="button"
-                id={`${id}-header`}
-                aria-controls={`${id}-panel`}
+                id={buttonId}
+                aria-controls={panelId}
                 aria-expanded={expanded}
                 onClick={() => toggle()}
                 className={classNames(
