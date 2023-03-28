@@ -55,6 +55,7 @@ export default function AccordionPage() {
                                     delay={0.3 + i / 10}
                                     y="100%"
                                     key={i}
+                                    ease={'sine.out'}
                                 >
                                     <AccordionItem
                                         header={header}
@@ -97,12 +98,13 @@ export default function AccordionPage() {
                         <Accordion allowMultiple>
                             {items.map(({ header, content }, i) => (
                                 <TranslateInOut
-                                    delay={0.2}
+                                    delay={0.3}
                                     y="100%"
                                     start= "-100% bottom"
                                     end= "top top"
                                     watch
                                     key={i}
+                                    ease={'sine.out'}
                                 >
                                     <AccordionItem
                                         header={header}
@@ -145,12 +147,13 @@ export default function AccordionPage() {
                         <Accordion>
                             {items.map(({ header, content }, i) => (
                                 <TranslateInOut
-                                    delay={0.2}
+                                    delay={0.3}
                                     y="100%"
                                     start= "-100% bottom"
                                     end= "top top"
                                     watch
                                     key={i}
+                                    ease={'sine.out'}
                                 >
                                     <AccordionItem
                                         header={header}
@@ -194,12 +197,13 @@ export default function AccordionPage() {
                         <Accordion>
                             {items.map(({ header }, i) => (
                                 <TranslateInOut
-                                    delay={0.2}
+                                    delay={0.3}
                                     y="100%"
                                     start= "-100% bottom"
                                     end= "top top"
                                     watch
                                     key={i}
+                                    ease={'sine.out'}
                                 >
                                     <AccordionItem
                                         header={header}
