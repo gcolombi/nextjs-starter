@@ -40,7 +40,7 @@ export default function Navigation() {
                 <div className="o-container">
                     <div className={styles['c-navigation__row']}>
                         <div className={styles['c-navigation__logo']}>
-                            <Link href="/">
+                            <Link href="/" title='Next.js starter'>
                                 <Logo />
                             </Link>
                         </div>
