@@ -36,6 +36,10 @@ function DemoModal({
     const timeline = useRef();
 
     useIsomorphicLayoutEffect(() => {
+        if (!showDemoModal) {
+            return;
+        }
+
         const ctx = gsap.context(() => {
             timeline.current = gsap
             .timeline({
@@ -74,8 +78,8 @@ function DemoModal({
     }, []);
 
     useIsomorphicLayoutEffect(() => {
-        timeline.current.reversed(!showDemoModal);
-    }, [showDemoModal]);
+        timeline.current?.reversed(!showDemoModal);
+    }, []);
 
     return (
         <Modal showModal={showDemoModal} setModal={setModal} ref={modalRef}>
