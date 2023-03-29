@@ -37,7 +37,7 @@ function AnimateInOut({
             /* Intro animation */
             gsap.to(element.current, {
                 ...to,
-                delay: delay,
+                delay,
                 duration: durationIn,
                 ...scrollTrigger
             });
