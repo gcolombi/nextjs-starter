@@ -42,7 +42,7 @@ export default function AccordionPage() {
                         </ShuffleTextInOut>
                         <TranslateInOut
                             overflowHidden
-                            delay={0.3}
+                            delay={0.4}
                             y="100%"
                         >
                             <div className="o-wysiwyg">
@@ -51,25 +51,18 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion>
                             {items.map(({ header, content }, i) => (
-                                // <TranslateInOut
-                                //     delay={0.3 + i / 10}
-                                //     y="100%"
-                                //     key={i}
-                                //     ease={'sine.out'}
-                                // >
-                                    <AccordionItem
-                                        header={header}
-                                        headingClassName="h6"
-                                        id={i}
-                                        key={i}
-                                        delay={items.length / 10 + i / 10}
-                                        delayOut={items.length / 10 - i / 10}
-                                    >
-                                        <div className="o-wysiwyg">
-                                            <p>{content}</p>
-                                        </div>
-                                    </AccordionItem>
-                                // </TranslateInOut>
+                                <AccordionItem
+                                    header={header}
+                                    headingClassName="h6"
+                                    id={i}
+                                    key={i}
+                                    delay={items.length / 10 + i / 10}
+                                    delayOut={items.length / 10 - i / 10}
+                                >
+                                    <div className="o-wysiwyg">
+                                        <p>{content}</p>
+                                    </div>
+                                </AccordionItem>
                             ))}
                         </Accordion>
                     </div>
@@ -87,7 +80,7 @@ export default function AccordionPage() {
                         </ShuffleTextInOut>
                         <TranslateInOut
                             overflowHidden
-                            delay={0.2}
+                            delay={0.4}
                             y="100%"
                             start= "-100% bottom"
                             end= "top top"
@@ -99,30 +92,20 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion allowMultiple>
                             {items.map(({ header, content }, i) => (
-                                // <TranslateInOut
-                                //     delay={0.3}
-                                //     y="100%"
-                                //     start= "-100% bottom"
-                                //     end= "top top"
-                                //     watch
-                                //     key={i}
-                                //     ease={'sine.out'}
-                                // >
-                                    <AccordionItem
-                                        header={header}
-                                        headingClassName="h6"
-                                        id={i}
-                                        key={i}
-                                        delay={0.3}
-                                        start= "-100% bottom"
-                                        end= "top top"
-                                        watch
-                                    >
-                                        <div className="o-wysiwyg">
-                                            <p>{content}</p>
-                                        </div>
-                                    </AccordionItem>
-                                // </TranslateInOut>
+                                <AccordionItem
+                                    header={header}
+                                    headingClassName="h6"
+                                    id={i}
+                                    key={i}
+                                    delay={0.3}
+                                    start= "-100% bottom"
+                                    end= "top top"
+                                    watch
+                                >
+                                    <div className="o-wysiwyg">
+                                        <p>{content}</p>
+                                    </div>
+                                </AccordionItem>
                             ))}
                         </Accordion>
                     </div>
@@ -140,7 +123,7 @@ export default function AccordionPage() {
                         </ShuffleTextInOut>
                         <TranslateInOut
                             overflowHidden
-                            delay={0.2}
+                            delay={0.4}
                             y="100%"
                             start= "-100% bottom"
                             end= "top top"
@@ -152,31 +135,21 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion>
                             {items.map(({ header, content }, i) => (
-                                // <TranslateInOut
-                                //     delay={0.3}
-                                //     y="100%"
-                                //     start= "-100% bottom"
-                                //     end= "top top"
-                                //     watch
-                                //     key={i}
-                                //     ease={'sine.out'}
-                                // >
-                                    <AccordionItem
-                                        header={header}
-                                        headingClassName="h6"
-                                        id={i}
-                                        key={i}
-                                        initialExpanded={i === 0 ? true : false}
-                                        delay={0.3}
-                                        start= "-100% bottom"
-                                        end= "top top"
-                                        watch
-                                    >
-                                        <div className="o-wysiwyg">
-                                            <p>{content}</p>
-                                        </div>
-                                    </AccordionItem>
-                                // </TranslateInOut>
+                                <AccordionItem
+                                    header={header}
+                                    headingClassName="h6"
+                                    id={i}
+                                    key={i}
+                                    initialExpanded={i === 0 ? true : false}
+                                    delay={0.3}
+                                    start= "-100% bottom"
+                                    end= "top top"
+                                    watch
+                                >
+                                    <div className="o-wysiwyg">
+                                        <p>{content}</p>
+                                    </div>
+                                </AccordionItem>
                             ))}
                         </Accordion>
                     </div>
@@ -194,7 +167,7 @@ export default function AccordionPage() {
                         </ShuffleTextInOut>
                         <TranslateInOut
                             overflowHidden
-                            delay={0.2}
+                            delay={0.4}
                             y="100%"
                             start= "-100% bottom"
                             end= "top top"
@@ -206,42 +179,32 @@ export default function AccordionPage() {
                         </TranslateInOut>
                         <Accordion>
                             {items.map(({ header }, i) => (
-                                // <TranslateInOut
-                                //     delay={0.3}
-                                //     y="100%"
-                                //     start= "-100% bottom"
-                                //     end= "top top"
-                                //     watch
-                                //     key={i}
-                                //     ease={'sine.out'}
-                                // >
-                                    <AccordionItem
-                                        header={header}
-                                        headingClassName="h6"
-                                        id={i}
-                                        key={i}
-                                        delay={0.3}
-                                        start= "-100% bottom"
-                                        end= "top top"
-                                        watch
-                                    >
-                                        <Accordion>
-                                            {items.map(({ header, content }, i) => (
-                                                <AccordionItem
-                                                    header={header}
-                                                    headingTag={'h4'}
-                                                    headingClassName="h6"
-                                                    id={i}
-                                                    key={i}
-                                                >
-                                                    <div className="o-wysiwyg">
-                                                        <p>{content}</p>
-                                                    </div>
-                                                </AccordionItem>
-                                            ))}
-                                        </Accordion>
-                                    </AccordionItem>
-                                // </TranslateInOut>
+                                <AccordionItem
+                                    header={header}
+                                    headingClassName="h6"
+                                    id={i}
+                                    key={i}
+                                    delay={0.3}
+                                    start= "-100% bottom"
+                                    end= "top top"
+                                    watch
+                                >
+                                    <Accordion>
+                                        {items.map(({ header, content }, i) => (
+                                            <AccordionItem
+                                                header={header}
+                                                headingTag={'h4'}
+                                                headingClassName="h6"
+                                                id={i}
+                                                key={i}
+                                            >
+                                                <div className="o-wysiwyg">
+                                                    <p>{content}</p>
+                                                </div>
+                                            </AccordionItem>
+                                        ))}
+                                    </Accordion>
+                                </AccordionItem>
                             ))}
                         </Accordion>
                     </div>
