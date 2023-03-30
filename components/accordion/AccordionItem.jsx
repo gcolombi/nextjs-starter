@@ -12,7 +12,7 @@ export default function AccordionItem({
     children,
     header,
     headingTag = 'h3',
-    headingClassName='',
+    headingClassName = '',
     id,
     initialExpanded,
     durationIn = 0.5,

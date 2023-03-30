@@ -133,7 +133,7 @@
                                     }
 
                                     &.is-current-page {
-                                        --navigation-link-color: var(--secondary);
+                                        --navigation-link-color: var(--body-current-page-color);
                                     }
                                 }
                             }
