@@ -1,18 +1,15 @@
 import styles from '@/styles/modules/MobileNavigation.module.scss';
 import NavItem from './NavItem';
-import useDelayedRender from 'use-delayed-render';
 import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
 export default function MobileNavigation() {
     const { isOpen, toggle } = useNavigationContext();
-    const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
-        isOpen,
-        {
-          enterDelay: 200,
-          exitDelay: 350
-        }
-    );
+
+    useIsomorphicLayoutEffect(() => {
+        console.log('layout effect');
+    }, [isOpen]);
 
     return (
         <>
@@ -20,11 +17,11 @@ export default function MobileNavigation() {
                 isOpen={isOpen}
                 toggle={toggle}
             />
-            {isMenuMounted &&
+            {isOpen &&
                 <nav
                    className={classNames(
                         styles['c-mobileNav'],
-                        {[styles['is-open']]: isMenuRendered}
+                        {[styles['is-open']]: isOpen}
                    )}
                 >
                     <div className={styles['c-mobileNav__scroll']}>
