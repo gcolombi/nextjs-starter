@@ -51,6 +51,7 @@ export default function App({ Component, pageProps }) {
         document.activeElement && document.activeElement.blur();
     }, [router]);
 
+    /* Temporary fix to avoid flash of unstyled content (FOUC) during route transitions */
     useNextCssRemovalPrevention();
 
     return (
