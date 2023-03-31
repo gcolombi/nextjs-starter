@@ -5,7 +5,7 @@ export default function MetaData({ ...customMeta }) {
     const { currentURL } = useWindowLocation();
     const meta = {
         title: 'Next.js starter',
-        description: `Nulla posuere sollicitudin aliquam ultrices sagittis orci a. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque.`,
+        description: 'A starter for Next.js that includes a collection of reusable components, hooks, and utilities to build amazing projects with complex animated page transitions using GSAP.',
         image: `${currentURL}static/example.jpg`,
         type: 'website',
         ...customMeta
