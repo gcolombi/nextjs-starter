@@ -51,11 +51,23 @@ export default function Navigation() {
                                     <ul>
                                         <li>
                                             <NavItem
+                                                href="/gsap"
+                                                title="Gsap"
+                                                className={styles['is-current-page']}
+                                                overflowHidden
+                                                delay={0.7}
+                                                ease="power.out"
+                                                y="15px"
+                                                rotate={7}
+                                            />
+                                        </li>
+                                        <li>
+                                            <NavItem
                                                 href="/accordion"
                                                 title="Accordion"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.7}
+                                                delay={0.9}
                                                 ease="power.out"
                                                 y="15px"
                                                 rotate={7}
@@ -67,7 +79,7 @@ export default function Navigation() {
                                                 title="Form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.9}
+                                                delay={1.1}
                                                 ease="power.out"
                                                 y="15px"
                                                 rotate={7}
@@ -79,7 +91,7 @@ export default function Navigation() {
                                                 title="File upload form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={1.1}
+                                                delay={1.3}
                                                 ease="power.out"
                                                 y="15px"
                                                 rotate={7}

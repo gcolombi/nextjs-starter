@@ -42,6 +42,13 @@ export default function Footer() {
                         <ul className="unstyled">
                             <li>
                                 <NavItem
+                                    href="/gsap"
+                                    title="Gsap"
+                                    className={styles['is-current-page']}
+                                />
+                            </li>
+                            <li>
+                                <NavItem
                                     href="/accordion"
                                     title="Accordion"
                                     className={styles['is-current-page']}

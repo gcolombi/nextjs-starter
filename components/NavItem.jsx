@@ -17,7 +17,7 @@ export default function NavItem({
     rotate = 0,
     scale = 1,
     x = 0,
-    y = 0,
+    y = 0
 }) {
     const router = useRouter();
     const isActive = router.asPath === href;
