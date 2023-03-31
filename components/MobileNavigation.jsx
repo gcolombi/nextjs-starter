@@ -2,14 +2,9 @@ import styles from '@/styles/modules/MobileNavigation.module.scss';
 import NavItem from './NavItem';
 import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
 export default function MobileNavigation() {
     const { isOpen, toggle } = useNavigationContext();
-
-    useIsomorphicLayoutEffect(() => {
-        console.log('layout effect');
-    }, [isOpen]);
 
     return (
         <>
@@ -36,9 +31,9 @@ export default function MobileNavigation() {
                                                 className={styles['is-current-page']}
                                                 overflowHidden
                                                 delay={0.2}
-                                                ease="sine.out"
-                                                y="20px"
-                                                rotate={10}
+                                                ease="slow"
+                                                y="100%"
+                                                rotate={7}
                                             />
                                         </li>
                                         <li>
@@ -47,10 +42,10 @@ export default function MobileNavigation() {
                                                 title="Form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.3}
-                                                ease="sine.out"
-                                                y="20px"
-                                                rotate={10}
+                                                delay={0.4}
+                                                ease="slow"
+                                                y="100%"
+                                                rotate={7}
                                             />
                                         </li>
                                         <li>
@@ -59,10 +54,10 @@ export default function MobileNavigation() {
                                                 title="File upload form"
                                                 className={styles['is-current-page']}
                                                 overflowHidden
-                                                delay={0.4}
-                                                ease="sine.out"
-                                                y="20px"
-                                                rotate={10}
+                                                delay={0.6}
+                                                ease="slow"
+                                                y="100%"
+                                                rotate={7}
                                             />
                                         </li>
                                     </ul>
