@@ -1,19 +1,16 @@
-import MetaData from '@/components/MetaData';
-import HeaderBasic from '@/components/HeaderBasic';
-import Button from '@/components/Button';
-import useLockedScroll from '@/hooks/useLockedScroll';
-import TranslateInOut from '@/components/gsap/TranslateInOut';
-import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
-import RotateInOut3D from '@/components/gsap/RotateInOut3D';
-import ScaleInOut from '@/components/gsap/ScaleInOut';
-import RotateInOut from '@/components/gsap/RotateInOut';
-import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import useDemoModal from '@/components/modal/DemoModal';
 import useWindowSize from '@/hooks/useWindowSize';
 import useScrollbar from '@/hooks/useScrollbar';
 import useElementSize from '@/hooks/useElementSize';
+import useLockedScroll from '@/hooks/useLockedScroll';
 import useWindowLocation from '@/hooks/useWindowLocation';
 import useIsMounted from '@/hooks/useIsMounted';
+import MetaData from '@/components/MetaData';
+import HeaderBasic from '@/components/HeaderBasic';
+import Button from '@/components/Button';
+import TranslateInOut from '@/components/gsap/TranslateInOut';
+import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
+import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal({
@@ -154,7 +151,7 @@ export default function Home() {
                         y="100%"
                     >
                         <div className="o-wysiwyg">
-                            <p>Simple React hooks, ready to use.</p>
+                            <p>Simple and usefull React hooks, ready to use.</p>
                         </div>
                     </TranslateInOut>
                     <div className="c-gridSection__row">
@@ -262,7 +259,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="u-spacing--responsive--bottom">
+            {/* <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div
                         style={{
@@ -344,8 +341,8 @@ export default function Home() {
                         </RotateInOut3D>
                     </div>
                 </div>
-            </section>
-            <div className="u-spacing--responsive--bottom">
+            </section> */}
+            {/* <div className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div className="o-wysiwyg">
                         <ImplodeExplodeInOut
@@ -356,8 +353,8 @@ export default function Home() {
                         </ImplodeExplodeInOut>
                     </div>
                 </div>
-            </div>
-            <div className="u-spacing--responsive--bottom">
+            </div> */}
+            {/* <div className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <RotateInOut
@@ -373,7 +370,7 @@ export default function Home() {
                         </RotateInOut>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }
