@@ -12,6 +12,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import useScrollbar from '@/hooks/useScrollbar';
 import useElementSize from '@/hooks/useElementSize';
 import useWindowLocation from '@/hooks/useWindowLocation';
+import useIsMounted from '@/hooks/useIsMounted';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
@@ -21,6 +22,7 @@ export default function Home() {
     const [itemRef, size] = useElementSize();
     const [locked, setLocked] = useLockedScroll(false);
     const { currentURL } = useWindowLocation();
+    const isMounted = useIsMounted();
 
     return (
         <>
@@ -88,6 +90,12 @@ export default function Home() {
                             <h3>useWindowLocation</h3>
                             <div className="o-wysiwyg">
                                 <p>currentURL: {currentURL}</p>
+                            </div>
+                        </div>
+                        <div className="c-gridSection__item" ref={itemRef}>
+                            <h3>useIsMounted</h3>
+                            <div className="o-wysiwyg">
+                                <p>isMounted: {String(isMounted())}</p>
                             </div>
                         </div>
                     </div>
