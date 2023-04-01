@@ -14,11 +14,11 @@ import useElementSize from '@/hooks/useElementSize';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
-    const [locked, setLocked] = useLockedScroll(false);
 
     const { windowSize, isMobile, isDesktop } = useWindowSize();
-    const { scrollY, scrollX, directionY, directionX } = useScrollbar();
+    const { scrollY, directionY } = useScrollbar();
     const [itemRef, size] = useElementSize();
+    const [locked, setLocked] = useLockedScroll(false);
 
     return (
         <>
@@ -69,6 +69,17 @@ export default function Home() {
                             <div className="o-wysiwyg">
                                 <p>Width: {size.width}</p>
                                 <p>Height: {size.height}</p>
+                            </div>
+                        </div>
+                        <div className="c-gridSection__item" ref={itemRef}>
+                            <h3>useLockedScroll</h3>
+                            <div className="o-wysiwyg">
+                                <p>Locked: {String(locked)}</p>
+                                <Button
+                                    label={locked ? 'Unlock scroll' : 'Lock scroll'}
+                                    onClick={() => setLocked(!locked)}
+                                    className="c-btn"
+                                />
                             </div>
                         </div>
                     </div>
