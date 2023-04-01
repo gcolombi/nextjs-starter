@@ -372,16 +372,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <ShuffleTextInOut
-                        target="#shuffleText"
-                        watch
-                    >
-                        <h2 id="shuffleText">GreenSock is awesome</h2>
-                    </ShuffleTextInOut>
-                </div>
-            </div>
         </>
     )
 }
