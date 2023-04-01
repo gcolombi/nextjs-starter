@@ -29,7 +29,6 @@ export default function AccordionPage() {
             />
             <HeaderBasic
                 title="Accordion"
-                wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
             />
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container--small">
