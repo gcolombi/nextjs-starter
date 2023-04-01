@@ -20,7 +20,7 @@ export default function Home() {
 
     const { windowSize, isMobile, isDesktop } = useWindowSize();
     const { scrollY, directionY } = useScrollbar();
-    const [itemRef, size] = useElementSize();
+    const [sectionRef, size] = useElementSize();
     const [locked, setLocked] = useLockedScroll(false);
     const { currentURL } = useWindowLocation();
     const isMounted = useIsMounted();
@@ -41,7 +41,7 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
-            {/* <section className="c-gridSection u-spacing--responsive--bottom">
+            <section className="c-gridSection u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut
                         delay={0.3}
@@ -59,8 +59,8 @@ export default function Home() {
                         </div>
                     </TranslateInOut>
                 </div>
-            </section> */}
-            <section className="c-gridSection u-spacing--responsive--bottom">
+            </section>
+            <section className="c-gridSection u-spacing--responsive--bottom" ref={sectionRef}>
                 <div className="o-container">
                     <ShuffleTextInOut
                         delay={0.3}
@@ -82,7 +82,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y="265"
                             start= "-265px 90%"
-                            // end= "top top"
+                            end= "-265px top"
                             watch
                             markers
                         >
@@ -100,7 +100,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y="265"
                             start= "-265px 90%"
-                            // end= "top top"
+                            end= "-265px top"
                             watch
                             markers
                         >
@@ -116,13 +116,14 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y="265"
                             start= "-265px 90%"
-                            // end= "top top"
+                            end= "-265px top"
                             watch
                             markers
                         >
-                            <div className="c-gridSection__item" ref={itemRef}>
+                            <div className="c-gridSection__item">
                                 <h3>useElementSize</h3>
                                 <div className="o-wysiwyg">
+                                    <p>E.g. sectionRef</p>
                                     <p>Width: {size.width}</p>
                                     <p>Height: {size.height}</p>
                                 </div>
@@ -132,7 +133,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y="265"
                             start= "-265px 90%"
-                            // end= "top top"
+                            end= "-265px top"
                             watch
                             markers
                         >
@@ -152,7 +153,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y="265"
                             start= "-265px 90%"
-                            // end= "top top"
+                            end= "-265px top"
                             watch
                             markers
                         >
@@ -167,7 +168,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y="265"
                             start= "-265px 90%"
-                            // end= "top top"
+                            end= "-265px top"
                             watch
                             markers
                         >
@@ -205,6 +206,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={100}
                             start="-100px bottom"
+                            watch
                         >
                             <div
                                 style={{
@@ -218,6 +220,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={100}
                             start="-100px bottom"
+                            watch
                         >
                             <div
                                 style={{
@@ -231,6 +234,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={100}
                             start="-100px bottom"
+                            watch
                         >
                             <div
                                 style={{
@@ -244,6 +248,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={100}
                             start="-100px bottom"
+                            watch
                         >
                             <div
                                 style={{
@@ -257,6 +262,7 @@ export default function Home() {
                             durationIn={1 + Math.random()}
                             y={100}
                             start="-100px bottom"
+                            watch
                         >
                             <div
                                 style={{
