@@ -42,7 +42,7 @@ export default function Home() {
                 }}
             />
             <section className="c-gridSection u-spacing--responsive--bottom">
-                <div className="o-container">
+                <div className="o-container--small">
                     <ShuffleTextInOut
                         delay={0.3}
                         target="#hooks"
@@ -55,11 +55,12 @@ export default function Home() {
                         y="100%"
                     >
                         <div className="o-wysiwyg">
-                            <p>This starter includes a complete navigation with different states (open, sticky, hidden...), a modal, accordions and more. Take a look in the components folder</p>
+                            <p>This starter includes a complete navigation with different states (open, sticky, hidden...), a modal, accordions and more. Take a look in the components folder.</p>
                         </div>
                     </TranslateInOut>
                     <div className="c-gridSection__row">
-                        <div>
+                        <div className="c-gridSection__item">
+                            <p>A resusable modal</p>
                             <DemoModal />
                             <Button
                                 label="Modal"
@@ -67,27 +68,27 @@ export default function Home() {
                                 className="c-btn"
                             />
                         </div>
-                        <div>
-                            <DemoModal />
+                        <div className="c-gridSection__item">
+                            {/* <DemoModal />
                             <Button
                                 label="Modal"
                                 onClick={() => setModal(true)}
                                 className="c-btn"
-                            />
+                            /> */}
                         </div>
-                        <div>
-                            <DemoModal />
+                        <div className="c-gridSection__item">
+                            {/* <DemoModal />
                             <Button
                                 label="Modal"
                                 onClick={() => setModal(true)}
                                 className="c-btn"
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
             </section>
             <section className="c-gridSection u-spacing--responsive--bottom" ref={sectionRef}>
-                <div className="o-container">
+                <div className="o-container--small">
                     <ShuffleTextInOut
                         delay={0.3}
                         target="#hooks"
@@ -113,7 +114,7 @@ export default function Home() {
                             markers
                         >
                             <div className="c-gridSection__item">
-                                <h3>useWindowSize</h3>
+                                <h3 className="h5">useWindowSize</h3>
                                 <div className="o-wysiwyg">
                                     <p>Width: {windowSize.width}</p>
                                     <p>Height: {windowSize.height}</p>
@@ -131,7 +132,7 @@ export default function Home() {
                             markers
                         >
                             <div className="c-gridSection__item">
-                                <h3>useScrollbar</h3>
+                                <h3 className="h5">useScrollbar</h3>
                                 <div className="o-wysiwyg">
                                     <p>scrollY: {scrollY}</p>
                                     <p>directionY: {directionY}</p>
@@ -147,7 +148,7 @@ export default function Home() {
                             markers
                         >
                             <div className="c-gridSection__item">
-                                <h3>useElementSize</h3>
+                                <h3 className="h5">useElementSize</h3>
                                 <div className="o-wysiwyg">
                                     <p>E.g. sectionRef</p>
                                     <p>Width: {size.width}</p>
@@ -164,7 +165,7 @@ export default function Home() {
                             markers
                         >
                             <div className="c-gridSection__item">
-                                <h3>useLockedScroll</h3>
+                                <h3 className="h5">useLockedScroll</h3>
                                 <div className="o-wysiwyg">
                                     <p>Locked: {String(locked)}</p>
                                     <Button
@@ -184,7 +185,7 @@ export default function Home() {
                             markers
                         >
                             <div className="c-gridSection__item">
-                                <h3>useWindowLocation</h3>
+                                <h3 className="h5">useWindowLocation</h3>
                                 <div className="o-wysiwyg">
                                     <p>currentURL: {currentURL}</p>
                                 </div>
@@ -199,7 +200,7 @@ export default function Home() {
                             markers
                         >
                             <div className="c-gridSection__item">
-                                <h3>useIsMounted</h3>
+                                <h3 className="h5">useIsMounted</h3>
                                 <div className="o-wysiwyg">
                                     <p>isMounted: {String(isMounted())}</p>
                                 </div>
