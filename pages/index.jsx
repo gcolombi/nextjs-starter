@@ -8,17 +8,20 @@ import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import useDemoModal from '@/components/modal/DemoModal';
+import useWindowSize from '@/hooks/useWindowSize';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
     const [locked, setLocked] = useLockedScroll(false);
+
+    const { windowSize, isMobile, isDesktop } = useWindowSize();
 
     return (
         <>
             <MetaData />
             <HeaderBasic
                 title="Next.js starter"
-                wysiwyg="A starter for Next.js that includes a collection of reusable components, hooks, and utilities to build amazing projects with complex animated page transitions using GSAP."
+                wysiwyg="A collection of reusable components, hooks, and utilities to build amazing projects with complex animations and page transitions using GSAP."
                 button={{
                     label: 'Powered by Next.js',
                     href: '',
@@ -29,6 +32,30 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
+            <section className="c-gridSection u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#hooks"
+                    >
+                        <h2 id="hooks">Hooks</h2>
+                    </ShuffleTextInOut>
+                    <div className="o-wysiwyg">
+                        <p>Lorem ipsum dolor sit.</p>
+                    </div>
+                    <div className="c-gridSection__row">
+                        <div className="c-gridSection__item">
+                            <h3>useWindowSize</h3>
+                            <div className="o-wysiwyg">
+                                <p>Width: {windowSize.width}</p>
+                                <p>Height: {windowSize.height}</p>
+                                <p>isMobile: {String(isMobile)}</p>
+                                <p>isDesktop: {String(isDesktop)}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
                     <DemoModal />

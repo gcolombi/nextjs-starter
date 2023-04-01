@@ -30,7 +30,7 @@
     --navigation-link-color: var(--black);
     --navigation-link-current-color: var(--primary);
     --modal-backdrop-color: rgba(0, 0, 0, 0.1);
-    --modal-box-shadow-color: 0, 0, 0;
+    --box-shadow-color: 0, 0, 0;
 
 	/* Font Families
 
@@ -92,7 +92,7 @@
     --navigation-link-color: var(--white);
     --navigation-link-current-color: var(--secondary);
     --modal-backdrop-color: rgba(0, 0, 0, 0.5);
-    --modal-box-shadow-color: 255, 255, 255;
+    --box-shadow-color: 255, 255, 255;
 }
 
 /* Document
