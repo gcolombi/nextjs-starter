@@ -2,6 +2,7 @@ import MetaData from '@/components/MetaData';
 import HeaderBasic from '@/components/HeaderBasic';
 import Button from '@/components/Button';
 import useLockedScroll from '@/hooks/useLockedScroll';
+import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
@@ -46,11 +47,36 @@ export default function Home() {
                         delay={0.3}
                         target="#hooks"
                     >
+                        <h2 id="hooks">Components</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        overflowHidden
+                        delay={0.4}
+                        y="100%"
+                    >
+                        <div className="o-wysiwyg">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </TranslateInOut>
+                </div>
+            </section>
+            <section className="c-gridSection u-spacing--responsive--bottom">
+                <div className="o-container">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#hooks"
+                    >
                         <h2 id="hooks">Hooks</h2>
                     </ShuffleTextInOut>
-                    <div className="o-wysiwyg">
-                        <p>Simple React hooks, ready to use.</p>
-                    </div>
+                    <TranslateInOut
+                        overflowHidden
+                        delay={0.4}
+                        y="100%"
+                    >
+                        <div className="o-wysiwyg">
+                            <p>Simple React hooks, ready to use.</p>
+                        </div>
+                    </TranslateInOut>
                     <div className="c-gridSection__row">
                         <div className="c-gridSection__item">
                             <h3>useWindowSize</h3>
