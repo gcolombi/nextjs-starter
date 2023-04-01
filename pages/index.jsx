@@ -49,7 +49,7 @@ export default function Home() {
                         <h2 id="hooks">Hooks</h2>
                     </ShuffleTextInOut>
                     <div className="o-wysiwyg">
-                        <p>Lorem ipsum dolor sit.</p>
+                        <p>Simple React hooks, ready to use.</p>
                     </div>
                     <div className="c-gridSection__row">
                         <div className="c-gridSection__item">
@@ -113,12 +113,6 @@ export default function Home() {
             </section>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <ShuffleTextInOut
-                        delay={0.5}
-                        target="#shuffle"
-                    >
-                        <h2 id="shuffle">GreenSock is awesome</h2>
-                    </ShuffleTextInOut>
                     <div
                         style={{
                             display: "grid",
@@ -193,22 +187,6 @@ export default function Home() {
                             />
                         </RotateInOut3D>
                     </div>
-                </div>
-            </section>
-            <section className="u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <ScaleInOut
-                        x="-90px"
-                        durationIn={1}
-                        ease="elastic.out"
-                        watch
-                    >
-                        <Button
-                            label={locked ? 'Unlock scroll' : 'Lock scroll'}
-                            onClick={() => setLocked(!locked)}
-                            className="c-btn"
-                        />
-                    </ScaleInOut>
                 </div>
             </section>
             <div className="u-spacing--responsive--bottom">
