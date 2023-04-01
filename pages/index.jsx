@@ -9,12 +9,14 @@ import RotateInOut from '@/components/gsap/RotateInOut';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import useDemoModal from '@/components/modal/DemoModal';
 import useWindowSize from '@/hooks/useWindowSize';
+import useScrollbar from '@/hooks/useScrollbar';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
     const [locked, setLocked] = useLockedScroll(false);
 
     const { windowSize, isMobile, isDesktop } = useWindowSize();
+    const { scrollY, scrollX, directionY, directionX } = useScrollbar();
 
     return (
         <>
@@ -51,6 +53,13 @@ export default function Home() {
                                 <p>Height: {windowSize.height}</p>
                                 <p>isMobile: {String(isMobile)}</p>
                                 <p>isDesktop: {String(isDesktop)}</p>
+                            </div>
+                        </div>
+                        <div className="c-gridSection__item">
+                            <h3>useScrollbar</h3>
+                            <div className="o-wysiwyg">
+                                <p>scrollY: {scrollY}</p>
+                                <p>directionY: {directionY}</p>
                             </div>
                         </div>
                     </div>

@@ -5,8 +5,8 @@ export default function useScrollbar() {
     const [scrollbar, setScrollbar] = useState({
         scrollY: 0,
         scrollX: 0,
-        directionY: undefined,
-        directionX: undefined
+        directionY: -1,
+        directionX: -1
     });
 
     const updateScrollbar = useCallback(() => {
