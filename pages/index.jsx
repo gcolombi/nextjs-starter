@@ -62,7 +62,7 @@ export default function Home() {
                         <div className="c-flexSection__item">
                             <DemoModal />
                             <TranslateInOut
-                                delay={0.4}
+                                delay={0.25}
                                 y="100%"
                                 start="-100% bottom"
                                 end="top top"
@@ -77,7 +77,7 @@ export default function Home() {
                         </div>
                         <div className="c-flexSection__item">
                             <TranslateInOut
-                                delay={0.6}
+                                delay={0.45}
                                 y="100%"
                                 start="-100% bottom"
                                 end="top top"
@@ -92,7 +92,7 @@ export default function Home() {
                         </div>
                         <div className="c-flexSection__item">
                             <TranslateInOut
-                                delay={0.8}
+                                delay={0.65}
                                 y="100%"
                                 start="-100% bottom"
                                 end="top top"
@@ -107,7 +107,7 @@ export default function Home() {
                         </div>
                         <div className="c-flexSection__item">
                             <TranslateInOut
-                                delay={1}
+                                delay={0.85}
                                 y="100%"
                                 start="-100% bottom"
                                 end="top top"
@@ -122,7 +122,7 @@ export default function Home() {
                         </div>
                         <div className="c-flexSection__item">
                             <TranslateInOut
-                                delay={1.2}
+                                delay={1.05}
                                 y="100%"
                                 start="-100% bottom"
                                 end="top top"
