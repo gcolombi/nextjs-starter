@@ -60,10 +60,10 @@ export default function Home() {
                     </TranslateInOut>
                     <div className="c-gridSection__row">
                         <div className="c-gridSection__item">
-                            <p>A resusable modal</p>
+                            <h3 className="h5">Modal</h3>
                             <DemoModal />
                             <Button
-                                label="Modal"
+                                label="Open"
                                 onClick={() => setModal(true)}
                                 className="c-btn"
                             />
