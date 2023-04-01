@@ -262,16 +262,6 @@ export default function Home() {
             </section>
             <section className="u-spacing--responsive--bottom">
                 <div className="o-container">
-                    <DemoModal />
-                    <Button
-                        label="Modal"
-                        onClick={() => setModal(true)}
-                        className="c-btn"
-                    />
-                </div>
-            </section>
-            <section className="u-spacing--responsive--bottom">
-                <div className="o-container">
                     <div
                         style={{
                             display: "grid",
