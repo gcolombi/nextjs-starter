@@ -55,9 +55,35 @@ export default function Home() {
                         y="100%"
                     >
                         <div className="o-wysiwyg">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p>This starter includes a complete navigation with different states (open, sticky, hidden...), a modal, accordions and more. Take a look in the components folder</p>
                         </div>
                     </TranslateInOut>
+                    <div className="c-gridSection__row">
+                        <div>
+                            <DemoModal />
+                            <Button
+                                label="Modal"
+                                onClick={() => setModal(true)}
+                                className="c-btn"
+                            />
+                        </div>
+                        <div>
+                            <DemoModal />
+                            <Button
+                                label="Modal"
+                                onClick={() => setModal(true)}
+                                className="c-btn"
+                            />
+                        </div>
+                        <div>
+                            <DemoModal />
+                            <Button
+                                label="Modal"
+                                onClick={() => setModal(true)}
+                                className="c-btn"
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className="c-gridSection u-spacing--responsive--bottom" ref={sectionRef}>

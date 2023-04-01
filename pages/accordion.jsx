@@ -31,183 +31,175 @@ export default function AccordionPage() {
                 title="Accordion"
                 wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
             />
-            <div className="c-accordionSection u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <div className="c-accordionSection__inner">
-                        <ShuffleTextInOut
-                            delay={0.3}
-                            target="#usage"
-                        >
-                            <h2 id="usage">Usage</h2>
-                        </ShuffleTextInOut>
-                        <TranslateInOut
-                            overflowHidden
-                            delay={0.4}
-                            y="100%"
-                        >
-                            <div className="o-wysiwyg">
-                                <p>An accordion is created by wrapping any number of <strong>AccordionItem</strong> components inside an <strong>Accordion</strong> component.</p>
-                            </div>
-                        </TranslateInOut>
-                        <Accordion>
-                            {items.map(({ header, content }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingClassName="h6"
-                                    id={i}
-                                    key={i}
-                                    delay={items.length / 10 + i / 10}
-                                    delayOut={items.length / 10 - i / 10}
-                                >
-                                    <div className="o-wysiwyg">
-                                        <p>{content}</p>
-                                    </div>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </div>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container--small">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#usage"
+                    >
+                        <h2 id="usage">Usage</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        overflowHidden
+                        delay={0.4}
+                        y="100%"
+                    >
+                        <div className="o-wysiwyg">
+                            <p>An accordion is created by wrapping any number of <strong>AccordionItem</strong> components inside an <strong>Accordion</strong> component.</p>
+                        </div>
+                    </TranslateInOut>
+                    <Accordion>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                                delay={items.length / 10 + i / 10}
+                                delayOut={items.length / 10 - i / 10}
+                            >
+                                <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
-            <div className="c-accordionSection u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <div className="c-accordionSection__inner">
-                        <ShuffleTextInOut
-                            delay={0.3}
-                            target="#multiple"
-                            watch
-                        >
-                            <h2 id="multiple">Allowing multiple</h2>
-                        </ShuffleTextInOut>
-                        <TranslateInOut
-                            overflowHidden
-                            delay={0.4}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
-                            watch
-                        >
-                            <div className="o-wysiwyg">
-                                <p>To allow multiple accordion items to expand at once, set the <strong>allowMultiple</strong> prop of the <strong>Accordion</strong> component.</p>
-                            </div>
-                        </TranslateInOut>
-                        <Accordion allowMultiple>
-                            {items.map(({ header, content }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingClassName="h6"
-                                    id={i}
-                                    key={i}
-                                    delay={0.3}
-                                    start="-100% bottom"
-                                    end="top top"
-                                    watch
-                                >
-                                    <div className="o-wysiwyg">
-                                        <p>{content}</p>
-                                    </div>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </div>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container--small">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#multiple"
+                        watch
+                    >
+                        <h2 id="multiple">Allowing multiple</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        overflowHidden
+                        delay={0.4}
+                        y="100%"
+                        start="-100% bottom"
+                        end="top top"
+                        watch
+                    >
+                        <div className="o-wysiwyg">
+                            <p>To allow multiple accordion items to expand at once, set the <strong>allowMultiple</strong> prop of the <strong>Accordion</strong> component.</p>
+                        </div>
+                    </TranslateInOut>
+                    <Accordion allowMultiple>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                                delay={0.3}
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
-            <div className="c-accordionSection u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <div className="c-accordionSection__inner">
-                        <ShuffleTextInOut
-                            delay={0.3}
-                            target="#expanded"
-                            watch
-                        >
-                            <h2 id="expanded">Expanding items initially</h2>
-                        </ShuffleTextInOut>
-                        <TranslateInOut
-                            overflowHidden
-                            delay={0.4}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
-                            watch
-                        >
-                            <div className="o-wysiwyg">
-                                <p>You could use the <strong>initialExpanded</strong> prop of <strong>AccordionItem</strong> to expand items when accordion first mounts. In the following example, the first item is expanded on mount.</p>
-                            </div>
-                        </TranslateInOut>
-                        <Accordion>
-                            {items.map(({ header, content }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingClassName="h6"
-                                    id={i}
-                                    key={i}
-                                    initialExpanded={i === 0 ? true : false}
-                                    delay={0.3}
-                                    start="-100% bottom"
-                                    end="top top"
-                                    watch
-                                >
-                                    <div className="o-wysiwyg">
-                                        <p>{content}</p>
-                                    </div>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </div>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container--small">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#expanded"
+                        watch
+                    >
+                        <h2 id="expanded">Expanding items initially</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        overflowHidden
+                        delay={0.4}
+                        y="100%"
+                        start="-100% bottom"
+                        end="top top"
+                        watch
+                    >
+                        <div className="o-wysiwyg">
+                            <p>You could use the <strong>initialExpanded</strong> prop of <strong>AccordionItem</strong> to expand items when accordion first mounts. In the following example, the first item is expanded on mount.</p>
+                        </div>
+                    </TranslateInOut>
+                    <Accordion>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                                initialExpanded={i === 0 ? true : false}
+                                delay={0.3}
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
-            <div className="c-accordionSection u-spacing--responsive--bottom">
-                <div className="o-container">
-                    <div className="c-accordionSection__inner">
-                        <ShuffleTextInOut
-                            delay={0.3}
-                            target="#nested"
-                            watch
-                        >
-                            <h2 id="nested">Nested accordion</h2>
-                        </ShuffleTextInOut>
-                        <TranslateInOut
-                            overflowHidden
-                            delay={0.4}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
-                            watch
-                        >
-                            <div className="o-wysiwyg">
-                                <p><strong>AccordionItem</strong> can have a nested accordion</p>
-                            </div>
-                        </TranslateInOut>
-                        <Accordion>
-                            {items.map(({ header }, i) => (
-                                <AccordionItem
-                                    header={header}
-                                    headingClassName="h6"
-                                    id={i}
-                                    key={i}
-                                    delay={0.3}
-                                    start="-100% bottom"
-                                    end="top top"
-                                    watch
-                                >
-                                    <Accordion>
-                                        {items.map(({ header, content }, i) => (
-                                            <AccordionItem
-                                                header={header}
-                                                headingTag={'h4'}
-                                                headingClassName="h6"
-                                                id={i}
-                                                key={i}
-                                            >
-                                                <div className="o-wysiwyg">
-                                                    <p>{content}</p>
-                                                </div>
-                                            </AccordionItem>
-                                        ))}
-                                    </Accordion>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </div>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container--small">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#nested"
+                        watch
+                    >
+                        <h2 id="nested">Nested accordion</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        overflowHidden
+                        delay={0.4}
+                        y="100%"
+                        start="-100% bottom"
+                        end="top top"
+                        watch
+                    >
+                        <div className="o-wysiwyg">
+                            <p><strong>AccordionItem</strong> can have a nested accordion</p>
+                        </div>
+                    </TranslateInOut>
+                    <Accordion>
+                        {items.map(({ header }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                                delay={0.3}
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Accordion>
+                                    {items.map(({ header, content }, i) => (
+                                        <AccordionItem
+                                            header={header}
+                                            headingTag={'h4'}
+                                            headingClassName="h6"
+                                            id={i}
+                                            key={i}
+                                        >
+                                            <div className="o-wysiwyg">
+                                                <p>{content}</p>
+                                            </div>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
         </>

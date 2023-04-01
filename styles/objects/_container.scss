@@ -14,8 +14,14 @@
 				--container: calc(var(--breakpoint) - (var(--grid-gutter-width) / 2));
 			}
 		}
+		@if $value <= 1200 {
+			@include mediaq('>#{$value}') {
+				--breakpoint-small: #{$value};
+				--container-small: calc(var(--breakpoint-small) - (var(--grid-gutter-width) / 2));
+			}
+		}
 	}
-	
+
 	--half-container: var(--grid-gutter-width);
 
 	@include mediaq('>XS') {
@@ -29,4 +35,9 @@
 .o-container {
 	@include make-container();
 	max-width: var(--container);
+}
+
+.o-container--small {
+	@include make-container();
+	max-width: var(--container-small);
 }
