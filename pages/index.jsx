@@ -16,8 +16,10 @@ import useWindowLocation from '@/hooks/useWindowLocation';
 import useIsMounted from '@/hooks/useIsMounted';
 
 export default function Home() {
-    const { DemoModal, setModal } = useDemoModal();
-
+    const { DemoModal, setModal } = useDemoModal({
+        title: 'Demo modal',
+        content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis quaerat corporis ratione blanditiis omnis neque! Nihil rem, tenetur unde error labore, dolores assumenda cupiditate voluptatem aliquid iste ut, natus perspiciatis!'
+    });
     const { windowSize, isMobile, isDesktop } = useWindowSize();
     const { scrollY, directionY } = useScrollbar();
     const [sectionRef, size] = useElementSize();

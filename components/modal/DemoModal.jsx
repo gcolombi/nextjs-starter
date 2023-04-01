@@ -5,7 +5,10 @@ import useLockedScroll from '@/hooks/useLockedScroll';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import Modal from './Modal';
 
-export default function useDemoModal() {
+export default function useDemoModal({
+    title,
+    content
+}) {
     const [showDemoModal, setShowDemoModal] = useState(false);
     const [locked, setLocked] = useLockedScroll(false);
 
@@ -17,6 +20,8 @@ export default function useDemoModal() {
     const DemoModalCallback = useCallback(() => {
         return (
             <DemoModal
+                title={title}
+                content={content}
                 showDemoModal={showDemoModal}
                 setModal={setModal}
             />
@@ -29,6 +34,8 @@ export default function useDemoModal() {
 }
 
 function DemoModal({
+    title,
+    content,
     showDemoModal,
     setModal
 }) {
@@ -90,9 +97,9 @@ function DemoModal({
                     data-modal-close
                 />
                 <div className={styles['c-demoModal__inner']} data-modal-content>
-                    <h2>Demo modal</h2>
+                    <h2>{title}</h2>
                     <div className="o-wysiwyg">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis quaerat corporis ratione blanditiis omnis neque! Nihil rem, tenetur unde error labore, dolores assumenda cupiditate voluptatem aliquid iste ut, natus perspiciatis!</p>
+                        <p>{content}</p>
                     </div>
                 </div>
             </div>
