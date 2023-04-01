@@ -37,7 +37,7 @@
         }
     }
 
-    @include mediaq('>MD') {
+    @include mediaq('>LG') {
         &__row {
             grid-template-columns: repeat(3, 1fr);
         }

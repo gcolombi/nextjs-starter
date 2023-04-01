@@ -41,7 +41,7 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
-            <section className="c-gridSection u-spacing--responsive--bottom">
+            {/* <section className="c-gridSection u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut
                         delay={0.3}
@@ -59,7 +59,7 @@ export default function Home() {
                         </div>
                     </TranslateInOut>
                 </div>
-            </section>
+            </section> */}
             <section className="c-gridSection u-spacing--responsive--bottom">
                 <div className="o-container">
                     <ShuffleTextInOut
@@ -78,52 +78,106 @@ export default function Home() {
                         </div>
                     </TranslateInOut>
                     <div className="c-gridSection__row">
-                        <div className="c-gridSection__item">
-                            <h3>useWindowSize</h3>
-                            <div className="o-wysiwyg">
-                                <p>Width: {windowSize.width}</p>
-                                <p>Height: {windowSize.height}</p>
-                                <p>isMobile: {String(isMobile)}</p>
-                                <p>isDesktop: {String(isDesktop)}</p>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265"
+                            start= "-265px 90%"
+                            // end= "top top"
+                            watch
+                            markers
+                        >
+                            <div className="c-gridSection__item">
+                                <h3>useWindowSize</h3>
+                                <div className="o-wysiwyg">
+                                    <p>Width: {windowSize.width}</p>
+                                    <p>Height: {windowSize.height}</p>
+                                    <p>isMobile: {String(isMobile)}</p>
+                                    <p>isDesktop: {String(isDesktop)}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="c-gridSection__item">
-                            <h3>useScrollbar</h3>
-                            <div className="o-wysiwyg">
-                                <p>scrollY: {scrollY}</p>
-                                <p>directionY: {directionY}</p>
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265"
+                            start= "-265px 90%"
+                            // end= "top top"
+                            watch
+                            markers
+                        >
+                            <div className="c-gridSection__item">
+                                <h3>useScrollbar</h3>
+                                <div className="o-wysiwyg">
+                                    <p>scrollY: {scrollY}</p>
+                                    <p>directionY: {directionY}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="c-gridSection__item" ref={itemRef}>
-                            <h3>useElementSize</h3>
-                            <div className="o-wysiwyg">
-                                <p>Width: {size.width}</p>
-                                <p>Height: {size.height}</p>
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265"
+                            start= "-265px 90%"
+                            // end= "top top"
+                            watch
+                            markers
+                        >
+                            <div className="c-gridSection__item" ref={itemRef}>
+                                <h3>useElementSize</h3>
+                                <div className="o-wysiwyg">
+                                    <p>Width: {size.width}</p>
+                                    <p>Height: {size.height}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="c-gridSection__item" ref={itemRef}>
-                            <h3>useLockedScroll</h3>
-                            <div className="o-wysiwyg">
-                                <p>Locked: {String(locked)}</p>
-                                <Button
-                                    label={locked ? 'Unlock scroll' : 'Lock scroll'}
-                                    onClick={() => setLocked(!locked)}
-                                    className="c-btn"
-                                />
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265"
+                            start= "-265px 90%"
+                            // end= "top top"
+                            watch
+                            markers
+                        >
+                            <div className="c-gridSection__item">
+                                <h3>useLockedScroll</h3>
+                                <div className="o-wysiwyg">
+                                    <p>Locked: {String(locked)}</p>
+                                    <Button
+                                        label={locked ? 'Unlock scroll' : 'Lock scroll'}
+                                        onClick={() => setLocked(!locked)}
+                                        className="c-btn"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="c-gridSection__item" ref={itemRef}>
-                            <h3>useWindowLocation</h3>
-                            <div className="o-wysiwyg">
-                                <p>currentURL: {currentURL}</p>
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265"
+                            start= "-265px 90%"
+                            // end= "top top"
+                            watch
+                            markers
+                        >
+                            <div className="c-gridSection__item">
+                                <h3>useWindowLocation</h3>
+                                <div className="o-wysiwyg">
+                                    <p>currentURL: {currentURL}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="c-gridSection__item" ref={itemRef}>
-                            <h3>useIsMounted</h3>
-                            <div className="o-wysiwyg">
-                                <p>isMounted: {String(isMounted())}</p>
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265"
+                            start= "-265px 90%"
+                            // end= "top top"
+                            watch
+                            markers
+                        >
+                            <div className="c-gridSection__item">
+                                <h3>useIsMounted</h3>
+                                <div className="o-wysiwyg">
+                                    <p>isMounted: {String(isMounted())}</p>
+                                </div>
                             </div>
-                        </div>
+                        </RotateInOut3D>
                     </div>
                 </div>
             </section>
@@ -149,8 +203,8 @@ export default function Home() {
                     >
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            delay={0.5 + Math.random()}
-                            y={120}
+                            y={100}
+                            start="-100px bottom"
                         >
                             <div
                                 style={{
@@ -162,8 +216,8 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            delay={0.5 + Math.random()}
-                            y={120}
+                            y={100}
+                            start="-100px bottom"
                         >
                             <div
                                 style={{
@@ -175,8 +229,8 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            delay={0.5 + Math.random()}
-                            y={120}
+                            y={100}
+                            start="-100px bottom"
                         >
                             <div
                                 style={{
@@ -188,8 +242,8 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            delay={0.5 + Math.random()}
-                            y={120}
+                            y={100}
+                            start="-100px bottom"
                         >
                             <div
                                 style={{
@@ -201,8 +255,8 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            delay={0.5 + Math.random()}
-                            y={120}
+                            y={100}
+                            start="-100px bottom"
                         >
                             <div
                                 style={{

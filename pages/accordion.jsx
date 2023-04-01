@@ -82,8 +82,8 @@ export default function AccordionPage() {
                             overflowHidden
                             delay={0.4}
                             y="100%"
-                            start= "-100% bottom"
-                            end= "top top"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <div className="o-wysiwyg">
@@ -98,8 +98,8 @@ export default function AccordionPage() {
                                     id={i}
                                     key={i}
                                     delay={0.3}
-                                    start= "-100% bottom"
-                                    end= "top top"
+                                    start="-100% bottom"
+                                    end="top top"
                                     watch
                                 >
                                     <div className="o-wysiwyg">
@@ -125,8 +125,8 @@ export default function AccordionPage() {
                             overflowHidden
                             delay={0.4}
                             y="100%"
-                            start= "-100% bottom"
-                            end= "top top"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <div className="o-wysiwyg">
@@ -142,8 +142,8 @@ export default function AccordionPage() {
                                     key={i}
                                     initialExpanded={i === 0 ? true : false}
                                     delay={0.3}
-                                    start= "-100% bottom"
-                                    end= "top top"
+                                    start="-100% bottom"
+                                    end="top top"
                                     watch
                                 >
                                     <div className="o-wysiwyg">
@@ -169,8 +169,8 @@ export default function AccordionPage() {
                             overflowHidden
                             delay={0.4}
                             y="100%"
-                            start= "-100% bottom"
-                            end= "top top"
+                            start="-100% bottom"
+                            end="top top"
                             watch
                         >
                             <div className="o-wysiwyg">
@@ -185,8 +185,8 @@ export default function AccordionPage() {
                                     id={i}
                                     key={i}
                                     delay={0.3}
-                                    start= "-100% bottom"
-                                    end= "top top"
+                                    start="-100% bottom"
+                                    end="top top"
                                     watch
                                 >
                                     <Accordion>
