@@ -16,6 +16,9 @@
     &__item {
         --body-text-color: var(--black);
 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding: 30px;
         border-radius: 16px;
         text-align: center;
