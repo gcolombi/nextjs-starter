@@ -11,6 +11,7 @@ import useDemoModal from '@/components/modal/DemoModal';
 import useWindowSize from '@/hooks/useWindowSize';
 import useScrollbar from '@/hooks/useScrollbar';
 import useElementSize from '@/hooks/useElementSize';
+import useWindowLocation from '@/hooks/useWindowLocation';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
@@ -19,6 +20,7 @@ export default function Home() {
     const { scrollY, directionY } = useScrollbar();
     const [itemRef, size] = useElementSize();
     const [locked, setLocked] = useLockedScroll(false);
+    const { currentURL } = useWindowLocation();
 
     return (
         <>
@@ -80,6 +82,12 @@ export default function Home() {
                                     onClick={() => setLocked(!locked)}
                                     className="c-btn"
                                 />
+                            </div>
+                        </div>
+                        <div className="c-gridSection__item" ref={itemRef}>
+                            <h3>useWindowLocation</h3>
+                            <div className="o-wysiwyg">
+                                <p>currentURL: {currentURL}</p>
                             </div>
                         </div>
                     </div>
