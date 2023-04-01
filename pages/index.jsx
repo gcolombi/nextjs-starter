@@ -10,6 +10,7 @@ import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import useDemoModal from '@/components/modal/DemoModal';
 import useWindowSize from '@/hooks/useWindowSize';
 import useScrollbar from '@/hooks/useScrollbar';
+import useElementSize from '@/hooks/useElementSize';
 
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal();
@@ -17,6 +18,7 @@ export default function Home() {
 
     const { windowSize, isMobile, isDesktop } = useWindowSize();
     const { scrollY, scrollX, directionY, directionX } = useScrollbar();
+    const [itemRef, size] = useElementSize();
 
     return (
         <>
@@ -60,6 +62,13 @@ export default function Home() {
                             <div className="o-wysiwyg">
                                 <p>scrollY: {scrollY}</p>
                                 <p>directionY: {directionY}</p>
+                            </div>
+                        </div>
+                        <div className="c-gridSection__item" ref={itemRef}>
+                            <h3>useElementSize</h3>
+                            <div className="o-wysiwyg">
+                                <p>Width: {size.width}</p>
+                                <p>Height: {size.height}</p>
                             </div>
                         </div>
                     </div>
