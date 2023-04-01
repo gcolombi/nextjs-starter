@@ -2,7 +2,7 @@
     Global
 ========================================================================== */
 
-/* Components section
+/* Grid section
 ========================================================================== */
 
 .c-gridSection {
@@ -40,6 +40,38 @@
     @include mediaq('>LG') {
         &__row {
             grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+/* Flex section
+========================================================================== */
+
+.c-flexSection {
+    &__row {
+        margin: 45px 0 0;
+    }
+
+    &__item {
+
+        &:first-child ~ & {
+            margin: 25px 0 0 0;
+        }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>SM') {
+        &__row {
+            display: flex;
+        }
+
+        &__item {
+
+            &:first-child ~ & {
+                margin: 0 0 0 25px;
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ export default function Home() {
                     className: 'c-btn'
                 }}
             />
-            <section className="c-gridSection u-spacing--responsive--bottom">
+            <section className="c-flexSection u-spacing--responsive--bottom">
                 <div className="o-container--small">
                     <ShuffleTextInOut
                         delay={0.3}
@@ -55,34 +55,85 @@ export default function Home() {
                         y="100%"
                     >
                         <div className="o-wysiwyg">
-                            <p>This starter includes a complete navigation with different states (open, sticky, hidden...), a modal, accordions and more. Take a look in the components folder.</p>
+                            <p>This starter includes a complete navigation with different states (open, sticky, hidden...), a modal, accordion, button, form elements and more. Take a look in the components folder.</p>
                         </div>
                     </TranslateInOut>
-                    <div className="c-gridSection__row">
-                        <div className="c-gridSection__item">
-                            <h3 className="h5">Modal</h3>
+                    <div className="c-flexSection__row">
+                        <div className="c-flexSection__item">
                             <DemoModal />
-                            <Button
-                                label="Open"
-                                onClick={() => setModal(true)}
-                                className="c-btn"
-                            />
+                            <TranslateInOut
+                                delay={0.4}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Button
+                                    label="Modal"
+                                    onClick={() => setModal(true)}
+                                    className="c-btn"
+                                />
+                            </TranslateInOut>
                         </div>
-                        <div className="c-gridSection__item">
-                            {/* <DemoModal />
-                            <Button
-                                label="Modal"
-                                onClick={() => setModal(true)}
-                                className="c-btn"
-                            /> */}
+                        <div className="c-flexSection__item">
+                            <TranslateInOut
+                                delay={0.6}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Button
+                                    label="GSAP"
+                                    href="/gsap"
+                                    className="c-btn"
+                                />
+                            </TranslateInOut>
                         </div>
-                        <div className="c-gridSection__item">
-                            {/* <DemoModal />
-                            <Button
-                                label="Modal"
-                                onClick={() => setModal(true)}
-                                className="c-btn"
-                            /> */}
+                        <div className="c-flexSection__item">
+                            <TranslateInOut
+                                delay={0.8}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Button
+                                    label="Accordion"
+                                    href="/accordion"
+                                    className="c-btn"
+                                />
+                            </TranslateInOut>
+                        </div>
+                        <div className="c-flexSection__item">
+                            <TranslateInOut
+                                delay={1}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Button
+                                    label="Form"
+                                    href="/form"
+                                    className="c-btn"
+                                />
+                            </TranslateInOut>
+                        </div>
+                        <div className="c-flexSection__item">
+                            <TranslateInOut
+                                delay={1.2}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Button
+                                    label="File upload form"
+                                    href="/upload"
+                                    className="c-btn"
+                                />
+                            </TranslateInOut>
                         </div>
                     </div>
                 </div>
