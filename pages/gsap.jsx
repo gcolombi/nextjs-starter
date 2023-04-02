@@ -1,13 +1,12 @@
 import MetaData from '@/components/MetaData';
 import HeaderBasic from '@/components/HeaderBasic';
-import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import FadeInOut from '@/components/gsap/FadeInOut';
 import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
-import Cross from '@/components/icons/Cross';
-import Circle from '@/components/icons/Circle';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
+import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
+import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 
 export default function Gsap() {
 
@@ -29,7 +28,6 @@ export default function Gsap() {
                         <h2 id="gsap-usage">Usage</h2>
                     </ShuffleTextInOut>
                     <TranslateInOut
-                        overflowHidden
                         delay={0.4}
                         y="100%"
                     >
@@ -61,7 +59,7 @@ export default function Gsap() {
                     </ShuffleTextInOut>
                     <div className="c-gridSection__row">
                         <FadeInOut
-                            durationIn="1.5"
+                            durationIn={1.5}
                             delay={0.4}
                             ease="slow"
                             watch
@@ -74,7 +72,7 @@ export default function Gsap() {
                             </div>
                         </FadeInOut>
                         <TranslateInOut
-                            durationIn="1.5"
+                            durationIn={1.5}
                             delay={0.4}
                             y="100%"
                             start="-100% bottom"
@@ -89,7 +87,7 @@ export default function Gsap() {
                             </div>
                         </TranslateInOut>
                         <ScaleInOut
-                            durationIn="1"
+                            durationIn={1}
                             delay={0.4}
                             ease="elastic.out"
                             watch
@@ -109,7 +107,7 @@ export default function Gsap() {
                         </div>
                         <RotateInOut
                             fade={false}
-                            durationIn="0.6"
+                            durationIn={0.6}
                             rotateTo={360}
                             start="bottom bottom"
                             end="top top"
@@ -177,6 +175,32 @@ export default function Gsap() {
                                 <div className="c-rotateInOut3D__item c-rotateInOut3D__item--5" />
                             </RotateInOut3D>
                         </div>
+                    </div>
+                    <div className="o-wysiwyg">
+                        <h3 className="h5">ImplodeExplodeInOut</h3>
+                        <p>delay="0.5"<br />target="#implode-explode"<br />watch</p>
+                    </div>
+                    <div className="u-spacing--responsive">
+                        <ImplodeExplodeInOut
+                            delay={0.5}
+                            target="#implode-explode"
+                            watch
+                        >
+                            <h2 className="u-margin--none" id="implode-explode">Build complex animations and page transitions with GSAP and Next.js</h2>
+                        </ImplodeExplodeInOut>
+                    </div>
+                    <div className="o-wysiwyg">
+                        <h3 className="h5">ShuffleTextInOut</h3>
+                        <p>delay="0.3"<br />target="#shuffle"<br />watch</p>
+                    </div>
+                    <div className="u-spacing--responsive--top">
+                        <ShuffleTextInOut
+                            delay={0.3}
+                            target="#shuffle"
+                            watch
+                        >
+                            <h2 className="u-margin--none" id="shuffle">GreenSock</h2>
+                        </ShuffleTextInOut>
                     </div>
                 </div>
             </div>
