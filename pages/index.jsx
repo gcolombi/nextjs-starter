@@ -44,9 +44,9 @@ export default function Home() {
                 <div className="o-container--small">
                     <ShuffleTextInOut
                         delay={0.3}
-                        target="#hooks"
+                        target="#components"
                     >
-                        <h2 id="hooks">Components</h2>
+                        <h2 id="components">Components</h2>
                     </ShuffleTextInOut>
                     <TranslateInOut
                         overflowHidden
@@ -142,6 +142,7 @@ export default function Home() {
                     <ShuffleTextInOut
                         delay={0.3}
                         target="#hooks"
+                        watch
                     >
                         <h2 id="hooks">Hooks</h2>
                     </ShuffleTextInOut>
@@ -149,6 +150,9 @@ export default function Home() {
                         overflowHidden
                         delay={0.4}
                         y="100%"
+                        start="-100% bottom"
+                        end="top top"
+                        watch
                     >
                         <div className="o-wysiwyg">
                             <p>Simple and usefull React hooks, ready to use.</p>
@@ -161,7 +165,6 @@ export default function Home() {
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
-                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useWindowSize</h3>
@@ -179,7 +182,6 @@ export default function Home() {
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
-                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useScrollbar</h3>
@@ -195,7 +197,6 @@ export default function Home() {
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
-                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useElementSize</h3>
@@ -212,7 +213,6 @@ export default function Home() {
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
-                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useLockedScroll</h3>
@@ -232,7 +232,6 @@ export default function Home() {
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
-                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useWindowLocation</h3>
@@ -247,7 +246,6 @@ export default function Home() {
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
-                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useIsMounted</h3>
