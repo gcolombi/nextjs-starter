@@ -62,7 +62,7 @@ export default function Gsap() {
                     <div className="c-gridSection__row">
                         <FadeInOut
                             durationIn="1.5"
-                            delay="0.4"
+                            delay={0.4}
                             ease="slow"
                             watch
                         >
@@ -105,62 +105,79 @@ export default function Gsap() {
                     <div className="c-gridSection__rotate">
                         <div className="o-wysiwyg">
                             <h3 className="h5">RotateInOut</h3>
-                            <p>overflowHidden<br />durationIn="1.5"<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
+                            <p>fade="false"<br />durationIn="0.6"<br />rotateTo="360"<br />start="bottom bottom"<br />end="top top"<br />watch<br />scrub</p>
                         </div>
                         <RotateInOut
                             fade={false}
-                            durationIn={.25}
+                            durationIn="0.6"
                             rotateTo={360}
-                            watch
                             start="bottom bottom"
                             end="top top"
+                            watch
                             scrub
                         >
                             <div className="c-gridSection__rotate--box" />
                         </RotateInOut>
                     </div>
-                    <section className="c-rotateInOut3D u-spacing--responsive--bottom">
-                        <RotateInOut3D
-                            durationIn={1 + Math.random()}
-                            y={100}
-                            start="-100px bottom"
-                            watch
-                        >
-                            <div className="c-rotateInOut3D__item c-rotateInOut3D__item--1" />
-                        </RotateInOut3D>
-                        <RotateInOut3D
-                            durationIn={1 + Math.random()}
-                            y={100}
-                            start="-100px bottom"
-                            watch
-                        >
-                            <div className="c-rotateInOut3D__item c-rotateInOut3D__item--2" />
-                        </RotateInOut3D>
-                        <RotateInOut3D
-                            durationIn={1 + Math.random()}
-                            y={100}
-                            start="-100px bottom"
-                            watch
-                        >
-                            <div className="c-rotateInOut3D__item c-rotateInOut3D__item--3" />
-                        </RotateInOut3D>
-                        <RotateInOut3D
-                            durationIn={1 + Math.random()}
-                            y={100}
-                            start="-100px bottom"
-                            watch
-                        >
-                            <div className="c-rotateInOut3D__item c-rotateInOut3D__item--4" />
-                        </RotateInOut3D>
-                        <RotateInOut3D
-                            durationIn={1 + Math.random()}
-                            y={100}
-                            start="-100px bottom"
-                            watch
-                        >
-                            <div className="c-rotateInOut3D__item c-rotateInOut3D__item--5" />
-                        </RotateInOut3D>
-                    </section>
+                </div>
+            </div>
+            <div className="u-spacing--responsive--bottom">
+                <div className="o-container--small">
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#custom-animations"
+                        watch
+                    >
+                        <h2 id="custom-animations">Custom animations</h2>
+                    </ShuffleTextInOut>
+                    <div className="c-rotateInOut3D">
+                        <div className="o-wysiwyg">
+                            <h3 className="h5">RotateInOut3D</h3>
+                            <p>durationIn="1 + Math.random()"<br />y="100px"<br />start="-100px bottom"<br />watch</p>
+                        </div>
+                        <div className="c-rotateInOut3D__row u-spacing--responsive--bottom">
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y="100px"
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div className="c-rotateInOut3D__item c-rotateInOut3D__item--1" />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y="100px"
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div className="c-rotateInOut3D__item c-rotateInOut3D__item--2" />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y="100px"
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div className="c-rotateInOut3D__item c-rotateInOut3D__item--3" />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y="100px"
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div className="c-rotateInOut3D__item c-rotateInOut3D__item--4" />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y="100px"
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div className="c-rotateInOut3D__item c-rotateInOut3D__item--5" />
+                            </RotateInOut3D>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

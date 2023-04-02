@@ -161,10 +161,11 @@ export default function Home() {
                     <div className="c-gridSection__row">
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            y="265"
+                            y="265px"
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
+                            markers
                         >
                             <div className="c-gridSection__item">
                                 <h3 className="h5">useWindowSize</h3>
@@ -178,7 +179,7 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            y="265"
+                            y="265px"
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
@@ -193,7 +194,7 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            y="265"
+                            y="265px"
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
@@ -209,7 +210,7 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            y="265"
+                            y="265px"
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
@@ -228,7 +229,7 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            y="265"
+                            y="265px"
                             start= "-265px 90%"
                             end= "-265px top"
                             watch
@@ -242,7 +243,7 @@ export default function Home() {
                         </RotateInOut3D>
                         <RotateInOut3D
                             durationIn={1 + Math.random()}
-                            y="265"
+                            y="265px"
                             start= "-265px 90%"
                             end= "-265px top"
                             watch

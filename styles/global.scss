@@ -94,9 +94,13 @@
 ========================================================================== */
 
 .c-rotateInOut3D {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    width: 100%;
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        width: 100%;
+        padding: var(--spacing-responsive) 0;
+    }
 
     &__item {
         width: 100%;
