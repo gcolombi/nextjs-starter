@@ -299,7 +299,7 @@ hr {
 				padding-left: 28px;
 				position: relative;
 
-				&::before {
+				&:before {
 					left: 0;
 					content: '';
 					position: absolute;
@@ -315,11 +315,11 @@ hr {
 	ul {
 		&:not([class]) {
 			li {
-				&::before {
+				&:before {
 					background: var(--secondary);
 					border-radius: 50%;
 					height: 6px;
-					top: 0.8em;
+					top: 0.6em;
 					transform: translateY(-50%);
 					width: 6px;
 				}
@@ -332,7 +332,7 @@ hr {
 
 		&:not([class]) {
 			li {
-				&::before {
+				&:before {
 					color: var(--secondary);
 					content: counter(section) '- ';
 					counter-increment: section;

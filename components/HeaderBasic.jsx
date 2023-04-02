@@ -30,7 +30,8 @@ export default function HeaderBasic({
                                 y="100%"
                             >
                                 <div className="o-wysiwyg">
-                                    <p>{wysiwyg}</p>
+                                    {/* <p>{wysiwyg}</p> */}
+                                    {wysiwyg}
                                 </div>
                             </TranslateInOut>
                             {button &&
