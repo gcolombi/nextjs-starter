@@ -138,130 +138,132 @@ export default function UploadForm() {
         <>
             <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(handleSubmitForm)} noValidate>
                 <div className="o-container--small">
-                    <div className={styles['c-form__row']}>
+                    <div className={styles['c-form__inner']}>
+                        <div className={styles['c-form__row']}>
+                            <TranslateInOut
+                                delay={0.1}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormInput
+                                    htmlFor="firstname"
+                                    label="Firstname"
+                                    id="firstname"
+                                    required={true}
+                                    className="c-formElement--bordered"
+                                    register={register('firstname')}
+                                    errors={errors['firstname']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.15}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormInput
+                                    htmlFor="lastname"
+                                    label="Lastname"
+                                    id="lastname"
+                                    required={true}
+                                    className="c-formElement--bordered"
+                                    register={register('lastname')}
+                                    errors={errors['lastname']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.2}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormInput
+                                    htmlFor="email"
+                                    label="Email"
+                                    type="email"
+                                    id="email"
+                                    required={true}
+                                    className="c-formElement--bordered"
+                                    register={register('email')}
+                                    errors={errors['email']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.25}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormFileInput
+                                    htmlFor="resume"
+                                    label="Resume"
+                                    type="file"
+                                    id="resume"
+                                    required={true}
+                                    className="c-formElement--upload--bordered"
+                                    controller={useController({ control, name: 'resume' })}
+                                    errors={errors['resume']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.3}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormFileInput
+                                    htmlFor="coverletter"
+                                    label="Cover Letter"
+                                    type="file"
+                                    id="coverletter"
+                                    className="c-formElement--upload--bordered"
+                                    controller={useController({ control, name: 'coverletter' })}
+                                    errors={errors['coverletter']}
+                                />
+                            </TranslateInOut>
+                        </div>
                         <TranslateInOut
-                            delay={0.1}
+                            delay={0.35}
                             y="100%"
                             start="-100% bottom"
                             end="top top"
                             watch
                         >
-                            <FormInput
-                                htmlFor="firstname"
-                                label="Firstname"
-                                id="firstname"
+                            <FormTextarea
+                                htmlFor="message"
+                                label="Message"
+                                id="message"
                                 required={true}
                                 className="c-formElement--bordered"
-                                register={register('firstname')}
-                                errors={errors['firstname']}
+                                register={register('message')}
+                                errors={errors['message']}
                             />
                         </TranslateInOut>
-                        <TranslateInOut
-                            delay={0.15}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
-                            watch
-                        >
-                            <FormInput
-                                htmlFor="lastname"
-                                label="Lastname"
-                                id="lastname"
-                                required={true}
-                                className="c-formElement--bordered"
-                                register={register('lastname')}
-                                errors={errors['lastname']}
-                            />
-                        </TranslateInOut>
-                        <TranslateInOut
-                            delay={0.2}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
-                            watch
-                        >
-                            <FormInput
-                                htmlFor="email"
-                                label="Email"
-                                type="email"
-                                id="email"
-                                required={true}
-                                className="c-formElement--bordered"
-                                register={register('email')}
-                                errors={errors['email']}
-                            />
-                        </TranslateInOut>
-                        <TranslateInOut
+                        <FadeInOut
                             delay={0.25}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
                             watch
                         >
-                            <FormFileInput
-                                htmlFor="resume"
-                                label="Resume"
-                                type="file"
-                                id="resume"
-                                required={true}
-                                className="c-formElement--upload--bordered"
-                                controller={useController({ control, name: 'resume' })}
-                                errors={errors['resume']}
-                            />
-                        </TranslateInOut>
-                        <TranslateInOut
-                            delay={0.3}
-                            y="100%"
-                            start="-100% bottom"
-                            end="top top"
+                            <FormRecaptchaNote />
+                        </FadeInOut>
+                        <ScaleInOut
+                            ease="elastic.out"
                             watch
                         >
-                            <FormFileInput
-                                htmlFor="coverletter"
-                                label="Cover Letter"
-                                type="file"
-                                id="coverletter"
-                                className="c-formElement--upload--bordered"
-                                controller={useController({ control, name: 'coverletter' })}
-                                errors={errors['coverletter']}
+                            <Button
+                                label="Send"
+                                className="c-btn"
+                                wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
+                                type="submit"
+                                disabled={isSubmitting}
                             />
-                        </TranslateInOut>
+                        </ScaleInOut>
                     </div>
-                    <TranslateInOut
-                        delay={0.35}
-                        y="100%"
-                        start="-100% bottom"
-                        end="top top"
-                        watch
-                    >
-                        <FormTextarea
-                            htmlFor="message"
-                            label="Message"
-                            id="message"
-                            required={true}
-                            className="c-formElement--bordered"
-                            register={register('message')}
-                            errors={errors['message']}
-                        />
-                    </TranslateInOut>
-                    <FadeInOut
-                        delay={0.25}
-                        watch
-                    >
-                        <FormRecaptchaNote />
-                    </FadeInOut>
-                    <ScaleInOut
-                        ease="elastic.out"
-                        watch
-                    >
-                        <Button
-                            label="Send"
-                            className="c-btn"
-                            wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
-                            type="submit"
-                            disabled={isSubmitting}
-                        />
-                    </ScaleInOut>
                 </div>
             </form>
             {isMounted() &&
