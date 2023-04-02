@@ -4,8 +4,7 @@
 
 .c-headerBasic {
     position: relative;
-    // padding: calc(var(--spacing-responsive) + var(--navigation-height)) 0 var(--spacing-responsive) 0;
-    padding: calc(var(--spacing-responsive) + 80px) 0 var(--spacing-responsive) 0;
+    padding: calc(var(--spacing-responsive) + var(--navigation-height)) 0 var(--spacing-responsive) 0;
 
     &__row {
         max-width: 800px;

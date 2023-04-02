@@ -10,7 +10,7 @@ export default function FormPage() {
             />
             <HeaderBasic
                 title="Form"
-                wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
+                wysiwyg="Complete and flexible form, ready to use. Form fields and validation are handled using React Hook Form and Yup. The Form request is managed by api route, Yup and Google Recaptcha are used for server validation. The email is sent using custom html template and SendGrid."
             />
             <Form />
         </>

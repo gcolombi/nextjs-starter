@@ -15,7 +15,7 @@ import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 export default function Home() {
     const { DemoModal, setModal } = useDemoModal({
         title: 'Demo modal',
-        content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis quaerat corporis ratione blanditiis omnis neque! Nihil rem, tenetur unde error labore, dolores assumenda cupiditate voluptatem aliquid iste ut, natus perspiciatis!'
+        content: 'Beautiful, reusable modal animated using GSAP.'
     });
     const { windowSize, isMobile, isDesktop } = useWindowSize();
     const { scrollY, directionY } = useScrollbar();
