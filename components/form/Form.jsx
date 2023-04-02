@@ -131,7 +131,7 @@ export default function Form() {
     return(
         <>
             <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(handleSubmitForm)} noValidate>
-                <div className="o-container">
+                <div className="o-container--small">
                     <div className={styles['c-form__row']}>
                         <TranslateInOut
                             delay={0.1}
@@ -167,42 +167,42 @@ export default function Form() {
                                 errors={errors['lastname']}
                             />
                         </TranslateInOut>
+                        <TranslateInOut
+                            delay={0.20}
+                            y="100%"
+                            start="-100% bottom"
+                            end='top top'
+                            watch
+                        >
+                            <FormInput
+                                htmlFor="email"
+                                label="Email"
+                                type="email"
+                                id="email"
+                                required={true}
+                                className="c-formElement--bordered"
+                                register={register('email')}
+                                errors={errors['email']}
+                            />
+                        </TranslateInOut>
+                        <TranslateInOut
+                            delay={0.25}
+                            y="100%"
+                            start="-100% bottom"
+                            end='top top'
+                            watch
+                        >
+                            <FormSelect
+                                htmlFor="subject"
+                                label="Subject"
+                                id="subject"
+                                required={true}
+                                className="c-formElement--select--bordered"
+                                register={register('subject')}
+                                errors={errors['subject']}
+                            />
+                        </TranslateInOut>
                     </div>
-                    <TranslateInOut
-                        delay={0.20}
-                        y="100%"
-                        start="-100% bottom"
-                        end='top top'
-                        watch
-                    >
-                        <FormInput
-                            htmlFor="email"
-                            label="Email"
-                            type="email"
-                            id="email"
-                            required={true}
-                            className="c-formElement--bordered"
-                            register={register('email')}
-                            errors={errors['email']}
-                        />
-                    </TranslateInOut>
-                    <TranslateInOut
-                        delay={0.25}
-                        y="100%"
-                        start="-100% bottom"
-                        end='top top'
-                        watch
-                    >
-                        <FormSelect
-                            htmlFor="subject"
-                            label="Subject"
-                            id="subject"
-                            required={true}
-                            className="c-formElement--select--bordered"
-                            register={register('subject')}
-                            errors={errors['subject']}
-                        />
-                    </TranslateInOut>
                     <TranslateInOut
                         delay={0.30}
                         y="100%"

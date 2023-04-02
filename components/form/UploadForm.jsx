@@ -137,7 +137,7 @@ export default function UploadForm() {
     return (
         <>
             <form className={classNames('u-spacing--responsive--bottom', styles['c-form'])} onSubmit={handleSubmit(handleSubmitForm)} noValidate>
-                <div className="o-container">
+                <div className="o-container--small">
                     <div className={styles['c-form__row']}>
                         <TranslateInOut
                             delay={0.1}

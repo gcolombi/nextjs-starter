@@ -10,7 +10,7 @@ export default function FileUploadForm() {
             />
             <HeaderBasic
                 title="File upload form"
-                wysiwyg="Complete and flexible form, ready to use. Form fields and validation are handled using React Hook Form and Yup. The Form request is managed by api route using formidable (Node.js module for parsing form data), Yup and Google Recaptcha are used for server validation. The email is sent using custom html template and SendGrid."
+                wysiwyg="Complete and flexible form, ready to use. Form fields and validation are handled using React Hook Form and Yup. The Form request is managed by an api route using formidable (Node.js module for parsing form data), Yup and Google Recaptcha are used for server validation. The email is sent using custom html template and SendGrid."
             />
             <UploadForm />
         </>

@@ -16,7 +16,7 @@ export default function HeaderBasic({
             {
                 title &&
                 <section className={classNames(styles['c-headerBasic'], styles[className])}>
-                    <div className="o-container">
+                    <div className="o-container--small">
                         <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
                             <ImplodeExplodeInOut
                                 delay={0.5}
