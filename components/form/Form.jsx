@@ -253,18 +253,22 @@ export default function Form() {
                         >
                             <FormRecaptchaNote />
                         </FadeInOut>
-                        <ScaleInOut
-                            ease="elastic.out"
-                            watch
-                        >
-                            <Button
-                                label="Send"
-                                className="c-btn"
-                                wrapperClassName={classNames(styles['c-form__btn'], {'c-formElement--submit': isSubmitting})}
-                                type="submit"
-                                disabled={isSubmitting}
-                            />
-                        </ScaleInOut>
+                        <div className={styles['c-form__btn']}>
+                            <ScaleInOut
+                                durationIn={1}
+                                delay={0.25}
+                                ease="elastic.out"
+                                watch
+                            >
+                                <Button
+                                    label="Send"
+                                    className="c-btn"
+                                    wrapperClassName={classNames({'c-formElement--submit': isSubmitting})}
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                />
+                            </ScaleInOut>
+                        </div>
                     </div>
                 </div>
             </form>
