@@ -3,6 +3,7 @@ import HeaderBasic from '@/components/HeaderBasic';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import FadeInOut from '@/components/gsap/FadeInOut';
 import TranslateInOut from '@/components/gsap/TranslateInOut';
+import ScaleInOut from '@/components/gsap/ScaleInOut';
 
 export default function Gsap() {
 
@@ -81,6 +82,19 @@ export default function Gsap() {
                                 <p>overflowHidden<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
                             </div>
                         </TranslateInOut>
+                    </div>
+                    <div className="u-spacing--responsive--bottom" style={{display: 'flex'}}>
+                        <ScaleInOut
+                            durationIn="1"
+                            delay={0.4}
+                            ease="elastic.out"
+                            watch
+                        >
+                            <div className="o-wysiwyg">
+                                <h3 className="h5">ScaleInOut</h3>
+                                <p>durationIn="1"<br />delay="0.4"<br />ease="elastic.out"<br />y="100%"<br />watch</p>
+                            </div>
+                        </ScaleInOut>
                     </div>
                 </div>
             </div>
