@@ -9,7 +9,7 @@ export default function Gsap() {
             />
             <HeaderBasic
                 title="GSAP"
-                wysiwyg="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dicta saepe maxime ut! Ratione, fugit, neque expedita ex consequatur reiciendis sint praesentium ad quos, veniam nemo esse architecto impedit cum!"
+                wysiwyg="The most common reusable custom animations built with GSAP. They can be used as simple intro animations or page transitions. Take a look in the components folder."
             />
         </>
     );
