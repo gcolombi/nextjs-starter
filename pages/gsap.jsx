@@ -1,6 +1,7 @@
 import MetaData from '@/components/MetaData';
 import HeaderBasic from '@/components/HeaderBasic';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
+import FadeInOut from '@/components/gsap/FadeInOut';
 import TranslateInOut from '@/components/gsap/TranslateInOut';
 
 export default function Gsap() {
@@ -51,8 +52,36 @@ export default function Gsap() {
                         target="#animations"
                         watch
                     >
-                        <h2 id="animations">Animations</h2>
+                        <h2 className="u-margin--none" id="animations">Animations</h2>
                     </ShuffleTextInOut>
+                    <div className="u-spacing--responsive">
+                        <FadeInOut
+                            durationIn="1.5"
+                            delay="0.4"
+                            ease="slow"
+                            watch
+                        >
+                            <div className="o-wysiwyg">
+                                <h3 className="h5">FadeInOut</h3>
+                                <p>durationIn="1.5"<br />delay="0.4"<br />ease="slow"<br />watch</p>
+                            </div>
+                        </FadeInOut>
+                    </div>
+                    <div className="u-spacing--responsive--bottom">
+                        <TranslateInOut
+                            overflowHidden
+                            delay={0.4}
+                            y="100%"
+                            start="-100% bottom"
+                            end="top top"
+                            watch
+                        >
+                            <div className="o-wysiwyg">
+                                <h3 className="h5">TranslateInOut</h3>
+                                <p>overflowHidden<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
+                            </div>
+                        </TranslateInOut>
+                    </div>
                 </div>
             </div>
         </>
