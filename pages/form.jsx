@@ -10,7 +10,7 @@ export default function FormPage() {
             />
             <HeaderBasic
                 title="Form"
-                wysiwyg="Complete and flexible form, ready to use. Form fields and validation are handled using React Hook Form and Yup. The Form request is managed by an api route, Yup and Google Recaptcha are used for server validation. The email is sent using custom html template and SendGrid."
+                wysiwyg="Complete and flexible form with Google ReCaptcha V3, ready to use. Form fields are handled by React Hook Form and validated by Yup on the client/server side. The form request is managed by an API route, SendGrid and a custom HTML template are used to send the email."
             />
             <Form />
         </>

@@ -9,7 +9,6 @@ import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 
 export default function Gsap() {
-
     return(
         <>
             <MetaData
