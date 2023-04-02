@@ -46,7 +46,7 @@ export default function Gsap() {
                     </TranslateInOut>
                 </div>
             </div>
-            <div className="u-spacing--responsive--bottom">
+            <div className="c-gridSection u-spacing--responsive--bottom">
                 <div className="o-container--small">
                     <ShuffleTextInOut
                         delay={0.3}
@@ -55,44 +55,47 @@ export default function Gsap() {
                     >
                         <h2 className="u-margin--none" id="animations">Animations</h2>
                     </ShuffleTextInOut>
-                    <div className="u-spacing--responsive">
+                    <div className="c-gridSection__row">
                         <FadeInOut
                             durationIn="1.5"
                             delay="0.4"
                             ease="slow"
                             watch
                         >
-                            <div className="o-wysiwyg">
-                                <h3 className="h5">FadeInOut</h3>
-                                <p>durationIn="1.5"<br />delay="0.4"<br />ease="slow"<br />watch</p>
+                            <div className="c-gridSection__item">
+                                <div className="o-wysiwyg">
+                                    <h3 className="h5">FadeInOut</h3>
+                                    <p>durationIn="1.5"<br />delay="0.4"<br />ease="slow"<br />watch</p>
+                                </div>
                             </div>
                         </FadeInOut>
-                    </div>
-                    <div className="u-spacing--responsive--bottom">
                         <TranslateInOut
                             overflowHidden
+                            durationIn="1.5"
                             delay={0.4}
                             y="100%"
                             start="-100% bottom"
                             end="top top"
                             watch
                         >
-                            <div className="o-wysiwyg">
-                                <h3 className="h5">TranslateInOut</h3>
-                                <p>overflowHidden<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
+                            <div className="c-gridSection__item">
+                                <div className="o-wysiwyg">
+                                    <h3 className="h5">TranslateInOut</h3>
+                                    <p>overflowHidden<br />durationIn="1.5"<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
+                                </div>
                             </div>
                         </TranslateInOut>
-                    </div>
-                    <div className="u-spacing--responsive--bottom" style={{display: 'flex'}}>
                         <ScaleInOut
                             durationIn="1"
                             delay={0.4}
                             ease="elastic.out"
                             watch
                         >
-                            <div className="o-wysiwyg">
-                                <h3 className="h5">ScaleInOut</h3>
-                                <p>durationIn="1"<br />delay="0.4"<br />ease="elastic.out"<br />y="100%"<br />watch</p>
+                            <div className="c-gridSection__item" style={{display: 'flex'}}>
+                                <div className="o-wysiwyg">
+                                    <h3 className="h5">ScaleInOut</h3>
+                                    <p>durationIn="1"<br />delay="0.4"<br />ease="elastic.out"<br />y="100%"<br />watch</p>
+                                </div>
                             </div>
                         </ScaleInOut>
                     </div>
