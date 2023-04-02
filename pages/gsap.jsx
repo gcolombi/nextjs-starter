@@ -46,7 +46,13 @@ export default function Gsap() {
             </div>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container--small">
-                    <h2>FadeInOut</h2>
+                    <ShuffleTextInOut
+                        delay={0.3}
+                        target="#animations"
+                        watch
+                    >
+                        <h2 id="animations">Animations</h2>
+                    </ShuffleTextInOut>
                 </div>
             </div>
         </>
