@@ -28,6 +28,20 @@
         min-height: 265px;
     }
 
+    &__rotate {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: var(--spacing-responsive) 0;
+
+        &--box {
+            width: 100px;
+            height: 100px;
+            background: var(--body-current-page-color);
+            border-radius: 16px;
+        }
+    }
+
     // **---------------------------------------------------**
     // MEDIA QUERIES
 

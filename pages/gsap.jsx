@@ -4,6 +4,10 @@ import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import FadeInOut from '@/components/gsap/FadeInOut';
 import TranslateInOut from '@/components/gsap/TranslateInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
+import RotateInOut from '@/components/gsap/RotateInOut';
+import Cross from '@/components/icons/Cross';
+import Circle from '@/components/icons/Circle';
+import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 
 export default function Gsap() {
 
@@ -53,7 +57,7 @@ export default function Gsap() {
                         target="#animations"
                         watch
                     >
-                        <h2 className="u-margin--none" id="animations">Animations</h2>
+                        <h2 id="animations">Animations</h2>
                     </ShuffleTextInOut>
                     <div className="c-gridSection__row">
                         <FadeInOut
@@ -70,7 +74,6 @@ export default function Gsap() {
                             </div>
                         </FadeInOut>
                         <TranslateInOut
-                            overflowHidden
                             durationIn="1.5"
                             delay={0.4}
                             y="100%"
@@ -81,7 +84,7 @@ export default function Gsap() {
                             <div className="c-gridSection__item">
                                 <div className="o-wysiwyg">
                                     <h3 className="h5">TranslateInOut</h3>
-                                    <p>overflowHidden<br />durationIn="1.5"<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
+                                    <p>durationIn="1.5"<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
                                 </div>
                             </div>
                         </TranslateInOut>
@@ -99,6 +102,104 @@ export default function Gsap() {
                             </div>
                         </ScaleInOut>
                     </div>
+                    <div className="c-gridSection__rotate">
+                        <div className="o-wysiwyg">
+                            <h3 className="h5">RotateInOut</h3>
+                            <p>overflowHidden<br />durationIn="1.5"<br />delay="0.4"<br />y="100%"<br />start="-100% bottom"<br />end="top top"<br />watch</p>
+                        </div>
+                        <RotateInOut
+                            fade={false}
+                            durationIn={.25}
+                            rotateTo={360}
+                            watch
+                            start="bottom bottom"
+                            end="top top"
+                            scrub
+                        >
+                            <div className="c-gridSection__rotate--box" />
+                        </RotateInOut>
+                    </div>
+                    <section className="u-spacing--responsive--bottom">
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+                                gridAutoRows: "1fr",
+                                width: "100%"
+                            }}
+                        >
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y={100}
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "200px",
+                                        background: "var(--primary-light)"
+                                    }}
+                                />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y={100}
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "200px",
+                                        background: "var(--primary-lighter)"
+                                    }}
+                                />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y={100}
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "200px",
+                                        background: "var(--primary)"
+                                    }}
+                                />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y={100}
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "200px",
+                                        background: "var(--primary-dark)"
+                                    }}
+                                />
+                            </RotateInOut3D>
+                            <RotateInOut3D
+                                durationIn={1 + Math.random()}
+                                y={100}
+                                start="-100px bottom"
+                                watch
+                            >
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "200px",
+                                        background: "var(--primary-darker)"
+                                    }}
+                                />
+                            </RotateInOut3D>
+                        </div>
+                    </section>
                 </div>
             </div>
         </>
