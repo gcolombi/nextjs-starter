@@ -9,9 +9,9 @@ sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
  */
 
 module.exports = class Email {
-    constructor(host, template, subject, labels, fields, attachments) {
+    constructor(template, subject, labels, fields, attachments) {
         this.siteName = process.env.NEXT_PUBLIC_SITE_NAME;
-        this.host = host;
+        this.host = process.env.NEXT_PUBLIC_BASE_URL;
         this.template = template;
         this.labels = labels
         this.fields = fields;
