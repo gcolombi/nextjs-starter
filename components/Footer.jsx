@@ -22,7 +22,7 @@ export default function Footer() {
                 opacity: 1,
                 y: 0,
                 delay: 0.5,
-                duration: 0.2,
+                duration: 0.4,
                 ease: 'power4.out',
                 scrollTrigger: {
                     trigger: element.current,
