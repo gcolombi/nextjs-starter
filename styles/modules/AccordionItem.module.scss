@@ -52,6 +52,12 @@
 
             &--content {
                 padding: 16px 20px;
+
+                * {
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
             }
         }
     }
