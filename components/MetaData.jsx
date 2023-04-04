@@ -6,7 +6,7 @@ export default function MetaData({ ...customMeta }) {
     const meta = {
         title: 'Next.js starter',
         description: 'A starter for Next.js that includes a collection of reusable components, hooks, and utilities to build amazing projects with complex animated page transitions using GSAP.',
-        image: `${currentURL}static/example.jpg`,
+        image: `${process.env.NEXT_PUBLIC_BASE_URL}/static/example.jpg`,
         type: 'website',
         ...customMeta
     };
