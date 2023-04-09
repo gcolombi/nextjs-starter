@@ -55,33 +55,31 @@ export default function App({ Component, pageProps }) {
     useNextCssRemovalPrevention();
 
     return (
-        <>
-            <ThemeProvider disableTransitionOnChange>
-                <GoogleReCaptchaProvider
-                    reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                    scriptProps={{
-                        async: true,
-                        defer: true,
-                        appendTo: 'body'
-                    }}
-                >
-                    <TransitionContextProvider>
-                        <NavigationContextProvider>
-                            <style jsx global>
-                                {`
-                                    :root {
-                                        --font-primary: ${roboto.style.fontFamily};
-                                        --font-secondary: ${victorMono.style.fontFamily};
-                                    }
-                                `}
-                            </style>
-                            <Layout>
-                                <Component {...pageProps} />
-                            </Layout>
-                        </NavigationContextProvider>
-                    </TransitionContextProvider>
-                </GoogleReCaptchaProvider>
-            </ThemeProvider>
-        </>
+        <ThemeProvider disableTransitionOnChange>
+            <GoogleReCaptchaProvider
+                reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                scriptProps={{
+                    async: true,
+                    defer: true,
+                    appendTo: 'body'
+                }}
+            >
+                <TransitionContextProvider>
+                    <NavigationContextProvider>
+                        <style jsx global>
+                            {`
+                                :root {
+                                    --font-primary: ${roboto.style.fontFamily};
+                                    --font-secondary: ${victorMono.style.fontFamily};
+                                }
+                            `}
+                        </style>
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </NavigationContextProvider>
+                </TransitionContextProvider>
+            </GoogleReCaptchaProvider>
+        </ThemeProvider>
     )
 }

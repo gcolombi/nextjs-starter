@@ -138,7 +138,7 @@ export default function Form() {
                                 delay={0.1}
                                 y="100%"
                                 start="-100% bottom"
-                                end='top top'
+                                end="top top"
                                 watch
                             >
                                 <FormInput
@@ -155,7 +155,7 @@ export default function Form() {
                                 delay={0.15}
                                 y="100%"
                                 start="-100% bottom"
-                                end='top top'
+                                end="top top"
                                 watch
                             >
                                 <FormInput
@@ -172,7 +172,7 @@ export default function Form() {
                                 delay={0.20}
                                 y="100%"
                                 start="-100% bottom"
-                                end='top top'
+                                end="top top"
                                 watch
                             >
                                 <FormInput
@@ -190,7 +190,7 @@ export default function Form() {
                                 delay={0.25}
                                 y="100%"
                                 start="-100% bottom"
-                                end='top top'
+                                end="top top"
                                 watch
                             >
                                 <FormSelect
@@ -208,7 +208,7 @@ export default function Form() {
                             delay={0.30}
                             y="100%"
                             start="-100% bottom"
-                            end='top top'
+                            end="top top"
                             watch
                         >
                             <FormCheckboxList
@@ -221,7 +221,7 @@ export default function Form() {
                             delay={0.35}
                             y="100%"
                             start="-100% bottom"
-                            end='top top'
+                            end="top top"
                             watch
                         >
                             <FormRadioList
@@ -234,7 +234,7 @@ export default function Form() {
                             delay={0.40}
                             y="100%"
                             start="-100% bottom"
-                            end='top top'
+                            end="top top"
                             watch
                         >
                             <FormTextarea

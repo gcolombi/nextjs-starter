@@ -42,7 +42,7 @@ export default function TransitionLayout({
     }, [router.asPath]);
 
     return (
-        <div className='u-overflow--hidden'>
+        <div className="u-overflow--hidden">
             {currentPage.children}
         </div>
     );

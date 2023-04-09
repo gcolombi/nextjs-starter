@@ -54,7 +54,7 @@ export default function Home() {
                         y="100%"
                     >
                         <div className="o-wysiwyg">
-                            <p>This starter includes complete navigation with different states (open, sticky, hidden...) and reusable components like modal, accordion, button, form elements and more. Take a look in the components folder.</p>
+                            <p>This starter includes complete navigation with different states (open, sticky, hidden...) and reusable components like modal, accordion, button, form elements and more. Check out the components folder.</p>
                         </div>
                     </TranslateInOut>
                     <div className="c-flexSection__row">
