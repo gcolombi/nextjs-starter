@@ -67,7 +67,7 @@ export default function useNextCssRemovalPrevention() {
 
         observer.observe(document.head, {
             subtree: true,
-            attributeFilter: ['media'],
+            attributeFilter: ['media']
         });
 
         return () => observer.disconnect();

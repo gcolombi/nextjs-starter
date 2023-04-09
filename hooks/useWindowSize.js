@@ -14,7 +14,7 @@ export default function useWindowSize() {
             width: window.innerWidth,
             height: window.innerHeight
         });
-    }
+    };
 
     useIsomorphicLayoutEffect(() => {
         /* Add event listener */
@@ -31,5 +31,5 @@ export default function useWindowSize() {
         windowSize,
         isMobile: typeof windowSize?.width === "number" && windowSize?.width < 1200,
         isDesktop: typeof windowSize?.width === "number" && windowSize?.width >= 1200
-    }
+    };
 }

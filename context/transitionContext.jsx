@@ -14,7 +14,7 @@ export function TransitionContextProvider({ children }) {
 
     const resetTimeline = () => {
         timeline.pause().clear();
-    }
+    };
 
     return (
         <TransitionContext.Provider
@@ -26,7 +26,7 @@ export function TransitionContextProvider({ children }) {
         >
             {children}
         </TransitionContext.Provider>
-    )
+    );
 }
 
 export default function useTransitionContext() {

@@ -40,7 +40,7 @@ const updateItemHeight = (expanded, container, content) => {
             }
         });
     }
-}
+};
 
 export function AccordionContextProvider({ children, allowMultiple }) {
     const [items, setItems] = useState(new Map());

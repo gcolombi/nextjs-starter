@@ -10,7 +10,7 @@ const NavigationContext = createContext({
     hidden: false,
     setOpen: () => {},
     toggle: () => {}
-})
+});
 
 export function NavigationContextProvider({ children }) {
     const [ref, setRef] = useState(null);
@@ -23,7 +23,7 @@ export function NavigationContextProvider({ children }) {
     const toggle = () => {
         setIsOpen(!isOpen);
         setLocked(!locked);
-    }
+    };
 
     /**
      * Closes navigation if viewport is larger than 1200px
