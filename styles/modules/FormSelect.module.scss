@@ -37,7 +37,7 @@
 
 			/* Colored line on focus */
 			select:focus ~ .c-formElement--focusLine {
-				border-color: var(--secondary);
+				border-color: var(--form-element-color);
 			}
 
             /* Floating label */
@@ -79,7 +79,7 @@
 
 			/* Colored line on focus */
 			select:focus ~ .c-formElement--focusLine {
-				border-color: var(--secondary);
+				border-color: var(--form-element-color);
 			}
 
             /* Floating label */
@@ -135,7 +135,7 @@
 				border: none;
 				width: 0%;
 				height: 1px;
-				background: var(--secondary);
+				background: var(--form-element-color);
 				transition: all .35s $ease-in;
 			}
 

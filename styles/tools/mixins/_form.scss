@@ -148,8 +148,8 @@
 
     :checked + label {
         &::before {
-            background: var(--primary);
-            border-color: var(--primary);
+            background: var(--form-element-color);
+            border-color: var(--form-element-color);
         }
     }
 }

@@ -18,7 +18,7 @@
 
 		/* Colored line on focus */
 		input:focus ~ .c-formElement--focusLine {
-			border-color: var(--secondary);
+			border-color: var(--form-element-color);
 		}
 
         /* Floating label */
@@ -34,7 +34,7 @@
 
 		/* Colored line on focus */
 		input:focus ~ .c-formElement--focusLine {
-			border-color: var(--secondary);
+			border-color: var(--form-element-color);
 		}
 
         /* Floating label */
@@ -76,7 +76,7 @@
 			border: none;
 			width: 0%;
 			height: 1px;
-			background: var(--secondary);
+			background: var(--form-element-color);
 			transition: all .35s $ease-in;
 		}
 
@@ -137,7 +137,7 @@
 
 			/* Colored line on focus */
 			input:focus ~ .c-formElement--focusLine {
-				border-color: var(--secondary);
+				border-color: var(--form-element-color);
 			}
 		}
 
@@ -169,7 +169,7 @@
 
 			/* Colored line on focus */
 			input:focus ~ .c-formElement--focusLine {
-				border-color: var(--secondary);
+				border-color: var(--form-element-color);
 			}
 		}
 
@@ -217,7 +217,7 @@
 				border: none;
 				width: 0%;
 				height: 1px;
-				background: var(--secondary);
+				background: var(--form-element-color);
 				transition: all .35s $ease-in;
 			}
 

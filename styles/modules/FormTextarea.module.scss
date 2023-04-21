@@ -26,7 +26,7 @@
 
 		/* Colored line on focus */
 		textarea:focus ~ .c-formElement--focusLine {
-			border-color: var(--secondary);
+			border-color: var(--form-element-color);
 		}
 
         /* Floating label */
@@ -57,6 +57,18 @@
             height: 1px;
             background: var(--gray-700);
         }
+
+        .c-formElement--focusLine {
+			top: calc(100% - 1px);
+			right: auto;
+			bottom: auto;
+			left: 0;
+			border: none;
+			width: 0%;
+			height: 1px;
+			background: var(--form-element-color);
+			transition: all .35s $ease-in;
+		}
 
         &.c-floatingLabel {
 			label {
