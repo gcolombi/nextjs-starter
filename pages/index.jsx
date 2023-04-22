@@ -13,10 +13,7 @@ import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 
 export default function Home() {
-    const { DemoModal, setModal } = useDemoModal({
-        title: 'Demo modal',
-        content: 'Beautiful, reusable modal animated using GSAP.'
-    });
+    const { DemoModal, setModal } = useDemoModal();
     const { windowSize, isMobile, isDesktop } = useWindowSize();
     const { scrollY, directionY } = useScrollbar();
     const [sectionRef, size] = useElementSize();
@@ -59,7 +56,10 @@ export default function Home() {
                     </TranslateInOut>
                     <div className="c-flexSection__row">
                         <div className="c-flexSection__item">
-                            <DemoModal />
+                            <DemoModal
+                                title="Demo modal"
+                                content="Beautiful, reusable modal animated using GSAP."
+                            />
                             <TranslateInOut
                                 delay={0.25}
                                 y="100%"

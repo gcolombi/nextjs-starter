@@ -5,10 +5,7 @@ import useLockedScroll from '@/hooks/useLockedScroll';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import Modal from './Modal';
 
-export default function useDemoModal({
-    title,
-    content
-}) {
+export default function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);
     const [locked, setLocked] = useLockedScroll(false);
 
@@ -17,7 +14,10 @@ export default function useDemoModal({
         setLocked(state);
     }, [setShowDemoModal, setLocked]);
 
-    const DemoModalCallback = useCallback(() => {
+    const DemoModalCallback = useCallback(({
+        title,
+        content
+    }) => {
         return (
             <DemoModal
                 title={title}
@@ -26,7 +26,7 @@ export default function useDemoModal({
                 setModal={setModal}
             />
         );
-    }, [title, content, showDemoModal, setModal]);
+    }, [showDemoModal, setModal]);
 
     return useMemo(() => ({
         setModal, DemoModal: DemoModalCallback
