@@ -31,7 +31,7 @@ npm install
 ```
 
 > **Warning**
-This starter use [`npm:gsap-trial`](https://www.npmjs.com/package/gsap-trial). If your want to deploy it you need to remove [`ShuffleTextInOut`](https://github.com/gcolombi/nextjs-starter/blob/master/components/gsap/ShuffleTextInOut.jsx) and [`ImplodeExplodeInOut`](https://github.com/gcolombi/nextjs-starter/blob/master/components/gsap/ImplodeExplodeInOut.jsx) components because they use bonus plugins, as well as the actual gsap package or join the [Club GreenSock](https://greensock.com/club/) and install the corresponding package using installation steps in the dashboard.
+This starter use [`npm:gsap-trial`](https://www.npmjs.com/package/gsap-trial). If your want to deploy it you need to remove [`ShuffleTextInOut`](https://github.com/gcolombi/nextjs-starter/blob/master/components/gsap/ShuffleTextInOut.jsx) and [`ImplodeExplodeInOut`](https://github.com/gcolombi/nextjs-starter/blob/master/components/gsap/ImplodeExplodeInOut.jsx) components because they use bonus plugins, as well as the actual gsap package. Install [`gsap`](https://github.com/greensock/GSAP#npm) package without these components or join the [Club GreenSock](https://greensock.com/club/), install the corresponding package using installation steps in the dashboard and use them.
 
 ## Tech Stack & Features
 
