@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-export default function useConfirmRedirectIfDirty(isDirty) {
+export default function useUnsavedChanges(isDirty) {
     const router = useRouter()
 
     /**
