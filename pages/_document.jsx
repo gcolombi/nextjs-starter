@@ -15,7 +15,7 @@ export default function Document() {
                 <meta name="theme-color" content="#ffffff" />
             </Head>
             <body>
-                <a href="#content" className="u-visuallyHidden">Skip to content</a>
+                <a href="#content" className="u-sr-only">Skip to content</a>
                 <Main />
                 <NextScript />
             </body>
