@@ -18,6 +18,6 @@ const getFormSchema = () => {
         question: string().required('Please select one of these answers'),
         message: string().required('This field is required')
     });
-}
+};
 
 export const formSchema = getFormSchema();

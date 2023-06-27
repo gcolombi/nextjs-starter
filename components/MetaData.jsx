@@ -27,6 +27,11 @@ export default function MetaData({ ...customMeta }) {
             {meta.date && (
                 <meta property="article:published_time" content={meta.date} />
             )}
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={meta.title} />
+            <meta name="twitter:description" content={meta.description} />
+            <meta property="twitter:url" content={currentURL} />
+            <meta name="twitter:image" content={meta.image} />
             <meta name="robots" content="follow, index" />
             <link rel="canonical" href={currentURL} />
         </Head>

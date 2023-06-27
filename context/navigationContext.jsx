@@ -33,6 +33,7 @@ export function NavigationContextProvider({ children }) {
             setIsOpen(false);
             setLocked(false);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDesktop]);
 
     /**
@@ -43,6 +44,7 @@ export function NavigationContextProvider({ children }) {
             setIsOpen(false);
             setLocked(false);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.asPath]);
 
     return (

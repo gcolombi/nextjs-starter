@@ -21,8 +21,8 @@ import ScaleInOut from '../gsap/ScaleInOut';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
 const labels = {
-    firstname: 'Firstname',
-    lastname: 'Lastname',
+    firstname: 'First name',
+    lastname: 'Last name',
     email: 'Email',
     subject: 'Subject',
     choices: 'Choices',
@@ -143,7 +143,7 @@ export default function Form() {
                             >
                                 <FormInput
                                     htmlFor="firstname"
-                                    label="Firstname"
+                                    label="First name"
                                     id="firstname"
                                     required={true}
                                     className="c-formElement--bordered"
@@ -160,7 +160,7 @@ export default function Form() {
                             >
                                 <FormInput
                                     htmlFor="lastname"
-                                    label="Lastname"
+                                    label="Last name"
                                     id="lastname"
                                     required={true}
                                     className="c-formElement--bordered"

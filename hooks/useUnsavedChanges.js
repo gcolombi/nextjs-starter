@@ -26,5 +26,6 @@ export default function useUnsavedChanges(isDirty) {
             window.removeEventListener('beforeunload', handleWindowClose);
             router.events.off('routeChangeStart', handleBrowseAway);
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDirty]);
 }

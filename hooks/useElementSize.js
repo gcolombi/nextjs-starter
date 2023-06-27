@@ -19,6 +19,7 @@ export default function useElementSize() {
             width: ref?.getBoundingClientRect().width || 0,
             height: ref?.getBoundingClientRect().height || 0
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ref?.getBoundingClientRect().height, ref?.getBoundingClientRect().width]);
 
     useIsomorphicLayoutEffect(() => {

@@ -17,7 +17,7 @@ export default function useLockedScroll(
         /* Save initial window offset width & body style */
         const originalDocumentWidth = document.documentElement.offsetWidth;
         const originalOverflow = document.body.style.overflow;
-        const originalPaddingRight = document.body.style.paddingRight
+        const originalPaddingRight = document.body.style.paddingRight;
         const originalHeight = document.body.style.height;
 
         /* Lock body scroll */
@@ -51,6 +51,7 @@ export default function useLockedScroll(
         if (locked !== initialLocked) {
             setLocked(initialLocked);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialLocked]);
 
     return [locked, setLocked];

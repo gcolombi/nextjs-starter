@@ -21,6 +21,7 @@ export default function useScrollbar() {
                 directionX: prevScrollX < window.scrollX ? 1 : -1
             }
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scrollbar?.scrollY, scrollbar?.scrollX, scrollbar?.directionY, scrollbar?.directionX]);
 
     useIsomorphicLayoutEffect(() => {

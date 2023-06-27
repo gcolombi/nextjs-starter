@@ -49,6 +49,7 @@ export default function useLocalStorage(
 
     useEffect(() => {
         setStoredValue(loadStoredValue());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);/* Empty array ensures that effect is only run on mount */
 
     return [storedValue, setValue];
